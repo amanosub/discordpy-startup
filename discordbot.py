@@ -533,7 +533,7 @@ async def on_ready():
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == '管理者用yui起動ログ'))
 
 
-
+    await q_ch.send('quiz')
 
 flag = False
 
