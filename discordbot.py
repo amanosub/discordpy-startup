@@ -775,35 +775,17 @@ url_embed] #ヘルプの各ページ内容
                 print(embed.to_dict())
                 if description and f'{client.user.mention}はレベルアップした！' in description : 
                     print('lv check 3')
-                    level_up=description.split(f'{client.user.mention}はレベルアップした！')[1]
+                    level_up=description.split('レベルアップした！')[1]
                     embed = discord.Embed(title='━LvUP━',description = (level_up),color=discord.Colour.green())
                     embed.set_thumbnail(url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
                     embed.add_field(name="━時刻━", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"/"+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
-
+                    print('lv check 4')
+                    print(level_up)
                     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
                 else:
                     print('not level up')  
                 
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-        print("lv check　４")
-        if len(message.embeds) != 0:             
-            for embed in message.embeds:
-                print("lv check ５")
-                description = embed.description 
-                if description and f'{client.user.mention}はレベルアップした！' in description : 
-                    print('lv check ６')
-                    level_up=description.split(f'{client.user.mention}はレベルアップした！')[1]
-                    embed = discord.Embed(title=':lvup:',description = (level_up),color=discord.Colour.green())
-                    embed.set_thumbnail(url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
-                    embed.add_field(name="━時刻━", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"/"+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
-
-                    await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
-                else:
-                    print('not level up') 
-                    
-    #AIzaSyCKKWw8f4kvyNQbIe87XpC3A9FXLYKwrBM                
-                    
-                    
+                   
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
     me = message.guild.me
     tao = client.ch.guild.get_member(526620171658330112)
