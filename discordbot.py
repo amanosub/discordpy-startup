@@ -1600,7 +1600,7 @@ url_embed] #ヘルプの各ページ内容
     if 'やられてしまった' in message.content:
         set = randam.randrange(1,7)
         if set == 3:
-            embed = discord.Embed(title='ゆーあーるーざーw',description=f'{message.author.mention}\n君は死んだんだよ!!\n負けたんだよ!!'
+            embed = discord.Embed(title='ゆーあーるーざーw',description=f'{message.author.mention}\n君は死んだんだよ!!\n負けたんだよ!!')
             await message.channel.send(embed=embed)
             
 client.run(TOKEN)
