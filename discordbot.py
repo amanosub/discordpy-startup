@@ -538,17 +538,10 @@ flag = False
 yt_channel_id = CHANNEL_ID # 最初のチャンネルの
 
 
-
-
-
-@tasks.loop(seconds=30)
+@tasks.loop(seconds=2000)
 async def loop():
-    global yt_channel_id
-    if flag:
-        channel = client.get_channel(yt_channel_id)
-        await channel.send('::atk loop')
-
-    await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
+   
+    await q_ch.send('::q')
 
 
 @tasks.loop(seconds=60)
