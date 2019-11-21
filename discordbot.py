@@ -538,12 +538,12 @@ flag = False
 yt_channel_id = CHANNEL_ID # 最初のチャンネルの
 
 
-@tasks.loop(seconds=60)
+@tasks.loop(seconds=600)
 async def loop():
     await asyncio.gather(*(c.send('::q') for c in client.get_all_channels() if c.name == 'quiz-yui₀₀'))
 
 
-    print('60')
+    print('600')
 
 @tasks.loop(seconds=60)
 async def looop():
