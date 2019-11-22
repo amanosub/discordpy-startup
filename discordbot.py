@@ -519,7 +519,7 @@ async def on_ready():
         tmp = discord.utils.get(guild.text_channels,name="global_yui")
         if tmp: client.global_list.append(tmp)
 
-    if dateTime.hour > 24
+    if dateTime.hour > 24:
         jp_time=dateTime.hour − 9
             embed = discord.Embed(title="YUI起動ログ",description="起動したよ",color=0x2ECC69)
             embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
