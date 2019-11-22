@@ -521,12 +521,12 @@ async def on_ready():
 
     if (dateTime.hour)+9 > 24:
         jp_time=(dateTime.hour) - 24
-            embed = discord.Embed(title="YUI起動ログ",description="起動したよ",color=0x2ECC69)
-            embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-            embed.add_field(name="起動時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(jp_time)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
-            embed.add_field(name="YUI news", value="大幅に改良！\n詳しくはヘルプの第６項から公式鯖へ", inline=True)
+        embed = discord.Embed(title="YUI起動ログ",description="起動したよ",color=0x2ECC69)
+        embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
+        embed.add_field(name="起動時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(jp_time)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
+        embed.add_field(name="YUI news", value="大幅に改良！\n詳しくはヘルプの第６項から公式鯖へ", inline=True)
    
-            await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
+        await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
     elif:
         embed = discord.Embed(title="YUI起動ログ",description="起動したよ",color=0x2ECC69)
         embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
