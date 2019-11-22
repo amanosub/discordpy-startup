@@ -538,13 +538,13 @@ flag = False
 yt_channel_id = CHANNEL_ID # 最初のチャンネルの
 
 
-@tasks.loop(seconds=600)
+@tasks.loop(seconds=10)
 async def loop():
-    await asyncio.gather(*(c.send('::q') for c in client.get_all_channels() if c.name == 'quiz-yui₀₀'))
-
-
-    print('600')
-
+    tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
+    last_message_time = tmp_timediff.total_seconds()
+    if last_message_time > 600: 
+        await asyncio.gather(*(c.send('::q') for c in client.get_all_channels() if c.name == 'quiz-yui₀₀'))
+    print('checked q')
 @tasks.loop(seconds=60)
 async def looop():
     now = datetime.datetime.now().strftime('%H:%M')
