@@ -747,7 +747,7 @@ url_embed] #ヘルプの各ページ内容
     if message.content=='y!atkstop':
         atk_ch_id = '#tao-yui₀₀₀'
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)   
-
+        await q_ch.send('::q')
 
 
     if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
@@ -853,7 +853,6 @@ url_embed] #ヘルプの各ページ内容
             ans_msg = await client.wait_for("message",check=ans_check)
         except asyncio.TimeoutError:
             await message.channel.send("::q")
-            print(client.already_quiz)
             return
 
         tmp_embed = ans_msg.embeds[0].description
@@ -865,9 +864,11 @@ url_embed] #ヘルプの各ページ内容
             client.already_quiz[quiz] = tmp
 
         await message.channel.send("::q")
+
+
+
+    if message.content.startswith('y!qdata'):
         print(client.already_quiz)
-
-
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
     if message.author != client.user:
         reg_res = re.compile(u"y!wt (.+)").search(message.content)
@@ -954,7 +955,6 @@ url_embed] #ヘルプの各ページ内容
         reply_one = message.content.split('y!say1 ')[1]
         await message.channel.send(reply_one)
 
-
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
 
@@ -965,8 +965,6 @@ url_embed] #ヘルプの各ページ内容
         embed = discord.Embed(title='レポート提出完了！',description=f"{message.author.mention}さん\nレポート提出有り難う！\n君のレポートは無事研究所に届けられたよ！",color=0x2ECC69)
         embed.add_field(name="レポート提出時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=True)
         await message.channel.send(embed=embed)
-
-    if message.content.startswith("y!report "):
         channel_id_report = 629327961132236800
         reply = message.content.split('y!report ')[1]
         embed = discord.Embed(title='レポート内容\n'+(reply),description=f"発言者{message.author.mention}",color=0x2ECC69)
