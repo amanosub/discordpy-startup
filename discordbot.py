@@ -1044,7 +1044,7 @@ url_embed] #ヘルプの各ページ内容
 
     if message.content == "y!kuji":
         # Embedを使ったメッセージ送信 と ランダムで要素を選択
-        num_random = random.randrange(1,5)
+        num_random = random.randrange(1,6)
         url1 = 'https://cdn.discordapp.com/attachments/635993816297504809/641195024033251328/29_20191105173957.png'
         url2 = 'https://cdn.discordapp.com/attachments/635993816297504809/641196128137904128/29_20191105174422.png'
         url3 = 'https://cdn.discordapp.com/attachments/635993816297504809/641197802436952065/29_20191105174815.png'
