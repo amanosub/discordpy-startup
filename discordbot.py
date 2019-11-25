@@ -1489,12 +1489,10 @@ url_embed] #ヘルプの各ページ内容
         embed.add_field(name="‣二段階認証", value=f"**{mfamsg}**",inline=False)
         await message.channel.send(embed=embed)
 
-#🔷➖➖➖➖➖➖➖➖global chat space➖➖➖➖➖➖➖➖🔷
-
-
+#🔷➖➖➖➖➖➖➖➖global chat space➖➖➖➖
 
     if (len(message.embeds) == 0) and (message.channel.name == "global_yui") and (not "discord.gg" in message.author.name):
-        content = re.sub(r"(https://discord.gg/)([a-zA-Z./%=]*)", r"||\1\2||", message.content)
+        content = re.sub(r"(https://discord.gg/)([\w]*)", r"||\1\2||", message.content)
         embed = discord.Embed(title=f'送信者│{message.author}',description=f"{content}",color=discord.Color(random.randint(0, 0xFFFFFF)))
         embed.set_thumbnail(url = message.author.avatar_url)
         embed.set_author(icon_url=message.guild.icon_url, name=f"{message.guild.name}")
@@ -1504,6 +1502,7 @@ url_embed] #ヘルプの各ページ内容
             for channel in guild.channels:
                 if channel.name == "global_yui":
                     await channel.send(embed=embed)
+ 
 
     if message.content.startswith("y!mkch "):
         await message.delete()
