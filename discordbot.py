@@ -707,10 +707,8 @@ url_embed] #ヘルプの各ページ内容
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)    
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
 
-                
-    if f'{client.user.display_name}' in message.content:
-        for embed in message.embeds:
-            return
+              
+    for embed in message.embeds:
         if message.embed.description and "やられてしまった" in message.content:#🔷YUIの自動復活条件
             def  hellocheck(m):
                 return m.content == "の攻撃" and m.author == message.author  and message.channel == m.channel#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
