@@ -851,7 +851,7 @@ url_embed] #ヘルプの各ページ内容
             elif tmp_embed.startswith("正解"):
                 tmp = true_choice[0]
             client.already_quiz[quiz] = tmp
-    if message.author.id == 526620171658330112
+    if message.author.id == 526620171658330112:
         for embed in message.embeds:
             print(embed.to_dict())
             description = embed.description
