@@ -858,7 +858,7 @@ url_embed] #ヘルプの各ページ内容
             title = embed.title
             print('check ans')
             if title and 'が待ち構えている' in title and message.channel==q_ch:
-            await message.channel.send('::q')
+                await message.channel.send('::q')
 
     if message.content.startswith('y!qdata'):
         print(client.already_quiz)
