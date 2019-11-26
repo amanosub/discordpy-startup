@@ -853,7 +853,7 @@ url_embed] #ヘルプの各ページ内容
             client.already_quiz[quiz] = tmp
 
     for embed in message.embeds:
-        if '正解' in embed.description and message.channel == q_ch:
+        if '正解' in message.embeds[0].description and message.channel == q_ch:
             await message.channel.send('::q')
 
 
