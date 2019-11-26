@@ -767,7 +767,7 @@ url_embed] #ヘルプの各ページ内容
         
         if len(message.embeds) != 0:            
             for embed in message.embeds:                       
-                if message.embeds.description and "このチャンネルの仲間全員が全回復した！" in message.embeds.description and message.channel==atk_ch:
+                if embed.description and "このチャンネルの仲間全員が全回復した！" in message.embeds.description and message.channel==atk_ch:
                     def  hellocheck(m):
                         return  "PET" in description and m.author == message.author  and message.channel == atk_ch
                     try:
@@ -787,7 +787,7 @@ url_embed] #ヘルプの各ページ内容
                 print("lv check 2")
                 description = embed.description 
                 print(embed.to_dict())
-                if message.description and 'ReYUI ver1.12.2はレベルアップした！' in description : 
+                if description and 'ReYUI ver1.12.2はレベルアップした！' in description : 
                     print('lv check 3')
                     level_up=description.split('レベルアップした！')[1]
                     embed = discord.Embed(title='━LvUP━',description = (level_up),color=discord.Colour.green())
@@ -853,7 +853,7 @@ url_embed] #ヘルプの各ページ内容
             client.already_quiz[quiz] = tmp
 
     for embed in message.embeds:
-        if '正解' in message.embeds.description and message.channel == q_ch:
+        if '正解' in embed.description and message.channel == q_ch:
             await message.channel.send('::q')
 
 
