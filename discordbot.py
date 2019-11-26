@@ -840,7 +840,7 @@ url_embed] #ヘルプの各ページ内容
 
         try:
             ans_msg = await client.wait_for("message",check=ans_check)
-        except asyncio.TimeoutError
+        except asyncio.TimeoutError:
             await q_ch.send('::q')
             return
 
