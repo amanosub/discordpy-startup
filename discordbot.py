@@ -512,6 +512,10 @@ async def on_ready():
     print(dateTime)
     print("今入ってる鯖の数"+str(server_number))
 
+    atk_ch = client.get_channel(643461030692782081) 
+
+    q_ch = client.get_channel(644199380764721152)
+    help_ch = 642578258743001088
 
     loop.start()
     looop.start()
@@ -851,15 +855,20 @@ url_embed] #ヘルプの各ページ内容
             elif tmp_embed.startswith("正解"):
                 tmp = true_choice[0]
             client.already_quiz[quiz] = tmp
-    if message.channel == q_ch:
-        for embed in message.embeds:
-            print('aaaa')
-            print(embed.to_dict())
-            description = embed.description
-            title = embed.title
-            print('check ans')
-            if description and '正解' in description and message.channel==q_ch:
-                await message.channel.send('::q')
+
+    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
+        
+        if len(message.embeds) != 0:
+            
+            for embed in message.embeds:
+                print(embed.to_dict())
+                description = embed.description
+                title = embed.title
+                print('check ans')
+                if description and '正解' in description and message.channel==q_ch:
+                    print('check b')
+                    await asyncio.sleep(1)
+                    await q_ch.send( "::q" ) 
 
     if message.content.startswith('y!qdata'):
         print(client.already_quiz)
