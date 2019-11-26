@@ -853,11 +853,12 @@ url_embed] #ヘルプの各ページ内容
             client.already_quiz[quiz] = tmp
     if message.author.id == 526620171658330112:
         for embed in message.embeds:
+            print('aaaa')
             print(embed.to_dict())
             description = embed.description
             title = embed.title
             print('check ans')
-            if title and 'が待ち構えている' in title and message.channel==q_ch:
+            if description and '正解' in description and message.channel==q_ch:
                 await message.channel.send('::q')
 
     if message.content.startswith('y!qdata'):
