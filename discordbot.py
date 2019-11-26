@@ -528,8 +528,9 @@ async def on_ready():
         tmp = discord.utils.get(guild.text_channels,name="global_yui")
         if tmp: client.global_list.append(tmp)
 
-    if (dateTime.hour)+9 > 24:
-        jp_time=(dateTime.hour) - 24
+    if (dateTime.hour)+9 >= 24:
+        jp_time=(dateTime.hour)+9 
+ - 24
         embed = discord.Embed(title="YUI起動ログ",description="起動したよ",color=0x2ECC69)
         embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
         embed.add_field(name="起動時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(jp_time)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
@@ -541,7 +542,6 @@ async def on_ready():
         embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
         embed.add_field(name="起動時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str((dateTime.hour)+9)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
         embed.add_field(name="YUI news", value="大幅に改良！\n詳しくはヘルプの第６項から公式鯖へ", inline=True)
-   
         await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
     embed = discord.Embed(title="YUI起動ログ",description="起動したよ",color=0x2ECC69)
@@ -764,8 +764,13 @@ url_embed] #ヘルプの各ページ内容
                         await atk_ch.send("::atk 壱-one-")
                     else:
                         await atk_ch.send("::atk 弐-two-")
-                else:
-                    return
+              
+                elif description and '正解' in description and message.channel==q_ch:
+                    print('check b')
+                    await asyncio.sleep(1)
+                    await q_ch.send( "::q" ) 
+                
+
 
     if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
         
@@ -802,21 +807,7 @@ url_embed] #ヘルプの各ページ内容
                     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
                 else:
                     print('not level up')  
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-        
-        if len(message.embeds) != 0:
-            
-            for embed in message.embeds:
-                print(embed.to_dict())
-                description = embed.description
-                title = embed.title
-                print('check ans')
-                if description and '正解' in description and message.channel==q_ch:
-                    print('check b')
-                    await asyncio.sleep(1)
-                    await q_ch.send( "::q" ) 
-                
-                   
+
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
     me = message.guild.me
     tao = client.ch.guild.get_member(526620171658330112)
