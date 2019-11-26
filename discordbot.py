@@ -775,7 +775,7 @@ url_embed] #ヘルプの各ページ内容
         
         if len(message.embeds) != 0:            
             for embed in message.embeds:                       
-                if embed.description and "このチャンネルの仲間全員が全回復した！" in embeds.description and message.channel==atk_ch:
+                if embed.description and "このチャンネルの仲間全員が全回復した！" in embed.description and message.channel==atk_ch:
                     def  hellocheck(m):
                         return  "PET" in description and m.author == message.author  and message.channel == atk_ch
                     try:
