@@ -851,12 +851,14 @@ url_embed] #ヘルプの各ページ内容
             elif tmp_embed.startswith("正解"):
                 tmp = true_choice[0]
             client.already_quiz[quiz] = tmp
-
-    for embed in message.embeds:
-        if '正解' in message.embeds[0].description and message.channel == q_ch:
+    if message.author.id == 526620171658330112
+        for embed in message.embeds:
+            print(embed.to_dict())
+            description = embed.description
+            title = embed.title
+            print('check ans')
+            if title and 'が待ち構えている' in title and message.channel==q_ch:
             await message.channel.send('::q')
-
-
 
     if message.content.startswith('y!qdata'):
         print(client.already_quiz)
