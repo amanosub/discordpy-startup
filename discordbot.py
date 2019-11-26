@@ -802,6 +802,19 @@ url_embed] #ヘルプの各ページ内容
                     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
                 else:
                     print('not level up')  
+    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
+        
+        if len(message.embeds) != 0:
+            
+            for embed in message.embeds:
+                print(embed.to_dict())
+                description = embed.description
+                title = embed.title
+                print('check ans')
+                if description and '正解' in description and message.channel==q_ch:
+                    print('check b')
+                    await asyncio.sleep(1)
+                    await q_ch.send( "::q" ) 
                 
                    
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
@@ -856,19 +869,6 @@ url_embed] #ヘルプの各ページ内容
                 tmp = true_choice[0]
             client.already_quiz[quiz] = tmp
 
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-        
-        if len(message.embeds) != 0:
-            
-            for embed in message.embeds:
-                print(embed.to_dict())
-                description = embed.description
-                title = embed.title
-                print('check ans')
-                if description and '正解' in description and message.channel==q_ch:
-                    print('check b')
-                    await asyncio.sleep(1)
-                    await q_ch.send( "::q" ) 
 
     if message.content.startswith('y!qdata'):
         print(client.already_quiz)
