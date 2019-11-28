@@ -553,7 +553,7 @@ flag = False
 
 yt_channel_id = CHANNEL_ID # 最初のチャンネルの
 
-
+    await client.change_presence(game=discord.Game(name="y!help"))
 @tasks.loop(seconds=10)
 async def loop():
     print('10')
