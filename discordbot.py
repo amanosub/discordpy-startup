@@ -1102,7 +1102,8 @@ url_embed] #ヘルプの各ページ内容
         try:
             ans_msg = await client.wait_for('massage',timeout = 10,check = role_check)
         except:
-            embed = discord.Embed(title=Error!!,description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
+            embed = discord.Embed(title='Error!!',description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
+            await message.channel.send(embed=embed)
         else:
             await ans_msg.add_reaction(str(role_num).encode().decode('unicode-escape')+"\u20e3")
     # 「あいてむ」と発言したら「::i」が返る処理
