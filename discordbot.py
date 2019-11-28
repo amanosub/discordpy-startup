@@ -756,7 +756,7 @@ url_embed] #ヘルプの各ページ内容
                 description = embed.description
                 title = embed.title
                 print('check a')
-                if description and '時間切れ' in title and message.channel==q_ch:
+                if description and '時間切れ' in description and message.channel==q_ch:
                     print('check b')
                     await asyncio.sleep(5)
                     await message.channel.send('::q')
