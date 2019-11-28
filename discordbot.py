@@ -930,7 +930,7 @@ url_embed] #ヘルプの各ページ内容
             return
 
         tmp_embed = ans_msg.embeds[0].description
-        if answer is None and not tmp_embed.startswith("時間切れ"):
+        if answer is None and not tmp_embed.startswith("時間切れ"):#U+0030	
             if tmp_embed.startswith("残念"):
                 tmp = re.search("残念！正解は「(.*)」だ。",tmp_embed).group(1)
             elif tmp_embed.startswith("正解"):
@@ -1088,9 +1088,23 @@ url_embed] #ヘルプの各ページ内容
         await message.channel.send('::rmap')
 
     # 「ろーる」と発言したら「::role」が返る処理
-    if message.content == 'y!role':
-        await message.channel.send('::role \nこれ一応作ったけどリアクションで役職選択させるのは\nめんどくさくてつくってないからほぼ意味ないんだよね……')
-
+    if message.content.startswith('y!role '):
+        role_num = int(message.content.split('y!role ')[0])
+        await message.channel.send('::role')
+        def role_check(tao_msg):
+            if not tao_msg.embeds:
+                return 0
+            if tao_msg.channel != message.channel:
+                return 0
+            if role_num > 3
+                return 0
+            return 1
+        try:
+            ans_msg = await client.wait_for('massage',timeout = 10,check = role_check)
+        except:
+            embed = discord.Embed(title=Error!!,description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
+        else:
+            await ans_msg.add_reaction(str(role_num).encode().decode('unicode-escape')+"\u20e3")
     # 「あいてむ」と発言したら「::i」が返る処理
     if message.content == 'y!i':
         await message.channel.send('::i')
