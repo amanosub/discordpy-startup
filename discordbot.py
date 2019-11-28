@@ -511,7 +511,7 @@ async def on_ready():
     print('------')
     print(dateTime)
     print("今入ってる鯖の数"+str(server_number))
-
+    await client.change_presence(game=discord.Game(name="y!help"))
     atk_ch = client.get_channel(643461030692782081) 
 
     q_ch = client.get_channel(644199380764721152)
@@ -551,9 +551,7 @@ async def on_ready():
 
 flag = False
 
-yt_channel_id = CHANNEL_ID # 最初のチャンネルの
-
-    await client.change_presence(game=discord.Game(name="y!help"))
+yt_channel_id = CHANNEL_ID
 @tasks.loop(seconds=10)
 async def loop():
     print('10')
