@@ -585,6 +585,11 @@ async def looop():
         login_ch = client.get_channel(643466975745540096)
         await login_ch.send('::login')
 
+    tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
+    last_message_time = tmp_timediff.total_seconds()
+    if last_message_time > 400: 
+        await q_ch.send('::q')
+
 @client.event
 async def on_disconnect():
     print("YUI was death")
