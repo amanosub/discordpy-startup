@@ -763,7 +763,18 @@ url_embed] #ヘルプの各ページ内容
                         await atk_ch.send("::atk 壱-one-")
                     else:
                         await atk_ch.send("::atk 弐-two-")
-              
+                        try:
+                            reply = await client.wait_for( "message" , check = hellocheck , timeout = 5.0 )
+                        except asyncio.TimeoutError:
+                            pass
+                        else:
+                            await atk_ch.send("::atk 弐-two-")
+                            try:
+                                reply = await client.wait_for( "message" , check = hellocheck , timeout = 5.0 )
+                            except asyncio.TimeoutError:
+                                pass
+                            else:
+                                await atk_ch.send("::atk 弐-two-")
                 elif description and '正解' in description and message.channel==q_ch:
                     print('check b')
                     await asyncio.sleep(1)
