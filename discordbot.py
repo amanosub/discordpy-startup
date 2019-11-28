@@ -756,7 +756,7 @@ url_embed] #ヘルプの各ページ内容
                 description = embed.description
                 title = embed.title
                 print('check a')
-                if title and 'が待ち構えている' in title and message.channel==atk_ch:
+                if message.title and 'が待ち構えている' in title and message.channel==atk_ch:
                     print('check b')
                     await asyncio.sleep(5)
                     await atk_ch.send( "::atk 零-zero-" ) 
