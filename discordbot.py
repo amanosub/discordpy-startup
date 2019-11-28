@@ -1087,7 +1087,7 @@ url_embed] #ヘルプの各ページ内容
 
     # 「ろーる」と発言したら「::role」が返る処理
     if message.content.startswith('y!role '):
-        role_num = int(message.content.split('y!role ')[0])
+        role_num = message.content.split('y!role ')[0]
         await message.channel.send('::role')
         def role_check(tao_msg):
             if not tao_msg.embeds:
