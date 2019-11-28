@@ -1096,7 +1096,7 @@ url_embed] #ヘルプの各ページ内容
                 return 0
             if tao_msg.channel != message.channel:
                 return 0
-            if role_num > 3
+            if role_num > 3:
                 return 0
             return 1
         try:
