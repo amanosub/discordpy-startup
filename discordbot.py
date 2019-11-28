@@ -756,7 +756,21 @@ url_embed] #ヘルプの各ページ内容
                 description = embed.description
                 title = embed.title
                 print('check a')
-                if message.title and 'が待ち構えている' in title and message.channel==atk_ch:
+                if description and '時間切れ' in title and message.channel==q_ch:
+                    print('check b')
+                    await asyncio.sleep(5)
+                    await message.channel.send('::q')
+
+    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
+        
+        if len(message.embeds) != 0:
+            
+            for embed in message.embeds:
+                print(embed.to_dict())
+                description = embed.description
+                title = embed.title
+                print('check a')
+                if title and 'が待ち構えている' in title and message.channel==atk_ch:
                     print('check b')
                     await asyncio.sleep(5)
                     await atk_ch.send( "::atk 零-zero-" ) 
@@ -827,7 +841,7 @@ url_embed] #ヘルプの各ページ内容
     me = message.guild.me
     tao = client.ch.guild.get_member(526620171658330112)
 
-    if message.content == "::q" and message.author == me :
+    if '::q' in message.content and message.author == me :
         def quiz_check(tao_msg):
             if tao_msg.author != tao:
                 return 0
