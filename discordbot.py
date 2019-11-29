@@ -1112,7 +1112,7 @@ url_embed] #ヘルプの各ページ内容
         elif role_num=='3':
             await ans_msg_add.reaction(':three:')
         else:
-            embed = discord.Embed(title='エラー!',description=f'{role_num}に該当する役職はないよ!\n**役職番号**\0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',color=discord.Color.red())
+            embed = discord.Embed(title='エラー!',description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',color=discord.Color.red())
             await message.channel.send(embed=embed)
     # 「あいてむ」と発言したら「::i」が返る処理
     if message.content == 'y!i':
