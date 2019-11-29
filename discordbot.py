@@ -889,54 +889,6 @@ url_embed] #ヘルプの各ページ内容
             client.already_quiz[quiz] = tmp
         await message.channel.send('::q')
 
-    if '::q' in message.content and message.author == me :
-        def quiz_check(tao_msg):
-            if tao_msg.author != tao:
-                return 0
-            elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-                return 0
-            elif tao_msg.embeds[0].author.name != "Quiz | ReYUI ver1.12.2#4984さんのクイズ":
-                return 0
-            return 1
-
-        def ans_check(tao_msg):
-            if tao_msg.author != tao:
-                return 0
-            elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-                return 0
-            return 1
-        
-        try:
-            quiz_msg = await client.wait_for("message",timeout=300,check=quiz_check)
-        except asyncio.TimeoutError:
-            await message.channel.send("::q")
-            return
-
-        quiz,*choice = quiz_msg.embeds[0].description.split("\n")
-        true_choice = [word[4:] for word in choice]
-
-        answer = client.already_quiz.get(quiz)
-        await asyncio.sleep(4)
-
-        react = 1
-        if answer:
-            react += true_choice.index(answer)        
-        await quiz_msg.add_reaction(str(react).encode().decode('unicode-escape')+"\u20e3")
-
-        try:
-            ans_msg = await client.wait_for("message",check=ans_check)
-        except asyncio.TimeoutError:
-            await q_ch.send('::q')
-            return
-
-        tmp_embed = ans_msg.embeds[0].description
-        if answer is None and not tmp_embed.startswith("時間切れ"):#U+0030	
-            if tmp_embed.startswith("残念"):
-                tmp = re.search("残念！正解は「(.*)」だ。",tmp_embed).group(1)
-            elif tmp_embed.startswith("正解"):
-                tmp = true_choice[0]
-            client.already_quiz[quiz] = tmp
-        await message.channel.send('::q')
 
 
     if message.content.startswith('y!qdata'):
@@ -1096,8 +1048,6 @@ url_embed] #ヘルプの各ページ内容
                 return 0
             if tao_msg.channel != message.channel:
                 return 0
-            if int(role_num)>3:
-                return 0
             return 1
         try:
             ans_msg = await client.wait_for('message',timeout = 10,check = role_check)
@@ -1105,15 +1055,15 @@ url_embed] #ヘルプの各ページ内容
             embed = discord.Embed(title='Error!!',description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
             await message.channel.send(embed=embed)
         else:
-            pass
+            await asyncio.sleep(2)
             if role_num=='0':
-                await ans_msg.add_reaction(f'\u0031\u20e3')
+                await ans_msg.add_reaction(f'\u0030\u20e3')
             elif role_num=='1':
-                await ans_msg.add_reaction(f'\u0032\u20e3')
+                await ans_msg.add_reaction(f'\u0031\u20e3')
             elif role_num=='2':
-                await ans_msg.add_reaction(f'\u0033\u20e3')
+                await ans_msg.add_reaction(f'\u0032\u20e3')
             elif role_num=='3':
-                await ans_msg.add_reaction(f'\u0034\u20e3')
+                await ans_msg.add_reaction(f'\u0033\u20e3')
             else:
                 embed = discord.Embed(title='エラー!',description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',color=discord.Color.red())
                 await message.channel.send(embed=embed)
