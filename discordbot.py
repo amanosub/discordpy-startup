@@ -460,17 +460,10 @@ async def on_ready():
 flag = False
 
 yt_channel_id = CHANNEL_ID
-@tasks.loop(seconds=20)
+@tasks.loop(seconds=60)
 async def loop():
-    await q_ch.send('check point')
-    def ch_check(tao_msg):
-        if message.channel!=q_ch:
-            return 0
-        return 1
-    try:
-        await cliemt.wait_for('message',check = ch_check,timeout=60)
-    except asymcio.TimeoutError:
-        await q_ch.send('::q')
+    await atk_ch.send('check point')
+
     print('10')
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
@@ -766,6 +759,17 @@ url_embed] #ヘルプの各ページ内容
     global atk_ch_id
     global atk_ch
     global q_ch
+
+
+    if message.content=='check point'
+        def ch_check(tao_msg):
+            if message.channel!=q_ch:
+                return 0
+            return 1
+        try:
+            await cliemt.wait_for('message',check = ch_check,timeout=60)
+        except asymcio.TimeoutError:
+            await q_ch.send('::q')
 
     if message.content.startswith("y!atkch "):
         print('got the commond')
