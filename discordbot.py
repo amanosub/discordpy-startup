@@ -672,36 +672,46 @@ url_embed] #ヘルプの各ページ内容
                 if reaction.emoji == "⬅" and page_count > 0:
                     page_count -= 1
 
-
+                if reaction.emoji == '🗑'
+                    await send_message.delete()
                 await send_message.clear_reactions() #事前に消去する
                 await send_message.edit(embed=page_content_list[page_count])
 
                 if page_count == 0:
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 1:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 2:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 3:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 4:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 5:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 6:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 7:
                     await send_message.add_reaction("⬅")
+                    await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
                 elif page_count == 8:
-                    await send_message.add_reaction("⬅")                    #各ページごとに必要なリアクション
-
+                    await send_message.add_reaction("⬅")
+                    #各ページごとに必要なリアクション
+                    await send_message.add_reaction("🗑")
 
 
     if message.content.startswith('y!kill'):
