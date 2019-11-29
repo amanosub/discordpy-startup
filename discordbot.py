@@ -455,17 +455,17 @@ async def on_ready():
     embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
     embed.add_field(name="起動時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour+9)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == '管理者用yui起動ログ'))#quiz-yui₀₀
-
+    await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
 
 flag = False
 
 yt_channel_id = CHANNEL_ID
-@tasks.loop(seconds=60)
+@tasks.loop(seconds=30)
 async def loop():
-    await atk_ch.send('check point')
+    await atk_ch.send('check poit')
 
     print('10')
-    await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
+
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400: 
