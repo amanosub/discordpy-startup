@@ -463,14 +463,14 @@ yt_channel_id = CHANNEL_ID
 @tasks.loop(seconds=20)
 async def loop():
     await q_ch.send('check point')
-        def ch_check(tao_msg):
-            if message.channel!=q_ch:
-                return 0
-            return 1
-        try:
-            await cliemt.wait_for('message',check = ch_check,timeout=60)
-        except asymcio.TimeoutError:
-            await q_ch.send('::q')
+    def ch_check(tao_msg):
+        if message.channel!=q_ch:
+            return 0
+        return 1
+    try:
+        await cliemt.wait_for('message',check = ch_check,timeout=60)
+    except asymcio.TimeoutError:
+        await q_ch.send('::q')
     print('10')
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
