@@ -647,7 +647,7 @@ url_embed] #ヘルプの各ページ内容
             '''
             if reaction.message.id != send_message.id:
                 return 0
-            if reaction.emoji in ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','➡','⬅','🗑','☑️','❎']:
+            if reaction.emoji in ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','➡','⬅','🗑','☑️','❎','⏭️','⏮️']:
                 if user != message.author:
                     return 0
                 else:
@@ -668,7 +668,7 @@ url_embed] #ヘルプの各ページ内容
 
                 if reaction.emoji == "⬅" and page_count > 0:
                     page_count -= 1
-                if reaction.emoji == "1️⃣" and page_count > 0:
+                if reaction.emoji in ["1️⃣","⏮️"] and page_count > 0:
                     page_count = 1
                 if reaction.emoji == "2️⃣" and page_count > 0:
                     page_count = 2
@@ -679,8 +679,8 @@ url_embed] #ヘルプの各ページ内容
                 if reaction.emoji == "5️⃣" and page_count > 0:
                     page_count = 5
                 if reaction.emoji == "6️⃣" and page_count > 0:
-                    page_count = 6
-                if reaction.emoji == "7️⃣" and page_count > 0:
+                    page_count = 6 
+                if reaction.emoji in ['7️⃣','⏭️'] and page_count > 0:
                     page_count = 7
                 if reaction.emoji in ['🗑','❎']:
                     await send_message.delete()
@@ -694,6 +694,7 @@ url_embed] #ヘルプの各ページ内容
                 elif page_count == 1:
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
+                    await send_message.add_reaction("⏭️")
                     await send_message.add_reaction("1️⃣")
                     await send_message.add_reaction("2️⃣")
                     await send_message.add_reaction("3️⃣")
@@ -702,26 +703,39 @@ url_embed] #ヘルプの各ページ内容
                     await send_message.add_reaction("6️⃣")
                     await send_message.add_reaction("7️⃣")
                 elif page_count == 2:
+                    await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
+                    await send_message.add_reaction("⏭️")
                 elif page_count == 3:
+                    await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
+                    await send_message.add_reaction("⏭️")
                 elif page_count == 4:
+                    await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
+                    await send_message.add_reaction("⏭️")
                 elif page_count == 5:
+
+                    await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
+                    await send_message.add_reaction("⏭️")
                 elif page_count == 6:
+                    await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
+                    await send_message.add_reaction("⏭️")
                 elif page_count == 7:
+
+                    await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
 
