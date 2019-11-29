@@ -650,7 +650,7 @@ url_embed] #ヘルプの各ページ内容
             '''
             if reaction.message.id != send_message.id:
                 return 0
-            if reaction.emoji in ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','➡','⬅','🗑']:
+            if reaction.emoji in ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','➡','⬅','🗑','☑️','❎']:
                 if user != message.author:
                     return 0
                 else:
@@ -685,7 +685,7 @@ url_embed] #ヘルプの各ページ内容
                     page_count = 6
                 if reaction.emoji == "7️⃣" and page_count > 0:
                     page_count = 7
-                if reaction.emoji == '🗑':
+                if reaction.emoji in ['🗑','❎']:
                     await send_message.delete()
 
                 await send_message.clear_reactions() #事前に消去する
