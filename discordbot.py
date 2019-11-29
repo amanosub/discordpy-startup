@@ -1103,8 +1103,15 @@ url_embed] #ヘルプの各ページ内容
         except:
             embed = discord.Embed(title='Error!!',description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
             await message.channel.send(embed=embed)
-        else:
-            await ans_msg.add_reaction(str(role_num).encode().decode('unicode-escape')+"\u20e3")
+        elif role_num==0:
+            await ans_msg.add_reaction(':zero:')
+        elif role_num==1:
+            await ans_msg_add.reaction(':one:')
+        elif role_num==2:
+            await ans_msg_add.reaction(':two:')
+        elif role_num==3:
+            await ans_msg_add.reaction(':three:')
+
     # 「あいてむ」と発言したら「::i」が返る処理
     if message.content == 'y!i':
         await message.channel.send('::i')
