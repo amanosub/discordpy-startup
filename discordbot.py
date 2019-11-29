@@ -1103,7 +1103,7 @@ url_embed] #ヘルプの各ページ内容
         except:
             embed = discord.Embed(title='Error!!',description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
             await message.channel.send(embed=embed)
-        elif role_num=='0':
+        if role_num=='0':
             await ans_msg.add_reaction(':zero:')
         elif role_num=='1':
             await ans_msg_add.reaction(':one:')
