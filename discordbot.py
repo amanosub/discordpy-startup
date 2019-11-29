@@ -969,8 +969,7 @@ url_embed] #ヘルプの各ページ内容
             elif tmp_embed.startswith("正解"):
                 tmp = true_choice[0]
             client.already_quiz[quiz] = tmp
-        await q_ch.send('::q')
-
+        await message.channel.send('::q')
 
 
     if message.content.startswith('y!qdata'):
