@@ -642,8 +642,8 @@ slot_embed,
 url_embed] #ヘルプの各ページ内容
 
         send_message = await message.channel.send(embed=page_content_list[0]) #最初のページ投稿
-        await send_message.add_reaction("➡")
-
+        await send_message.add_reaction("❎")
+        await send_message.add_reaction("☑️")
         def help_react_check(reaction,user):
             '''
             ヘルプに対する、ヘルプリクエスト者本人からのリアクションかをチェックする
