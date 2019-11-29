@@ -742,7 +742,7 @@ url_embed] #ヘルプの各ページ内容
         await asyncio.sleep(1)
         await message.channel.send('::atk')
         def  hellocheck(m):
-            if "攻撃失敗" in m.content and m.author == message.author  and message.channel == m.channel#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
+            if "攻撃失敗" in m.content and m.author == message.author  and message.channel == m.channel:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
         try:
             await client.wait_for( "message" , check = hellocheck , timeout = 3.0 )
         except asyncio.TimeoutError:
