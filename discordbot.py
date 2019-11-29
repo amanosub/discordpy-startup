@@ -179,10 +179,10 @@ slot_embed = discord.Embed(title="スロット機能だよ🎰━第６頁",desc
 slot_embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/635993816297504809/642579874816720916/money_slot_machine.png")
 slot_embed.add_field(name="スロット説明",value="絵文字を利用したスロットだよ\n表示が崩れるから、スマホとパソコンPCでコマンドを分けてるよ\n`y!slot s`がスマホ\n`y!slot c`がPCだよ\nちなみに開発者のスマホ（泥）を基準にしてるからIOS勢は表記が崩れるかも！\n泥勢もテキストサイズ変えちゃったら崩れるからね")
 
-url_embed = discord.Embed(title='YUI関連URL━第７頁\n🔘←をクリックで使用可能')
-url_embed.add_field(name ='‣招待URL\nYUIはこのURLで招待できるよ。' ,value ='[🔘](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=0&scope=bot)')
-url_embed.add_field(name ='‣YUIサポートサーバー\nYUIの公式鯖だよ。機能追加やアップデート情報はこの鯖で詳しく知ることができます',value ='[🔘](https://discord.gg/tJaJBDD)')
-
+url_embed = discord.Embed(title='YUI関連URL━第７頁\n')
+url_embed.add_field(name ='‣招待URL\nYUIはこのURLで招待できるよ。' ,value ='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=0&scope=bot)')
+url_embed.add_field(name ='‣YUI Official Server招待URL\nYUIの公式鯖だよ。\n機能追加やアップデート情報はこの鯖で詳しく知ることができるよ',value ='[URLはこちら](https://discord.gg/tJaJBDD)')
+url_embed.add_field(name ='‣YUIのサポートBOT招待URL',value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
 
 @client.event
 async def on_ready():
@@ -650,7 +650,7 @@ url_embed] #ヘルプの各ページ内容
             '''
             if reaction.message.id != send_message.id:
                 return 0
-            if reaction.emoji == "➡" or reaction.emoji == "⬅" or reaction.emoji =='🗑':
+            if reaction.emoji in ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','➡','⬅','🗑']:
                 if user != message.author:
                     return 0
                 else:
@@ -671,7 +671,20 @@ url_embed] #ヘルプの各ページ内容
 
                 if reaction.emoji == "⬅" and page_count > 0:
                     page_count -= 1
-
+                if reaction.emoji == "1️⃣" and page_count > 0:
+                    page_count = 1
+                if reaction.emoji == "2️⃣" and page_count > 0:
+                    page_count = 2
+                if reaction.emoji == "3️⃣" and page_count > 0:
+                    page_count = 3
+                if reaction.emoji == "4️⃣" and page_count > 0:
+                    page_count = 4
+                if reaction.emoji == "5️⃣" and page_count > 0:
+                    page_count = 5
+                if reaction.emoji == "6️⃣" and page_count > 0:
+                    page_count = 6
+                if reaction.emoji == "7️⃣" and page_count > 0:
+                    page_count = 7
                 if reaction.emoji == '🗑':
                     await send_message.delete()
 
@@ -685,6 +698,13 @@ url_embed] #ヘルプの各ページ内容
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
                     await send_message.add_reaction("➡")
+                    await send_message.add_reaction("1️⃣")
+                    await send_message.add_reaction("2️⃣")
+                    await send_message.add_reaction("3️⃣")
+                    await send_message.add_reaction("4️⃣")
+                    await send_message.add_reaction("5️⃣")
+                    await send_message.add_reaction("6️⃣")
+                    await send_message.add_reaction("7️⃣")
                 elif page_count == 2:
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
@@ -707,11 +727,6 @@ url_embed] #ヘルプの各ページ内容
                     await send_message.add_reaction("➡")
                 elif page_count == 7:
                     await send_message.add_reaction("⬅")
-                    await send_message.add_reaction("🗑")
-                    await send_message.add_reaction("➡")
-                elif page_count == 8:
-                    await send_message.add_reaction("⬅")
-                    #各ページごとに必要なリアクション
                     await send_message.add_reaction("🗑")
 
 
