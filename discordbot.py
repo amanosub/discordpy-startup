@@ -774,22 +774,30 @@ url_embed] #ヘルプの各ページ内容
             else:
                 await atk_ch.send( "::i e 壱-one-" )
 
-    if 'ReYUI ver1.12.2の攻撃！' in message.content and message.channel==atk_ch:
+    if 'の攻撃！' in message.content and message.channel==atk_ch:
         await asyncio.sleep(1)
         await message.channel.send('::atk')
         def  hellocheck(m):
-            if "攻撃失敗" in m.content and m.author == message.author  and message.channel == m.channel:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
-                return 1
-            return 0
+            if not "攻撃失敗" in m.content:
+                return 0
+            elif m.author != message.author:
+                return 0
+            elif message.channel != m.channel:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
+                return 0
+            return 1
         try:
             await client.wait_for( "message" , check = hellocheck , timeout = 3.0 )
         except asyncio.TimeoutError:
             await atk_ch.send( "::attack 零-zero-" )
         else:
             def  tao_check(tao_msg):
-                if "::atk" in tao_msg.content  and tao_msg.author == client.user  and tao_msg.channel == atk_ch:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
-                    return 1
-                return 0
+                if not "::atk" in tao_msg.content: 
+                    return 0
+                elif tao_msg.author != client.user:
+                    return 0
+                elif tao_msg.channel != atk_ch:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
+                    return 0
+                return 1
             try:
                 await client.wait_for( "message" , check = tao_check , timeout = 3.0 )
             except asyncio.TimeoutError:
