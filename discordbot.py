@@ -1106,7 +1106,7 @@ url_embed] #ヘルプの各ページ内容
         else:
             pass
             if role_num=='0':
-                await ans_msg.add_reaction(':zero:')
+                await ans_msg.add_reaction('0️⃣')
             elif role_num=='1':
                 await ans_msg_add.reaction(':one:')
             elif role_num=='2':
