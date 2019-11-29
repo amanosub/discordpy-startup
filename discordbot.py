@@ -88,30 +88,36 @@ help_embed = discord.Embed(title="TAOコマンド系ヘルプ━第２項",descr
 #help_embed.add_field(name="```y!ch [channel ID]```",value='このコマンドを使った後に**ゆいがんばれ**って言ってくれたら指定したチャンネルでアタックをするから\n後でスイーツおごってもらうからね\n止めてほしいときは**ゆいおつかれ**って言って')
 help_embed.add_field(
 name='y!atkch [チャンネルメンション]'
-,value='`指定した場所を対象に設定\n指定の場所でy!atk`'
+,value='```指定した場所を対象に設定\n指定の場所でy!atk\n止める時はy!atkstop```'
 ,inline=True)
 
 help_embed.add_field(
 name='y!login'
-,value='`ログインする`'
+,value='```ログインする```'
 ,inline=True)
 help_embed.add_field(
 name='y!st'
-,value='`::st\n　　　　　`'
+,value='```::st```'
+,inline=True)
+help_embed.add_field(
+name='y!role [役職番号]'
+,value='```::role\n役職番号はroleのリアクション番号だよ\n例\ny!role 0はAdventureだよ```'
 ,inline=True)
 help_embed.add_field(
 name='y!i'
-,value='`::item\n　　　　　`'
+,value='```::item```'
 ,inline=True)
 help_embed.add_field(
 name='y!i [f,e]'
-,value='`::i [f,e]\n　　　　　`'
+,value='``::i [f,e]```'
 ,inline=True)
 help_embed.add_field(
-name='y!re',value='`::ren\n　　　　　`'
+name='y!re',
+value='```::re```'
 ,inline=True)
 help_embed.add_field(
-name='y!atk',value='`::atk\n　　　　　`'
+name='y!atk',
+value='```::atk```'
 ,inline=True)
 help_embed.add_field(
 name='y!nekoshima',value='`超激レア枠が出るまでTAOさなきゃいけない\nモンスターの数を占う`'
@@ -127,6 +133,9 @@ help_two_embed.add_field(name='y!dice [下限] [上限]'
         ,inline=False)
 help_two_embed.add_field(name='y!sinfo'
         ,value ='```サーバーの情報を開示```'
+        ,inline=False)
+help_two_embed.add_field(name='y!mkch [チャンネル名]'
+        ,value ='```コマンドを使用したカテゴリ内にチャンネルを作成```'
         ,inline=False)
 help_two_embed.add_field(name='y!kuji'
         ,value ='```おみくじ```'
@@ -144,6 +153,7 @@ help_two_embed.add_field(name='y!clean [数]'
 help_two_embed.add_field(name='y!report [内容]'
         ,value ='```開発者へのレポート＆リクエスト```'
         ,inline=False)
+
 help_two_embed.add_field(name='y!wt [都道府県名]',value='```今日、明日の天気予報「YUI WEATHER」```',inline=True)
 
 embed_special = discord.Embed(
@@ -169,9 +179,9 @@ slot_embed = discord.Embed(title="スロット機能だよ🎰━第６頁",desc
 slot_embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/635993816297504809/642579874816720916/money_slot_machine.png")
 slot_embed.add_field(name="スロット説明",value="絵文字を利用したスロットだよ\n表示が崩れるから、スマホとパソコンPCでコマンドを分けてるよ\n`y!slot s`がスマホ\n`y!slot c`がPCだよ\nちなみに開発者のスマホ（泥）を基準にしてるからIOS勢は表記が崩れるかも！\n泥勢もテキストサイズ変えちゃったら崩れるからね")
 
-url_embed = discord.Embed(title='YUI関連URL━第７頁')
-url_embed.add_field(name ='‣招待URL' ,value ='[ここをクリック🔘](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=0&scope=bot)')
-url_embed.add_field(name ='‣YUIサポートサーバー(仮)',value ='[ここをクリック🔘](https://discord.gg/SHxgnu)')
+url_embed = discord.Embed(title='YUI関連URL━第７頁\n🔘←をクリックで使用可能')
+url_embed.add_field(name ='‣招待URL\nYUIはこのURLで招待できるよ。' ,value ='[🔘](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=0&scope=bot)')
+url_embed.add_field(name ='‣YUIサポートサーバー\nYUIの公式鯖だよ。機能追加やアップデート情報はこの鯖で詳しく知ることができます',value ='[🔘](https://discord.gg/tJaJBDD)')
 
 
 @client.event
@@ -742,6 +752,7 @@ url_embed] #ヘルプの各ページ内容
       
         
     if message.content=='y!atkstop':
+        await atk_ch.send('::re')
         atk_ch_id = '#tao-yui₀₀₀'
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)   
         await q_ch.send('::q')
