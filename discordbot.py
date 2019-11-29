@@ -743,6 +743,8 @@ url_embed] #ヘルプの各ページ内容
         await message.channel.send('::atk')
         def  hellocheck(m):
             if "攻撃失敗" in m.content and m.author == message.author  and message.channel == m.channel:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
+                return 1
+            return 0
         try:
             await client.wait_for( "message" , check = hellocheck , timeout = 3.0 )
         except asyncio.TimeoutError:
@@ -750,8 +752,8 @@ url_embed] #ヘルプの各ページ内容
         else:
             def  tao_check(tao_msg):
                 if "::atk" in tao_msg.content  and tao_msg.author == client.user  and tao_msg.channel == atk_ch:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
-                    return 0
-                return 1
+                    return 1
+                return 0
             try:
                 await client.wait_for( "message" , check = tao_check , timeout = 3.0 )
             except asyncio.TimeoutError:
