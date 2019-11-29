@@ -566,7 +566,7 @@ yt_channel_id = CHANNEL_ID
 @tasks.loop(seconds=10)
 async def loop():
     print('10')
-    await client.change_presence(game=discord.Game(name="y!help"))
+    await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400: 
