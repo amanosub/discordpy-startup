@@ -739,16 +739,23 @@ url_embed] #ヘルプの各ページ内容
                 await atk_ch.send( "::i e 壱-one-" )
 
     if 'ReYUI ver1.12.2の攻撃！' in message.content and message.channel==atk_ch:
-        await asyncio.sleep(2)
+        await asyncio.sleep(1)
         await message.channel.send('::atk')
         def  hellocheck(m):
-            return m.content == "攻撃失敗" and m.author == message.author  and message.channel == m.channel#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
+            if "攻撃失敗" in m.content and m.author == message.author  and message.channel == m.channel#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
         try:
-            reply = await client.wait_for( "message" , check = hellocheck , timeout = 3.0 )
+            await client.wait_for( "message" , check = hellocheck , timeout = 3.0 )
         except asyncio.TimeoutError:
             await atk_ch.send( "::attack 零-zero-" )
         else:
-            await atk_ch.send( "::attack 壱-one-" )
+            def  tao_check(tao_msg):
+                if "::atk" in tao_msg.content  and tao_msg.author == client.user  and tao_msg.channel == atk_ch:#ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
+                    return 0
+                return 1
+            try:
+                await client.wait_for( "message" , check = tao_check , timeout = 3.0 )
+            except asyncio.TimeoutError:
+                await atk_ch.send( "::attack 壱-one-" )
       
         
     if message.content=='y!atkstop':
@@ -792,18 +799,21 @@ url_embed] #ヘルプの各ページ内容
                     except asyncio.TimeoutError:
                         await atk_ch.send("::atk 壱-one-")
                     else:
+                        await asymcio.sleep(5)
                         await atk_ch.send("::atk 弐-two-")
                         try:
                             reply = await client.wait_for( "message" , check = hellocheck , timeout = 5.0 )
                         except asyncio.TimeoutError:
                             pass
                         else:
+                            await asymcio.sleep(5)
                             await atk_ch.send("::atk 弐-two-")
                             try:
                                 reply = await client.wait_for( "message" , check = hellocheck , timeout = 5.0 )
                             except asyncio.TimeoutError:
                                 pass
                             else:
+                                await asymcio.sleep(5)
                                 await atk_ch.send("::atk 弐-two-")
                 elif description and '正解' in description and message.channel==q_ch:
                     print('check b')
