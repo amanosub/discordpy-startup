@@ -761,7 +761,7 @@ url_embed] #ヘルプの各ページ内容
     global q_ch
 
 
-    if message.content=='check point'
+    if message.content=='check point':
         def ch_check(tao_msg):
             if message.channel!=q_ch:
                 return 0
