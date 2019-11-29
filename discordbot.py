@@ -109,7 +109,7 @@ name='y!i'
 ,inline=True)
 help_embed.add_field(
 name='y!i [f,e]'
-,value='``::i [f,e]```'
+,value='```::i [f,e]```'
 ,inline=True)
 help_embed.add_field(
 name='y!re',
