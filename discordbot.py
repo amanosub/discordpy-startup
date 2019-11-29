@@ -84,7 +84,7 @@ citycodes = {
 help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",description = '🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**ニックネーム変更非推奨**```第２項TAO系コマンドは、YUIのニックネームが変わるとオートアタックのみ正常に動作しません。\nTAOに関連性を持たせないつもりであれば、ニックネームの変更は構いません```\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。',color=discord.Colour.green())
 
 
-help_embed = discord.Embed(title="TAOコマンド系ヘルプ━第２項",description="TAOで使うコマンドを使うヘルプだよ",color=discord.Colour.green())
+help_embed = discord.Embed(title="TAOコマンド系ヘルプ",description="TAOで使うコマンドを使うヘルプだよ",color=discord.Colour.green())
 #help_embed.add_field(name="```y!ch [channel ID]```",value='このコマンドを使った後に**ゆいがんばれ**って言ってくれたら指定したチャンネルでアタックをするから\n後でスイーツおごってもらうからね\n止めてほしいときは**ゆいおつかれ**って言って')
 help_embed.add_field(
 name='y!atkch [チャンネルメンション]'
@@ -122,9 +122,10 @@ value='```::atk```'
 help_embed.add_field(
 name='y!nekoshima',value='`超激レア枠が出るまでTAOさなきゃいけない\nモンスターの数を占う`'
 ,inline=False)
+help_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第二項")
 
 
-help_two_embed = discord.Embed(title="ゆいの機能ヘルプ━第３項"
+help_two_embed = discord.Embed(title="メイン機能ヘルプ"
         ,description="その多機能"
         ,color=discord.Colour.green())
 #サーバーの情報を開示するよ\nコード基礎提供者:_toni
@@ -155,9 +156,9 @@ help_two_embed.add_field(name='y!report [内容]'
         ,inline=False)
 
 help_two_embed.add_field(name='y!wt [都道府県名]',value='```今日、明日の天気予報「YUI WEATHER」```',inline=True)
-
+help_two_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第三項")
 embed_special = discord.Embed(
-    title='特殊チャンネル系━第４項',
+    title='特殊チャンネル系',
     description='```‣チャンネル内容│チャンネル名\nチャンネル作成コマンド```',color=discord.Colour.green())
 embed_special.add_field(name='‣グローバルチャット│global_yui'
         ,value='```y!yui global```',inline=True)
@@ -166,24 +167,24 @@ embed_special.add_field(name='‣YUIの起動ログ│yui起動ログ'
         ,inline=True)
 embed_special.add_field(name='‣日付変更ログ│yui時報ログ'
         ,value ='```y!yui timelog```')
+embed_special.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第四項")
 
-
-gacha = discord.Embed(title="ガチャ機能だよ🎯 ━第５頁"
+gacha = discord.Embed(title="ガチャ機能だよ🎯 "
 ,description="コマンドはy!gacha [ガチャ番号]"
 ,color=discord.Colour.green()
 ,inline=False)
 gacha.set_thumbnail(url="https://yahoo.jp/box/HYqbOS")
 gacha.add_field(name="ガチャ種類＋番号一覧",value="‣__**通常ガチャ**　番号：1__\n色々よくわからないものが出てくるよ。\nたまに隠しコマンドが出てくるとかなんとか\ny!gacha 1\n\n‣__**おにゃのこガチャ**　番号：2__\n可愛いおにゃのこの画像がいっぱいだよ\n可愛いの純度１００％！\ny!gacha 2")
-
-slot_embed = discord.Embed(title="スロット機能だよ🎰━第６頁",description="コマンドはy!slot [s,c]",color=discord.Colour.green())
+gacha.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第五項")
+slot_embed = discord.Embed(title="スロット機能だよ🎰",description="コマンドはy!slot [s,c]",color=discord.Colour.green())
 slot_embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/635993816297504809/642579874816720916/money_slot_machine.png")
 slot_embed.add_field(name="スロット説明",value="絵文字を利用したスロットだよ\n表示が崩れるから、スマホとパソコンPCでコマンドを分けてるよ\n`y!slot s`がスマホ\n`y!slot c`がPCだよ\nちなみに開発者のスマホ（泥）を基準にしてるからIOS勢は表記が崩れるかも！\n泥勢もテキストサイズ変えちゃったら崩れるからね")
-
-url_embed = discord.Embed(title='YUI関連URL━第７頁\n')
+slot_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第六項")
+url_embed = discord.Embed(title='YUI関連URL\n')
 url_embed.add_field(name ='‣**Re:YUI ver1.12.2 招待URL**' ,value ='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)')
 url_embed.add_field(name ='‣**YUI Official Server 招待URL**',value ='[URLはこちら](https://discord.gg/tJaJBDD)')
 url_embed.add_field(name ='‣**YUIサポートBot Mio 招待URL**',value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
-
+url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第七項")
 @client.event
 async def on_ready():
 
@@ -615,17 +616,9 @@ async def on_message(message):
 #🔷test運用➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
     if message.content == "y!help":
-        help_embed_one = discord.Embed(title="YUIヘルプ目次━第１項",color=discord.Colour.green())
+        help_embed_one = discord.Embed(title="YUIヘルプ目次",description = '```‣ヘルプ目次　　│第一項\n‣ＴＡＯコマンド│第二項\n‣メイン機能　　│第三項\n‣特殊チャンネル│第四項\n‣ガチャ　　　　│第五項\n‣スロット　　　│第六項\n‣ユイ関連ＵＲＬ│第七項```',color=discord.Colour.green())
         help_embed_one.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-
-        help_embed_one.add_field(name="‣ヘルプ目次",value='`━第１項`',inline = True)
-        help_embed_one.add_field(name="‣TAOコマンド",value='`━第２項`',inline = True)
-        help_embed_one.add_field(name="‣メイン機能",value='`━第３項`',inline = True)
-        help_embed_one.add_field(name="‣特殊チャンネル",value='`━第４項`',inline = True)
-        help_embed_one.add_field(name="‣ガチャ",value='`━第５頁`',inline = True)
-        help_embed_one.add_field(name="‣スロット",value='`━第６頁`',inline = True)
-        help_embed_one.add_field(name="‣YUI関連URL",value='`━第７頁`',inline = True)
-        help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}")
+        help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第一項")
 
         help_logch = client.get_channel(id = help_ch)
         embed=discord.Embed(title='ヘルプが開かれました',description=f'展開者│{message.author}\nＩ　Ｄ│{message.author.id}\n展開鯖│{message.author.guild}')
