@@ -81,7 +81,7 @@ citycodes = {
     "鹿児島": '460010',"沖縄": '471010',
 }
 
-help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",description = '🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**ニックネーム変更非推奨**```第２項TAO系コマンドは、YUIのニックネームが変わるとオートアタックのみ正常に動作しません。\nTAOに関連性を持たせないつもりであれば、ニックネームの変更は構いません```',color=discord.Colour.green())
+help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",description = '🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**ニックネーム変更非推奨**```第２項TAO系コマンドは、YUIのニックネームが変わるとオートアタックのみ正常に動作しません。\nTAOに関連性を持たせないつもりであれば、ニックネームの変更は構いません```\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。',color=discord.Colour.green())
 
 
 help_embed = discord.Embed(title="TAOコマンド系ヘルプ━第２項",description="TAOで使うコマンドを使うヘルプだよ",color=discord.Colour.green())
@@ -618,13 +618,13 @@ async def on_message(message):
         help_embed_one = discord.Embed(title="YUIヘルプ目次━第１項",color=discord.Colour.green())
         help_embed_one.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
 
-        help_embed_one.add_field(name="‣ヘルプ目次",value='━第１項',inline = True)
-        help_embed_one.add_field(name="‣TAOコマンド",value='━第２項',inline = True)
-        help_embed_one.add_field(name="‣メイン機能",value='━第３項',inline = True)
-        help_embed_one.add_field(name="‣特殊チャンネル",value='━第４項',inline = True)
-        help_embed_one.add_field(name="‣ガチャ",value='━第５頁',inline = True)
-        help_embed_one.add_field(name="‣スロット",value='━第６頁',inline = True)
-        help_embed_one.add_field(name="‣YUI関連URL",value='━第７頁',inline = True)
+        help_embed_one.add_field(name="‣ヘルプ目次",value='`━第１項`',inline = True)
+        help_embed_one.add_field(name="‣TAOコマンド",value='`━第２項`',inline = True)
+        help_embed_one.add_field(name="‣メイン機能",value='`━第３項`',inline = True)
+        help_embed_one.add_field(name="‣特殊チャンネル",value='`━第４項`',inline = True)
+        help_embed_one.add_field(name="‣ガチャ",value='`━第５頁`',inline = True)
+        help_embed_one.add_field(name="‣スロット",value='`━第６頁`',inline = True)
+        help_embed_one.add_field(name="‣YUI関連URL",value='`━第７頁`',inline = True)
         help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}")
 
         help_logch = client.get_channel(id = help_ch)
@@ -692,12 +692,11 @@ url_embed] #ヘルプの各ページ内容
                 await send_message.edit(embed=page_content_list[page_count])
 
                 if page_count == 0:
-                    await send_message.add_reaction("🗑")
-                    await send_message.add_reaction("➡")
+                    await send_message.add_reaction("❎")
+                    await send_message.add_reaction("☑️")
                 elif page_count == 1:
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
-                    await send_message.add_reaction("➡")
                     await send_message.add_reaction("1️⃣")
                     await send_message.add_reaction("2️⃣")
                     await send_message.add_reaction("3️⃣")
