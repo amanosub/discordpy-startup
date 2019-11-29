@@ -1099,7 +1099,7 @@ url_embed] #ヘルプの各ページ内容
                 return 0
             return 1
         try:
-            ans_msg = await client.wait_for('massage',timeout = 10,check = role_check)
+            ans_msg = await client.wait_for('message',timeout = 10,check = role_check)
         except:
             embed = discord.Embed(title='Error!!',description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
             await message.channel.send(embed=embed)
@@ -1108,11 +1108,11 @@ url_embed] #ヘルプの各ページ内容
             if role_num=='0':
                 await ans_msg.add_reaction('0️⃣')
             elif role_num=='1':
-                await ans_msg_add.reaction(':one:')
+                await ans_msg.add.reaction(':one:')
             elif role_num=='2':
-                await ans_msg_add.reaction(':two:')
+                await ans_msg.add.reaction(':two:')
             elif role_num=='3':
-                await ans_msg_add.reaction(':three:')
+                await ans_msg.add.reaction(':three:')
             else:
                 embed = discord.Embed(title='エラー!',description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',color=discord.Color.red())
                 await message.channel.send(embed=embed)
