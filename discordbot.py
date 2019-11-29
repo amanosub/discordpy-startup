@@ -650,7 +650,7 @@ url_embed] #ヘルプの各ページ内容
             '''
             if reaction.message.id != send_message.id:
                 return 0
-            if reaction.emoji == "➡" or reaction.emoji == "⬅":
+            if reaction.emoji == "➡" or reaction.emoji == "⬅" or reaction.emoji =='🗑':
                 if user != message.author:
                     return 0
                 else:
@@ -672,8 +672,9 @@ url_embed] #ヘルプの各ページ内容
                 if reaction.emoji == "⬅" and page_count > 0:
                     page_count -= 1
 
-                if reaction.emoji == '🗑'
+                if reaction.emoji == '🗑':
                     await send_message.delete()
+
                 await send_message.clear_reactions() #事前に消去する
                 await send_message.edit(embed=page_content_list[page_count])
 
