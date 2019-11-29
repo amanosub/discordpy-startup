@@ -412,7 +412,7 @@ async def on_ready():
 }
 @client.event
 async def on_ready():
-    await client.ch.send("::q")
+
 
     print('Logged in as')
     print(client.user.name)
@@ -425,7 +425,7 @@ async def on_ready():
 
     q_ch = client.get_channel(644199380764721152)
     help_ch = 642578258743001088
-
+    await q_ch.send("::q")
     loop.start()
     looop.start()
     
