@@ -586,7 +586,7 @@ name='y!nekoshima',value='`超激レア枠が出るまでTAOさなきゃいけ�
         ,inline=False)
 
     help_two_embed.add_field(name='y!wt [都道府県名]',value='```今日、明日の天気予報「YUI WEATHER」```',inline=True)
-    help_two_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第三項")
+    help_two_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第三項")
 
     embed_special = discord.Embed(
     title='特殊チャンネル系',
