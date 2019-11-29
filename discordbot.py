@@ -666,7 +666,7 @@ url_embed] #ヘルプの各ページ内容
 
             else:
 
-                if reaction.emoji == "➡" and page_count < 8:
+                if reaction.emoji in ["➡","☑️"] and page_count < 8:
                     page_count += 1
 
                 if reaction.emoji == "⬅" and page_count > 0:
