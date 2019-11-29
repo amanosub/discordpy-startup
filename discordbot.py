@@ -885,7 +885,7 @@ url_embed] #ヘルプの各ページ内容
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
     me = message.guild.me
-    tao = q_ch.guild.get_member(526620171658330112)
+    tao = client.guild.get_member(526620171658330112)
     if '::q' in message.content and message.author == me :
         def quiz_check(tao_msg):
             if tao_msg.author != tao:
