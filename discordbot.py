@@ -1103,17 +1103,19 @@ url_embed] #ヘルプの各ページ内容
         except:
             embed = discord.Embed(title='Error!!',description='もう一度試して見てね（￣▽￣;）',color = discord.Color.green())
             await message.channel.send(embed=embed)
-        if role_num=='0':
-            await ans_msg.add_reaction(':zero:')
-        elif role_num=='1':
-            await ans_msg_add.reaction(':one:')
-        elif role_num=='2':
-            await ans_msg_add.reaction(':two:')
-        elif role_num=='3':
-            await ans_msg_add.reaction(':three:')
         else:
-            embed = discord.Embed(title='エラー!',description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',color=discord.Color.red())
-            await message.channel.send(embed=embed)
+            pass
+            if role_num=='0':
+                await ans_msg.add_reaction(':zero:')
+            elif role_num=='1':
+                await ans_msg_add.reaction(':one:')
+            elif role_num=='2':
+                await ans_msg_add.reaction(':two:')
+            elif role_num=='3':
+                await ans_msg_add.reaction(':three:')
+            else:
+                embed = discord.Embed(title='エラー!',description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',color=discord.Color.red())
+                await message.channel.send(embed=embed)
     # 「あいてむ」と発言したら「::i」が返る処理
     if message.content == 'y!i':
         await message.channel.send('::i')
