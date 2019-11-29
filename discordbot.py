@@ -180,9 +180,9 @@ slot_embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/63599381629
 slot_embed.add_field(name="スロット説明",value="絵文字を利用したスロットだよ\n表示が崩れるから、スマホとパソコンPCでコマンドを分けてるよ\n`y!slot s`がスマホ\n`y!slot c`がPCだよ\nちなみに開発者のスマホ（泥）を基準にしてるからIOS勢は表記が崩れるかも！\n泥勢もテキストサイズ変えちゃったら崩れるからね")
 
 url_embed = discord.Embed(title='YUI関連URL━第７頁\n')
-url_embed.add_field(name ='‣**BotRe:YUI ver1.12.2招待URL**' ,value ='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)')
-url_embed.add_field(name ='‣**YUI Official Server招待URL**',value ='[URLはこちら](https://discord.gg/tJaJBDD)')
-url_embed.add_field(name ='‣**YUIサポートBot〘Mio〙招待URL**',value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
+url_embed.add_field(name ='‣**Re:YUI ver1.12.2 招待URL**' ,value ='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)')
+url_embed.add_field(name ='‣**YUI Official Server 招待URL**',value ='[URLはこちら](https://discord.gg/tJaJBDD)')
+url_embed.add_field(name ='‣**YUIサポートBot Mio 招待URL**',value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
 
 @client.event
 async def on_ready():
