@@ -419,7 +419,8 @@ async def on_ready():
     print(dateTime)
     print("今入ってる鯖の数"+str(server_number))
     
-    atk_ch = client.get_channel(643461030692782081) 
+    atk_ch = client.get_channel(643461030692782081)
+    q_check_ch=client.get_channel(650390707013550086)
     q_check_ch=client.get_channel(650390707013550086)
     q_ch = client.get_channel(644199380764721152)
     help_ch = 642578258743001088
@@ -455,7 +456,7 @@ async def on_ready():
     embed.add_field(name="起動時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour+9)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=False)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == '管理者用yui起動ログ'))#quiz-yui₀₀
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
-
+    await q_check_ch.send('check point')
 flag = False
 
 yt_channel_id = CHANNEL_ID
@@ -765,7 +766,6 @@ url_embed] #ヘルプの各ページ内容
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
     global atk_ch_id
     global atk_ch
-    global q_ch
 
 
     if message.content=='check point' and message.author==client.user:
