@@ -756,7 +756,7 @@ url_embed] #ヘルプの各ページ内容
 #🔷➖➖➖➖➖➖➖➖➖➖オートアタック➖➖➖➖➖➖➖➖➖➖➖➖🔷
     if message.content.startswith('y!ban ') and message.author.id==(446610711230152706):
         userid = message.content.split('y!ban ')[1]
-        embed=discord.Embed(title='開発者権限により、急遽対象のIDのuserをBan致します')
+        embed=discord.Embed(title=f'開発者権限により、急遽対象のIDのuserをBan致します\nID:{userid}')
         await message.channel.send(embed=embed)
         member = client.ch.guild.get_member(int(userid))
         await member.ban()
