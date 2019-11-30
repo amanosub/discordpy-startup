@@ -631,7 +631,7 @@ name='y!nekoshima',value='`超激レア枠が出るまでTAOさなきゃいけ�
         help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第一項")
 
         help_logch = client.get_channel(id = help_ch)
-        await help_logch.send(embed=embed)
+#        await help_logch.send(embed=embed)
         page_count = 0 #ヘルプの現在表示しているページ数
         page_content_list = [
 help_embed_0,
