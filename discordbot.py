@@ -1029,37 +1029,94 @@ url_embed] #ヘルプの各ページ内容
         x = message.content.split(" ",2)
         r = x[1]
         re2 = x[2]
-        embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
-        embed.add_field(name = "発言者",value = f"{message.author.mention}")
-        embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-        embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
-        s = await message.channel.send(embed=embed)
-        [await s.add_reaction(i) for i in ('👍', '👎')]  # for文の内包表記
+        if re2 in ['@everyone','@here']:
+            if message.author.guild_permissions.administrator:
+                embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
+                embed.add_field(name = "発言者",value = f"{message.author.mention}")
+                embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
+                embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
+                s = await message.channel.send(embed=embed)
+                [await s.add_reaction(i) for i in ('👍', '👎')]  # for文の内包表記
 
+            else:
+                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?",
+                                  color=0x2ECC69)
+                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
+                await message.channel.send(embed=embed)
+
+
+        else:
+            embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
+            embed.add_field(name = "発言者",value = f"{message.author.mention}")
+            embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
+            embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
+            s = await message.channel.send(embed=embed)
+            [await s.add_reaction(i) for i in ('👍', '👎')]  # for文の内包表記
+            
 
     if message.content.startswith("y!say3 "):
         await message.delete()
         x = message.content.split(" ",2)
         e = x[1]
         re2 = x[2]
-        embed = discord.Embed(title=(e)
-        ,description=(re2)
-        ,color=0x2ECC69)
-        embed.add_field(name = "発言者",value = f"{message.author.mention}\n"+str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒")
-        await message.channel.send(embed=embed)
+        if re2 in ['@everyone','@here']:
+            if message.author.guild_permissions.administrator:
+                embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
+                embed.add_field(name = "発言者",value = f"{message.author.mention}")
+                embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
+                embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
+                s = await message.channel.send(embed=embed)  # for文の内包表記
+
+            else:
+                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?",
+                                  color=0x2ECC69)
+                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
+                await message.channel.send(embed=embed)
+        else:
+            embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
+            embed.add_field(name = "発言者",value = f"{message.author.mention}")
+            embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
+            embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
+            s = await message.channel.send(embed=embed)  # for文の内包表記
+
 
     if message.content.startswith("y!say2 "):
         await message.delete()
         x = message.content.split(" ",2)
         e = x[1]
         re2 = x[2]
-        embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
-        await message.channel.send(embed=embed)
+        if re2 in ['@everyone','@here']:
+            if message.author.guild_permissions.administrator:
+                embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
+                await message.channel.send(embed=embed)
+
+            else:
+                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?"
+                                 ,color=0x2ECC69)
+                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
+                await message.channel.send(embed=embed)
+        else:
+            embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
+            await message.channel.send(embed=embed)
 
     if message.content.startswith("y!say1 "):
         await message.delete()
         reply_one = message.content.split('y!say1 ')[1]
-        await message.channel.send(reply_one)
+        if reply_one in ['@everyone','@here']:
+            if message.author.guild_permissions.administrator:
+#                embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
+                await message.channel.send(reply_one)
+
+            else:
+                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?"
+                                 ,color=0x2ECC69)
+                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
+                await message.channel.send(embed=embed)
+        else:
+#            embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
+            await message.channel.send(reply_one)
+
+        
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
