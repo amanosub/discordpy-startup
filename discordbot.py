@@ -769,7 +769,7 @@ url_embed] #ヘルプの各ページ内容
 
     if message.content=='check point':
         def ch_check(tao_msg):
-            if message.channel!=q_ch:
+            if tao_msg.channel!=q_ch:
                 return 0
             return 1
         try:
@@ -1034,7 +1034,7 @@ url_embed] #ヘルプの各ページ内容
         x = message.content.split(" ",2)
         r = x[1]
         re2 = x[2]
-        if re2 in ['@everyone','@here','@']:
+        if re2 in ['@everyone','@here','@',f'{mention}']:
             if message.author.guild_permissions.administrator:
                 embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
                 embed.add_field(name = "発言者",value = f"{message.author.mention}")
