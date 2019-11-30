@@ -420,7 +420,7 @@ async def on_ready():
     print("今入ってる鯖の数"+str(server_number))
     
     atk_ch = client.get_channel(643461030692782081) 
-
+    q_check_ch=client.get_channel(650390707013550086)
     q_ch = client.get_channel(644199380764721152)
     help_ch = 642578258743001088
     await q_ch.send("::q")
@@ -475,6 +475,7 @@ async def loop():
 
 @tasks.loop(seconds=60)
 async def looop():
+    await q_check_ch.send('check point')
     now = datetime.datetime.now().strftime('%H:%M')
     if now == '15:01':
 
@@ -767,13 +768,13 @@ url_embed] #ヘルプの各ページ内容
     global q_ch
 
 
-    if message.content=='check point':
+    if message.content=='check point' and message.author==client.user:
         def ch_check(tao_msg):
             if tao_msg.channel!=q_ch:
                 return 0
             return 1
         try:
-            await cliemt.wait_for('message',check = ch_check,timeout=60)
+            await client.wait_for('message',check = ch_check,timeout=60)
         except asymcio.TimeoutError:
             await q_ch.send('::q')
 
