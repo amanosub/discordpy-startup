@@ -1034,7 +1034,7 @@ url_embed] #ヘルプの各ページ内容
         x = message.content.split(" ",2)
         r = x[1]
         re2 = x[2]
-        if message.mentions or message.mention_everyone
+        if message.mentions or message.mention_everyone:
             if message.author.guild_permissions.administrator:
                 embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
                 embed.add_field(name = "発言者",value = f"{message.author.mention}")
@@ -1064,7 +1064,7 @@ url_embed] #ヘルプの各ページ内容
         x = message.content.split(" ",2)
         e = x[1]
         re2 = x[2]
-        if message.mentions or message.mention_everyone
+        if message.mentions or message.mention_everyone:
             if message.author.guild_permissions.administrator:
                 embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
                 embed.add_field(name = "発言者",value = f"{message.author.mention}")
@@ -1090,7 +1090,7 @@ url_embed] #ヘルプの各ページ内容
         x = message.content.split(" ",2)
         e = x[1]
         re2 = x[2]
-        if message.mentions or message.mention_everyone
+        if message.mentions or message.mention_everyone:
             if message.author.guild_permissions.administrator:
                 embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
                 await message.channel.send(embed=embed)
@@ -1107,7 +1107,7 @@ url_embed] #ヘルプの各ページ内容
     if message.content.startswith("y!say1 "):
         await message.delete()
         reply_one = message.content.split('y!say1 ')[1]
-        if message.mentions or message.mention_everyone
+        if message.mentions or message.mention_everyone:
             if message.author.guild_permissions.administrator:
 #                embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
                 await message.channel.send(reply_one)
@@ -1128,11 +1128,12 @@ url_embed] #ヘルプの各ページ内容
 
     if message.content.startswith("y!report "):
 
-        await message.delete()
+
 
         embed = discord.Embed(title='レポート提出完了！',description=f"{message.author.mention}さん\nレポート提出有り難う！\n君のレポートは無事研究所に届けられたよ！",color=0x2ECC69)
         embed.add_field(name="レポート提出時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=True)
         await message.channel.send(embed=embed)
+        await message.delete()
         channel_id_report = 629327961132236800
         reply = message.content.split('y!report ')[1]
         embed = discord.Embed(title='レポート内容\n'+(reply),description=f"発言者{message.author.mention}",color=0x2ECC69)
