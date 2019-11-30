@@ -631,7 +631,6 @@ name='y!nekoshima',value='`超激レア枠が出るまでTAOさなきゃいけ�
         help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第一項")
 
         help_logch = client.get_channel(id = help_ch)
-        embed=discord.Embed(title='ヘルプが開かれました',description=f'展開者│{message.author}\nＩ　Ｄ│{message.author.id}\n展開鯖│{message.author.guild}')
         await help_logch.send(embed=embed)
         page_count = 0 #ヘルプの現在表示しているページ数
         page_content_list = [
