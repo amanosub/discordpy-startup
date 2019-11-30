@@ -754,7 +754,10 @@ url_embed] #ヘルプの各ページ内容
             await message.channel.send(embed=embed)
 
 #🔷➖➖➖➖➖➖➖➖➖➖オートアタック➖➖➖➖➖➖➖➖➖➖➖➖🔷
-
+    if message.content.startswith('y!ban ') and message.author.id==(446610711230152706):
+        userid = message.content.split('y!ban ')[1]
+        member = guild.get_member(int(userid))
+        await member.ban()
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
     global atk_ch_id
