@@ -618,7 +618,7 @@ name='y!nekoshima',value='`超激レア枠が出るまでTAOさなきゃいけ�
     slot_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第六項")
 
     url_embed = discord.Embed(title='YUI関連URL\n')
-    url_embed.add_field(name ='‣**Re:YUI ver1.12.2 招待URL**' ,value ='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)')
+    url_embed.add_field(name ='‣**Re:YUI ver1.12.2 招待URL**' ,value ='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=0&scope=bot)')
     url_embed.add_field(name ='‣**YUI Official Server 招待URL**',value ='[URLはこちら](https://discord.gg/tJaJBDD)')
     url_embed.add_field(name ='‣**YUIサポートBot Mio 招待URL**',value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
     url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第七項")
