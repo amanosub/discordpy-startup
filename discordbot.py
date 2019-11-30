@@ -462,6 +462,8 @@ flag = False
 yt_channel_id = CHANNEL_ID
 @tasks.loop(seconds=30)
 async def loop():
+    await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
+
     await atk_ch.send('check poit')
 
     print('10')
