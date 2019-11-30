@@ -1039,7 +1039,7 @@ url_embed] #ヘルプの各ページ内容
                 [await s.add_reaction(i) for i in ('👍', '👎')]  # for文の内包表記
 
             else:
-                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?",
+                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?",
                                   color=0x2ECC69)
                 embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                 await message.channel.send(embed=embed)
@@ -1068,7 +1068,7 @@ url_embed] #ヘルプの各ページ内容
                 s = await message.channel.send(embed=embed)  # for文の内包表記
 
             else:
-                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?",
+                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?",
                                   color=0x2ECC69)
                 embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                 await message.channel.send(embed=embed)
@@ -1091,7 +1091,7 @@ url_embed] #ヘルプの各ページ内容
                 await message.channel.send(embed=embed)
 
             else:
-                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?"
+                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
                                  ,color=0x2ECC69)
                 embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                 await message.channel.send(embed=embed)
@@ -1108,7 +1108,7 @@ url_embed] #ヘルプの各ページ内容
                 await message.channel.send(reply_one)
 
             else:
-                embed = discord.Embed(title="権限エラー！！",description="君…管理者権限ないよね?\nメンション出来ると思ってるの?"
+                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
                                  ,color=0x2ECC69)
                 embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                 await message.channel.send(embed=embed)
