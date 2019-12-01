@@ -1144,7 +1144,6 @@ url_embed] #ヘルプの各ページ内容
                 embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
                 embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
                 s = await message.channel.send(embed=embed)  # for文の内包表記
-
             else:
                 embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?",
                                   color=0x2ECC69)
