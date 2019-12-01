@@ -12,6 +12,8 @@ import json
 import re
 import os
 import traceback
+from discord.ext import tasks
+
 client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
