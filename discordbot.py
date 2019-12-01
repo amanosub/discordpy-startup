@@ -36,8 +36,6 @@ help_ch = 642578258743001088
 ModeFlag = 0
 
 
-@client.event
-
 
 citycodes = {
     "北海道": '016010',"青森県": '020010',
