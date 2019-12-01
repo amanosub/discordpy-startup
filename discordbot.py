@@ -788,7 +788,7 @@ url_embed] #ヘルプの各ページ内容
             return 1
         try:
             await client.wait_for('message',check = ch_check,timeout=60)
-        except asymcio.TimeoutError:
+        except asyncio.TimeoutError:
             await q_ch.send('::q')
 
     if message.content.startswith("y!atkch "):
@@ -880,7 +880,7 @@ url_embed] #ヘルプの各ページ内容
                     except asyncio.TimeoutError:
                         await atk_ch.send("::atk 壱-one-")
                     else:
-                        await asymcio.sleep(5)
+                        await asyncio.sleep(5)
                         await atk_ch.send("::atk 弐-two-")
                         try:
                             reply = await client.wait_for( "message" , check = hellocheck , timeout = 5.0 )
@@ -1025,7 +1025,7 @@ url_embed] #ヘルプの各ページ内容
         if ask_msg.embeds[0].description in '読み方':
             ask_msg_embed=ask_msg.embeds[0].description
             ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
-            if ask_data in client.training_data:
+            if ask_data in training_data:
             	await t_ch.send(client.training_data[ask_data])
             	try:
                     ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
@@ -1034,7 +1034,7 @@ url_embed] #ヘルプの各ページ内容
             	else:
                     await asyncio.sleep(0.5)
                     await  t_ch.send('::t True act.1')
-            if not ask_data in client.training_data:
+            if not ask_data in training_data:
             	ans_random = random.choice['やきにくていしょく','とにかくしね','フザケルノ=モタイガイ 二世','はよこたえおしえて','そんなことよりおうどんだ!']
             	await t_ch.send(ans_random)
             	try:
@@ -1047,7 +1047,7 @@ url_embed] #ヘルプの各ページ内容
                         ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
                     elif ans_msg_embed.startswith('残念'):
                         ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
-                client.t_data[ask_data]=ans_data
+                    t_data[ask_data]=ans_data
                 await t_ch.send('::t True->True act.2')
 
 
