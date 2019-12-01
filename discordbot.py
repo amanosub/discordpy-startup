@@ -527,7 +527,7 @@ async def on_message(message):
     help_ch = 642578258743001088
     t_ch = client.get_channel(650537498262634497)
     await t_ch.send('::t')
-
+    q_check_ch = client.get_channel(650390707013550086
     channel_id_report = 629327961132236800
 
 
