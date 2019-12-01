@@ -431,7 +431,7 @@ async def on_ready():
 
     print('We have logged in as {0.user}'.format(client))
 
-    client.global_list = [] #グローバルチャット参加チャンネルのリスト
+  
     for guild in client.guilds:
         tmp = discord.utils.get(guild.text_channels,name="global_yui")
         if tmp: client.global_list.append(tmp)
@@ -1175,7 +1175,6 @@ url_embed] #ヘルプの各ページ内容
         else:
             embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
             await message.channel.send(embed=embed)
-
     if message.content.startswith("y!say1 "):
         await message.delete()
         reply_one = message.content.split('y!say1 ')[1]
