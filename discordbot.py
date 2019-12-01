@@ -1028,6 +1028,7 @@ url_embed] #ヘルプの各ページ内容
         if ask_msg.embeds[0].description in '読み方':
             print ('check ack.3') 
             ask_msg_embed=ask_msg.embeds[0].description
+            print (ask_msg_embeds)
             ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
             if ask_data in training_data:
             	await t_ch.send(client.training_data[ask_data])
