@@ -12,22 +12,8 @@ import json
 import re
 import os
 import traceback
-
-
-from discord.ext import tasks
-
-TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = 623154510662991883
 client = discord.Client()
-dateTime = datetime.datetime.now()
-server_number = len(client.guilds)
-client.global_list = [] #グローバルチャット参加チャンネルのリスト
-atk_ch_id = "#掃き溜め"
-atk_ch = client.get_channel(643461030692782081)
-q_ch = client.get_channel(644199380764721152)
-help_ch = 642578258743001088
-ModeFlag = 0
-
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 
 citycodes = {
@@ -419,11 +405,17 @@ async def on_ready():
     print(dateTime)
     print("今入ってる鯖の数"+str(server_number))
     
-    atk_ch = client.get_channel(643461030692782081)
-    q_check_ch=client.get_channel(650390707013550086)
-    q_ch = client.get_channel(644199380764721152)
+    print('allready')
+    await t_ch.send('::t')
+    dateTime = datetime.datetime.now()
+    server_number = len(client.guilds)
+    client.global_list = [] #グローバルチャット参加チャンネルのリスト
+    atk_ch_id = "#掃き溜め"
+    atk_ch = client.get_channel(id = 643461030692782081)
+    q_ch = client.get_channel(id = 644199380764721152)
     help_ch = 642578258743001088
-    await q_ch.send("::q")
+    t_ch = client.get_channel(id = 650537498262634497)
+
     loop.start()
     looop.start()
     
@@ -926,8 +918,12 @@ url_embed] #ヘルプの各ページ内容
                     print('not level up')  
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+    global t_ch
+    global q_ch
     me = message.guild.me
     tao = client.ch.guild.get_member(526620171658330112)
+
+
     if '::q' in message.content and message.author == me :
         def quiz_check(tao_msg):
             if tao_msg.author != tao:
@@ -980,6 +976,58 @@ url_embed] #ヘルプの各ページ内容
 
     if message.content.startswith('y!qdata'):
         print(client.already_quiz)
+
+
+#➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+    if '::t' in message.content and message.author == me :
+        def ask_check(tao_msg):
+            if tao_msg.author != tao:
+                return 0
+            elif not tao_msg.embeds and not tao_msg.embeds[0].description:
+                return 0
+            elif tao_msg.embeds[0].author.name != "Training | ReYUI ver1.12.2#4984さんの問題":
+                return 0
+            return 1
+
+        def ans_check(tao_msg):
+            if tao_msg.author != tao:
+                return 0
+            elif not tao_msg.embeds and not tao_msg.embeds[0].description:
+                return 0
+            return 1
+        
+        try:
+            ask_msg = await client.wait_for("message",timeout=300,check=ask_check)
+        except asyncio.TimeoutError:
+            await message.channel.send("::t")
+        if ask_msg.embeds[0].description in '読み方':
+            ask_msg_embed=ask_msg.embeds[0].description
+            ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
+            if ask_data in client.training_data:
+            	await t_ch.send(client.training_data[ask_data])
+            	try:
+            		ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
+            	except asyncio.TimeoutError:
+            		await t_ch.send('::t')
+            	else  :
+                    await asyncio.sleep(0.5)
+                    await  t_ch.send('::t')
+            if not ask_data in client.training_data:
+            	ans_random = random.choice['やきにくていしょく','とにかくしね','フザケルノ=モタイガイ 二世','はよこたえおしえて','そんなことよりおうどんだ!']
+            	await t_ch.send(ans_random)
+            	try:
+            		ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
+            	except asyncio.TimeoutError:
+            		await t_ch.send('::t')
+            	else  :
+            		ans_msg_embed=ans_msg.embeds[0].description
+            		if ans_msg_embed.startswith('時間切れ'):
+            			ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
+            		elif ans_msg_embed.startswith('残念'):
+            			ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
+            		client.t_data[ask_data]=ans_data
+            		await t_ch.send('::t')
+
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
     if message.author != client.user:
         reg_res = re.compile(u"y!wt (.+)").search(message.content)
