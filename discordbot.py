@@ -16,9 +16,7 @@ client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 print('allready')
-await client.wait_until_ready()
 dateTime = datetime.datetime.now()
-await client.wait_until_ready()
 server_number = len(client.guilds)
 client.global_list = [] #グローバルチャット参加チャンネルのリスト
 
@@ -28,11 +26,7 @@ CHANNEL_ID = 623154510662991883
 client = discord.Client()
 dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
-client.global_list = [] #グローバルチャット参加チャンネルのリスト
-atk_ch_id = "#掃き溜め"
-atk_ch = client.get_channel(643461030692782081)
-q_ch = client.get_channel(644199380764721152)
-help_ch = 642578258743001088
+client.global_list = [] #グローバルチャット参加チャン
 ModeFlag = 0
 
 
