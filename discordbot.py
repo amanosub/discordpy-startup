@@ -461,8 +461,10 @@ async def on_ready():
 flag = False
 
 yt_channel_id = CHANNEL_ID
+    check_loop.start()
 
 @tasks.loop(seconds=60)
+async def check_loop():
     def quiz_check(tao_msg):
     if tao_msg.author != tao:
         return 0
