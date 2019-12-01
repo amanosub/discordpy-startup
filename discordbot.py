@@ -466,12 +466,12 @@ yt_channel_id = CHANNEL_ID
 @tasks.loop(seconds=60)
 async def check_loop():
     def quiz_check(tao_msg):
-    if tao_msg.author != tao:
-        return 0
-    elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-        return 0
-    elif tao_msg.channel != q_ch
-    return 1
+        if tao_msg.author != tao:
+            return 0
+        elif not tao_msg.embeds and not tao_msg.embeds[0].description:
+            return 0
+        elif tao_msg.channel != q_ch
+        return 1
     try:
         await client.wait_for('message',
                                timeout=300,
