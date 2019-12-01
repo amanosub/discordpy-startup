@@ -470,7 +470,7 @@ async def check_loop():
             return 0
         elif not tao_msg.embeds and not tao_msg.embeds[0].description:
             return 0
-        elif tao_msg.channel != q_ch
+        elif tao_msg.channel != q_ch:
         return 1
     try:
         await client.wait_for('message',
