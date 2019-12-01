@@ -83,7 +83,7 @@ citycodes = {
     "鹿児島": '460010',"沖縄": '471010',
 }
 
-client.training_data={}
+training_data={}
 
 client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛料はどれ?': 'わさび', 
 '歌集「みだれ髪」の作者は誰?': '与謝野晶子', 
@@ -1205,11 +1205,11 @@ url_embed] #ヘルプの各ページ内容
         embed.add_field(name="レポート提出時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=True)
         await message.channel.send(embed=embed)
         await message.delete()
-        channel_id_report = 629327961132236800
+        report_ch = client.get_channel(629327961132236800)
         reply = message.content.split('y!report ')[1]
         embed = discord.Embed(title='レポート内容\n'+(reply),description=f"発言者{message.author.mention}",color=0x2ECC69)
         embed.add_field(name="レポート提出時刻", value=str(dateTime.year)+"/"+str(dateTime.month)+"/"+str(dateTime.day)+"\n "+str(dateTime.hour)+"時"+str(dateTime.minute)+"分"+str(dateTime.second)+"秒", inline=True)
-        await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == '【地下室】yuiレポート'))
+        await report_ch.send(embed=embed)
 
 
 
