@@ -15,6 +15,29 @@ import traceback
 client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
+print('allready')
+await client.wait_until_ready()
+dateTime = datetime.datetime.now()
+await client.wait_until_ready()
+server_number = len(client.guilds)
+client.global_list = [] #グローバルチャット参加チャンネルのリスト
+
+
+
+CHANNEL_ID = 623154510662991883
+client = discord.Client()
+dateTime = datetime.datetime.now()
+server_number = len(client.guilds)
+client.global_list = [] #グローバルチャット参加チャンネルのリスト
+atk_ch_id = "#掃き溜め"
+atk_ch = client.get_channel(643461030692782081)
+q_ch = client.get_channel(644199380764721152)
+help_ch = 642578258743001088
+ModeFlag = 0
+
+
+@client.event
+
 
 citycodes = {
     "北海道": '016010',"青森県": '020010',
@@ -398,28 +421,19 @@ async def on_ready():
 
 
 
+
+    loop.start()
+    looop.start()
+
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
     print(dateTime)
     print("今入ってる鯖の数"+str(server_number))
-    
     print('allready')
-    await t_ch.send('::t')
-    dateTime = datetime.datetime.now()
-    server_number = len(client.guilds)
-    client.global_list = [] #グローバルチャット参加チャンネルのリスト
-    atk_ch_id = "#掃き溜め"
-    atk_ch = client.get_channel(id = 643461030692782081)
-    q_ch = client.get_channel(id = 644199380764721152)
-    help_ch = 642578258743001088
-    t_ch = client.get_channel(id = 650537498262634497)
 
-    loop.start()
-    looop.start()
-    
-    channel_id_report = 629327961132236800
+
     print('We have logged in as {0.user}'.format(client))
 
     client.global_list = [] #グローバルチャット参加チャンネルのリスト
@@ -506,6 +520,21 @@ async def on_disconnect():
 
 @client.event
 async def on_message(message):
+
+
+    await client.wait_until_ready()
+    atk_ch_id = "#掃き溜め"
+    await client.wait_until_ready()
+    atk_ch = client.get_channel(643461030692782081)
+    await client.wait_until_ready()
+    q_ch = client.get_channel(644199380764721152)
+    await client.wait_until_ready()
+    help_ch = 642578258743001088
+    t_ch = client.get_channel(650537498262634497)
+    await t_ch.send('::t')
+
+    channel_id_report = 629327961132236800
+
 
 #🔷test運用➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
     help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",description = '🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**ニックネーム変更非推奨**```第２項TAO系コマンドは、YUIのニックネームが変わるとオートアタックのみ正常に動作しません。\nTAOに関連性を持たせないつもりであれば、ニックネームの変更は構いません```\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。',color=discord.Colour.green())
@@ -755,8 +784,6 @@ url_embed] #ヘルプの各ページ内容
         embed=discord.Embed(title='対象のIDのuserをBan完了')
         await message.channel.send(embed=embed)
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
-    global atk_ch_id
-    global atk_ch
 
 
     if message.content=='check point' and message.author==client.user:
@@ -918,8 +945,7 @@ url_embed] #ヘルプの各ページ内容
                     print('not level up')  
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-    global t_ch
-    global q_ch
+
     me = message.guild.me
     tao = client.ch.guild.get_member(526620171658330112)
 
