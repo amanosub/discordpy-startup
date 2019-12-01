@@ -1020,34 +1020,35 @@ url_embed] #ヘルプの各ページ内容
         try:
             ask_msg = await client.wait_for("message",timeout=300,check=ask_check)
         except asyncio.TimeoutError:
-            await message.channel.send("::t")
+           
+            await message.channel.send("::t Timeout ")
         if ask_msg.embeds[0].description in '読み方':
             ask_msg_embed=ask_msg.embeds[0].description
             ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
             if ask_data in client.training_data:
             	await t_ch.send(client.training_data[ask_data])
             	try:
-            		ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
+                    ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
             	except asyncio.TimeoutError:
-            		await t_ch.send('::t')
-            	else  :
+            	    await t_ch.send('::t Timeout act.1')
+            	else :
                     await asyncio.sleep(0.5)
-                    await  t_ch.send('::t')
+                    await  t_ch.send('::t True act.1')
             if not ask_data in client.training_data:
             	ans_random = random.choice['やきにくていしょく','とにかくしね','フザケルノ=モタイガイ 二世','はよこたえおしえて','そんなことよりおうどんだ!']
             	await t_ch.send(ans_random)
             	try:
-            		ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
+            	    ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
             	except asyncio.TimeoutError:
-            		await t_ch.send('::t')
+            	    await t_ch.send('::t True->Timeout act.2')
             	else  :
-            		ans_msg_embed=ans_msg.embeds[0].description
-            		if ans_msg_embed.startswith('時間切れ'):
-            			ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
-            		elif ans_msg_embed.startswith('残念'):
-            			ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
-            		client.t_data[ask_data]=ans_data
-            		await t_ch.send('::t')
+                    ans_msg_embed=ans_msg.embeds[0].description
+            	    if ans_msg_embed.startswith('時間切れ'):
+            		ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
+            	    elif ans_msg_embed.startswith('残念'):
+            		ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
+                client.t_data[ask_data]=ans_data
+                await t_ch.send('::t True->True act.2')
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
     if message.author != client.user:
