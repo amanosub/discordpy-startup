@@ -528,7 +528,7 @@ async def on_message(message):
     help_ch = 642578258743001088
     t_ch = client.get_channel(650537498262634497)
     await t_ch.send('::t')
-    q_check_ch = client.get_channel(65039070701355008
+    q_check_ch = client.get_channel(65039070701355008)
 
 
 #🔷test運用➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
