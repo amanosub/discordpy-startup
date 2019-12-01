@@ -1003,6 +1003,7 @@ url_embed] #ヘルプの各ページ内容
 
 #➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
     if '::t' in message.content and message.author == me :
+        await message.channel.send('check')
         def ask_check(tao_msg):
             if tao_msg.author != tao:
                 return 0
@@ -1025,6 +1026,7 @@ url_embed] #ヘルプの各ページ内容
            
             await message.channel.send("::t Timeout ")
         if ask_msg.embeds[0].description in '読み方':
+            print ('t check') 
             ask_msg_embed=ask_msg.embeds[0].description
             ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
             if ask_data in training_data:
