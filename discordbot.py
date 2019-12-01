@@ -1050,6 +1050,9 @@ url_embed] #ヘルプの各ページ内容
                 client.t_data[ask_data]=ans_data
                 await t_ch.send('::t True->True act.2')
 
+
+    if message.content=='y!tdata':
+        print (client.training_data)
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
     if message.author != client.user:
         reg_res = re.compile(u"y!wt (.+)").search(message.content)
