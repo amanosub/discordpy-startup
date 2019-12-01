@@ -473,7 +473,7 @@ async def loop():
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400: 
-        await q_ch.send('::q')
+        await q_ch.send('::q act.0')
  
 @tasks.loop(seconds=60)
 async def looop():
@@ -500,11 +500,7 @@ async def looop():
         login_ch = client.get_channel(643466975745540096)
         await login_ch.send('::login')
 
-    tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
-    last_message_time = tmp_timediff.total_seconds()
-    if last_message_time > 400: 
-        await q_ch.send('::q')
-        
+
 
 @client.event
 async def on_disconnect():
@@ -782,15 +778,7 @@ url_embed] #ヘルプの各ページ内容
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
 
-    if message.content=='check point' and message.author==client.user:
-        def ch_check(tao_msg):
-            if tao_msg.channel!=q_ch:
-                return 0
-            return 1
-        try:
-            await client.wait_for('message',check = ch_check,timeout=60)
-        except asyncio.TimeoutError:
-            await q_ch.send('::q')
+
 
     if message.content.startswith("y!atkch "):
         print('got the commond')
@@ -966,7 +954,7 @@ url_embed] #ヘルプの各ページ内容
         try:
             quiz_msg = await client.wait_for("message",timeout=300,check=quiz_check)
         except asyncio.TimeoutError:
-            await message.channel.send("::q")
+            await message.channel.send("::q　act.1")
             return
 
         quiz,*choice = quiz_msg.embeds[0].description.split("\n")
@@ -983,7 +971,7 @@ url_embed] #ヘルプの各ページ内容
         try:
             ans_msg = await client.wait_for("message",check=ans_check)
         except asyncio.TimeoutError:
-            await q_ch.send('::q')
+            await q_ch.send('::q act.2')
             return
 
         tmp_embed = ans_msg.embeds[0].description
@@ -993,7 +981,7 @@ url_embed] #ヘルプの各ページ内容
             elif tmp_embed.startswith("正解"):
                 tmp = true_choice[0]
             client.already_quiz[quiz] = tmp
-        await message.channel.send('::q')
+            await message.channel.send('::q act.3')
 
 
     if message.content.startswith('y!qdata'):
@@ -1001,203 +989,7 @@ url_embed] #ヘルプの各ページ内容
 
 
 #➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-    if '::t' in message.content and message.author == me :
-        print('check act.1')
-        def ask_check(tao_msg):
-            if tao_msg.author != tao:
-                return 0
-            elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-                return 0
-            elif not tao_msg.embeds[0].description in "読み方":
-                return 0
-            return 1
-
-        def ans_check(tao_msg):
-            if tao_msg.author != tao:
-                return 0
-            elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-                return 0
-            return 1
-        
-        try:
-            ask_msg = await client.wait_for("message",timeout=300,check=ask_check)
-            await message.channel.send('check act.2')
-        except asyncio.TimeoutError:
-            
-            await message.channel.send("::t Timeout ")
-        if ask_msg.embeds[0].description in '読み方':
-            print ('check ack.3') 
-            ask_msg_embed=ask_msg.embeds[0].description
-            print (ask_msg_embeds)
-            ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
-            if ask_data in training_data:
-            	await t_ch.send(client.training_data[ask_data])
-            	try:
-                    ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
-            	except asyncio.TimeoutError:
-            	    await t_ch.send('::t Timeout act.1')
-            	else:
-                    await asyncio.sleep(0.5)
-                    await  t_ch.send('::t True act.1')
-            if not ask_data in training_data:
-            	ans_random = random.choice['やきにくていしょく','とにかくしね','フザケルノ=モタイガイ 二世','はよこたえおしえて','そんなことよりおうどんだ!']
-            	await t_ch.send(ans_random)
-            	try:
-            	    ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
-            	except asyncio.TimeoutError:
-            	    await t_ch.send('::t True->Timeout act.2')
-            	else:
-                    ans_msg_embed=ans_msg.embeds[0].description
-                    if ans_msg_embed.startswith('時間切れ'):
-                        ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
-                    elif ans_msg_embed.startswith('残念'):
-                        ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
-                    t_data[ask_data]=ans_data
-                    await t_ch.send('::t True->True act.2')
-
-
-    if message.content=='y!tdata':
-        print (training_data)
-#🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
-    if message.author != client.user:
-        reg_res = re.compile(u"y!wt (.+)").search(message.content)
-        if reg_res:
-
-          if reg_res.group(1) in citycodes.keys():
-
-            citycode = citycodes[reg_res.group(1)]
-            resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%citycode).read()
-            resp = json.loads(resp.decode('utf-8'))
-
-            msg = "🔹地域\n"
-            msg += '```' + resp['location']['city']+'```'
-            msg += '\n🔹天気\n'
-            for f in resp['forecasts']:
-              msg += '```' + f['dateLabel'] + ":" + f['telop'] + "```\n"
-
-            embed = discord.Embed(title=msg,color = discord.Colour.blue())
-            embed.set_thumbnail(url='https://yahoo.jp/box/J3FhL6')
-            embed.set_author(name="🌐YUI WEATHER🌐")
-            await message.channel.send(embed=embed)
-
-          else:
-            await message.channel.send( '・ω・)そんな場所知らんがなggrks')
-
-#🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
-
-
-    if message.content.startswith("y!clean "):
-
-        reply = message.content.split('y!clean ')[1]
-
-
-        if message.author.guild_permissions.administrator:
-            await message.channel.purge(limit=int(reply))
-            embed = discord.Embed(title="お掃除完了！！",description=(reply)+"のメッセージを消去したよ‪\n(꜆꜄꜆˙꒳˙)꜆꜄꜆ ｵﾗｵﾗ\n遅くなっちゃってごめんね\n(´・ω・`;)",
-                                  color=0x2ECC69)
-            embed.set_thumbnail(url="https://yahoo.jp/box/N0OpiM")
-            await message.channel.send(embed=embed)
-
-        else:
-            embed = discord.Embed(title="権限エラー！！",description="管理者権限無しでチャンネル内のログ全部消せたら相当やばいよ私",
-                                  color=0x2ECC69)
-            embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
-            await message.channel.send(embed=embed)
-
-#🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
-
-
-    if message.content.startswith("y!poll "):
-        await message.delete()
-        x = message.content.split(" ",2)
-        r = x[1]
-        re2 = x[2]
-        if message.mentions or message.mention_everyone:
-            if message.author.guild_permissions.administrator:
-                embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
-                embed.add_field(name = "発言者",value = f"{message.author.mention}")
-                embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-                embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
-                s = await message.channel.send(embed=embed)
-                [await s.add_reaction(i) for i in ('👍', '👎')]  # for文の内包表記
-
-            else:
-                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?",
-                                  color=0x2ECC69)
-                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
-                await message.channel.send(embed=embed)
-
-
-        else:
-            embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
-            embed.add_field(name = "発言者",value = f"{message.author.mention}")
-            embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-            embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
-            s = await message.channel.send(embed=embed)
-            [await s.add_reaction(i) for i in ('👍', '👎')]  # for文の内包表記
-            
-
-    if message.content.startswith("y!say3 "):
-        await message.delete()
-        x = message.content.split(" ",2)
-        e = x[1]
-        re2 = x[2]
-        if message.mentions or message.mention_everyone:
-            if message.author.guild_permissions.administrator:
-                embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
-                embed.add_field(name = "発言者",value = f"{message.author.mention}")
-                embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-                embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
-                s = await message.channel.send(embed=embed)  # for文の内包表記
-            else:
-                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?",
-                                  color=0x2ECC69)
-                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
-                await message.channel.send(embed=embed)
-        else:
-            embed = discord.Embed(title=(r),description=(re2),color=0x2ECC69)#https://i.pximg.net/img-original/img/2015/11/06/00/03/01/53402632_p0.png
-            embed.add_field(name = "発言者",value = f"{message.author.mention}")
-            embed.set_thumbnail(url=random.choice(('https://yahoo.jp/box/3faN7k','https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-            embed.set_author(name="ReYUI ver1.12.2",url="https://discord.gg/nzS5GKM",icon_url="https://yahoo.jp/box/roWwt8")
-            s = await message.channel.send(embed=embed)  # for文の内包表記
-
-
-    if message.content.startswith("y!say2 "):
-        await message.delete()
-        x = message.content.split(" ",2)
-        e = x[1]
-        re2 = x[2]
-        if message.mentions or message.mention_everyone:
-            if message.author.guild_permissions.administrator:
-                embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
-                await message.channel.send(embed=embed)
-
-            else:
-                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
-                                 ,color=0x2ECC69)
-                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
-                await message.channel.send(embed=embed)
-        else:
-            embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
-            await message.channel.send(embed=embed)
-    if message.content.startswith("y!say1 "):
-        await message.delete()
-        reply_one = message.content.split('y!say1 ')[1]
-        if message.mentions or message.mention_everyone:
-            if message.author.guild_permissions.administrator:
-#                embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
-                await message.channel.send(reply_one)
-
-            else:
-                embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
-                                 ,color=0x2ECC69)
-                embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
-                await message.channel.send(embed=embed)
-        else:
-#            embed = discord.Embed(title=(e),description=(re2),color=0x2ECC69)
-            await message.channel.send(reply_one)
-
-        
+      
 
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
