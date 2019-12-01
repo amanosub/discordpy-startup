@@ -81,11 +81,8 @@ citycodes = {
     "鹿児島": '460010',"沖縄": '471010',
 }
 
-@client.event
-async def on_ready():
 
-    client.ch = client.get_channel(644199380764721152)
-    client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛料はどれ?': 'わさび', 
+client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛料はどれ?': 'わさび', 
 '歌集「みだれ髪」の作者は誰?': '与謝野晶子', 
 '小説「宝島」で、海賊ジョン・シルバーの肩にいつもとまっている鳥はどれ?': 'オウム', 
 '野球のスコアで三振を表すアルファベット１文字はＫですが四球を表すアルファベット１文字は何？': 'Ｂ', 
@@ -412,7 +409,10 @@ async def on_ready():
 }
 
 
+@client.event
+async def on_ready():
 
+    client.ch = client.get_channel(644199380764721152)
 
     loop.start()
     looop.start()
