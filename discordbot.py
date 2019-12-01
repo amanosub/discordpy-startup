@@ -415,6 +415,7 @@ client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛
 
 @client.event
 async def on_ready():
+    await t_ch.send('::t')
 
     client.ch = client.get_channel(644199380764721152)
 
@@ -473,8 +474,7 @@ async def loop():
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400: 
         await q_ch.send('::q')
-
-
+ 
 @tasks.loop(seconds=60)
 async def looop():
     await q_check_ch.send('check point')
@@ -503,7 +503,7 @@ async def looop():
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400: 
-        await q_ch.send('::q')
+        
 
 @client.event
 async def on_disconnect():
