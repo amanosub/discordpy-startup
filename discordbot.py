@@ -421,7 +421,6 @@ async def on_ready():
     
     atk_ch = client.get_channel(643461030692782081)
     q_check_ch=client.get_channel(650390707013550086)
-    q_check_ch=client.get_channel(650390707013550086)
     q_ch = client.get_channel(644199380764721152)
     help_ch = 642578258743001088
     await q_ch.send("::q")
