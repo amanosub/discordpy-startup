@@ -462,6 +462,21 @@ flag = False
 
 yt_channel_id = CHANNEL_ID
 
+@tasks.loop(seconds=60)
+    def quiz_check(tao_msg):
+    if tao_msg.author != tao:
+        return 0
+    elif not tao_msg.embeds and not tao_msg.embeds[0].description:
+        return 0
+    elif tao_msg.channel != q_ch
+    return 1
+    try:
+        await client.wait_for('message',
+                               timeout=300,
+                               check=quiz_check)
+    except asyncio.TimeoutError:
+        await q_ch.send('::q timeout_check')
+
 @tasks.loop(seconds=30)
 async def loop():
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
