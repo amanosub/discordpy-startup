@@ -462,6 +462,7 @@ async def on_ready():
 flag = False
 
 yt_channel_id = CHANNEL_ID
+
 @tasks.loop(seconds=30)
 async def loop():
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
@@ -503,6 +504,7 @@ async def looop():
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400: 
+        await q_ch.send('::q')
         
 
 @client.event
