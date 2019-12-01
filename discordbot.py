@@ -1031,7 +1031,7 @@ url_embed] #ヘルプの各ページ内容
                     ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
             	except asyncio.TimeoutError:
             	    await t_ch.send('::t Timeout act.1')
-            	else :
+            	else:
                     await asyncio.sleep(0.5)
                     await  t_ch.send('::t True act.1')
             if not ask_data in client.training_data:
@@ -1041,9 +1041,9 @@ url_embed] #ヘルプの各ページ内容
             	    ans_msg = await client.wait_for("message",timeout=300,check=ans_check)
             	except asyncio.TimeoutError:
             	    await t_ch.send('::t True->Timeout act.2')
-            	else  :
+            	else:
                     ans_msg_embed=ans_msg.embeds[0].description
-            	    if ans_msg_embed.startswith('時間切れ'):
+                    if ans_msg_embed.startswith('時間切れ'):
             		ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
             	    elif ans_msg_embed.startswith('残念'):
             		ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
