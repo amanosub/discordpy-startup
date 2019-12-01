@@ -1009,7 +1009,7 @@ url_embed] #ヘルプの各ページ内容
                 return 0
             elif not tao_msg.embeds and not tao_msg.embeds[0].description:
                 return 0
-            elif not tao_msg.embeds[0].author.name in "ReYUI ver1.12.2":
+            elif not tao_msg.embeds[0].description in "読み方":
                 return 0
             return 1
 
