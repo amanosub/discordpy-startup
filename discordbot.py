@@ -416,7 +416,7 @@ client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛
 @client.event
 async def on_ready():
     
-
+    t_ch = client.get_channel(650537498262634497)
     client.ch = client.get_channel(644199380764721152)
 
     loop.start()
