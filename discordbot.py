@@ -1003,7 +1003,7 @@ url_embed] #ヘルプの各ページ内容
 
 #➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
     if '::t' in message.content and message.author == me :
-        await message.channel.send('check')
+        print('check act.1')
         def ask_check(tao_msg):
             if tao_msg.author != tao:
                 return 0
