@@ -1044,9 +1044,9 @@ url_embed] #ヘルプの各ページ内容
             	else:
                     ans_msg_embed=ans_msg.embeds[0].description
                     if ans_msg_embed.startswith('時間切れ'):
-            		ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
+                        ans_data = re.findall('^時間切れだ。正解は「(.+)」だ。$',ans_msg_embed)
             	    elif ans_msg_embed.startswith('残念'):
-            		ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
+                        ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
                 client.t_data[ask_data]=ans_data
                 await t_ch.send('::t True->True act.2')
 
