@@ -885,11 +885,6 @@ url_embed] #ヘルプの各ページ内容
                             else:
                                 await asymcio.sleep(5)
                                 await atk_ch.send("::atk 弐-two-")
-                elif description and '正解' in description and message.channel==q_ch:
-                    print('check b')
-                    await asyncio.sleep(1)
-                    await q_ch.send( "::q" ) 
-                
 
 
     if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
