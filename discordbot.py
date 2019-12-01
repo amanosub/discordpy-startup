@@ -415,7 +415,7 @@ client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛
 
 @client.event
 async def on_ready():
-    await t_ch.send('::t')
+    
 
     client.ch = client.get_channel(644199380764721152)
 
@@ -430,7 +430,7 @@ async def on_ready():
     print("今入ってる鯖の数"+str(server_number))
     print('allready')
 
-
+    await t_ch.send('::t')
     print('We have logged in as {0.user}'.format(client))
 
   
@@ -529,7 +529,7 @@ async def on_message(message):
     await client.wait_until_ready()
     help_ch = 642578258743001088
     t_ch = client.get_channel(650537498262634497)
-    await t_ch.send('::t')
+
     q_check_ch = client.get_channel(65039070701355008)
 
 
