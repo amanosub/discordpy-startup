@@ -420,6 +420,7 @@ async def on_ready():
 
     loop.start()
     looop.start()
+    check_loop.start()
 
     print('Logged in as')
     print(client.user.name)
@@ -461,8 +462,7 @@ async def on_ready():
 flag = False
 
 yt_channel_id = CHANNEL_ID
-    check_loop.start()
-
+    
 @tasks.loop(seconds=60)
 async def check_loop():
     def quiz_check(tao_msg):
