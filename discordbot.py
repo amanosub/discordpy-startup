@@ -1048,7 +1048,7 @@ url_embed] #ヘルプの各ページ内容
                     elif ans_msg_embed.startswith('残念'):
                         ans_data = re.findall('^残念！正解は「(.+)」だ。$',ans_msg_embed)
                     t_data[ask_data]=ans_data
-                await t_ch.send('::t True->True act.2')
+                    await t_ch.send('::t True->True act.2')
 
 
     if message.content=='y!tdata':
