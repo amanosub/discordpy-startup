@@ -1009,7 +1009,7 @@ url_embed] #ヘルプの各ページ内容
                 return 0
             elif not tao_msg.embeds and not tao_msg.embeds[0].description:
                 return 0
-            elif tao_msg.embeds[0].author.name != "Training | ReYUI ver1.12.2#4984さんの問題":
+            elif not tao_msg.embeds[0].author.name in "ReYUI ver1.12.2":
                 return 0
             return 1
 
@@ -1022,11 +1022,12 @@ url_embed] #ヘルプの各ページ内容
         
         try:
             ask_msg = await client.wait_for("message",timeout=300,check=ask_check)
+            await message.channel.send('check act.2')
         except asyncio.TimeoutError:
-           
+            
             await message.channel.send("::t Timeout ")
         if ask_msg.embeds[0].description in '読み方':
-            print ('t check') 
+            print ('check ack.3') 
             ask_msg_embed=ask_msg.embeds[0].description
             ask_data=re.findall('^「(.+)」の読み方をひらがなで答えなさい。$',ask_msg_embed)
             if ask_data in training_data:
@@ -1056,7 +1057,7 @@ url_embed] #ヘルプの各ページ内容
 
 
     if message.content=='y!tdata':
-        print (client.training_data)
+        print (training_data)
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
     if message.author != client.user:
         reg_res = re.compile(u"y!wt (.+)").search(message.content)
