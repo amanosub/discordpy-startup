@@ -731,7 +731,6 @@ url_embed] #ヘルプの各ページ内容
                 elif page_count == 1:
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
-                    await send_message.add_reaction("⏭️")
                     await send_message.add_reaction("1️⃣")
                     await send_message.add_reaction("2️⃣")
                     await send_message.add_reaction("3️⃣")
@@ -775,12 +774,36 @@ url_embed] #ヘルプの各ページ内容
                     await send_message.add_reaction("⏮️")
                     await send_message.add_reaction("⬅")
                     await send_message.add_reaction("🗑")
-
-
+                    
+    if message.content.startswith('y!test'):
+        if message.author.id == 446610711230152706:
+            embed = discord.Embed(title = f"**Received command!!**\nchecking user ID** :loadinginfo~2:")
+            test_send = await message.channel.send(embed = embed)
+            await test_send.add_reaction("❎")
+            await test_send.add_reaction("☑️")
+            
     if message.content.startswith('y!kill'):
         if message.author.id == 446610711230152706:
-            await client.logout()
-            await sys.exit()
+            embed = discord.Embed(title = f"**Received command!!**\nchecking user ID** :loadinginfo~2:")
+            await message.channel.send(embed = embed)
+            def kill_react_check(reaction,user):
+            '''
+            ヘルプに対する、ヘルプリクエスト者本人からのリアクションかをチェックする
+            '''
+                if reaction.message.id != send_message.id:
+                    return 0
+                if reaction.emoji in ['☑️','❎']:
+                    if user != message.author:
+                        return 0
+                    else:
+                        return reaction,user
+            try:
+                reaction,user = await client.wait_for('reaction_add',check=kill_react_check,timeout=40.0)
+            except:
+
+            else:
+                await client.logout()
+                await sys.exit()
         else:
             embed = discord.Embed(title='権限がありません!!',description='これは開発者専用コマンドです')
             await message.channel.send(embed=embed)
