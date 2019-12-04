@@ -2520,15 +2520,15 @@ async def on_message(message):
             B = slot_list[4]
             C = slot_list[4]
             await asyncio.sleep(3)  # 3秒間待ってやる
-            embed = discord.Embed(title=f'{A1}│{B1}│{C1}',
+            embed = discord.Embed(title=f'━━━━━━\n{A1}│{B1}│{C1}\n',
                                   color=0x2ECC69)
             slot_em = await message.channel.send(embed=embed)
             await asyncio.sleep(1)
-            await slot_em.edit(embed=discord.Embed(title=f'{A2}│{B2}│{C2}',color=0x2ECC69))
+            await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A1}│{B1}│{C1}\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}',color=0x2ECC69))
             await asyncio.sleep(1)
-            await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3},color=0x2ECC69'))
+            await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}',color=0x2ECC69))
             await asyncio.sleep(1)
-            await stol_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}',color=discord.Color.blue()))
+            await stol_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}',description='結果\n{A3}{B3}{C3}',color=discord.Color.blue()))
 
 
 
