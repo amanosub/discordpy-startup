@@ -779,7 +779,7 @@ url_embed] #ヘルプの各ページ内容
                     
     if message.content.startswith('y!test'):
         if message.author.id == 446610711230152706:
-            embed = discord.Embed(title = f"**Received command!!**",description = "**checking user ID** :loadinfo~3:")
+            embed = discord.Embed(title = f"**Received command!!**",description = "**checking user ID** <a:loadinfo~3:392938283556143104>")
             test_send = await message.channel.send(embed = embed)
             await test_send.add_reaction("❎")
             await test_send.add_reaction("☑️")
