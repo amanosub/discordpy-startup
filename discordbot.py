@@ -786,7 +786,7 @@ url_embed] #ヘルプの各ページ内容
             
     if message.content.startswith('y!kill'):
         if message.author.id == 446610711230152706:
-            embed = discord.Embed(title = f"**Received command!!**",description = "checking user ID :loadinginfo~3:")
+            embed = discord.Embed(title = f"**Received command!!**\nchecking user ID** :loadinginfo~2:")
             await message.channel.send(embed = embed)
             def kill_react_check(reaction,user):
                 if reaction.message.id != send_message.id:
