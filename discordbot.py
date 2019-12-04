@@ -800,7 +800,7 @@ url_embed] #ヘルプの各ページ内容
                 reaction,user = await client.wait_for('reaction_add',check=kill_react_check,timeout=40)
             except asyncio.TimeoutError:
                 await message.channel.send("time out")
-            else:
+            if reaction.emoji = '☑️':
                 embed = discord.Embed(title='Start Reboot!!')
                 await client.logout()
                 await sys.exit()
