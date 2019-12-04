@@ -2502,6 +2502,39 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
 
+
+    if message.content == "y!slot test":
+        kakuritu = random.randint(1, 50)
+        slot_list = ['🍆', '🍒', '🔷', '🔶', '7️⃣', '💎','🔔', '🍆', '🍆', '🍆']
+        A1 = random.choice(slot_list)
+        A2 = random.choice(slot_list)
+        A3 = random.choice(slot_list)
+        B1 = random.choice(slot_list)
+        B2 = random.choice(slot_list)
+        B3 = random.choice(slot_list)
+        C1 = random.choice(slot_list)
+        C2 = random.choice(slot_list)
+        C3 = random.choice(slot_list)
+        if message.author != client.user:
+            A = slot_list[4]
+            B = slot_list[4]
+            C = slot_list[4]
+            await asyncio.sleep(3)  # 3秒間待ってやる
+            embed = discord.Embed(title=f'{A1}│{B1}│{C1}',
+                                  color=0x2ECC69)
+            slot_em = await message.channel.send(embed=embed)
+            await asyncio.sleep(1)
+            await slot_em.edit(embed=discord.Embed(title=f'{A2}│{B2}│{C2}',color=0x2ECC69))
+            await asyncio.sleep(1)
+            await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3},color=0x2ECC69'))
+            await asyncio.sleep(1)
+            await stol_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}',color=discord.Color.blue()))
+
+
+
+
+
+
 client.run(TOKEN)
 
      
