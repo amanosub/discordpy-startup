@@ -2528,7 +2528,7 @@ async def on_message(message):
             await asyncio.sleep(1)
             await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',color=0x2ECC69))
             await asyncio.sleep(1)
-            await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}◀',description='結果\n{A3}{B3}{C3}',color=discord.Color.blue()))
+            await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}◀',description=f'結果\n{A3}{B3}{C3}',color=discord.Color.blue()))
 
 
 
