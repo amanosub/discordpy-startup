@@ -468,7 +468,7 @@ yt_channel_id = CHANNEL_ID
 async def check_loop():
     
     def quiz_check(tao_msg):
-        tao = message.guild.get_member(526620171658330112)
+        tao = client.guild.get_member(526620171658330112)
         if tao_msg.author != tao:
             return 0
         elif not tao_msg.embeds and not tao_msg.embeds[0].description:
