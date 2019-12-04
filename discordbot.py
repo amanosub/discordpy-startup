@@ -460,13 +460,12 @@ async def on_ready():
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == '管理者用yui起動ログ'))#quiz-yui₀₀
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
     await q_check_ch.send('check point')
-    await asyncio.sleep(60)
     looop.start()
     loop.start()
     await t_ch.send('::t')
 @tasks.loop(seconds=60)
 async def check_loop():
-    
+    q_ch = client.get_channel(644199380764721152)
     def quiz_check(tao_msg):
         tao = client.guild.get_member(526620171658330112)
         if tao_msg.author != tao:
@@ -485,9 +484,10 @@ async def check_loop():
 
 @tasks.loop(seconds=30)
 async def loop():
+    q_ch = client.get_channel(644199380764721152)
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
 
-    await atk_ch.send('check poit')
+    await q_ch.send('check poit')
 
     print('10')
 
@@ -498,6 +498,7 @@ async def loop():
  
 @tasks.loop(seconds=60)
 async def looop():
+    q_check_ch = client.get_channel(65039070701355008)
     await q_check_ch.send('check point')
     now = datetime.datetime.now().strftime('%H:%M')
     if now == '15:01':
