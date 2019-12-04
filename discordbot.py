@@ -819,7 +819,8 @@ url_embed] #ヘルプの各ページ内容
         await message.channel.send(embed=embed)
 #🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
-
+    if message.content.in ['::','ダメージ'] and message.channel.id==610998090094084097:
+        await message.delete()
 
 
     if message.content.startswith("y!atkch "):
