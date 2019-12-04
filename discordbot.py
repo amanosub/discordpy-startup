@@ -2526,12 +2526,14 @@ async def on_message(message):
             await asyncio.sleep(1)
             await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',color=0x2ECC69))
             await asyncio.sleep(1)
+         
+
             if A3 == B3 and B3 == C3:
                 
-                await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}◀',description=f'結果\n{A3}のゾロ目だよ',color=discord.Color.blue()))
+                await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}のゾロ目だよ',color=discord.Color.blue()))
             else:
                 
-                await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}◀',description=f'結果\n{A3}{B3}{C3}残念…',color=discord.Color.blue()))
+                await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}{B3}{C3}残念…',color=discord.Color.blue()))
 
 
 
