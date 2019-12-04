@@ -2503,7 +2503,7 @@ async def on_message(message):
 
 
 
-    if message.content == "y!slot test":
+    if message.content == "y!slot ":
         kakuritu = random.randint(1, 50)
         slot_list = ['🍆', '🍒', '🔷', '🔶', '7️⃣', '💎','🔔', '🍆', '🍆', '🍆']
         A = random.choice(slot_list)
@@ -2519,7 +2519,6 @@ async def on_message(message):
         C2 = random.choice(slot_list)
         C3 = random.choice(slot_list)
         if message.author != client.user:
-            await asyncio.sleep(3)  # 3秒間待ってやる
             embed = discord.Embed(title=f'━━━━━━\n{A}│{B}│{C}\n{A1}│{B1}│{C1}◀\n{A2}│{B2}│{C2}',
                                   color=0x2ECC69)
             slot_em = await message.channel.send(embed=embed)
