@@ -420,7 +420,7 @@ async def on_ready():
     client.ch = client.get_channel(644199380764721152)
 
     loop.start()
-    looop.start()
+    
     check_loop.start()
 
     print('Logged in as')
@@ -431,7 +431,7 @@ async def on_ready():
     print("今入ってる鯖の数"+str(server_number))
     print('allready')
 
-    await t_ch.send('::t')
+
     print('We have logged in as {0.user}'.format(client))
 
   
@@ -460,10 +460,10 @@ async def on_ready():
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == '管理者用yui起動ログ'))#quiz-yui₀₀
     await client.change_presence(activity=discord.Game(name="y!help│"+str(len(client.guilds) )+'の鯖に所属中'))
     await q_check_ch.send('check point')
-flag = False
-
-yt_channel_id = CHANNEL_ID
-    
+    await asyncio.sleep(60)
+    looop.start()
+    loop.start()
+    await t_ch.send('::t')
 @tasks.loop(seconds=60)
 async def check_loop():
     
@@ -800,10 +800,12 @@ url_embed] #ヘルプの各ページ内容
                 reaction,user = await client.wait_for('reaction_add',check=kill_react_check,timeout=40)
             except asyncio.TimeoutError:
                 await message.channel.send("time out")
-            if reaction.emoji == '☑️':
-                embed = discord.Embed(title='Start Reboot!!')
-                await client.logout()
-                await sys.exit()
+            else:
+                pass
+                if reaction.emoji == '☑️':
+                    embed = discord.Embed(title='Start Reboot!!')
+                    await client.logout()
+                    await sys.exit()
         else:
             embed = discord.Embed(title='権限がありません!!',description='これは開発者専用コマンドです')
             await message.channel.send(embed=embed)
