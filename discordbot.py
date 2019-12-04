@@ -797,7 +797,7 @@ url_embed] #ヘルプの各ページ内容
             try:
                 reaction,user = await client.wait_for('reaction_add',check=kill_react_check,timeout=40.0)
             except:
-
+                await message.channel.send("time out")
             else:
                 await client.logout()
                 await sys.exit()
