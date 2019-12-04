@@ -787,9 +787,6 @@ url_embed] #ヘルプの各ページ内容
             embed = discord.Embed(title = f"**Received command!!**\nchecking user ID** :loadinginfo~2:")
             await message.channel.send(embed = embed)
             def kill_react_check(reaction,user):
-            '''
-            ヘルプに対する、ヘルプリクエスト者本人からのリアクションかをチェックする
-            '''
                 if reaction.message.id != send_message.id:
                     return 0
                 if reaction.emoji in ['☑️','❎']:
