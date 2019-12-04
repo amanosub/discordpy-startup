@@ -782,7 +782,7 @@ url_embed] #ヘルプの各ページ内容
             embed = discord.Embed(title = f"**Received command!!**",description = "**checking user ID** <a:loadinfo:651635984068378663>")
             embed.set_footer(icon_url=message.author.avatar_url, text=f"認証中│{message.author.name}")
             test_send = await message.channel.send(embed = embed)
-            await asyncio.sleep(2)
+            await asyncio.sleep(5)
             await test_send.edit(embed=discord.Embed(title = f"**Received command!!**",description=f'**checking user ID** ☑️\nWould you realy need reboot {client.user.mention}?\nIf you reboot,[alrady_quiz]data will losed' ))
             
             await test_send.add_reaction("❎")
