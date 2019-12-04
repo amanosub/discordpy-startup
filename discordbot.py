@@ -2506,6 +2506,9 @@ async def on_message(message):
     if message.content == "y!slot test":
         kakuritu = random.randint(1, 50)
         slot_list = ['🍆', '🍒', '🔷', '🔶', '7️⃣', '💎','🔔', '🍆', '🍆', '🍆']
+        A = random.choice(slot_list)
+        B = random.choice(slot_list)
+        C = random.choice(slot_list)
         A1 = random.choice(slot_list)
         A2 = random.choice(slot_list)
         A3 = random.choice(slot_list)
@@ -2516,17 +2519,14 @@ async def on_message(message):
         C2 = random.choice(slot_list)
         C3 = random.choice(slot_list)
         if message.author != client.user:
-            A = slot_list[4]
-            B = slot_list[4]
-            C = slot_list[4]
             await asyncio.sleep(3)  # 3秒間待ってやる
-            embed = discord.Embed(title=f'━━━━━━\n{A1}│{B1}│{C1}◀\n{A2}│{B2}│{C2}',
+            embed = discord.Embed(title=f'━━━━━━\n{A}│{B}│{C}\n{A1}│{B1}│{C1}◀\n{A2}│{B2}│{C2}',
                                   color=0x2ECC69)
             slot_em = await message.channel.send(embed=embed)
             await asyncio.sleep(1)
             await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A1}│{B1}│{C1}\n{A2}│{B2}│{C2}◀\n{A3}│{B3}│{C3}',color=0x2ECC69))
             await asyncio.sleep(1)
-            await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀',color=0x2ECC69))
+            await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',color=0x2ECC69))
             await asyncio.sleep(1)
             await slot_em.edit(embed=discord.Embed(title=f'{A3}│{B3}│{C3}◀',description='結果\n{A3}{B3}{C3}',color=discord.Color.blue()))
 
