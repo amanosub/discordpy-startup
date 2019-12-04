@@ -781,17 +781,12 @@ url_embed] #ヘルプの各ページ内容
         if message.author.id == 446610711230152706:
             embed = discord.Embed(title = f"**Received command!!**",description = "**checking user ID** <a:loadinfo:651635984068378663>")
             test_send = await message.channel.send(embed = embed)
-            await asyncio.sleep(1)
+            await asyncio.sleep(2)
             await test_send.edit(embed=discord.Embed(title = f"**Received command!!**",description=f'**checking user ID** ☑️\nWould you realy need reboot {client.user.mention}?\nIf you reboot,[alrady_quiz]data will losed' ))
             
             await test_send.add_reaction("❎")
             await test_send.add_reaction("☑️")
             
-    if message.content.startswith('y!kill'):
-        if message.author.id == 446610711230152706:
-            embed = discord.Embed(title = f"**Received command!!**\nchecking user ID** :loadinginfo~2:")
-
-            await message.channel.send(embed = embed)
             def kill_react_check(reaction,user):
                 if reaction.message.id != send_message.id:
                     return 0
@@ -805,6 +800,7 @@ url_embed] #ヘルプの各ページ内容
             except:
                 await message.channel.send("time out")
             else:
+                embed = discord.Embed(title='Start Reboot!!')
                 await client.logout()
                 await sys.exit()
         else:
