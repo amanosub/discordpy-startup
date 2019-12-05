@@ -1621,148 +1621,52 @@ async def on_message(message):
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
 
-    for embed in message.embeds:
-        if "やられてしまった" in message.content:  # 🔷YUIの自動復活条件
-            def hellocheck(m):
-                return m.content == "の攻撃" and m.author == message.author and message.channel == m.channel  # ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
-
-            try:
-                reply = await client.wait_for("message", check=hellocheck, timeout=5.0)
-            except asyncio.TimeoutError:
-                await atk_ch.send("::i e 零-zero-")
-            else:
-                await atk_ch.send("::i e 壱-one-")
-
-    if 'の攻撃！' in message.content and message.channel == atk_ch:
-        await asyncio.sleep(1)
-        await message.channel.send('::atk')
-
-        def hellocheck(m):
-            if not "攻撃失敗" in m.content:
-                return 0
-            elif m.author != message.author:
-                return 0
-            elif message.channel != m.channel:  # ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
-                return 0
-            return 1
-
-        try:
-            await client.wait_for("message", check=hellocheck, timeout=3.0)
-        except asyncio.TimeoutError:
-            await atk_ch.send("::attack 零-zero-")
-        else:
-            def tao_check(tao_msg):
-                if not "::atk" in tao_msg.content:
-                    return 0
-                elif tao_msg.author != client.user:
-                    return 0
-                elif tao_msg.channel != atk_ch:  # ここにメッセージが送られてきたチャンネル=最初のメッセージが送られてきたチャンネルという条件
-                    return 0
-                return 1
-
-            try:
-                await client.wait_for("message", check=tao_check, timeout=3.0)
-            except asyncio.TimeoutError:
-                await atk_ch.send("::attack 壱-one-")
-
     if message.content == 'y!atkstop':
         await atk_ch.send('::re')
         atk_ch_id = '#tao-yui₀₀₀'
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
-        await q_ch.send('::q')
 
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
 
-        if len(message.embeds) != 0:
+    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386 and message.channel == atk_ch:
+        if message.embeds:
+            if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                await asyncio.sleep(3)
+                await atk_ch.send("::attack 零-zero-")
+            elif message.embeds[0].description:
+                if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
+                    await asyncio.sleep(3)
+                    await message.channel.send("::item e")
+                elif f"{client.user.mention}はエリクサーを使った" in tao_msg.embeds[0].descriotion:
+                    await asyncio.sleep(3)
+                    await message.channel.send("::attak")      
+        elif "の攻撃" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack true")
+        elif "攻撃失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack false")
+        elif "やられてしまった" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e")
+        elif "アイテム使用失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e")
+                    
 
-            for embed in message.embeds:
-                
-                description = embed.description
-                title = embed.title
-                print('check a')
-                if description and '時間切れ' in description and message.channel == q_ch:
-                    print('check b')
-                    await asyncio.sleep(5)
-                    await message.channel.send('::q')
-
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-
-        if len(message.embeds) != 0:
-
-            for embed in message.embeds:
-                
-                description = embed.description
-                title = embed.title
-                print('check a')
-                if title and 'が待ち構えている' in title and message.channel == atk_ch:
-                    print('check b')
-                    await asyncio.sleep(5)
-                    await atk_ch.send("::atk 零-zero-")
-
-                    def hellocheck(m):
-                        return m.content == "攻撃失敗" and m.author == message.author and message.channel == atk_ch
-
-                    try:
-                        reply = await client.wait_for("message", check=hellocheck, timeout=5.0)
-                    except asyncio.TimeoutError:
-                        await atk_ch.send("::atk 壱-one-")
-                    else:
-                        await asyncio.sleep(5)
-                        await atk_ch.send("::atk 弐-two-")
-                        try:
-                            reply = await client.wait_for("message", check=hellocheck, timeout=5.0)
-                        except asyncio.TimeoutError:
-                            pass
-                        else:
-                            await asyncio.sleep(5)
-                            await atk_ch.send("::atk 弐-two-")
-                            try:
-                                reply = await client.wait_for("message", check=hellocheck, timeout=5.0)
-                            except asyncio.TimeoutError:
-                                pass
-                            else:
-                                await asyncio.sleep(5)
-                                await atk_ch.send("::atk 弐-two-")
-
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-
-        if len(message.embeds) != 0:
-            for embed in message.embeds:
-                if embed.description and "このチャンネルの仲間全員が全回復した！" in embed.description and message.channel == atk_ch:
-                    def hellocheck(m):
-                        return "PET" in description and m.author == message.author and message.channel == atk_ch
-
-                    try:
-                        reply = await client.wait_for("message", check=hellocheck, timeout=5.0)
-                    except asyncio.TimeoutError:
-                        await atk_ch.send("::atk　伍-five-")
-                    else:
-                        await atk_ch.send("::atk　陸-six-")
-                else:
-                    return
 
     if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
         print("lv check")
-        if len(message.embeds) != 0:
-            for embed in message.embeds:
-                print("lv check 2")
-                description = embed.description
-                
-                if description and 'ReYUI ver1.12.2はレベルアップした！' in description:
-                    print('lv check 3')
-                    level_up = description.split('レベルアップした！')[1]
-                    embed = discord.Embed(title='━LvUP━', description=(level_up), color=discord.Colour.green())
-                    embed.set_thumbnail(
-                        url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
-                    embed.add_field(name="━時刻━", value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(
-                        dateTime.day) + "/" + str(dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(
-                        dateTime.second) + "秒", inline=False)
-                    print('lv check 4')
-                    print(level_up)
-                    await asyncio.gather(
-                        *(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
-                else:
-                    print('not level up')
+        if message.embeds[0].description and "ReYUI ver1.12.2はレベルアップした！" in message.embeds[0].description:
+            level_bef = re.fullmatch(f'{client.user.mention}はレベルアップした！`Lv.(.+) ->`',message.embeds[0].description)
+            level_aft = re.fullmatch('-> Lv.(.+)`',message.embeds[0].description)
+            embed = discord.Embed(title='━<:Lv:643122451500367902><:UP:643122445213106176>━', description=f"{level_bef}から{level_aft}になったよ！", color=discord.Colour.green())
+            embed.set_thumbnail(url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
+            embed.set_footer(name="━時刻━", value=str(dateTime.month) + "月" + str(dateTime.day) + "日" + str(dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=False)
+            print('lv check 4')
+            print(level_up)
+            await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
+        else:
+            print('not level up')
 
 # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
@@ -1824,21 +1728,22 @@ async def on_message(message):
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
     if message.content.startswith("y!report "):
-        embed = discord.Embed(title='レポート提出完了！',
-                              description=f"{message.author.mention}さん\nレポート提出有り難う！\n君のレポートは無事研究所に届けられたよ！",
-                              color=0x2ECC69)
-        embed.add_field(name="レポート提出時刻",
-                        value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day) + "\n " + str(
-                            dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
-        await message.channel.send(embed=embed)
+
         await message.delete()
         report_ch = client.get_channel(629327961132236800)
         reply = message.content.split('y!report ')[1]
         embed = discord.Embed(title='レポート内容\n' + (reply), description=f"発言者{message.author.mention}", color=0x2ECC69)
         embed.add_field(name="レポート提出時刻",
-                        value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day) + "\n " + str(
-                            dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
+        value=str(dateTime.year) + "年" + str(dateTime.month) + "月" + str(dateTime.day) + "日" + str(
+        dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
         await report_ch.send(embed=embed)
+        embed = discord.Embed(title='レポート提出完了！',
+        description=f"{message.author.mention}さん\nレポート提出有り難う！\n君のレポートは無事研究所に届けられたよ！\n```{reply}```",
+        color=0x2ECC69)
+        embed.add_field(name="レポート提出時刻",
+        value=str(dateTime.year) + "年" + str(dateTime.month) + "月" + str(dateTime.day) + "日" + str(
+        dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
+        await message.channel.send(embed=embed)
 
     # 「すて」と発言したら「::st」が返る処理
     if message.content == 'y!st':
