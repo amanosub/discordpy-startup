@@ -1609,8 +1609,9 @@ async def on_message(message):
         await message.channel.send(embed=embed)
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
-    if message.content in ['::', 'ダメージ'] :
+    if message.content.startswith('::') or "ダメージ" in message.content :
         delete_ch = await client.get_channel(610998090094084097)
+        print
         if message.channel==delete_ch:
 
             await message.delete()
