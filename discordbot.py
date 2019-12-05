@@ -1625,7 +1625,7 @@ async def on_message(message):
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
 
 
-    if atkch and message.channel == atk_ch:
+    if message.channel == atk_ch:
         print("check TAO")
         if message.embeds:
             print("check TAO 1")
