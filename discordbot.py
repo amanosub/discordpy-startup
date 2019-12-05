@@ -1625,9 +1625,10 @@ async def on_message(message):
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
 
 
-    if message.author.id == 526620171658330112 and message.channel == atk_ch:
+    if atkch and message.channel == atk_ch:
+        print("check TAO")
         if message.embeds:
-            print("check TAO")
+            print("check TAO 1")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 await asyncio.sleep(3)
                 await atk_ch.send("::attack 零-zero-")
@@ -1638,19 +1639,18 @@ async def on_message(message):
                 elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
                     await asyncio.sleep(3)
                     await message.channel.send("::attack") 
-#    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386 and message.channel == atk_ch:
-            elif "の攻撃" in message.content:
-                await asyncio.sleep(1)
-                await atk_ch.send("::attack true")
-            elif "攻撃失敗" in message.content:
-                await asyncio.sleep(1)
-                await atk_ch.send("::attack false")
-            elif "やられてしまった" in message.content:
-                await asyncio.sleep(1)
-                await atk_ch.send("::i e")
-            elif "アイテム使用失敗" in message.content:
-                await asyncio.sleep(1)
-                await atk_ch.send("::i e")
+        elif "の攻撃" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack true
+        elif "攻撃失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack false")
+        elif "やられてしまった" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e")
+        elif "アイテム使用失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e")
                     
 
 
