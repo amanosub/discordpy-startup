@@ -1636,7 +1636,7 @@ async def on_message(message):
                 if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
                     await asyncio.sleep(3)
                     await message.channel.send("::item e")
-                elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].descriotion:
+                elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
                     await asyncio.sleep(3)
                     await message.channel.send("::attack")      
         elif "の攻撃" in message.content:
@@ -1653,18 +1653,7 @@ async def on_message(message):
             await atk_ch.send("::i e")
                     
 
-    if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-        if message.embeds[0].description and "ReYUI ver1.12.2はレベルアップした！" in message.embeds[0].description:
-            level_bef = re.fullmatch(f'{client.user.mention}はレベルアップした！`Lv.(.+) ->`',message.embeds[0].description)
-            level_aft = re.fullmatch('-> Lv.(.+)`',message.embeds[0].description)
-            embed = discord.Embed(title='━<:Lv:643122451500367902><:UP:643122445213106176>━', description=f"{level_bef}から{level_aft}になったよ！", color=discord.Colour.green())
-            embed.set_thumbnail(url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
-            embed.set_footer(name="━時刻━", value=str(dateTime.month) + "月" + str(dateTime.day) + "日" + str(dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=False)
-            print('lv check 4')
-            print(level_up)
-            await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
-        else:
-            print('not level up')
+
 
 # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
