@@ -1609,11 +1609,10 @@ async def on_message(message):
         await message.channel.send(embed=embed)
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
-    if message.content.startswith('::') or "ダメージ" in message.content :
+    if message.content.startswith('::') or "ダメージ" in message.content　or "アタック失敗" in message.content :
         delete_ch = client.get_channel(610998090094084097)
-        print
         if message.channel==delete_ch:
-
+            await asyncio.sleep(1)
             await message.delete()
 
     if message.content.startswith("y!atkch "):
