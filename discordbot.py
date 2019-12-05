@@ -1629,6 +1629,7 @@ async def on_message(message):
 
     if message.author.id == 526620171658330112 or message.author.id == 642271360667877386 and message.channel == atk_ch:
         if message.embeds:
+            print("check TAO")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 await asyncio.sleep(3)
                 await atk_ch.send("::attack 零-zero-")
@@ -1652,7 +1653,6 @@ async def on_message(message):
             await asyncio.sleep(1)
             await atk_ch.send("::i e")
                     
-
 
 
 # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
