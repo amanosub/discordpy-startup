@@ -1627,6 +1627,19 @@ async def on_message(message):
 
     if message.channel == atk_ch:
         print("check TAO")
+        if "の攻撃" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack true")
+        if "攻撃失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack false")
+        if "やられてしまった" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e")
+        if "アイテム使用失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e")
+        
         if message.embeds:
             print("check TAO 1")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
@@ -1639,18 +1652,7 @@ async def on_message(message):
                 elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
                     await asyncio.sleep(3)
                     await message.channel.send("::attack") 
-        elif "の攻撃" in message.content:
-            await asyncio.sleep(1)
-            await atk_ch.send("::attack true")
-        elif "攻撃失敗" in message.content:
-            await asyncio.sleep(1)
-            await atk_ch.send("::attack false")
-        elif "やられてしまった" in message.content:
-            await asyncio.sleep(1)
-            await atk_ch.send("::i e")
-        elif "アイテム使用失敗" in message.content:
-            await asyncio.sleep(1)
-            await atk_ch.send("::i e")
+
                     
 
 
