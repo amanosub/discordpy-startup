@@ -1598,7 +1598,7 @@ async def on_message(message):
             embed = discord.Embed(title='権限がありません!!', description='これは開発者専用コマンドです')
             await message.channel.send(embed=embed)
 
-    # 🔷➖➖➖➖➖➖➖➖➖➖オートアタック➖➖➖➖➖➖➖➖➖➖➖➖🔷
+
     if message.content.startswith('y!ban ') and message.author.id == (446610711230152706):
         userid = message.content.split('y!ban ')[1]
         embed = discord.Embed(title=f'開発者権限により、急遽対象のIDのuserをBan致します\nID:{userid}')
@@ -1607,9 +1607,9 @@ async def on_message(message):
         await member.ban()
         embed = discord.Embed(title='対象のIDのuserをBan完了')
         await message.channel.send(embed=embed)
-    # 🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
+        
 
-    if message.content.startswith('::') or "ダメージ" in message.content　or "アタック失敗" in message.content :
+    if message.content.startswith('::') or "ダメージ" in message.content or "アタック失敗" in message.content :
         delete_ch = client.get_channel(610998090094084097)
         if message.channel==delete_ch:
             await asyncio.sleep(1)
