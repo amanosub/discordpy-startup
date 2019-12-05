@@ -1182,8 +1182,6 @@ async def on_ready():
     print(dateTime)
     print("今入ってる鯖の数" + str(server_number))
     print('allready')
-
-    await t_ch.send('::t')
     print('We have logged in as {0.user}'.format(client))
 
     for guild in client.guilds:
