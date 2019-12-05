@@ -1609,8 +1609,11 @@ async def on_message(message):
         await message.channel.send(embed=embed)
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
-    if message.content in ['::', 'ダメージ'] and message.channel.id == 610998090094084097:
-        await message.delete()
+    if message.content in ['::', 'ダメージ'] :
+        delete_ch = await client.get_channel(610998090094084097)
+        if message.channel==delete_ch:
+
+            await message.delete()
 
     if message.content.startswith("y!atkch "):
         print('got the commond')
@@ -1673,7 +1676,7 @@ async def on_message(message):
         if len(message.embeds) != 0:
 
             for embed in message.embeds:
-                print(embed.to_dict())
+                
                 description = embed.description
                 title = embed.title
                 print('check a')
@@ -1687,7 +1690,7 @@ async def on_message(message):
         if len(message.embeds) != 0:
 
             for embed in message.embeds:
-                print(embed.to_dict())
+                
                 description = embed.description
                 title = embed.title
                 print('check a')
@@ -1744,7 +1747,7 @@ async def on_message(message):
             for embed in message.embeds:
                 print("lv check 2")
                 description = embed.description
-                print(embed.to_dict())
+                
                 if description and 'ReYUI ver1.12.2はレベルアップした！' in description:
                     print('lv check 3')
                     level_up = description.split('レベルアップした！')[1]
@@ -1761,7 +1764,7 @@ async def on_message(message):
                 else:
                     print('not level up')
 
-                # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+# 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
     me = message.guild.me
     tao = client.get_user(526620171658330112)
@@ -1817,8 +1820,6 @@ async def on_message(message):
 
     if message.content.startswith('y!qdata'):
         print(client.already_quiz)
-
-    # ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
@@ -2015,46 +2016,26 @@ async def on_message(message):
 　　　　ﾎﾟﾝ！""",
                               color=discord.Colour.from_rgb(255, 133, 214))
         embed.set_thumbnail(url="https://yahoo.jp/box/lc5-cP")
-        embed.set_image(url=random.choice(("https://yahoo.jp/box/C5OhZ6",
-                                           "https://yahoo.jp/box/7wCPzz",
-                                           "https://yahoo.jp/box/NTtrKt",
-                                           "https://yahoo.jp/box/1lR9DJ",
-                                           "https://yahoo.jp/box/uIdpqC",
-                                           "https://yahoo.jp/box/YQlvC2",
-                                           "https://yahoo.jp/box/sxklm2",
-                                           "https://yahoo.jp/box/LpiAUS",
-                                           "https://yahoo.jp/box/xkG1WU",
-                                           "https://yahoo.jp/box/4T6wmr",
-                                           "https://yahoo.jp/box/WEgd7D",
-                                           "https://yahoo.jp/box/6VLJXh",
-                                           "https://yahoo.jp/box/yDuiFh",
-                                           "https://yahoo.jp/box/gtay8J",
-                                           "https://yahoo.jp/box/-zJbpA",
-                                           "https://yahoo.jp/box/xH_xpw",
-                                           "https://yahoo.jp/box/KQDNjd",
-                                           "https://yahoo.jp/box/XT5J4M",
-                                           "https://yahoo.jp/box/AoWqBP",
-                                           "https://yahoo.jp/box/3CKNvk",
-                                           "https://yahoo.jp/box/pFKU2Z",
-                                           "https://yahoo.jp/box/nH4vvY",
-                                           "https://yahoo.jp/box/cqTkgv",
-                                           "https://yahoo.jp/box/kvCkil",
-                                           "https://yahoo.jp/box/rvDbkR",
-                                           "https://yahoo.jp/box/znUdy5",
-                                           "https://yahoo.jp/box/wmzu-Z",
-                                           "https://yahoo.jp/box/kXnYQf",
-                                           "https://yahoo.jp/box/0cRE1S",
-                                           "https://yahoo.jp/box/Mz2rPI",
-                                           "https://yahoo.jp/box/JzZEBY",
-                                           "https://yahoo.jp/box/o1Uma1",
-                                           "https://yahoo.jp/box/YPaIEe",
-                                           "https://yahoo.jp/box/MANLfg",
-                                           "https://yahoo.jp/box/e09Dte",
-                                           "https://yahoo.jp/box/iFQl2O",
-                                           "https://yahoo.jp/box/EjWQbT",
-                                           'https://yahoo.jp/box/3faN7k',
-                                           'https://yahoo.jp/box/c9L236',
-                                           'https://yahoo.jp/box/Jxj1Jd')))
+        embed.set_image(url=random.choice(("https://yahoo.jp/box/C5OhZ6","https://yahoo.jp/box/7wCPzz",
+                                           "https://yahoo.jp/box/NTtrKt","https://yahoo.jp/box/1lR9DJ",
+                                           "https://yahoo.jp/box/uIdpqC","https://yahoo.jp/box/YQlvC2",
+                                           "https://yahoo.jp/box/sxklm2","https://yahoo.jp/box/LpiAUS",
+                                           "https://yahoo.jp/box/xkG1WU","https://yahoo.jp/box/4T6wmr",
+                                           "https://yahoo.jp/box/WEgd7D","https://yahoo.jp/box/6VLJXh",
+                                           "https://yahoo.jp/box/yDuiFh","https://yahoo.jp/box/gtay8J",
+                                           "https://yahoo.jp/box/-zJbpA","https://yahoo.jp/box/xH_xpw",
+                                           "https://yahoo.jp/box/KQDNjd","https://yahoo.jp/box/XT5J4M",
+                                           "https://yahoo.jp/box/AoWqBP","https://yahoo.jp/box/3CKNvk",
+                                           "https://yahoo.jp/box/pFKU2Z","https://yahoo.jp/box/nH4vvY",
+                                           "https://yahoo.jp/box/cqTkgv","https://yahoo.jp/box/kvCkil",
+                                           "https://yahoo.jp/box/rvDbkR","https://yahoo.jp/box/znUdy5",
+                                           "https://yahoo.jp/box/wmzu-Z","https://yahoo.jp/box/kXnYQf",
+                                           "https://yahoo.jp/box/0cRE1S","https://yahoo.jp/box/Mz2rPI",
+                                           "https://yahoo.jp/box/JzZEBY","https://yahoo.jp/box/o1Uma1",
+                                           "https://yahoo.jp/box/YPaIEe","https://yahoo.jp/box/MANLfg",
+                                           "https://yahoo.jp/box/e09Dte","https://yahoo.jp/box/iFQl2O",
+                                           "https://yahoo.jp/box/EjWQbT",'https://yahoo.jp/box/3faN7k',
+                                           'https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
         embed.add_field(name=random.choice(
             ('いや可愛いけどコメントに困る', 'あ、かわいい', 'ちょくちょくエッチなのは入ってるよねこれ（）', '可愛いというより萌えのほうが正しいのかなこれ', "普通にかわいいこれ", 'あー悪くないかも')),
                         value='YUIは出てきたおにゃのこカードをそっとポケットに仕舞った', inline=False)
