@@ -1636,9 +1636,9 @@ async def on_message(message):
                 if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
                     await asyncio.sleep(3)
                     await message.channel.send("::item e")
-                elif f"{client.user.mention}はエリクサーを使った" in tao_msg.embeds[0].descriotion:
+                elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].descriotion:
                     await asyncio.sleep(3)
-                    await message.channel.send("::attak")      
+                    await message.channel.send("::attack")      
         elif "の攻撃" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack true")
@@ -1653,9 +1653,7 @@ async def on_message(message):
             await atk_ch.send("::i e")
                     
 
-
     if message.author.id == 526620171658330112 or message.author.id == 642271360667877386:
-        print("lv check")
         if message.embeds[0].description and "ReYUI ver1.12.2はレベルアップした！" in message.embeds[0].description:
             level_bef = re.fullmatch(f'{client.user.mention}はレベルアップした！`Lv.(.+) ->`',message.embeds[0].description)
             level_aft = re.fullmatch('-> Lv.(.+)`',message.embeds[0].description)
