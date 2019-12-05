@@ -1610,7 +1610,7 @@ async def on_message(message):
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖オートアタック改➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
     if message.content.startswith('::') or "ダメージ" in message.content :
-        delete_ch = await client.get_channel(610998090094084097)
+        delete_ch = client.get_channel(610998090094084097)
         print
         if message.channel==delete_ch:
 
