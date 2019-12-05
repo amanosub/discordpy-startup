@@ -1641,7 +1641,7 @@ async def on_message(message):
                     await message.channel.send("::attack") 
         elif "の攻撃" in message.content:
             await asyncio.sleep(1)
-            await atk_ch.send("::attack true
+            await atk_ch.send("::attack true")
         elif "攻撃失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack false")
