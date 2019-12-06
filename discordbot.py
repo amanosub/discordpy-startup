@@ -1741,7 +1741,7 @@ async def on_message(message):
                         try:
                             await client.wait_for('message',timeout=300)
                         except asyncio.TimeoutError:
-                        await message.channel.send('::item e TAO息してる…?')
+                            await message.channel.send('::item e TAO息してる…?')
 
                 elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
                     await asyncio.sleep(3)
