@@ -29,6 +29,8 @@ server_number = len(client.guilds)
 client.global_list = []  # グローバルチャット参加チャン
 ModeFlag = 0
 
+atk_ch = 1
+
 citycodes = {
     "北海道": '016010', "青森県": '020010',
     "岩手県": '030010', "宮城県": '040010',
@@ -1309,6 +1311,7 @@ async def on_disconnect():
 
 @client.event
 async def on_message(message):
+    global atk_ch
     await client.wait_until_ready()
     atk_ch_id = "#掃き溜め"
     await client.wait_until_ready()
