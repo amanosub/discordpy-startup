@@ -1604,7 +1604,7 @@ async def on_message(message):
 
     if message.content.startswith ('y!clean '):
         if message.author.guild_permissions.administrator:
-            log_ch = client.get_channel(652493782822027275)
+            log_ch = client.get_channel(652493918897963029)
             clean_num = message.content.split("y!clean ")[1]
             await message.channel.purge(limit=int(clean_num))
             embed = discord.Embed(title = "メッセージ消去完了！",
@@ -1615,7 +1615,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
             author_id=str(message.author.id)
             invite = await message.channel.create_invite()
-            embed=discord.Embed(title=f"( 'ω'o[**clean**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed=discord.Embed(title=f"( 'ω'o[**clean**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{clean_num}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
         else:
