@@ -1659,7 +1659,7 @@ async def on_message(message):
 
     if message.channel==atk_ch:
         print("check TAO")
-        if "の攻撃" in message.content:
+        if "の攻撃" in message.content and '受けた' in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack true")
         if "攻撃失敗" in message.content:
