@@ -1253,13 +1253,6 @@ async def check_loop():
 
 @tasks.loop(seconds=30)
 async def loop():
-    q_ch = client.get_channel(651816760865194005)
-    atk_ch = client.get_channel(644167779578282029)
-    await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
-
-    await atk_ch.send('check poit')
-
-    print('10')
 
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
