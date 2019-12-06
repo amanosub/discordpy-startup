@@ -1674,12 +1674,12 @@ async def on_message(message):
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
             elif '受けた' in message.content:
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(0.8)
                 dmg = re.search('(?<=は)[0-9]+(?=のダメージを受けた)', message.content)
                 if dmg:
                     voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
                     voice2 = random.choice(voice1)
-                    await message.channel.send(f'::attack {voice2}\n{dmg}もくらった!!')
+                    await message.channel.send(f'::attack {voice2}\n{dmg(match)}もくらった!!')
                     try:
                         await client.wait_for('message',timeout=300)
                     except asyncio.TimeoutError:
