@@ -1675,7 +1675,7 @@ async def on_message(message):
                     await message.channel.send('::attack TAO息してる…?')
             elif '受けた' in message.content:
                 await asyncio.sleep(0.5)
-                dmg = re.fullmatch('は(.+)のダメージを受けた',message.content)
+                dmg = re.search('は(.+)のダメージを受けた',message.content)
                 voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
                 voice2 = random.choice(voice1)
                 await message.channel.send(f'::attack {voice2}\n{dmg}もくらった!!')
