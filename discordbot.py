@@ -1171,7 +1171,7 @@ async def on_ready():
     t_ch = client.get_channel(650537498262634497)
     client.ch = client.get_channel(644199380764721152)
     q_check_ch = client.get_channel(650390707013550086)
-
+    stloop.start()
     loop.start()
     looop.start()
     check_loop.start()
@@ -1228,6 +1228,10 @@ flag = False
 
 yt_channel_id = CHANNEL_ID
 
+
+@tasks.loop(seconds=30)
+async def.stloop():
+    await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 @tasks.loop(seconds=60)
 async def check_loop():
@@ -1664,7 +1668,7 @@ async def on_message(message):
                 await asyncio.sleep(1)
                 voice1 = ['おそい!','あたらぬ!','とう!','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙三˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','\( ˙꒳​˙ \三/ ˙꒳​˙)/']
                 voice2 = random.choice(voice1)
-                await message.channel.send(f'::attack {voice2}\n貴様の攻撃など当たらぬわ!!)
+                await message.channel.send(f'::attack {voice2}\n貴様の攻撃など当たらぬわ!!')
                 try:
                     await client.wait_for('message',timeout=300)
                 except asyncio.TimeoutError:
