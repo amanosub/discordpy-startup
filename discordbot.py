@@ -1704,7 +1704,7 @@ async def on_message(message):
 
         if "やられてしまった" in message.content:
             members=message.guild.members
-            if not mio in memners:
+            if not mio in members:
             
                 await asyncio.sleep(1)
                 await atk_ch.send("::i e　あわわヾ(・ω・`；))やられちゃった")
@@ -1735,7 +1735,7 @@ async def on_message(message):
             elif message.embeds[0].description:
                 if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
                     members=message.guild.members
-                    if not mio in memners:
+                    if not mio in members:
                         await asyncio.sleep(3)
                         await message.channel.send("::item e　あれ!? 私死んでるの!?")
                         try:
@@ -1743,7 +1743,7 @@ async def on_message(message):
                         except asyncio.TimeoutError:
                             await message.channel.send('::item e TAO息してる…?')
 
-                elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
+                elif "エリクサーを" in message.embeds[0].description :
                     await asyncio.sleep(3)
                     await message.channel.send("::attack 私復活!!") 
                     try:
