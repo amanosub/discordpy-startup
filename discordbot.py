@@ -1637,7 +1637,7 @@ async def on_message(message):
         log_ch = client.get_channel(652493893904105473)
         invite = await message.channel.create_invite()
         author_id=str(message.author.id)
-        embed=discord.Embed(title=f'atkch使用ログ',description=f'```‣使用鯖名\n『{message.guild.name}』\n‣使用者\n『{message.author}』\n‣使用者ID\n『{author_id}』\n‣使用チャンネル名\n『{message.channel.name}』\n‣指定チャンネル名\n『{atk_ch.name}』```『[この鯖のチャンネル直通招待URL]({invite.url})』')
+        embed=discord.Embed(title=f'atkch使用ログ',description=f'```‣使用鯖名\n『{message.guild.name}』\n‣使用者\n『{message.author}』\n‣使用者ID\n『{author_id}』\n‣使用チャンネル名\n『{message.channel.name}』\n‣指定チャンネル名\n『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
         embed.set_thumbnail(url=message.author.avatar_url)
         await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
