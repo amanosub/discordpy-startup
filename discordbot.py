@@ -1662,28 +1662,62 @@ async def on_message(message):
         if "の攻撃" in message.content and '受けた' in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack true")
+            try:
+                await client.wait_for('message',timeout=300)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack timeout')
         if "攻撃失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack false")
+            try:
+                await client.wait_for('message',timeout=300)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack timeout')
+
         if "やられてしまった" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::i e")
+            try:
+                await client.wait_for('message',timeout=300)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack timeout')
+
         if "アイテム使用失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::i e")
+            try:
+                await client.wait_for('message',timeout=300)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack timeout')
+
         
         if message.embeds:
             print("check TAO 1")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 await asyncio.sleep(3)
-                await atk_ch.send("::attack 零-zero-")
+                await atk_ch.send("::attack ファースト")
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack timeout')
+
             elif message.embeds[0].description:
                 if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
                     await asyncio.sleep(3)
-                    await message.channel.send("::item e")
+                    await message.channel.send("::item e　true")
+                    try:
+                        await client.wait_for('message',timeout=300)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::item e timeout')
+
                 elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
                     await asyncio.sleep(3)
-                    await message.channel.send("::attack") 
+                    await message.channel.send("::attack re") 
+                    try:
+                        await client.wait_for('message',timeout=300)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack timeout')
+
 
                     
 
