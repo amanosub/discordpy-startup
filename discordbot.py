@@ -1606,6 +1606,7 @@ async def on_message(message):
             embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/635993816297504809/652423808086573096/57_20191206171856.png")
             embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者│{message.author}")
             await message.channel.send(embed=embed)
+            author_id=str(message.author.id)
             embed=discord.Embed(title=f"( 'ω'o[**clean**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
