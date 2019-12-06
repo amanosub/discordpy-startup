@@ -2429,8 +2429,8 @@ async def on_message(message):
                 await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}{B3}{C3}残念…',color=discord.Color.blue()))
 
 
-
-
+    if message.content=='考えるな、感じろ！' and message.author.id=644153226597498890:
+        await message.channel.send('(`･ω･)ゞｲｪｯｻｰ将軍!')
 
 
 client.run(TOKEN)
