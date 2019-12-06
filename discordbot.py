@@ -1438,7 +1438,7 @@ async def on_message(message):
     url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第七項")
 
     if message.content == "y!help":
-        log_ch client.get_channel(652493782822027275)
+        log_ch = client.get_channel(652493782822027275)
         author_id=str(message.author.id)
         invite = await message.channel.create_invite()
         embed=discord.Embed(title=f"( 'ω'o[**help**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
