@@ -2461,7 +2461,7 @@ async def on_message(message):
     if 'think' in message.content or '考' in message.content :
         await message.channel.send('考えるな、感じろ!!')
     
-    kakuritu=random.randit(1,100)
+    kakuritu=random.randrange(1,100)
     if kakuritu == 5:
         await message.channel.send('🤔')
 
