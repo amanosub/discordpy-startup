@@ -1637,7 +1637,7 @@ async def on_message(message):
         log_ch = client.get_channel(652493893904105473)
         invite = await message.channel.create_invite()
         author_id=str(message.author.id)
-        embed=discord.Embed(title=f"ﾛｸﾞﾀﾞﾖ( 'ω'o[**atkch**]o",description=f'```使用鯖│『{message.guild.name}』\n使用者│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n‣指定ch名│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+        embed=discord.Embed(title=f"( 'ω'o[**atkch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
         embed.set_thumbnail(url=message.author.avatar_url)
         await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
