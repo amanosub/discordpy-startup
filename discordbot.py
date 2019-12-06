@@ -2455,8 +2455,13 @@ async def on_message(message):
     if message.content == '考えるな、感じろ！' and message.author.id==644153226597498890:
         await message.channel.send('(`･ω･)ゞｲｪｯｻｰ将軍!')
 
-    if ['考','think'] in message.content  :
+    if 'think' in message.content or '考' in message.content :
         await message.channel.send('考えるな、感じろ!!')
+    
+    kakuritu=random.randit(1,100)
+    if kakuritu == 5:
+        await message.channel.send('🤔')
+
 client.run(TOKEN)
 
      
