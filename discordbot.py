@@ -29,7 +29,7 @@ server_number = len(client.guilds)
 client.global_list = []  # グローバルチャット参加チャン
 ModeFlag = 0
 
-atk_ch = 1
+atk_ch = client.get_channel(643461030692782081)
 
 citycodes = {
     "北海道": '016010', "青森県": '020010',
@@ -1670,7 +1670,7 @@ async def on_message(message):
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
 
 
-    if message.channel == atk_ch:
+    if message.channel==atk_ch:
         print("check TAO")
         if "の攻撃" in message.content:
             await asyncio.sleep(1)
