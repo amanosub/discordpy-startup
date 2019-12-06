@@ -2436,7 +2436,8 @@ async def on_message(message):
     if message.content == '考えるな、感じろ！' and message.author.id==644153226597498890:
         await message.channel.send('(`･ω･)ゞｲｪｯｻｰ将軍!')
 
-
+    if message.content in ['考','think']:
+        await message.channel.send('考えるな、感じろ!!')
 client.run(TOKEN)
 
      
