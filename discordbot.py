@@ -1676,7 +1676,7 @@ async def on_message(message):
             elif '受けた' in message.content:
                 await asyncio.sleep(0.8)
                 data=re.split('\D+', message.content)
-               print(data)
+                print(data)
                 voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
                 voice2 = random.choice(voice1)
                 await message.channel.send(f'::attack {voice2}\n{data[12]}もくらった!!')
