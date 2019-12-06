@@ -1599,22 +1599,14 @@ async def on_message(message):
     if message.content.startswith ('y!clean '):
         if message.author.guild_permissions.administrator:
             clean_num = message.content.split("y!clean ")[1]
-            if client.user.guild_permissions.administrator:
-                await message.channel.purge(limit=int(clean_num))
-                embed = discord.Embed(title = "メッセージ消去完了！",
-                description=f"{clean_num}のメッセージを消去したよ",
-                color = discord.Color.green())
-                embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/635993816297504809/652423808086573096/57_20191206171856.png")
-                embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者│{message.author}")
-                await message.channel.send(embed=embed)
-            else:
-                await message.channel.purge(limit=int(clean_num))
-                embed = discord.Embed(title = "権限エラー！",
-                description=f"ごめん！\n確かに君は管理者権限を持ってるんだけど……\n私に管理者権限がないみたいなんだ………\nだからメッセージは消せるけど消すことを許されてないよ\nごめんね",
-                color = discord.Color.green())
-                embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
-                embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者未遂者│{message.author}")
-                await message.channel.send(embed=embed)
+            await message.channel.purge(limit=int(clean_num))
+            embed = discord.Embed(title = "メッセージ消去完了！",
+            description=f"{clean_num}のメッセージを消去したよ",
+            color = discord.Color.green())
+            embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/635993816297504809/652423808086573096/57_20191206171856.png")
+            embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者│{message.author}")
+            await message.channel.send(embed=embed)
+
         else:
             embed = discord.Embed(title = "権限エラー！",
             description=f"{clean_num}のメッセージを消去しようとしたけど、どうやら君は管理者権限を持ってないみたいだね。\n悪いけど、このコマンドは荒らし対策として管理者以外使えないようになってるんだ。\nつまり出直して来いってこと",
