@@ -1438,6 +1438,13 @@ async def on_message(message):
     url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第七項")
 
     if message.content == "y!help":
+        log_ch client.get_channel(652493782822027275)
+        author_id=str(message.author.id)
+        invite = await message.channel.create_invite()
+        embed=discord.Embed(title=f"( 'ω'o[**help**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+        embed.set_thumbnail(url=message.author.avatar_url)
+        await log_ch.send(embed=embed)
+ 
         help_embed_one = discord.Embed(title="YUIヘルプ目次",
                                        description='```‣ヘルプ目次　　│第一項\n‣ＴＡＯコマンド│第二項\n‣メイン機能　　│第三項\n‣特殊チャンネル│第四項\n‣ガチャ　　　　│第五項\n‣スロット　　　│第六項\n‣ユイ関連ＵＲＬ│第七項```',
                                        color=discord.Colour.green())
@@ -1607,6 +1614,7 @@ async def on_message(message):
             embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者│{message.author}")
             await message.channel.send(embed=embed)
             author_id=str(message.author.id)
+            invite = await message.channel.create_invite()
             embed=discord.Embed(title=f"( 'ω'o[**clean**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
@@ -1617,7 +1625,8 @@ async def on_message(message):
             embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
             embed.set_footer(icon_url=message.author.avatar_url, text="コマンド使用未遂者│{message.author}")
             await message.channel.send(embed=embed)
-            
+   
+         
             
     if message.content.startswith('y!ban ') and message.author.id == (446610711230152706):
         userid = message.content.split('y!ban ')[1]
@@ -1627,13 +1636,17 @@ async def on_message(message):
         await member.ban()
         embed = discord.Embed(title='対象のIDのuserをBan完了')
         await message.channel.send(embed=embed)
-        
+ 
+
+       
 
     if message.content.startswith('::') or "ダメージ" in message.content or "アタック失敗" in message.content :
         delete_ch = client.get_channel(610998090094084097)
         if message.channel==delete_ch:
             await asyncio.sleep(1)
             await message.delete()
+
+
 
     if message.content.startswith("y!atkch "):
         atk_ch_id = message.content.split('y!atkch ')[1]
@@ -1645,6 +1658,8 @@ async def on_message(message):
         embed.set_thumbnail(url=message.author.avatar_url)
         await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
+
+
 
     if message.content == 'y!atkstop':
         await atk_ch.send('::re')
