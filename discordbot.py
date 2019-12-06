@@ -1230,7 +1230,7 @@ yt_channel_id = CHANNEL_ID
 
 
 @tasks.loop(seconds=30)
-async def.stloop():
+async def stloop():
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 @tasks.loop(seconds=60)
