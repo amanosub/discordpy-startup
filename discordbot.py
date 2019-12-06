@@ -1660,7 +1660,8 @@ async def on_message(message):
         atk_ch_m = '#tao-yui₀₀₀'
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
 
-
+    mio = client.get_user(644153226597498890)
+    
     if message.channel==atk_ch:
         print("check TAO")
         if "の攻撃" in message.content :
@@ -1702,12 +1703,15 @@ async def on_message(message):
                 await message.channel.send('::attack TAO息してる…?')
 
         if "やられてしまった" in message.content:
-            await asyncio.sleep(1)
-            await atk_ch.send("::i e　あわわヾ(・ω・`；))やられちゃった")
-            try:
-                await client.wait_for('message',timeout=300)
-            except asyncio.TimeoutError:
-                await message.channel.send('::attack TAO息してる…?')
+            members=message.guild.members
+            if not mio in memners:
+            
+                await asyncio.sleep(1)
+                await atk_ch.send("::i e　あわわヾ(・ω・`；))やられちゃった")
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
 
         if "アイテム使用失敗" in message.content:
             await asyncio.sleep(1)
@@ -1730,11 +1734,13 @@ async def on_message(message):
 
             elif message.embeds[0].description:
                 if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
-                    await asyncio.sleep(3)
-                    await message.channel.send("::item e　あれ!? 私死んでるの!?")
-                    try:
-                        await client.wait_for('message',timeout=300)
-                    except asyncio.TimeoutError:
+                    members=message.guild.members
+                    if not mio in memners:
+                        await asyncio.sleep(3)
+                        await message.channel.send("::item e　あれ!? 私死んでるの!?")
+                        try:
+                            await client.wait_for('message',timeout=300)
+                        except asyncio.TimeoutError:
                         await message.channel.send('::item e TAO息してる…?')
 
                 elif f"{client.user.mention}はエリクサーを使った" in message.embeds[0].description:
