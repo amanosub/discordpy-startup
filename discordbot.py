@@ -1638,7 +1638,7 @@ async def on_message(message):
         invite = await channel.create_invite()
         author_id=str(message.author.id)
         embed=discord.Embed(title=f'自動アタックチャンネル指定ログ',description=f'使用鯖名『{message.guild.name}』\n使用者名『{message.author.name}』\n使用者ID『{author_id}』\n使用ch名『{message.channel.name}』\n指定先ch名『{atk_ch.name}』')
-        embed set_footer(icon_url=message.guild.icon,text=[鯖の招待](invite.url))
+        embed set_footer(icon_url=message.guild.icon_url,text=[鯖の招待](invite.url))
         await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
 
