@@ -1677,7 +1677,7 @@ async def on_message(message):
                 dmg = re.fullmatch('^は(.+)のダメージを受けた$',message.content)
                 voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
                 voice2 = random.choice(voice1)
-                await message.channel.send(f'::attack {voice2}\n{dmg}もくらった!!)
+                await message.channel.send(f'::attack {voice2}\n{dmg}もくらった!!')
                 try:
                     await client.wait_for('message',timeout=300)
                 except asyncio.TimeoutError:
