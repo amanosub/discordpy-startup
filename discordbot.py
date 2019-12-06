@@ -1633,9 +1633,13 @@ async def on_message(message):
             await message.delete()
 
     if message.content.startswith("y!atkch "):
-        print('got the commond')
         atk_ch_id = message.content.split('y!atkch ')[1]
         atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
+        log_ch = client.get_channel(652493893904105473)
+        invite = await channel.create_invite()
+        embed=discord.Embed(title=f'自動アタックチャンネル指定ログ',description=f'使用鯖『{message.guild.name}』\n使用者『{message.author.name}』\n使用者ID『{message.author.id}』\n使用者チャンネル『{message.channel.name}』\n指定先チャンネル『{atk_ch.name}』)
+        embed set_footer(icon_url=message.guild.icon,text=[鯖の招待](invite.url))
+        await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
 
     if message.content == 'y!atkstop':
