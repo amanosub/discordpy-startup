@@ -1675,14 +1675,15 @@ async def on_message(message):
                     await message.channel.send('::attack TAO息してる…?')
             elif '受けた' in message.content:
                 await asyncio.sleep(0.5)
-                dmg = re.search('は(.+)のダメージを受けた',message.content)
-                voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
-                voice2 = random.choice(voice1)
-                await message.channel.send(f'::attack {voice2}\n{dmg}もくらった!!')
-                try:
-                    await client.wait_for('message',timeout=300)
-                except asyncio.TimeoutError:
-                    await message.channel.send('::attack TAO息してる…?')
+                dmg = re.search('(?<=は)[0-9]+(?=のダメージを受けた)', message.content)
+                if match:
+                    voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
+                    voice2 = random.choice(voice1)
+                    await message.channel.send(f'::attack {voice2}\n{dmg}もくらった!!')
+                    try:
+                        await client.wait_for('message',timeout=300)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack TAO息してる…?')
             elif '会心' in message.content:
                 voice1 = ['とりゃああ!','でぁああああ!','くらえ!','あたれ!','とう!']
                 voice2 = random.choice(voice1)
