@@ -1304,14 +1304,8 @@ async def on_disconnect():
 
 @client.event
 async def on_message(message):
-    global atk_ch
-    await client.wait_until_ready()
-    atk_ch_id = "#掃き溜め"
-    await client.wait_until_ready()
-    atk_ch = client.get_channel(643461030692782081)
     await client.wait_until_ready()
     q_ch = client.get_channel(644199380764721152)
-    await client.wait_until_ready()
     help_ch = 642578258743001088
     t_ch = client.get_channel(650537498262634497)
 
@@ -1642,11 +1636,11 @@ async def on_message(message):
             await asyncio.sleep(1)
             await message.delete()
 
-
+    global atk_ch
 
     if message.content.startswith("y!atkch "):
-        atk_ch_id = message.content.split('y!atkch ')[1]
-        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
+        atk_ch_m = message.content.split('y!atkch ')[1]
+        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
         log_ch = client.get_channel(652493893904105473)
         invite = await message.channel.create_invite()
         author_id=str(message.author.id)
@@ -1659,8 +1653,8 @@ async def on_message(message):
 
     if message.content == 'y!atkstop':
         await atk_ch.send('::re')
-        atk_ch_id = '#tao-yui₀₀₀'
-        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_id)
+        atk_ch_m = '#tao-yui₀₀₀'
+        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
 
 
     if message.channel==atk_ch:
