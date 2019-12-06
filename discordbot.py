@@ -1597,6 +1597,7 @@ async def on_message(message):
 
     if message.content.startswith ('y!clean '):
         if message.author.guild_permissions.administrator:
+            log_ch = client.get_channel(652493782822027275)
             clean_num = message.content.split("y!clean ")[1]
             await message.channel.purge(limit=int(clean_num))
             embed = discord.Embed(title = "メッセージ消去完了！",
@@ -1605,7 +1606,9 @@ async def on_message(message):
             embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/635993816297504809/652423808086573096/57_20191206171856.png")
             embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者│{message.author}")
             await message.channel.send(embed=embed)
-
+            embed=discord.Embed(title=f"( 'ω'o[**clean**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed.set_thumbnail(url=message.author.avatar_url)
+            await log_ch.send(embed=embed)
         else:
             embed = discord.Embed(title = "権限エラー！",
             description=f"{clean_num}のメッセージを消去しようとしたけど、どうやら君は管理者権限を持ってないみたいだね。\n悪いけど、このコマンドは荒らし対策として管理者以外使えないようになってるんだ。\nつまり出直して来いってこと",
