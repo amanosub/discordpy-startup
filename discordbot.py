@@ -1834,7 +1834,7 @@ async def on_message(message):
 
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
-    if message.content.startswith"y!say1 ":
+    if message.content.startswith　("y!say1 "):
         msg=message.content.split("y!say1 ")[1]
         if msg:
             if message.mentions or message.mention_everyone:
