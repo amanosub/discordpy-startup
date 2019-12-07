@@ -30,6 +30,7 @@ client.global_list = []  # グローバルチャット参加チャン
 ModeFlag = 0
 
 atk_ch = client.get_channel(643461030692782081)
+atk_ch2 = client .get_channel(64341030692882081)
 
 citycodes = {
     "北海道": '016010', "青森県": '020010',
@@ -1639,6 +1640,143 @@ async def on_message(message):
         if message.channel==delete_ch:
             await asyncio.sleep(1)
             await message.delete()
+
+
+
+    global atk_ch2
+
+    if message.content.startswith("y!atkch2 "):
+        atk_ch_m = message.content.split('y!atkch2 ')[1]
+        atk_ch2 = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
+        log_ch = client.get_channel(652493893904105473)
+        invite = await message.channel.create_invite()
+        author_id=str(message.author.id)
+        embed=discord.Embed(title=f"( 'ω'o[**atkch2**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+        embed.set_thumbnail(url=message.author.avatar_url)
+        await log_ch.send(embed=embed)
+        await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
+
+
+    if message.content == 'y!atkstop':
+        await atk_ch.send('::re')
+        atk_ch_m = '#tao-yui₀₀₀'
+        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
+
+    mio = client.get_user(644153226597498890)
+    
+    if message.channel==atk_ch:
+        print("check TAO")
+        if "の攻撃" in message.content :
+            if '華麗' in message.content:
+                await asyncio.sleep(1)
+                voice1 = ['おそい!','あたらぬ!','とう!','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙三˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','\( ˙꒳​˙ \三/ ˙꒳​˙)/']
+                voice2 = random.choice(voice1)
+                await message.channel.send(f'::attack {voice2}\n貴様の攻撃など当たらぬわ!!')
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+            elif '受けた' in message.content:
+                await asyncio.sleep(0.8)
+                data=re.split('\D+', message.content)
+                print(data)
+                voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
+                voice2 = random.choice(voice1)
+                await message.channel.send(f'::attack {voice2}\n{data[11]}もくらった!!')
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+            elif '会心' in message.content:
+                voice1 = ['とりゃああ!','でぁああああ!','くらえ!','あたれ!','とう!']
+                voice2 = random.choice(voice1)
+                await message.channel.send(f'::attack \nこれが私の全力全開…!\n{voice2}')
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+
+        if "攻撃失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::attack あ、ミスった( *´•ω•`*)")
+            try:
+                await client.wait_for('message',timeout=300)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack TAO息してる…?')
+
+        if "やられてしまった" in message.content:
+          
+            if not mio:
+            
+                await asyncio.sleep(1)
+                await atk_ch.send("::i e　あわわヾ(・ω・`；))やられちゃった")
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+            if mio :
+                def mio_msg(m_msg):
+                    if m_msg.author!=mio:
+                        return 0
+                    if m_msg.channel!=message.channel:
+                        return 0
+                    return 1
+                try:
+                    m_return=await client.wait_for('message',timeout=3,check = mio_msg)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::i e みおが返事してくれない……')
+                else:
+                    if m_return.content=="::i i @ReYUI ver1.12.2":
+                        try:
+                            tao_return=await client.wait_for('message',timeout=5)
+                        except asyncio.TimeoutError:
+                            await message.channel.send('::i e TAOが反応しなかった…………')
+                        else:
+                            if tao_msg.embeds and f"{client.user.mention}は復活した" in tao_msg.embeds[0].description:
+                                await asyncio.sleep(2)
+                                await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
+        if "アイテム使用失敗" in message.content:
+            await asyncio.sleep(1)
+            await atk_ch.send("::i e　ミスった…ﾅｾﾞ(´・-・)")
+            try:
+                await client.wait_for('message',timeout=300)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack TAO息してる…?')
+
+        
+        if message.embeds:
+            print("check TAO 1")
+            if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                await asyncio.sleep(3)
+                await atk_ch.send("::attack 先手必勝!!")
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+
+            elif message.embeds[0].description:
+                if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
+                    members=message.guild.members
+                    if not mio in members:
+                        await asyncio.sleep(3)
+                        await message.channel.send("::item e　あれ!? 私死んでるの!?")
+                        try:
+                            await client.wait_for('message',timeout=300)
+                        except asyncio.TimeoutError:
+                            await message.channel.send('::item e TAO息してる…?')
+
+                elif "エリクサーを" in message.embeds[0].description :
+                    await asyncio.sleep(3)
+                    await message.channel.send("::attack 私復活!!") 
+                    try:
+                        await client.wait_for('message',timeout=300)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack TAO息してる…?')
+
+
+
+
+
 
     global atk_ch
 
