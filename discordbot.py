@@ -1724,7 +1724,7 @@ async def on_message(message):
                 except asyncio.TimeoutError:
                     await message.channel.send('::i e みおが返事してくれない……')
                 else:
-                    if m_return.content==f"::i i {client.user.mention}":
+                    if m_return.content=="::i i @ReYUI ver1.12.2":
                         try:
                             tao_return=await client.wait_for('message',timeout=5)
                         except asyncio.TimeoutError:
