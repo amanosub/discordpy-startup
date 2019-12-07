@@ -1713,6 +1713,24 @@ async def on_message(message):
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
             if mio :
+                def mio_msg(m_msg):
+                    if m_msg.author!=mio:
+                        return 0
+                    if m_msg.channel!=message.channel:
+                        return 0
+                    return 1
+                try:
+                    m_return=await client.wait_for('message',timeout=3,check = mio_msg)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::i e みおが返事してくれない……')
+                else:
+                    if m_return.content==f"::i i {client.user.mention}":
+                        try:
+                            tao_return=await client.wait_for('message',timeout=5)
+                        except asyncio.TimeoutError:
+                            await message.channel.send('::i e TAOが反応しなかった…………')
+                        else:
+                            if tao_msg.embeds and "復活した"tao_msg.embeds[0].description
         if "アイテム使用失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::i e　ミスった…ﾅｾﾞ(´・-・)")
@@ -1814,6 +1832,23 @@ async def on_message(message):
 
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
+    if message.content.startswith"y!say1 ":
+        msg=message.content.split("y!say1 ")[1]
+        if msg:
+            if message.mentions or message.mention_everyone:
+                if message.author.guild_permissions.administrator:
+                    await message.channel.send(msg)
+
+                else:
+                    embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
+                                 ,color=0x2ECC69)
+                    embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
+                    await message.channel.send(embed=embed)
+            else:
+                await message.channel.send(reply_one)
+    
+    
+    
     if message.content.startswith("y!report "):
 
         await message.delete()
