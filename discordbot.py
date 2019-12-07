@@ -1703,8 +1703,8 @@ async def on_message(message):
                 await message.channel.send('::attack TAO息してる…?')
 
         if "やられてしまった" in message.content:
-            members=message.guild.members
-            if not mio in members:
+          
+            if not mio:
             
                 await asyncio.sleep(1)
                 await atk_ch.send("::i e　あわわヾ(・ω・`；))やられちゃった")
@@ -1712,7 +1712,7 @@ async def on_message(message):
                     await client.wait_for('message',timeout=300)
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
-
+            if mio :
         if "アイテム使用失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::i e　ミスった…ﾅｾﾞ(´・-・)")
