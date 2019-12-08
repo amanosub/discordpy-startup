@@ -1668,7 +1668,7 @@ async def on_message(message):
         except asyncio.TimeoutError:
             await message.channel.send('::item f TAO息してる…?')
         else:
-            if start_msg.content.startswith("y!start")
+            if start_msg.content.startswith("y!start"):
                 await message.channel.send("::item f start")
             
 
