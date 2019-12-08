@@ -1684,7 +1684,7 @@ async def on_message(message):
                 if "フレア" in message.content and 'のHP' in message.content:
                     print('check')
                     await asyncio.sleep(0.7)
-                  
+                    await message.channel.send('::i f')
                     msg = ('ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ',"ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
 "(っ'-')╮=͟͟͞͞🔥) ﾟдﾟ ）",
 '(    ॑꒳ ॑)っ=͟͟͞͞ =͟͟͞͞🔥',
