@@ -1975,21 +1975,24 @@ async def on_message(message):
         if msg:
             if message.mentions or message.mention_everyone:
                 if message.author.guild_permissions.administrator:
+                    await message.delete()
                     await message.channel.send(msg)
 
                 else:
+                    
                     embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
                                  ,color=0x2ECC69)
                     embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                     await message.channel.send(embed=embed)
             else:
+                await message.delete()
                 await message.channel.send(msg)
     
     
     
     if message.content.startswith("y!report "):
 
-        await message.delete()
+        
         report_ch = client.get_channel(629327961132236800)
         reply = message.content.split('y!report ')[1]
         embed = discord.Embed(title='レポート内容\n' + (reply), description=f"発言者{message.author.mention}", color=0x2ECC69)
