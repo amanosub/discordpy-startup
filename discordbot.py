@@ -1227,7 +1227,7 @@ async def on_ready():
     await asyncio.gather(
         *(c.send(embed=embed) for c in client.get_all_channels() if c.name == '管理者用yui起動ログ'))  # quiz-yui₀₀
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
-    user = bot.get_user(446610711230152706)
+    user = client.get_user(446610711230152706)
     await user.send(embed=embed)
     await q_check_ch.send('check point')
 
