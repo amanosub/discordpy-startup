@@ -2054,7 +2054,7 @@ async def on_message(message):
         if not role_num in ["0","1","2","3"]:
             embed = discord.Embed(title='番号エラー!',
                               description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',
-                              color=discord.Color.red())]
+                              color=discord.Color.red())
             embed.set_footer(icon_url={message.author.avater_url},text=f"{message.author.name}")
             await message.channel.send(embed=embed)
         else:
