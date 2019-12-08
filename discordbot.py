@@ -1661,7 +1661,7 @@ async def on_message(message):
             if msg.channel != message.channel:
                 return 0
             if msg.content!="y!start":
-                retur 0
+                return 0
             return 1
         try:
             start_msgawait client.wait_for('message',timeout=300,check = start_check)
