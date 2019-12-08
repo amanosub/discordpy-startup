@@ -1645,58 +1645,40 @@ async def on_message(message):
 
     global atk_ch2
 
-    if message.content.startswith("y!atkch2 "):
-        atk_ch_m = message.content.split('y!atkch2 ')[1]
+    if message.content.startswith("y!ifch "):
+        atk_ch_m = message.content.split('y!ifch ')[1]
         atk_ch2 = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
         log_ch = client.get_channel(652493893904105473)
         invite = await message.channel.create_invite()
         author_id=str(message.author.id)
-        embed=discord.Embed(title=f"( 'ω'o[**atkch2**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+        embed=discord.Embed(title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
         embed.set_thumbnail(url=message.author.avatar_url)
         await log_ch.send(embed=embed)
-        await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
-
-
-    if message.content == 'y!atkstop':
-        await atk_ch.send('::re')
-        atk_ch_m = '#tao-yui₀₀₀'
-        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
+        await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
+        def start_check(msg):
+            if msg.author!=message.author:
+                return 0
+            if msg.channel != message.channel
+                return 0
+            if msg.content!="y!start"
+                reutnr 0
+            return 1
+        try:
+            start_msgawait client.wait_for('message',timeout=300,check = start_check)
+        except asyncio.TimeoutError:
+            await message.channel.send('::item f TAO息してる…?')
+        else:
+            if start_msg.content.startswith("y!start")
+                await message.channel.send("::item f start")
+            
 
     mio = client.get_user(644153226597498890)
     
-    if message.channel==atk_ch:
+    if message.channel==atk_ch2:
         print("check TAO")
-        if "の攻撃" in message.content :
-            if '華麗' in message.content:
-                await asyncio.sleep(1)
-                voice1 = ['おそい!','あたらぬ!','とう!','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙三˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','\( ˙꒳​˙ \三/ ˙꒳​˙)/']
-                voice2 = random.choice(voice1)
-                await message.channel.send(f'::attack {voice2}\n貴様の攻撃など当たらぬわ!!')
-                try:
-                    await client.wait_for('message',timeout=300)
-                except asyncio.TimeoutError:
-                    await message.channel.send('::attack TAO息してる…?')
-            elif '受けた' in message.content:
-                await asyncio.sleep(0.8)
-                data=re.split('\D+', message.content)
-                print(data)
-                voice1 = ['痛い!','ぴゃぁ!','あた!','いったぁ!','あうっ!']
-                voice2 = random.choice(voice1)
-                await message.channel.send(f'::attack {voice2}\n{data[11]}もくらった!!')
-                try:
-                    await client.wait_for('message',timeout=300)
-                except asyncio.TimeoutError:
-                    await message.channel.send('::attack TAO息してる…?')
-            elif '会心' in message.content:
-                voice1 = ['とりゃああ!','でぁああああ!','くらえ!','あたれ!','とう!']
-                voice2 = random.choice(voice1)
-                await message.channel.send(f'::attack \nこれが私の全力全開…!\n{voice2}')
-                try:
-                    await client.wait_for('message',timeout=300)
-                except asyncio.TimeoutError:
-                    await message.channel.send('::attack TAO息してる…?')
-
-        if "攻撃失敗" in message.content:
+        if "のダメージを与えた！" in message.content :
+            await message.channel.send("::i f")
+        if "アイテム使用失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack あ、ミスった( *´•ω•`*)")
             try:
@@ -1791,16 +1773,9 @@ async def on_message(message):
         await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!atk` てうってね")
 
-
-
-    if message.content == 'y!atkstop':
-        await atk_ch.send('::re')
-        atk_ch_m = '#tao-yui₀₀₀'
-        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
-
     mio = client.get_user(644153226597498890)
     
-    if message.channel==atk_ch:
+    if atk_ch.id != 643461030692782081 and message.channel==atk_ch:
         print("check TAO")
         if "の攻撃" in message.content :
             if '華麗' in message.content:
@@ -1832,7 +1807,7 @@ async def on_message(message):
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
 
-        if "攻撃失敗" in message.content:
+        if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::attack あ、ミスった( *´•ω•`*)")
             try:
@@ -1840,7 +1815,7 @@ async def on_message(message):
             except asyncio.TimeoutError:
                 await message.channel.send('::attack TAO息してる…?')
 
-        if "やられてしまった" in message.content:
+        if atk_ch.id != 643461030692782081 and "やられてしまった" in message.content:
           
             if not mio:
             
@@ -1871,7 +1846,7 @@ async def on_message(message):
                             if tao_msg.embeds and f"{client.user.mention}は復活した" in tao_msg.embeds[0].description:
                                 await asyncio.sleep(2)
                                 await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
-        if "アイテム使用失敗" in message.content:
+        if atk_ch.id != 643461030692782081 and "アイテム使用失敗" in message.content:
             await asyncio.sleep(1)
             await atk_ch.send("::i e　ミスった…ﾅｾﾞ(´・-・)")
             try:
@@ -1880,7 +1855,7 @@ async def on_message(message):
                 await message.channel.send('::attack TAO息してる…?')
 
         
-        if message.embeds:
+        if atk_ch.id != 643461030692782081 and message.embeds:
             print("check TAO 1")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 await asyncio.sleep(3)
@@ -1911,6 +1886,12 @@ async def on_message(message):
 
 
                     
+    if message.content == 'y!atkstop':
+        await atk_ch.send('::re')
+        await atk_ch2.send('::re')
+        atk_ch_m = '#tao-yui₀₀₀'
+        atk_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
+        atk_ch2 = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
 
 
 # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
