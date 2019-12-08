@@ -2759,8 +2759,7 @@ async def on_message(message):
         embed.add_field(name="エラー発生コマンド", value=message.content, inline=False)
         embed.add_field(name="発生エラー", value=e.args, inline=False)
         m = await client.get_channel(ch).send(embed=embed)
-        await message.channel.send(f"何らかのエラーが発生しました。ごめんなさい。\nこのエラーについて問い合わせるときはこのコードも一緒にお知らせください：{m.id}")            
-            
+  
 client.run(TOKEN)
 
      
