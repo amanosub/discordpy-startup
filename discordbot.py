@@ -1681,7 +1681,7 @@ async def on_message(message):
         if tao:
             if message.channel==atk_ch2:
                 print("check TAO")
-                if "のダメージを与えた！" in message.content and "フレア" in message.content:
+                if "のダメージを与えた！" in message.content:
                     await asyncio.sleep(0.7)
                     msg = ['ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ',
 "ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",
