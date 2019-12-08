@@ -1650,7 +1650,7 @@ async def on_message(message):
         if message.content.startswith("y!ifch "):
             atk_ch_m = message.content.split('y!ifch ')[1]
             atk_ch2 = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
-            log_ch = client.get_channel(652493893904105473)
+            log_ch = client.get_channel(653016505255985163)
             invite = await message.channel.create_invite()
             author_id=str(message.author.id)
             embed=discord.Embed(title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
@@ -1679,7 +1679,8 @@ async def on_message(message):
         if message.channel==atk_ch2:
             print("check TAO")
             if "のダメージを与えた！" in message.content and "フレア" in message.content:
-                await message.channel.send("::i f")
+                await asyncio.sleep(0.5)
+                await message.channel.send("::i f　(*ﾉ･ω･)ﾉ⌒。🔥")
             if "アイテム使用失敗" in message.content:
                 await asyncio.sleep(1)
                 await atk_ch.send("::item f あ、ミスった( *´•ω•`*)")
