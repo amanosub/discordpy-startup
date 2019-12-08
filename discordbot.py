@@ -1677,8 +1677,8 @@ async def on_message(message):
         mio = client.get_user(644153226597498890)
 
         tao = client.get_user(526620171658330112)
-        if tao.activity and "::help" in tao.activity.name:
 
+        if tao:
             if message.channel==atk_ch2:
                 print("check TAO")
                 if "のダメージを与えた！" in message.content and "フレア" in message.content:
