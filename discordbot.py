@@ -1739,7 +1739,16 @@ async def on_message(message):
 'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
                     f_msg=random.choice(msg)
                     await message.channel.send(f"::item ファイアボールの書\n{f_msg}")
-                   
+                    def msg_check(tao_msg):
+                        if tao_msg.channel!=message.channel:
+                            return 0
+                        if message.author!=tao_msg:
+                            return 0
+                        return 1
+                    try:
+                        await client.wait_for('message',timeout=60,check=msg_check)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::i f')
                 if "使用失敗" in message.content:
                     await asyncio.sleep(1)
                     await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
