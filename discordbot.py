@@ -2051,35 +2051,37 @@ async def on_message(message):
     # 「ろーる」と発言したら「::role」が返る処理
     if message.content.startswith('y!role '):
         role_num = message.content.split('y!role ')[1]
-        await message.channel.send('::role')
-
-        def role_check(tao_msg):
-            if not tao_msg.embeds:
-                return 0
-            if tao_msg.channel != message.channel:
-                return 0
-            return 1
-
-        try:
-            ans_msg = await client.wait_for('message', timeout=10, check=role_check)
-        except:
-            embed = discord.Embed(title='Error!!', description='もう一度試して見てね（￣▽￣;）\nもしかして以下の点が該当してないかな？\n‣TAOからの反応が１０秒以内に来なかった\n‣TAOがオフライン\n‣TAOが修理中', color=discord.Color.green())
+        if not role_num in ["0","1","2","3"]:
+            embed = discord.Embed(title='番号エラー!',
+                              description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',
+                              color=discord.Color.red())
             await message.channel.send(embed=embed)
         else:
-            await asyncio.sleep(2)
-            if role_num == '0':
-                await ans_msg.add_reaction(f'\u0030\u20e3')
-            elif role_num == '1':
-                await ans_msg.add_reaction(f'\u0031\u20e3')
-            elif role_num == '2':
-                await ans_msg.add_reaction(f'\u0032\u20e3')
-            elif role_num == '3':
-                await ans_msg.add_reaction(f'\u0033\u20e3')
-            elif not role_num in ["0","1","2","3"]:
-                embed = discord.Embed(title='エラー!',
-                                      description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',
-                                      color=discord.Color.red())
+            await message.channel.send('::role')
+
+            def role_check(tao_msg):
+                if not tao_msg.embeds:
+                    return 0
+                if tao_msg.channel != message.channel:
+                    return 0
+                return 1
+
+            try:
+                ans_msg = await client.wait_for('message', timeout=10, check=role_check)
+            except:
+                embed = discord.Embed(title='Error!!', description='もう一度試して見てね（￣▽￣;）\nもしかして以下の点が該当してないかな？\n‣TAOからの反応が１０秒以内に来なかった\n‣TAOがオフライン\n‣TAOが修理中', color=discord.Color.green())
                 await message.channel.send(embed=embed)
+            else:
+                await asyncio.sleep(2)
+                if role_num == '0':
+                    await ans_msg.add_reaction(f'\u0030\u20e3')
+                elif role_num == '1':
+                    await ans_msg.add_reaction(f'\u0031\u20e3')
+                elif role_num == '2':
+                    await ans_msg.add_reaction(f'\u0032\u20e3')
+                elif role_num == '3':
+                    await ans_msg.add_reaction(f'\u0033\u20e3')
+
     # 「あいてむ」と発言したら「::i」が返る処理
     if message.content == 'y!i':
         await message.channel.send('::i')
