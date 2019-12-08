@@ -1653,6 +1653,7 @@ async def on_message(message):
         author_id=str(message.author.id)
         embed=discord.Embed(title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
         embed.set_thumbnail(url=message.author.avatar_url)
+        awati log.ch.send(embed=embed)
         await log_ch.send(embed=embed)
         await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
         def start_check(msg):
@@ -1664,7 +1665,7 @@ async def on_message(message):
                 return 0
             return 1
         try:
-            start_msgawait client.wait_for('message',timeout=300,check = start_check)
+            start_msgawait = client.wait_for('message',timeout=300,check = start_check)
         except asyncio.TimeoutError:
             await message.channel.send('::item f TAO息してる…?')
         else:
