@@ -2060,7 +2060,7 @@ async def on_message(message):
         try:
             ans_msg = await client.wait_for('message', timeout=10, check=role_check)
         except:
-            embed = discord.Embed(title='Error!!', description='もう一度試して見てね（￣▽￣;）', color=discord.Color.green())
+            embed = discord.Embed(title='Error!!', description='もう一度試して見てね（￣▽￣;）\nもしかして以下の点が該当してないかな？\n‣TAOからの反応が１０秒以内に来なかった\n‣TAOがオフライン\n‣TAOが修理中', color=discord.Color.green())
             await message.channel.send(embed=embed)
         else:
             await asyncio.sleep(2)
