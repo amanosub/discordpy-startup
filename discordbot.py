@@ -1651,6 +1651,8 @@ async def on_message(message):
     global atk_ch
     global atk_ch2
 
+    
+    
     if message.content.startswith("y!ifch "):
         atk_ch_m = message.content.split('y!ifch ')[1]
         atk_ch2 = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
@@ -1781,7 +1783,7 @@ async def on_message(message):
 
     mio = client.get_user(644153226597498890)
     
-    if atk_ch.id != 643461030692782081 and message.channel==atk_ch:
+    if message.channel==atk_ch:
         print("check TAO")
         if "の攻撃" in message.content :
             if '華麗' in message.content:
@@ -1978,7 +1980,7 @@ async def on_message(message):
                     embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                     await message.channel.send(embed=embed)
             else:
-                await message.channel.send(reply_one)
+                await message.channel.send(msg)
     
     
     
