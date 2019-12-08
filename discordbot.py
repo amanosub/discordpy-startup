@@ -28,9 +28,10 @@ dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
 client.global_list = []  # グローバルチャット参加チャン
 ModeFlag = 0
+atk_ch = 2
+atk_ch2=2
 
-atk_ch = client.get_channel(643461030692782081)
-atk_ch2 = client .get_channel(64341030692882081)
+
 
 citycodes = {
     "北海道": '016010', "青森県": '020010',
@@ -1169,6 +1170,10 @@ client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛
 
 @client.event
 async def on_ready():
+    global atk_ch
+    global atk_ch2
+    atk_ch = client.get_channel(643461030692782081)
+    atk_ch2 = client .get_channel(64341030692882081)
     t_ch = client.get_channel(650537498262634497)
     client.ch = client.get_channel(644199380764721152)
     q_check_ch = client.get_channel(650390707013550086)
@@ -1675,7 +1680,7 @@ async def on_message(message):
 
     mio = client.get_user(644153226597498890)
     
-    if atk_ch.id != 643461030692782081 and message.channel==atk_ch2:
+    if atk_ch2.id != 643461030692782081 and message.channel==atk_ch2:
         print("check TAO")
         if "のダメージを与えた！" in message.content and "ファイアボール" in message.content:
             await message.channel.send("::i f")
