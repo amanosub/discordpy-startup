@@ -1685,7 +1685,7 @@ async def on_message(message):
                     print('check')
                     await asyncio.sleep(0.7)
                   
-                    msg = ['ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ',"ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
+                    msg = ('ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ',"ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
 "(っ'-')╮=͟͟͞͞🔥) ﾟдﾟ ）",
 '(    ॑꒳ ॑)っ=͟͟͞͞ =͟͟͞͞🔥',
 '(*ﾉФωФ)ﾉ三＝一🔥',
@@ -1736,10 +1736,10 @@ async def on_message(message):
 '( ☞ ˘ω˘ )☞>くそねみ<☜( ˘ω˘ ☜ )',
 'ｽﾔｧ━━━━━━( ˘ω˘ )━━━━━━…',
 '(˘ω˘ )三  一═┳┻︻▄( ˘ω˘ )▄︻┻┳═一',
-'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!']
+'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
                     f_msg=random.choice(msg)
                     await message.channel.send(f"::item ファイアボールの書\n{f_msg}")
-                    await message.channel.send('::i f ')
+                   
                 if "使用失敗" in message.content:
                     await asyncio.sleep(1)
                     await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
