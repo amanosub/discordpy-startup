@@ -1741,9 +1741,9 @@ async def on_message(message):
 'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!']
                     f_msg=random.choice(msg)
                     await message.channel.send("::item ファイアボールの書\n{f_msg}")
-                if "アイテム使用失敗" in message.content:
+                if "使用失敗" in message.content:
                     await asyncio.sleep(1)
-                    await atk_ch.send("::item f あ、ミスった( *´•ω•`*)")
+                    await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
                     try:
                         await client.wait_for('message',timeout=300)
                     except asyncio.TimeoutError:
@@ -1754,7 +1754,7 @@ async def on_message(message):
                     if not mio:
 
                         await asyncio.sleep(1)
-                        await atk_ch.send("::i e　あわわヾ(・ω・`；))やられちゃった")
+                        await atk_ch2.send("::i e　あわわヾ(・ω・`；))やられちゃった")
                         try:
                             await client.wait_for('message',timeout=300)
                         except asyncio.TimeoutError:
@@ -1782,7 +1782,7 @@ async def on_message(message):
                                         await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
                 if "使用失敗" in message.content:
                     await asyncio.sleep(1)
-                    await atk_ch.send("::i f　ミスった…ﾅｾﾞ(´・-・)")
+                    await atk_ch2.send("::i f　ミスった…ﾅｾﾞ(´・-・)")
                     try:
                         await client.wait_for('message',timeout=300)
                     except asyncio.TimeoutError:
@@ -1793,7 +1793,7 @@ async def on_message(message):
                     print("check TAO 1")
                     if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                         await asyncio.sleep(3)
-                        await atk_ch.send("::item f 先手必勝!!")
+                        await atk_ch2.send("::item f 先手必勝!!")
                         try:
                             await client.wait_for('message',timeout=300)
                         except asyncio.TimeoutError:
