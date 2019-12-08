@@ -1641,8 +1641,7 @@ async def on_message(message):
             await asyncio.sleep(1)
             await message.delete()
 
-
-
+    global atk_ch
     global atk_ch2
 
     if message.content.startswith("y!ifch "):
@@ -1760,7 +1759,7 @@ async def on_message(message):
 
 
 
-    global atk_ch
+
 
     if message.content.startswith("y!atkch "):
         atk_ch_m = message.content.split('y!atkch ')[1]
