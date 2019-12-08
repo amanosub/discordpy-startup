@@ -1725,7 +1725,7 @@ async def on_message(message):
                         except asyncio.TimeoutError:
                             await message.channel.send('::i e TAOが反応しなかった…………')
                         else:
-                            if tao_msg.embeds and f"{client.user.mention}は復活した" in tao_msg.embeds[0].description:
+                            if tao_return.embeds and f"{client.user.mention}は復活した" in tao_return.embeds[0].description:
                                 await asyncio.sleep(2)
                                 await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
         if "アイテム使用失敗" in message.content and atk_ch2.id != 643461030692782081:
