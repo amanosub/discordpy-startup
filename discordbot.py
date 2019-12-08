@@ -1584,7 +1584,7 @@ async def on_message(message):
                             return 0
                         else:
                             return reaction, user
-
+                    return 1
                 try:
                     reaction, user = await client.wait_for('reaction_add', check=kill_react_check, timeout=40)
                 except asyncio.TimeoutError:
@@ -1657,7 +1657,7 @@ async def on_message(message):
             embed=discord.Embed(title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
-            await atk_ch.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
+            await atk_ch2.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
             def start_check(msg):
                 if msg.author!=message.author:
                     return 0
@@ -2692,7 +2692,7 @@ async def on_message(message):
 
             
     except Exception as e:
-        ch = int型のチャンネルID
+        ch = 653240052326858762
         embed = discord.Embed(title="エラー情報", description="", color=0xf00)
         embed.add_field(name="エラー発生サーバー名", value=message.guild.name, inline=False)
         embed.add_field(name="エラー発生サーバーID", value=message.guild.id, inline=False)
