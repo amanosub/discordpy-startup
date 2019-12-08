@@ -1265,7 +1265,7 @@ async def check_loop():
 
 @tasks.loop(seconds=30)
 async def loop():
-
+    q_ch = client.get_channel(644199380764721152)
     tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
     last_message_time = tmp_timediff.total_seconds()
     if last_message_time > 400:
@@ -1605,9 +1605,10 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
     if message.content.startswith ('y!clean '):
+        log_ch = client.get_channel(652493918897963029)
+        clean_num = message.content.split("y!clean ")[1]
         if message.author.guild_permissions.administrator:
-            log_ch = client.get_channel(652493918897963029)
-            clean_num = message.content.split("y!clean ")[1]
+
             await message.channel.purge(limit=int(clean_num))
             embed = discord.Embed(title = "メッセージ消去完了！",
             description=f"{clean_num}のメッセージを消去したよ",
@@ -1672,12 +1673,12 @@ async def on_message(message):
                 return 0
             return 1
         try:
-            start_msgawait = client.wait_for('message',timeout=300,check = start_check)
+            start_msg = await client.wait_for('message',timeout=300,check = start_check)
         except asyncio.TimeoutError:
             await message.channel.send('::item f TAO息してる…?')
         else:
             if start_msg.content.startswith("y!start"):
-                await message.channel.send("::item f start")
+                await message.channel.send("::item f スタート！(*'ω'*)")
             
 
     mio = client.get_user(644153226597498890)
@@ -1857,7 +1858,7 @@ async def on_message(message):
                         except asyncio.TimeoutError:
                             await message.channel.send('::i e TAOが反応しなかった…………')
                         else:
-                            if tao_msg.embeds and f"{client.user.mention}は復活した" in tao_msg.embeds[0].description:
+                            if tao_return.embeds and f"{client.user.mention}は復活した" in tao_return.embeds[0].description:
                                 await asyncio.sleep(2)
                                 await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
         if atk_ch.id != 643461030692782081 and "アイテム使用失敗" in message.content:
