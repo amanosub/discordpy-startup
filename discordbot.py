@@ -1178,7 +1178,6 @@ async def on_ready():
     client.ch = client.get_channel(644199380764721152)
     q_check_ch = client.get_channel(650390707013550086)
     stloop.start()
-    loop.start()
     looop.start()
     check_loop.start()
 
@@ -1263,15 +1262,6 @@ async def check_loop():
                               check=quiz_check)
     except asyncio.TimeoutError:
         await q_ch.send('::q timeout_check')
-
-
-@tasks.loop(seconds=30)
-async def loop():
-    q_ch = client.get_channel(644199380764721152)
-    tmp_timediff = datetime.datetime.now() - q_ch.last_message.created_at
-    last_message_time = tmp_timediff.total_seconds()
-    if last_message_time > 400:
-        await q_ch.send('::q act.0')
 
 
 @tasks.loop(seconds=60)
