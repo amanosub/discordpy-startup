@@ -1675,7 +1675,7 @@ async def on_message(message):
 
     mio = client.get_user(644153226597498890)
     
-    if atkc_h.id != 643461030692782081 and message.channel==atk_ch2:
+    if atk_ch.id != 643461030692782081 and message.channel==atk_ch2:
         print("check TAO")
         if "のダメージを与えた！" in message.content and "ファイアボール" in message.content:
             await message.channel.send("::i f")
