@@ -1660,7 +1660,7 @@ async def on_message(message):
                 return 0
             if msg.channel != message.channel:
                 return 0
-            if msg.content!="y!start"
+            if msg.content!="y!start":
                 reutnr 0
             return 1
         try:
