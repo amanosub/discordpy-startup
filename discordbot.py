@@ -1678,17 +1678,20 @@ async def on_message(message):
                     await message.channel.send('::attack TAO息してる…?')
                 else:
                     pass
-        if 'コマンド失敗' in message.content and message.channel == d_ch:
-            await asyncio.sleep(1)
+        if '::at' in message.content and message.channel == d_ch and message.author==client.user:
             await d_ch.send('::attack')
             def d_check (d_msg):
                 if d_msg.author != tao:
                     return 0
                 if d_msg.channel!=d_ch:
                     return 0
+                if ']の攻撃' in d_msg.content:
+                    return 0
+                if not 'の攻撃' in d_msg.content and not 'のHP' in d_msg.content:
+                    return 0
                 return 1
             try:
-                await client.wait_for('message',timeout=20,check = d_check)
+                await client.wait_for('message',timeout=10,check = d_check)
             except asyncio.TimeoutError:
                 await message.channel.send('::attack TAO息してる…?')
             else:
