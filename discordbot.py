@@ -1684,6 +1684,8 @@ async def on_message(message):
                 def d_check (d_msg):
                     if d_msg.author != tao:
                         return 0
+                    if d_msg.channel!=d_ch:
+                        return 0
                     return 1
                 if '華麗' in message.content:
                     await asyncio.sleep(1)
