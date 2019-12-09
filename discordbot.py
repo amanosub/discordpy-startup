@@ -31,7 +31,7 @@ ModeFlag = 0
 atk_ch = 2
 atk_ch2=2
 d_ch = 2
-
+d_num = 1
 
 
 citycodes = {
