@@ -1655,10 +1655,13 @@ async def on_message(message):
             if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
                 await asyncio.sleep(1)
                 await message.channel.send("::re")
+                
                 d_num += 1
                 category_id = 653515134303731713
                 category = message.guild.get_channel(category_id)
                 await category.create_text_channel(name=f"第{d_num}階層")
+                emmbed = discord.Embed(title=f'世界樹第{d_num}層攻略' description=時刻│str(dateTime.year) + "年" + str(dateTime.month) + "月" + str(dateTime.day) +'日'+ str(
+                            (dateTime.hour) + 9) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒",)
                 d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
                 await asyncio.sleep(1)
                 await d_ch.send("::attack")
@@ -1669,15 +1672,16 @@ async def on_message(message):
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 print("check TAO DAN2")
-                await asyncio.sleep(3)
+                await asyncio.sleep(1)
                 await d_ch.send("::attack 先手必勝!!")
                 try:
                     await client.wait_for('message',timeout=300)
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
                 
-                
-               
+        if '攻撃失敗' in message.content and message.channel == d_ch:
+            await asyncio.sleep(1)
+            await d_ch.send('::attack')
         if message.channel==d_ch:
             print("check TAO_D")
             if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリン" in message.content:
