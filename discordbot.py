@@ -30,6 +30,7 @@ client.global_list = []  # グローバルチャット参加チャン
 ModeFlag = 0
 atk_ch = 2
 atk_ch2=2
+d_ch = 2
 
 
 
@@ -1634,16 +1635,127 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
 
-
-
-        if message.content.startswith('::') or "ダメージ" in message.content or "アタック失敗" in message.content :
-            delete_ch = client.get_channel(610998090094084097)
-            if message.channel==delete_ch:
-                await asyncio.sleep(1)
-                await message.delete()
-
         global atk_ch
         global atk_ch2
+        global d_ch
+        global d_num
+        mio = client.get_user(644153226597498890)
+        tao = client.get_user(526620171658330112)
+        d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+        
+        if message.channel = d_ch :
+            if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
+                await asyncio.sleep(1)
+                await message.channel.send("::re")
+                d_num += 1
+                category_id = 653515134303731713
+                category = message.guild.get_channel(category_id)
+                await category.create_text_channel(name=f"第{d_num}階層")
+                d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+                await asyncio.sleep(1)
+                await d_ch.send("::attack")
+                
+        if message.channel==d_ch:
+            print("check TAO_D")
+            if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリンの" in message.content:
+                def d_check (d_msg):
+                    if d_msg.author != tao:
+                        return 0
+                    return 1
+                if '華麗' in message.content:
+                    await asyncio.sleep(1)
+                    voice1 = ['おそい!','あたらぬ!','とう!','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙三˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','(˙꒳˙ 三 ˙꒳˙ 三 ˙꒳˙)','\( ˙꒳​˙ \三/ ˙꒳​˙)/']
+                    voice2 = random.choice(voice1)
+                    await message.channel.send(f'::attack {voice2}\n貴様の攻撃など当たらぬわ!!')
+                    try:
+                        await client.wait_for('message',timeout=300,check = d_check)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack TAO息してる…?')
+                elif '受けた' in message.content:
+                    await asyncio.sleep(0.8)
+                    voice1 = (
+'\n--------------------------------------三ｃ⌒っ.ω.)っ ｼｭｰ',
+'(｀・ω-)『』▄︻┻┳═一',
+'(*･ω･)▄︻┻┳═一　＝＝＝・',
+'( ˘ω˘ )ｽﾔｧ…',
+'乁( ˙ ω˙乁)',
+'ﾌﾝｽ(   ´ ꒳ ` )=3',
+'( ˘ω˘ ) ｽﾔｧ…',
+'=^･ω･^=',
+'･*･:≡(　ε:)',
+'ｶﾓﾝщ(ﾟдﾟщ)ｶﾓｰﾝ♪',
+'( ‘д‘⊂彡☆))Д´) ﾊﾟｰﾝ',
+'_(´ω`_)⌒)_　））ｽﾞﾘｽﾞﾘ',
+'ŧ‹”ŧ‹”ŧ‹”ŧ‹”(๑´ㅂ`๑)ŧ‹”ŧ‹”ŧ‹”ŧ‹”',
+'c(`･ω´･ c)っ≡つ ﾊﾞﾊﾞﾊﾞﾊﾞ',
+'_(°ω°｣ ∠)_三_(°ω°｣ ∠)_三 ｻﾞｯｻﾞｯ',
+'三└(┐卍^o^)卍'
+'(^ω^≡^ω^)',
+'(:3[▓▓]',
+'(*ﾟ∀ﾟ)つ＝lニニフ',
+'(((((((((((っ･ω･)っ ﾌﾞｰﾝ',
+"\n三('ω')三( ε: )三(.ω.)三( :3 )三('ω')三( ε: )三(.ω.)三( :3 )ｺﾞﾛｺﾞﾛｺﾞﾛ",
+'ε-(/･ω･)/ ﾄｫｰｯ!!',
+'(:3 」∠)',
+'( 　˙-˙　 )',
+'(꜆꜄꜆˙꒳˙)꜆꜄꜆',
+'|ω･)وﾞ ㌧㌧㌧',
+'(˘ω˘ ≡ ˘ω˘)',
+':.ﾟ٩(๑˘ω˘๑)۶:.｡',
+'( ˘ω˘ )つ[ｵﾌﾄｩﾝ]',
+'(☞三☞ ˘ω˘ )☞三☞'
+'(๑-﹏-๑)',
+'(╬ ˘̀^˘́ )',
+'(³ ┐³)ｱｰｸｿﾈﾐｰ',
+'((( ˘ω˘ )))ﾋﾞｸｯ',
+':.ﾟ٩(๑˘ω˘๑)۶:.｡',
+'(˘ω˘)クソネミ',
+'(#˘ω˘#)ﾃﾚｽﾔｧ…',
+'( ˘ω˘ 三˘ω˘ ) 残像だ…',
+'三└(┐卍 ˘ω˘)卍ｽﾔｧｱｱｱｱ',
+'((((⊂（ ˘ω˘ )⊃))))ﾈﾐｨｿﾞｫ！',
+'三┏ ( 睡魔 )┛三┏ ( ˘ω˘ )┛',
+'ｸｿﾈﾐﾌｧｲﾔｰ!!( ˘ω˘)＝＝＝＝＝＝',
+'ｺﾉﾐﾅﾝﾉﾐ…( ˘ω˘ )ﾉ◎  クソネ実！',
+'(｣˘ω˘ )」クソ…( ／˘ω˘ )／ネミー！',
+'( ☞ ˘ω˘ )☞>くそねみ<☜( ˘ω˘ ☜ )',
+'ｽﾔｧ━━━━━━( ˘ω˘ )━━━━━━…',
+'(˘ω˘ )三  一═┳┻︻▄( ˘ω˘ )▄︻┻┳═一',
+'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
+                    voice2 = random.choice(voice1)
+                    await message.channel.send(f'::attack {voice2}')
+                    try:
+                        await client.wait_for('message',timeout=300,check = d_check)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack TAO息してる…?')
+                elif '会心' in message.content:
+                    voice1 = ['とりゃああ!','でぁああああ!','くらえ!','あたれ!','とう!']
+                    voice2 = random.choice(voice1)
+                    await message.channel.send(f'::attack \nこれが私の全力全開…!\n{voice2}')
+                    try:
+                        await client.wait_for('message',timeout=300,check = d_check)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack TAO息してる…?')
+                elif 'かわされ' in message.content:
+                    voice1 = ['逃げんなおらぁｱｱｱｱ！','避けんぁああ!','っち、外した!','避けんな!','あーもう避けんなうざったい!']
+                    voice2 = random.choice(voice1)
+                    await message.channel.send(f'::attack \n{voice2}')
+
+                    try:
+                        await client.wait_for('message',timeout=300,check = d_check)
+                    except asyncio.TimeoutError:
+                        await message.channel.send('::attack \nうごいてー\n……そ、そんなに避けたこと怒られたのショックだったの……？')
+
+
+
+            if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
+                await asyncio.sleep(1)
+                await atk_ch.send("::attack あ、ミスった( *´•ω•`*)")
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+
 
 
 
@@ -1678,14 +1790,22 @@ async def on_message(message):
 
         tao = client.get_user(526620171658330112)
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
         if tao:
             if message.channel==atk_ch2:
                 print("check TAO")
                 if "フレア" in message.content and 'のHP' in message.content:
                     print('check')
                     await asyncio.sleep(0.7)
-                    await message.channel.send('::i f')
-                    msg = ('ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ',"ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
+                    msg = ("ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ","ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
 "(っ'-')╮=͟͟͞͞🔥) ﾟдﾟ ）",
 '(    ॑꒳ ॑)っ=͟͟͞͞ =͟͟͞͞🔥',
 '(*ﾉФωФ)ﾉ三＝一🔥',
