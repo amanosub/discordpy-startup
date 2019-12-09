@@ -1679,7 +1679,6 @@ async def on_message(message):
                 else:
                     pass
         if '::at' in message.content and message.channel == d_ch and message.author==client.user:
-            await d_ch.send('::attack')
             def d_check (d_msg):
                 if d_msg.author != tao:
                     return 0
