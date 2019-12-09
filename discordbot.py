@@ -1678,7 +1678,7 @@ async def on_message(message):
                     await message.channel.send('::attack TAO息してる…?')
                 else:
                     pass
-        if '攻撃失敗' in message.content and message.channel == d_ch:
+        if 'コマンド失敗' in message.content and message.channel == d_ch:
             await asyncio.sleep(1)
             await d_ch.send('::attack')
             def d_check (d_msg):
