@@ -1323,7 +1323,6 @@ async def on_message(message):
         q_ch = client.get_channel(644199380764721152)
         help_ch = 642578258743001088
         t_ch = client.get_channel(650537498262634497)
-
         q_check_ch = client.get_channel(65039070701355008)
 
         # 🔷test運用➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
