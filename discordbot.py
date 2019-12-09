@@ -1676,10 +1676,23 @@ async def on_message(message):
                     await client.wait_for('message',timeout=300)
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
-                
+                else:
+                    pass
         if '攻撃失敗' in message.content and message.channel == d_ch:
             await asyncio.sleep(1)
             await d_ch.send('::attack')
+            def d_check (d_msg):
+                if d_msg.author != tao:
+                    return 0
+                if d_msg.channel!=d_ch:
+                    return 0
+                return 1
+            try:
+                await client.wait_for('message',timeout=20,check = d_check)
+            except asyncio.TimeoutError:
+                await message.channel.send('::attack TAO息してる…?')
+            else:
+                pass
         if message.channel==d_ch:
             print("check TAO_D")
             if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリン" in message.content:
@@ -1695,9 +1708,11 @@ async def on_message(message):
                     voice2 = random.choice(voice1)
                     await message.channel.send(f'::attack {voice2}\n貴様の攻撃など当たらぬわ!!')
                     try:
-                        await client.wait_for('message',timeout=300,check = d_check)
+                        await client.wait_for('message',timeout=20,check = d_check)
                     except asyncio.TimeoutError:
                         await message.channel.send('::attack TAO息してる…?')
+                    else:
+                        pass
                 elif '受けた' in message.content:
                     await asyncio.sleep(0.8)
                     voice1 = (
@@ -1752,15 +1767,17 @@ async def on_message(message):
                     voice2 = random.choice(voice1)
                     await message.channel.send(f'::attack {voice2}')
                     try:
-                        await client.wait_for('message',timeout=300,check = d_check)
+                        await client.wait_for('message',timeout=20,check = d_check)
                     except asyncio.TimeoutError:
                         await message.channel.send('::attack TAO息してる…?')
+                    else:
+                        pass
                 elif '会心' in message.content:
                     voice1 = ['とりゃああ!','でぁああああ!','くらえ!','あたれ!','とう!']
                     voice2 = random.choice(voice1)
                     await message.channel.send(f'::attack \nこれが私の全力全開…!\n{voice2}')
                     try:
-                        await client.wait_for('message',timeout=300,check = d_check)
+                        await client.wait_for('message',timeout=20,check = d_check)
                     except asyncio.TimeoutError:
                         await message.channel.send('::attack TAO息してる…?')
                 elif 'かわされ' in message.content:
@@ -1769,7 +1786,7 @@ async def on_message(message):
                     await message.channel.send(f'::attack \n{voice2}')
 
                     try:
-                        await client.wait_for('message',timeout=300,check = d_check)
+                        await client.wait_for('message',timeout=20,check = d_check)
                     except asyncio.TimeoutError:
                         await message.channel.send('::attack \nうごいてー\n……そ、そんなに避けたこと怒られたのショックだったの……？')
 
@@ -1779,7 +1796,7 @@ async def on_message(message):
                 await asyncio.sleep(1)
                 await atk_ch.send("::attack あ、ミスった( *´•ω•`*)")
                 try:
-                    await client.wait_for('message',timeout=300)
+                    await client.wait_for('message',timeout=20)
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
 
@@ -1805,7 +1822,7 @@ async def on_message(message):
                     return 0
                 return 1
             try:
-                start_msg = await client.wait_for('message',timeout=300,check = start_check)
+                start_msg = await client.wait_for('message',timeout=20,check = start_check)
             except asyncio.TimeoutError:
                 await message.channel.send('::item f TAO息してる…?')
             else:
