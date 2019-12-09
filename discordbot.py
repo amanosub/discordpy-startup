@@ -1661,13 +1661,11 @@ async def on_message(message):
                 category_id = 653515134303731713
                 category = message.guild.get_channel(category_id)
                 await category.create_text_channel(name=f"第{d_num}階層")
-                emmbed = discord.Embed(title=f'世界樹第{d_num}層攻略',description=時刻│str(dateTime.year) + "年" + str(dateTime.month) + "月" + str(dateTime.day) +'日'+ str(dateTime.hour) + 9) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒")
+                emmbed = discord.Embed(title=f'世界樹第{d_num}層攻略',description=f"時刻│{dateTime.year}年" + str(dateTime.month) + "月" + str(dateTime.day) + '日' + str(dateTime.hour + 9) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒")
                 d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
                 await asyncio.sleep(1)
                 await d_ch.send("::attack")
-                
-                
-                
+
         if message.channel == d_ch and message.embeds:
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
