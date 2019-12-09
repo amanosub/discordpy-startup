@@ -1173,6 +1173,8 @@ client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛
 async def on_ready():
     global atk_ch
     global atk_ch2
+    global d_ch
+    d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
     atk_ch = client.get_channel(643461030692782081)
     atk_ch2 = client .get_channel(64341030692882081)
     t_ch = client.get_channel(650537498262634497)
@@ -1641,7 +1643,7 @@ async def on_message(message):
         global d_num
         mio = client.get_user(644153226597498890)
         tao = client.get_user(526620171658330112)
-        d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+
         
         if message.channel == d_ch :
             if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
