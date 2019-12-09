@@ -1690,7 +1690,7 @@ async def on_message(message):
                     return 0
                 return 1
             try:
-                await client.wait_for('message',timeout=20,check = d_check)
+                await client.wait_for('message',timeout=5,check = d_check)
             except asyncio.TimeoutError:
                 await message.channel.send('::attack TAO息してる?')
             else:
@@ -1716,7 +1716,7 @@ async def on_message(message):
                     else:
                         pass
                 elif '受けた' in message.content:
-                    await asyncio.sleep(0.8)
+                    await asyncio.sleep(1)
                     voice1 = (
 '\n--------------------------------------三ｃ⌒っ.ω.)っ ｼｭｰ',
 '(｀・ω-)『』▄︻┻┳═一',
