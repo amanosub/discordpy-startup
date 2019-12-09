@@ -1691,9 +1691,9 @@ async def on_message(message):
                     return 0
                 return 1
             try:
-                await client.wait_for('message',timeout=10,check = d_check)
+                await client.wait_for('message',timeout=20,check = d_check)
             except asyncio.TimeoutError:
-                await message.channel.send('::attack TAO息してる…?')
+                await message.channel.send('::attack TAO息してる?')
             else:
                 pass
         if message.channel==d_ch:
