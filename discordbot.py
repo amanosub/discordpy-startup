@@ -1666,10 +1666,11 @@ async def on_message(message):
                 
                 
         if message.channel == d_ch and message.embeds:
-            print("check TAO ")
+            print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                print("check TAO DAN2")
                 await asyncio.sleep(3)
-                await atk_ch.send("::attack 先手必勝!!")
+                await d_ch.send("::attack 先手必勝!!")
                 try:
                     await client.wait_for('message',timeout=300)
                 except asyncio.TimeoutError:
@@ -1679,7 +1680,7 @@ async def on_message(message):
                
         if message.channel==d_ch:
             print("check TAO_D")
-            if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリンの" in message.content:
+            if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリン" in message.content:
                 def d_check (d_msg):
                     if d_msg.author != tao:
                         return 0
