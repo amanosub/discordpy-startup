@@ -1663,6 +1663,20 @@ async def on_message(message):
                 await asyncio.sleep(1)
                 await d_ch.send("::attack")
                 
+                
+                
+        if message.channel == d_ch and message.embeds:
+            print("check TAO ")
+            if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                await asyncio.sleep(3)
+                await atk_ch.send("::attack 先手必勝!!")
+                try:
+                    await client.wait_for('message',timeout=300)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack TAO息してる…?')
+                
+                
+               
         if message.channel==d_ch:
             print("check TAO_D")
             if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリンの" in message.content:
@@ -1799,12 +1813,7 @@ async def on_message(message):
         tao = client.get_user(526620171658330112)
 
         
-        
-        
-        
-        
-        
-        
+       
         
         
         if tao:
