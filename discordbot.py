@@ -1643,7 +1643,7 @@ async def on_message(message):
         tao = client.get_user(526620171658330112)
         d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
         
-        if message.channel = d_ch :
+        if message.channel == d_ch :
             if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
                 await asyncio.sleep(1)
                 await message.channel.send("::re")
