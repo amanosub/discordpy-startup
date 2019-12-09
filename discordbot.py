@@ -2890,7 +2890,7 @@ async def on_message(message):
         embed.add_field(name="エラー発生ユーザーID", value=message.author.id, inline=False)
         embed.add_field(name="エラー発生コマンド", value=message.content, inline=False)
         embed.add_field(name="発生エラー", value=e.args, inline=False)
-        embed.set_thumbnil(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
+        embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
         m = await client.get_channel(ch).send(embed=embed)
   
 client.run(TOKEN)
