@@ -1218,6 +1218,9 @@ async def on_ready():
                         value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day) + "\n " + str(
                             jp_time) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=False)
         embed.add_field(name="YUI news", value="大幅に改良！\n詳しくはヘルプの第七項から公式鯖へ", inline=True)
+        await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
+        helplog_ch = client.get_channel(653240636354330651)
+        await helplog_ch.send(embed=embed)
 
         await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
     else:
@@ -1231,6 +1234,9 @@ async def on_ready():
         embed.add_field(name="YUI news", value="アップグレード！役職が変更できるように!!\n詳しくはヘルプの第七項から公式鯖へ", inline=True)
         await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
+        helplog_ch = client.get_channel(653240636354330651)
+        await helplog_ch.send(embed=embed)
+        
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
     await q_check_ch.send('check point')
