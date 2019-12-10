@@ -1753,8 +1753,10 @@ async def on_message(message):
                 try:
                     await client.wait_for('message',timeout=3,check = d_check)
                 except asyncio.TimeoutError:
-                    await message.channel.send('::attack pet攻撃なし')
+                    print('::attack')
+                    await d_ch.send('::attack pet攻撃なし')
                 else:
+                    print('::attack 2')
                     await d_ch.send(f'::attack voice2')
 
             if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
