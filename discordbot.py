@@ -1725,8 +1725,7 @@ async def on_message(message):
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack 1')
                 else:
-                   
-               
+                    pass
             if "の攻撃" in message.content and "のHP" in message.content and not "]の攻撃" in message.content:
                 def d_check (d_msg):
                     if d_msg.author != tao:
