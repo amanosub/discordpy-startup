@@ -1668,7 +1668,20 @@ async def on_message(message):
             if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
                 await asyncio.sleep(5)
                 await message.channel.send("::re")
-                
+                def re_check(tao_msg):
+                    if tao_msg.author!=tao:
+                        return 0
+                    if not 'コマンド失敗。ゆっくりコマンドを打ってね。' in tao.msg.content:
+                        return 0
+                    if tao_msg.channel!=d_ch:
+                        return 0
+                    return 1
+                try:
+                    await client.wait_for('massage',timeout=5,check=re_check)
+                except asyncio.TimeoutErro:
+                    pass
+                else:
+                    await message.channel.send('::re')
                 d_num += 1
                 category_id = 653515134303731713
                 category = message.guild.get_channel(category_id)
