@@ -1692,6 +1692,7 @@ async def on_message(message):
                     b_num=d_num-1
                     b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
+                    await asyncio.sleep(5)
                     await d_ch.send('::attack')
                 else:
                     d_ch=await category.create_text_channel(name=f"第{d_num}階層")
@@ -1699,7 +1700,7 @@ async def on_message(message):
                     b_num=d_num-1
                     b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
-
+                    await asyncio.sleep(5)
                     await d_ch.send("::attack")
 
         if message.channel == d_ch and message.embeds:
