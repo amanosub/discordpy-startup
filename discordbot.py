@@ -1682,6 +1682,7 @@ async def on_message(message):
             await d_ch.send('::attack 攻略開始')
         if message.channel == d_ch :
             if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
+                d_flag = False
                 await asyncio.sleep(5)
                 d_num += 1
                 category_id = 653515134303731713
@@ -1693,6 +1694,7 @@ async def on_message(message):
                     b_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
                     await asyncio.sleep(5)
+                    d_flag=True
                     await d_ch.send('::attack')
                 else:
                     d_ch=await client.get_guild(654086105699844108).create_text_channel(name=f"第{d_num}階層")
@@ -1701,6 +1703,7 @@ async def on_message(message):
                     b_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
                     await asyncio.sleep(5)
+                    d_flag=True
                     await d_ch.send("::attack")
 
         if d_flag == True and message.channel == d_ch and message.embeds:
