@@ -1686,24 +1686,24 @@ async def on_message(message):
                 d_num += 1
                 category_id = 653515134303731713
                 category = message.guild.get_channel(category_id)
-                d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+                d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
                 if d_ch:
                     await asyncio.sleep(3)
                     b_num=d_num-1
-                    b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{b_num}階層')
+                    b_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
                     await asyncio.sleep(5)
                     await d_ch.send('::attack')
                 else:
-                    d_ch=await category.create_text_channel(name=f"第{d_num}階層")
+                    d_ch=await client.get_guild(654086105699844108).create_text_channel(name=f"第{d_num}階層")
                     await asyncio.sleep(3)
                     b_num=d_num-1
-                    b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{b_num}階層')
+                    b_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
                     await asyncio.sleep(5)
                     await d_ch.send("::attack")
 
-        if message.channel == d_ch and message.embeds:
+        if d_flag == True and message.channel == d_ch and message.embeds:
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 print("check TAO DAN2")
