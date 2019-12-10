@@ -1651,13 +1651,16 @@ async def on_message(message):
         mio = client.get_user(644153226597498890)
         tao = client.get_user(526620171658330112)
         if message.content=='y!devac':
+            print ('dcap')
             d_flag=False
             await asyncio.sleep(5)
             await d_ch.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
             await message.author.send(embed=embed)
         if message.content=='y!dcap':
+
             d_flag=True
+            await asyncio.sleep(5)
             embed=discord.embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
             await d_ch.send('::attack 攻略開始')
