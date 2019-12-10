@@ -1334,7 +1334,7 @@ async def on_message(message):
         # help_embed.add_field(name="```y!ch [channel ID]```",value='このコマンドを使った後に**ゆいがんばれ**って言ってくれたら指定したチャンネルでアタックをするから\n後でスイーツおごってもらうからね\n止めてほしいときは**ゆいおつかれ**って言って')
         help_embed.add_field(
             name='y!atkch [チャンネルメンション]'
-            , value='```指定した場所を対象に設定\n指定の場所でy!atk\n止める時はy!atkstop```'
+            , value='~~```指定した場所を対象に設定\n指定の場所でy!atk\n止める時はy!atkstop~~```**現在互換性のある機能を開発中につき停止中です**'
             , inline=True)
 
         help_embed.add_field(
@@ -1963,7 +1963,7 @@ async def on_message(message):
                                 await client.wait_for('message',timeout=300)
                             except asyncio.TimeoutError:
                                 await message.channel.send('::i f TAO息してる…?')
-        if message.content.startswith('y!atkch ')
+        if message.content.startswith('y!atkch '):
             embed = discord.Embed(title='現在停止中です!')
             embed.set_footer(icon_url=message.author.avatar_url,text=message.author.name)
 
