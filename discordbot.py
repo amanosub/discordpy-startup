@@ -1273,6 +1273,21 @@ async def check_loop():
     except asyncio.TimeoutError:
         await q_ch.send('::q timeout_check')
 
+@tasks.loop(seconds=60)
+async def d_loop():
+    if d_flag==True:
+        d_ch.send('check point')
+        tao = client.get_user(526620171658330112)    
+        def re_check(t_msg):
+            if t_msg.author!=tao:
+                return 0
+            if t_msg.channel!=d_ch:
+                return 0
+            return 1
+        try:
+            await client.wait_for('massage',timeout=30,check=re_check)
+        except asyncio.TimeoutError:
+            await d_ch.send('::attack 止まってるんだよなぁ')
 
 @tasks.loop(seconds=60)
 async def looop():
