@@ -1183,6 +1183,7 @@ async def on_ready():
     q_check_ch = client.get_channel(650390707013550086)
     stloop.start()
     looop.start()
+    d_loop.start()
     check_loop.start()
 
     print('Logged in as')
