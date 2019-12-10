@@ -1734,7 +1734,7 @@ async def on_message(message):
                     await d_ch.send('::attack pet攻撃なし')
                 else:
                     print('pet')
-                    if 'の攻撃' in t_res and 'のHP' in t_res:
+                    if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
                         print('::attack 2')
                         await d_ch.send(f'::attack ')
 
