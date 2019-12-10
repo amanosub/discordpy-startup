@@ -1966,7 +1966,7 @@ async def on_message(message):
         if message.content.startswith('y!atkch '):
             embed = discord.Embed(title='現在停止中です!')
             embed.set_footer(icon_url=message.author.avatar_url,text=message.author.name)
-
+            await message.channel.send(embed = embed)
 
 
 
