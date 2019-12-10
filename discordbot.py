@@ -1749,7 +1749,7 @@ async def on_message(message):
                             'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
                 voice2 = random.choice(voice1)
                 try:
-                    await client.wait_for('message',timeout=3,check = d_check)
+                    await client.wait_for('message',timeout=5,check = d_check)
                 except asyncio.TimeoutError:
                     print('::attack')
                     await d_ch.send('::attack pet攻撃なし')
