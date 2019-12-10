@@ -1721,23 +1721,23 @@ async def on_message(message):
                         return 0               
                     return 1
                 try:
-                    await client.wait_for('message',timeout=3,check = pet_check)
+                    await client.wait_for('message',timeout=10,check = pet_check)
                 except asyncio.TimeoutError:
-                    await message.channel.send('::attack')
+                    await message.channel.send('::attack 1')
                 else:
-                    pass
-                return
-            if "の攻撃" in message.content and "のHP" in message.content and not "ゴブリン" in message.content:
+                   
+               
+            if "の攻撃" in message.content and "のHP" in message.content and not "]の攻撃" in message.content:
                 def d_check (d_msg):
                     if d_msg.author != tao:
                         return 0
                     if d_msg.channel!=d_ch:
                         return 0
+                    if not ']の攻撃' in d_msg:
+                        return 0
                     return 1
-     
-                if '受けた' in message.content:
-                    await asyncio.sleep(1)
-                    voice1 = (
+    
+                voice1 = (
                             '\n--------------------------三ｃ⌒っ.ω.)っ ｼｭｰ',
                             '(｀・ω-)『』▄︻┻┳═一',
                             '(*･ω･)▄︻┻┳═一　＝＝＝・',
@@ -1764,14 +1764,13 @@ async def on_message(message):
                             '( ☞ ˘ω˘ )☞>くそねみ<☜( ˘ω˘ ☜ )','ｽﾔｧ━━━━━━( ˘ω˘ )━━━━━━…',
                             '(˘ω˘ )三  一═┳┻︻▄( ˘ω˘ )▄︻┻┳═一',
                             'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
-                    voice2 = random.choice(voice1)
-                    await message.channel.send(f'::attack {voice2}')
-                    try:
-                        await client.wait_for('message',timeout=20,check = d_check)
-                    except asyncio.TimeoutError:
-                        await message.channel.send('::attack TAO息してる…?')
-                    else:
-                        pass
+                voice2 = random.choice(voice1)
+                try:
+                    await client.wait_for('message',timeout=3,check = d_check)
+                except asyncio.TimeoutError:
+                    await message.channel.send('::attack pet攻撃なし')
+                else:
+                    await d_ch.send(f'::attack voice2')
 
             if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
                 await asyncio.sleep(1)
