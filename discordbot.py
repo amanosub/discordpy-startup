@@ -1674,14 +1674,14 @@ async def on_message(message):
                 if d_ch:
                     await asyncio.sleep(3)
                     b_num=d_num-1
-                    b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+                    b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
                     await d_ch.send('::attack')
                 else:
                     d_ch=await category.create_text_channel(name=f"第{d_num}階層")
                     await asyncio.sleep(3)
                     b_num=d_num-1
-                    b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+                    b_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{b_num}階層')
                     await b_ch.send('::re')
 
                     await d_ch.send("::attack")
