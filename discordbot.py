@@ -1678,7 +1678,7 @@ async def on_message(message):
                     return 1
                 try:
                     await client.wait_for('massage',timeout=5,check=re_check)
-                except asyncio.TimeoutErro:
+                except asyncio.TimeoutError:
                     pass
                 else:
                     await message.channel.send('::re')
