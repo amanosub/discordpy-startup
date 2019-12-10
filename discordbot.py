@@ -1741,13 +1741,14 @@ async def on_message(message):
                             'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
                 voice2 = random.choice(voice1)
                 try:
-                    await client.wait_for('message',timeout=5,check = d_check)
+                    t_res=await client.wait_for('message',timeout=6,check = d_check)
                 except asyncio.TimeoutError:
                     print('::attack')
                     await d_ch.send('::attack pet攻撃なし')
                 else:
-                    print('::attack 2')
-                    await d_ch.send(f'::attack voice2')
+                    if ']の攻撃' in t_res:
+                        print('::attack 2')
+                        await d_ch.send(f'::attack voice2')
 
             if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
                 await asyncio.sleep(1)
