@@ -1659,8 +1659,8 @@ async def on_message(message):
                 d_num += 1
                 category_id = 653515134303731713
                 category = message.guild.get_channel(category_id)
-               
-                if d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層'):
+                d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+                if d_ch:
                     await asyncio.sleep(1)
                     await d_ch.send('::attack')
                 else:
