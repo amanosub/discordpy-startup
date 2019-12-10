@@ -1724,8 +1724,6 @@ async def on_message(message):
                         return 0
                     if d_msg.channel!=d_ch:
                         return 0
-                    if not ']の攻撃' in d_msg:
-                        return 0
                     return 1
     
                 voice1 = (
@@ -1762,9 +1760,9 @@ async def on_message(message):
                     print('::attack')
                     await d_ch.send('::attack pet攻撃なし')
                 else:
-                    if ']の攻撃' in t_res:
+                    if 'の攻撃' in t_res:
                         print('::attack 2')
-                        await d_ch.send(f'::attack voice2')
+                        await d_ch.send(f'::attack {voice2}')
 
             if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
                 await asyncio.sleep(1)
