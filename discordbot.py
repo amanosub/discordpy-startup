@@ -1693,6 +1693,8 @@ async def on_message(message):
                     await message.channel.send('::attack TAO息してる…?')
                 else:
                     pass
+
+'''
         if '::at' in message.content and message.channel == d_ch and message.author==client.user and d_flag==True:
             def d_check (d_msg):
                 if d_msg.author != tao:
@@ -1710,8 +1712,9 @@ async def on_message(message):
                 await message.channel.send('::attack TAO息してる?')
             else:
                 pass
+'''
         if message.channel==d_ch and d_flag==True:
-            if "の攻撃" in message.content and "のHP" in message.content and not "]の攻撃" in message.content:
+            if "の攻撃" in message.content and "のHP" in message.content:
                 print('@')
                 def d_check (d_msg):
                     if d_msg.author != tao:
