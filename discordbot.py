@@ -1695,24 +1695,6 @@ async def on_message(message):
                     pass
 
 
-"""        if '::at' in message.content and message.channel == d_ch and message.author==client.user and d_flag==True:
-            def d_check (d_msg):
-                if d_msg.author != tao:
-                    return 0
-                if d_msg.channel!=d_ch:
-                    return 0
-                if ']の攻撃' in d_msg.content:
-                    return 0
-                if not 'の攻撃' in d_msg.content and not 'のHP' in d_msg.content:
-                    return 0
-                return 1
-            try:
-                await client.wait_for('message',timeout=10,check = d_check)
-            except asyncio.TimeoutError:
-                await message.channel.send('::attack TAO息してる?')
-            else:
-                pass"""
-
         if message.channel==d_ch and d_flag==True:
             if "の攻撃" in message.content and "のHP" in message.content:
                 print('@')
