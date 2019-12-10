@@ -1175,7 +1175,7 @@ async def on_ready():
     global atk_ch
     global atk_ch2
     global d_ch
-    d_ch = discord.utils.get(client.get_guild(642277751692460043).text_channels, name=f'第{d_num}階層')
+    d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
     atk_ch = client.get_channel(643461030692782081)
     atk_ch2 = client .get_channel(64341030692882081)
     t_ch = client.get_channel(650537498262634497)
