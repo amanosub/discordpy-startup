@@ -1945,7 +1945,7 @@ async def on_message(message):
                 print("lvup")
                 lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
-                    title = "<a:Lv:643122451500367902><a:UP:643122445213106176>",
+                    title = "<:Lv:643122451500367902><:UP:643122445213106176>",
                     description = f"` {lv} `",
                     color = discord.Color.blue())
                 embed.set_thumbnail(
