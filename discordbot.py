@@ -1677,6 +1677,7 @@ async def on_message(message):
 
             d_flag=True
             await asyncio.sleep(5)
+            d_num=1
             embed=discord.Embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
             await d_ch.send('::attack 攻略開始')
