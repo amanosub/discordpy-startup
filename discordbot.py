@@ -1950,8 +1950,7 @@ async def on_message(message):
                     color = discord.Color.blue())
                 embed.set_thumbnail(
                     url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
-                embed.set_footer(icon_url=client.user.avater_url,
-                                 text=str(dateTime.year) + "年" + 
+                embed.set_footer(text=str(dateTime.year) + "年" + 
                                  str(dateTime.month) + "月" + 
                                  str(dateTime.day) + "日" + 
                                  str(dateTime.hour) + "時" + 
