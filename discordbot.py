@@ -1946,18 +1946,13 @@ async def on_message(message):
                 print("lvup")
                 lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
-                    title = "<:Lv:643122451500367902><:UP:643122445213106176>",
+                    title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"` {lv} `",
                     color = discord.Color.blue())
                 embed.set_thumbnail(
                     url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
-                embed.set_footer(text=str(dateTime.year) + "年" + 
-                                 str(dateTime.month) + "月" + 
-                                 str(dateTime.day) + "日" + 
-                                 str(dateTime.hour) + "時" + 
-                                 str(dateTime.minute) + "分" + 
-                                 str(dateTime.second) + "秒")
-                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
+                embed.set_footer(text='yuiレベルアップログ')
+                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
 
 
 
