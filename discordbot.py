@@ -1942,6 +1942,7 @@ async def on_message(message):
         if message.embeds and message.embeds[0].description and message.author == tao:
             desc = message.embed[0].description
             if f"{client.user.mention}はレベルアップした！" in desc:
+                print("lvup")
                 lv = desc.split("`")[1]
                 embed = discord.Embed(
                     title = "<a:Lv:643122451500367902><a:UP:643122445213106176>",
@@ -1956,7 +1957,7 @@ async def on_message(message):
                                  str(dateTime.hour) + "時" + 
                                  str(dateTime.minute) + "分" + 
                                  str(dateTime.second) + "秒")
-                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
+                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'レベルアップログ'))
 
 
 
