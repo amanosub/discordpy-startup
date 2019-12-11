@@ -1941,7 +1941,7 @@ async def on_message(message):
 
         if message.embeds and message.embeds[0].description and message.author == tao :
             print("a")
-            if "戦闘結果" in message.embeds[0].title and f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
+            if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 print("lvup")
                 lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
