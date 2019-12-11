@@ -1940,11 +1940,10 @@ async def on_message(message):
 
 
         if message.embeds and message.embeds[0].description and message.author == tao :
-            desc = embeds[0].description
             print("a")
-            if "戦闘結果" in message.embeds[0].title and message.desc and f"{client.user.mention}はレベルアップした！" in message.desc:
+            if "戦闘結果" in message.embeds[0].title and f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 print("lvup")
-                lv = desc.split("`")[1]
+                lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
                     title = "<a:Lv:643122451500367902><a:UP:643122445213106176>",
                     description = f"` {lv} `",
