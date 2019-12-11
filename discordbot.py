@@ -1940,7 +1940,7 @@ async def on_message(message):
 
 
         if message.embeds and message.embeds[0].description and message.author == tao:
-            desc = message.embed[0].description
+            desc = message.embeds[0].description
             if f"{client.user.mention}はレベルアップした！" in desc:
                 print("lvup")
                 lv = desc.split("`")[1]
