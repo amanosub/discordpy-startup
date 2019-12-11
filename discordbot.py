@@ -2072,7 +2072,7 @@ async def on_message(message):
 #            unsei = ["::atk　てい", "::atk　うりゃ", "::atk　とう", "::atk　はい", "::atk　ほい", "::atk　むん", ]
 #            choice = random.choice(unsei)  # randomモジュールでunseiリストからランダムに一つを選出
             embed = discord.Embed(title='y!atkコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
-            embed.set_footer(icon_url='message.author.avater_url,text=f'実行者┃{message.author.name}')
+            embed.set_footer(icon_url=message.author.avater_url,text=f'実行者┃{message.author.name}')
                             
             await message.channel.send(embed=embed)
             log_ch=client.get_channel(654463514324369429)
