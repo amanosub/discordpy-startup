@@ -2057,6 +2057,11 @@ async def on_message(message):
         # 「すて」と発言したら「::st」が返る処理
         if message.content == 'y!st':
             await message.channel.send('::status window　私のステータスが見たいなんて、君もエッチだな')
+            log_ch=client.get_channel(654463586478981160)
+            embed=discord.Embed(title=f"( 'ω'o[**status window**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed.set_thumbnail(url=message.author.avatar_url)
+            await log_ch.send(embed=embed)
+            
 
         # 「りせ」と発言したら「::re」が返る処理
         if message.content == 'y!re':
@@ -2064,9 +2069,16 @@ async def on_message(message):
 
         if message.content == 'y!atk':
             # レスポンスされる運勢のリストを作成
-            unsei = ["::atk　てい", "::atk　うりゃ", "::atk　とう", "::atk　はい", "::atk　ほい", "::atk　むん", ]
-            choice = random.choice(unsei)  # randomモジュールでunseiリストからランダムに一つを選出
-            await message.channel.send(choice)
+#            unsei = ["::atk　てい", "::atk　うりゃ", "::atk　とう", "::atk　はい", "::atk　ほい", "::atk　むん", ]
+#            choice = random.choice(unsei)  # randomモジュールでunseiリストからランダムに一つを選出
+            embed = discord.Embed(title='y!atkコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
+            embed.set_footer(icon_url='message.author.avater_url,text=f'実行者┃{message.author.name}')
+                            
+            await message.channel.send(embed=embed)
+            log_ch=client.get_channel(654463514324369429)
+            embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed.set_thumbnail(url=message.author.avatar_url)
+            await log_ch.send(embed=embed)
 
         if message.content == 'y!i e':
             await message.channel.send('::i e')
