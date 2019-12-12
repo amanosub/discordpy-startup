@@ -1341,7 +1341,7 @@ async def on_disconnect():
 
 @client.event
 async def on_message(message):
-    k
+    
     try:
         await client.wait_until_ready()
         q_ch = client.get_channel(644199380764721152)
