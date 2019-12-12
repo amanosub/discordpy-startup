@@ -1764,31 +1764,22 @@ async def on_message(message):
         if d_flag2 == True and message.channel == d_ch2 and message.embeds:
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
-
+                lv1=message.embeds[0].title.split('Lv.')[1]
+                lv2=lv1.split(' ')[0]
+                lv3=(math.floor(int(lv2)/100))
+                if d_num2<lv3:
+                    d_num2=lv3
+                    await d_ch2.edit(name=f'第{lv3}層')
                 await asyncio.sleep(1)
                 await d_ch2.send("::i f 先手必勝!!")
 
 
-        if message.channel==d_ch and d_flag==True:
-            if "フレア" in message.content:
-                await f_ch2.send('::i f')
-                def d_check (d_msg):
-                    if d_msg.author != tao:
-                        return 0
-                    if d_msg.channel!=d_ch:
-                        return 0
-                    return 1
+        if message.channel==d_ch2 and d_flag2==True:
+            if "フレア" in message.content and 'のHP' in message.content:
+                await d_ch2.send('::i f')
+         
  
-                try:
-                    t_res=await client.wait_for('message',timeout=6,check = d_check)
-                except asyncio.TimeoutError:
-                    print('::attack')
-                    await d_ch.send('::i f　ミスなし')
-                else:
-                    print('pet')
-                    if '失敗' in t_res.content:
-                        print('::みす')
-                        await d_ch.send(f'::i f 　ミス消毒')
+
 
 
 
