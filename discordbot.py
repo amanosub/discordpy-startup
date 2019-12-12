@@ -2129,7 +2129,7 @@ async def on_message(message):
             await message.channel.send('::i i \nまあこれもuser指定するのめんどくて作ってないから意味ないけどね')
 
         if message.content == 'y!i f' and message.author_id!=446610711230152706:
-            await message.channel.send('::i f')
+#            await message.channel.send('::i f')
             embed = discord.Embed(title='y!i fコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
             embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
             await message.channel.send(embed=embed)
