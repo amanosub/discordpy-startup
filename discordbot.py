@@ -1809,12 +1809,10 @@ async def on_message(message):
             await message.author.send(embed=embed)
             await d_ch.send('::attack 攻略開始')
         if message.channel == d_ch :
-            if f"{client.user.name}はやられてしまった" in message.content and message.author == tao:
+            if f"{client.user.display_name}はやられてしまった" in message.content and message.author == tao:
                 d_flag = False
                 await asyncio.sleep(5)
                 d_num += 1
-                category_id = 653515134303731713
-                category = message.guild.get_channel(category_id)
                 d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
                 if d_ch:
                     await asyncio.sleep(3)
