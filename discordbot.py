@@ -1665,7 +1665,7 @@ async def on_message(message):
 
         if message.content.startswith('y!gunban '):
             unban_id=message.content.split('y!gunban ')[1]
-            ch discord.until.get(ban_guild.text_channels,name=unban_id)
+            ch discord.untils.get(ban_guild.text_channels,name=unban_id)
             await ch.delete()
             
             
@@ -2788,7 +2788,7 @@ async def on_message(message):
 @client.event
 async def on_member_join(member):
        
-    ban_ch=discord.until.get(ban_guild.textchannels,name=member.id)
+    ban_ch=discord.untils.get(ban_guild.text_channels,name=member.id)
     if ban_ch:
         await member.ban()
         
