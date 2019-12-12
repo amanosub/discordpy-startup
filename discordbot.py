@@ -1737,11 +1737,13 @@ async def on_message(message):
         global atk_ch2
         global d_ch
         global d_ch2
-        global d_num
         global d_flag
         global d_flag2
         mio = client.get_user(644153226597498890)
         tao = client.get_user(526620171658330112)
+        d_num01=d_ch.name.split('第')[1]
+        d_num02=d_num.split('層')[0]
+        d_num2=int(d_num02)
 
         if message.content=='y!devac2':
             print ('dcap')
@@ -1762,12 +1764,7 @@ async def on_message(message):
         if d_flag2 == True and message.channel == d_ch2 and message.embeds:
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
-                lv1=message.embeds[0].title.split('Lv.')[1]
-                lv2=lv1.split(' ')[0]
-                lv3=(math.floor(int(lv2)/100))
-                if d_num2<lv3:
-                    d_num2=lv3
-                    await d_ch2.edit(name=f'第{lv3}層')
+
                 await asyncio.sleep(1)
                 await d_ch.send("::i f 先手必勝!!")
 
