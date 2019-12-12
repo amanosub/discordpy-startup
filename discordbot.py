@@ -1764,7 +1764,7 @@ async def on_message(message):
         if d_flag2 == True and message.channel == d_ch2 and message.embeds:
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
-                if 'ネコ' in message.embes[0].title and '超激レア' in message.embeds[0].title:
+                if 'ネコ' in message.embeds[0].title and '超激レア' in message.embeds[0].title:
                     await d_ch2.send('::re')
                 else:
                     lv1=message.embeds[0].title.split('Lv.')[1]
