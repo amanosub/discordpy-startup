@@ -1748,14 +1748,14 @@ async def on_message(message):
         if message.content=='y!devac2':
             print ('dcap')
             d_flag2=False
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
             await d_ch2.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
             await message.author.send(embed=embed)
         if message.content=='y!dcap2':
 
             d_flag2=True
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
             embed=discord.Embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
             await d_ch2.send('::i f 攻略開始')
@@ -1766,12 +1766,12 @@ async def on_message(message):
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
 
                 await asyncio.sleep(1)
-                await d_ch.send("::i f 先手必勝!!")
+                await d_ch2.send("::i f 先手必勝!!")
 
 
         if message.channel==d_ch and d_flag==True:
-            if "フレア" in message.content and "のダメージを与えた" in message.content:
-   
+            if "フレア" in message.content:
+                await f_ch2.send('::i f')
                 def d_check (d_msg):
                     if d_msg.author != tao:
                         return 0
