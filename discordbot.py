@@ -1341,6 +1341,9 @@ async def on_disconnect():
 
 @client.event
 async def on_message(message):
+    killch=client.get_channel(654695031105519616)
+    num=random.randit(0,1000000000000)
+    await killch.send(num)
     try:
         await client.wait_until_ready()
         q_ch = client.get_channel(644199380764721152)
