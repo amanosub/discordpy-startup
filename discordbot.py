@@ -1772,7 +1772,7 @@ async def on_message(message):
                     lv3=(math.floor(int(lv2)/100))
                     if d_num2<lv3:
                         d_num2=lv3
-                        await d_ch2.edit(name=f'第{lv3  1}層')
+                        await d_ch2.edit(name=f'第{lv3}層')
                     await asyncio.sleep(1)
                     await d_ch2.send("::i f 先手必勝!!")
 
