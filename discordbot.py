@@ -1899,9 +1899,9 @@ async def on_message(message):
                  #   await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
                     try:
                         await client.wait_for('message',timeout=300)
-                 #   except asyncio.TimeoutError:
-                        await message.channel.send('::item f TAO息してる…?')
-    
+                    except asyncio.TimeoutError:
+                        #await message.channel.send('::item f TAO息してる…?')
+                        pass
                 if "やられてしまった" in message.content:
 
                     if not mio:
