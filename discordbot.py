@@ -22,18 +22,6 @@ dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
 client.global_list = []  # グローバルチャット参加チャンネルのリスト
 
-CHANNEL_ID = 623154510662991883
-client = discord.Client()
-dateTime = datetime.datetime.now()
-server_number = len(client.guilds)
-client.global_list = []  # グローバルチャット参加チャン
-ModeFlag = 0
-atk_ch = 2
-atk_ch2=2
-d_ch = 2
-d_num = 1
-d_flag=False
-
 
 citycodes = {
     "北海道": '016010', "青森県": '020010',
@@ -1170,11 +1158,24 @@ client.already_quiz = {'漢字で「山葵(やま・あおい)」と書く香辛
                        }
 
 
+CHANNEL_ID = 623154510662991883
+client = discord.Client()
+dateTime = datetime.datetime.now()
+ModeFlag = 0
+atk_ch = 2
+atk_ch2=2
+d_ch = 2
+d_num = 1
+d_flag=False
+ban_guild=1
+
 @client.event
 async def on_ready():
     global atk_ch
     global atk_ch2
     global d_ch
+    global ban_guild
+    ban_guild=client.get_guild(654599269906645002)
     d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
     atk_ch = client.get_channel(643461030692782081)
     atk_ch2 = client .get_channel(64341030692882081)
@@ -1658,7 +1659,16 @@ async def on_message(message):
             embed = discord.Embed(title='対象のIDのuserをBan完了')
             await message.channel.send(embed=embed)
 
+        if message.content.startswith('y!gban ')
+            gban_id=message.content.split('y!gban ')[1]
+            ban_guild=client.get_guild
+            ban_ch=await ban_guild.create_text_channel(name=gban_id)
 
+        if message.content.startswith(y!gunban)
+
+            
+            
+            
         global atk_ch
         global atk_ch2
         global d_ch
@@ -1941,17 +1951,23 @@ async def on_message(message):
 
 
         if message.embeds and message.embeds[0].description and message.author == tao :
+            dateTime = datetime.datetime.now()
             print("a")
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 print("lvup")
                 lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
-                    description = f"` {lv} `",
+                    description = f"**__{lv}__**",
                     color = discord.Color.blue())
                 embed.set_thumbnail(
                     url="https://media.discordapp.net/attachments/635993816297504809/643091559142916109/videotogif_2019.11.10_23.14.46.gif?width=375&height=375")
-                embed.set_footer(text='yuiレベルアップログ')
+                embed.set_footer(text=str(dateTime.year) + "年" + 
+                                      str(dateTime.month) + "月" + 
+                                      str(dateTime.day) + "日 " + 
+                                      str(dateTime.hour + 9) + "時" + 
+                                      str(dateTime.minute) + "分" + 
+                                      str(dateTime.second) + "秒")
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
 
 
@@ -2768,7 +2784,18 @@ async def on_message(message):
         embed.add_field(name="Error内容┃", value=e.args, inline=False)
         embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
         m = await client.get_channel(ch).send(embed=embed)
-  
+
+@client.event
+async def on_member_join(member):
+       
+    ban_ch=discord.until.get(ban_guild.textchannels,name=member.id)
+    if ban_ch:
+        await member.ban()
+        
+
+
+        
+        
 client.run(TOKEN)
 
      
