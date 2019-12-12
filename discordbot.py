@@ -1682,7 +1682,7 @@ async def on_message(message):
             await ban_ch.send(embed=e_embed) 
             embed=discord.Embed(title='Global Banned!!',
                                 description=f'{ban_user}はGlobalBANされたよ\n以降私がいる鯖でこいつが入ってきたら責任もってBANするね!',color=discord.Color.red())
-            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}'                    
+            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}')                    
             await message.channel.send(embed=embed)
         if message.content.startswith('y!gunban '):
             unban_id=message.content.split('y!gunban ')[1]
