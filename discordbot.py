@@ -2827,8 +2827,6 @@ async def on_member_join(member):
     if ban_ch:
         await member.ban()
         
-
-
        
         
 client.run(TOKEN)
