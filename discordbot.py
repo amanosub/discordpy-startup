@@ -12,6 +12,7 @@ import json
 import re
 import os
 import traceback
+import math
 from discord.ext import tasks
 
 client = discord.Client()
@@ -1165,8 +1166,11 @@ ModeFlag = 0
 atk_ch = 2
 atk_ch2=2
 d_ch = 2
+d_ch2= 2
 d_num = 1
+d_num2= 1
 d_flag=False
+d_flag2=False
 ban_guild=1
 
 @client.event
@@ -1174,9 +1178,11 @@ async def on_ready():
     global atk_ch
     global atk_ch2
     global d_ch
+    global d_ch2
     global ban_guild
     ban_guild=client.get_guild(654599269906645002)
     d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
+    d_ch2= client.get_channel(654710356622704662)
     atk_ch = client.get_channel(643461030692782081)
     atk_ch2 = client .get_channel(64341030692882081)
     t_ch = client.get_channel(650537498262634497)
@@ -1185,6 +1191,7 @@ async def on_ready():
     stloop.start()
     looop.start()
     d_loop.start()
+    d_loop2.start()
     check_loop.start()
     kill_loop.start()
     print('Logged in as')
@@ -1296,6 +1303,22 @@ async def d_loop():
             await client.wait_for('massage',timeout=30,check=re_check)
         except asyncio.TimeoutError:
             await d_ch.send('::attack 止まってるんだよなぁ')
+
+@tasks.loop(seconds=60)
+async def d_loop2():
+    if d_flag2==True:
+        d_ch2.send('check point')
+        tao = client.get_user(526620171658330112)    
+        def re_check(t_msg):
+            if t_msg.author!=tao:
+                return 0
+            if t_msg.channel!=d_ch2:
+                return 0
+            return 1
+        try:
+            await client.wait_for('massage',timeout=30,check=re_check)
+        except asyncio.TimeoutError:
+            await d_ch2.send('::i f 止まってるんだよなぁ')
 
 @tasks.loop(seconds=60)
 async def looop():
@@ -1713,10 +1736,71 @@ async def on_message(message):
         global atk_ch
         global atk_ch2
         global d_ch
+        global d_ch2
         global d_num
         global d_flag
+        global d_flag2
         mio = client.get_user(644153226597498890)
         tao = client.get_user(526620171658330112)
+
+        if message.content=='y!devac2':
+            print ('dcap')
+            d_flag2=False
+            await asyncio.sleep(5)
+            await d_ch.send('::re')
+            embed=discord.Embed(title='ダンジョンから離脱')
+            await message.author.send(embed=embed)
+        if message.content=='y!dcap2':
+
+            d_flag=True
+            await asyncio.sleep(5)
+            d_num=1
+            embed=discord.Embed(title='ダンジョン攻略開始')
+            await message.author.send(embed=embed)
+            await d_ch.send('::attack 攻略開始')
+
+
+        if d_flag2 == True and message.channel == d_ch2 and message.embeds:
+            print("check TAO DAN")
+            if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                lv1=message.embeds[0].title.split('Lv.')[1]
+                lv2=lv1.split(' ')[0]
+                lv3=(math.floor(int(lv2)/100))
+                if d_num2<lv3:
+                    d_num2=lv3
+                    await d_ch2.edit(name=f'第{lv3}層'
+                await asyncio.sleep(1)
+                await d_ch.send("::i f 先手必勝!!")
+
+
+        if message.channel==d_ch and d_flag==True:
+            if "フレア" in message.content and "のダメージを与えた" in message.content:
+   
+                def d_check (d_msg):
+                    if d_msg.author != tao:
+                        return 0
+                    if d_msg.channel!=d_ch:
+                        return 0
+                    return 1
+ 
+                try:
+                    t_res=await client.wait_for('message',timeout=6,check = d_check)
+                except asyncio.TimeoutError:
+                    print('::attack')
+                    await d_ch.send('::i f　ミスなし')
+                else:
+                    print('pet')
+                    if '失敗' in t_res.content:
+                        print('::みす')
+                        await d_ch.send(f'::i f 　ミス消毒')
+
+
+
+
+
+
+
+
         if message.content=='y!devac':
             print ('dcap')
             d_flag=False
