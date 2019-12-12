@@ -1380,12 +1380,12 @@ async def on_message(message):
             , inline=True)
         help_embed.add_field(
             name='y!atk',
-            value='```::atk```'
+            value='```~~::atk~~```互換性のある機能を開発+実験中のため\n現在停止中です'
             , inline=True)
         help_embed.add_field(
             name='y!nekoshima', value='`超激レア枠が出るまでTAOさなきゃいけない\nモンスターの数を占う`'
             , inline=False)
-        help_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第二項")
+        help_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.2/7")
 
         help_two_embed = discord.Embed(title="メイン機能ヘルプ"
                                        , description="その多機能"
@@ -1407,10 +1407,10 @@ async def on_message(message):
                                  , value='```コマンド使用者のアイコン表示```'
                                  , inline=False)
         help_two_embed.add_field(name='y!poll [タイトル] [内容] '
-                                 , value='```👍👎リアクションつきembedメッセージ送信```'
+                                 , value='```👍👎リアクションつきembedメッセージ送信```開発者のデータ管理が甘いせいで大爆発が起きたため現在復旧中です'
                                  , inline=False)
         help_two_embed.add_field(name='y!say',
-                                 value='```y!say1 [内容]│オウム返し\ny!say2 [題名] [内容]│embed形式送信\ny!say3 [題名] [内容]│embed+送信者メンション+時刻```',
+                                 value='```y!say1 [内容]│オウム返し\ny!say2 [題名] [内容]│embed形式送信\ny!say3 [題名] [内容]│embed+送信者メンション+時刻```開発者のデータ管理が甘いせいで大爆発起きたため\ny!say1以外のsayコマンドは停止中です',
                                  inline=False)
         help_two_embed.add_field(name='y!clean [数]'
                                  , value='```鯖管理者権限持ちで使用可、指定数のメッセージ消去```'
@@ -1419,20 +1419,23 @@ async def on_message(message):
                                  , value='```開発者へのレポート＆リクエスト```'
                                  , inline=False)
 
-        help_two_embed.add_field(name='y!wt [都道府県名]', value='```今日、明日の天気予報「YUI WEATHER」```', inline=True)
-        help_two_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第三項")
+        help_two_embed.add_field(name='y!wt [都道府県名]', value='```今日、明日の天気予報「YUI WEATHER」```開発者のデータ管理が甘いせいで大爆発が起きたので\n現在復旧中です', inline=True)
+        help_two_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.3/7")
 
         embed_special = discord.Embed(
             title='特殊チャンネル系',
             description='```‣チャンネル内容│チャンネル名\nチャンネル作成コマンド```', color=discord.Colour.green())
         embed_special.add_field(name='‣グローバルチャット│global_yui'
-                                , value='```y!yui global```', inline=True)
+                                , value='```y!yui global```', inline=False)
         embed_special.add_field(name='‣YUIの起動ログ│yui起動ログ'
                                 , value='```y!yui log```'
-                                , inline=True)
+                                , inline=False)
         embed_special.add_field(name='‣日付変更ログ│yui時報ログ'
                                 , value='```y!yui timelog```')
-        embed_special.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第四項")
+        embed_special.add_field(name='‣YUIレベルアップログ│yuiレベルアップログ'
+                                , value='```y!lv```'
+                                ,inline=False)
+        embed_special.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.4/7")
 
         gacha = discord.Embed(title="ガチャ機能だよ🎯 "
                               , description="コマンドはy!gacha [ガチャ番号]"
@@ -1441,14 +1444,14 @@ async def on_message(message):
         gacha.set_thumbnail(url="https://yahoo.jp/box/HYqbOS")
         gacha.add_field(name="ガチャ種類＋番号一覧",
                         value="‣__**通常ガチャ**　番号：1__\n色々よくわからないものが出てくるよ。\nたまに隠しコマンドが出てくるとかなんとか\ny!gacha 1\n\n‣__**おにゃのこガチャ**　番号：2__\n可愛いおにゃのこの画像がいっぱいだよ\n可愛いの純度１００％！\ny!gacha 2")
-        gacha.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第五項")
+        gacha.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.5/7")
 
         slot_embed = discord.Embed(title="スロット機能だよ🎰", description="コマンドはy!slot [s,c]", color=discord.Colour.green())
         slot_embed.set_thumbnail(
             url="https://cdn.discordapp.com/attachments/635993816297504809/642579874816720916/money_slot_machine.png")
         slot_embed.add_field(name="スロット説明",
                              value="絵文字を利用したスロットだよ\n表示が崩れるから、スマホとパソコンPCでコマンドを分けてるよ\n`y!slot s`がスマホ\n`y!slot c`がPCだよ\nちなみに開発者のスマホ（泥）を基準にしてるからIOS勢は表記が崩れるかも！\n泥勢もテキストサイズ変えちゃったら崩れるからね")
-        slot_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第六項")
+        slot_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.6/7")
 
         url_embed = discord.Embed(title='YUI関連URL\n')
         url_embed.add_field(name='‣**Re:YUI ver1.12.2 招待URL**',
@@ -1456,7 +1459,7 @@ async def on_message(message):
         url_embed.add_field(name='‣**YUI Official Server 招待URL**', value='[URLはこちら](https://discord.gg/tJaJBDD)')
         url_embed.add_field(name='‣**YUIサポートBot Mio 招待URL**',
                             value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
-        url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第七項")
+        url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.7/7")
 
         if message.content == "y!help":
             log_ch = client.get_channel(652493782822027275)
@@ -1471,7 +1474,7 @@ async def on_message(message):
                                            color=discord.Colour.green())
             help_embed_one.set_thumbnail(url=random.choice(
                 ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-            help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\n第一項")
+            help_embed_one.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.1/7")
 
             help_logch = client.get_channel(id=help_ch)
             #        await help_logch.send(embed=embed)
@@ -2377,6 +2380,13 @@ async def on_message(message):
                 category = message.guild.get_channel(category_id)
                 new_channel = await category.create_text_channel(name='global_yui')
                 reply = f'{new_channel.mention} をつくったよ。globalチャットに登録完了'
+                    
+            elif message.content.split()[1] == "lv":
+                category_id = message.channel.category_id
+                category = message.guild.get_channel(category_id)
+                new_channel = await category.create_text_channel(name='global_yui')
+                reply = f'{new_channel.mention} をつくったよ。LvUpしたら通知が届くよ'
+
                 return await message.channel.send(reply)
         # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
