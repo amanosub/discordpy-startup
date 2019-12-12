@@ -1670,16 +1670,16 @@ async def on_message(message):
             ban_guild=client.get_guild(654599269906645002)
             ban_user=client.get_user(gban_id)
             ban_ch=await ban_guild.create_text_channel(name=f'{gban_id}')
-            embed=discord.Embed(title=f'Global Ban User Data',
+            e_embed=discord.Embed(title=f'Global Ban User Data',
                                 description=f'{ban_user}\n{ban_user.id}',
                                 color=discord.Color.red())
-            embed.set_footer(text=str(dateTime.year) + "年" + 
+            e_embed.set_footer(text=str(dateTime.year) + "年" + 
                                       str(dateTime.month) + "月" + 
                                       str(dateTime.day) + "日 " + 
                                       str(dateTime.hour + 9) + "時" + 
                                       str(dateTime.minute) + "分" + 
                                       str(dateTime.second) + "秒")
-            await ban_ch.send(embed=embed) 
+            await ban_ch.send(embed=e_embed) 
             embed=discord.Embed(title='Global Banned!!',
                                 description=f'{ban_user}はGlobalBANされたよ\n以降私がいる鯖でこいつが入ってきたら責任もってBANするね!',color=discord.Color.red())
             embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}'                    
