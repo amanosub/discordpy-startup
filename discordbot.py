@@ -1665,13 +1665,13 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
         if message.content.startswith('y!gban '):
-            gban_id=int(message.content.split('y!gban ')[1])
+            gban_id=message.content.split('y!gban ')[1]
             dateTime = datetime.datetime.now()       
             ban_guild=client.get_guild(654599269906645002)
             ban_user=client.get_user(gban_id)
             ban_ch=await ban_guild.create_text_channel(name=f'{gban_id}')
             e_embed=discord.Embed(title=f'Global Ban User Data',
-                                description=f'{ban_user}\n{ban_user.id}',
+                                description=f'{ban_user}\n{gban_id}',
                                 color=discord.Color.red())
             e_embed.set_footer(text=str(dateTime.year) + "年" + 
                                       str(dateTime.month) + "月" + 
