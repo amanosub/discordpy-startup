@@ -1186,7 +1186,7 @@ async def on_ready():
     looop.start()
     d_loop.start()
     check_loop.start()
-
+    kill_loop.start()
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
