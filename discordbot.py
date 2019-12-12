@@ -1747,17 +1747,16 @@ async def on_message(message):
             print ('dcap')
             d_flag2=False
             await asyncio.sleep(5)
-            await d_ch.send('::re')
+            await d_ch2.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
             await message.author.send(embed=embed)
         if message.content=='y!dcap2':
 
-            d_flag=True
+            d_flag2=True
             await asyncio.sleep(5)
-            d_num=1
             embed=discord.Embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
-            await d_ch.send('::attack 攻略開始')
+            await d_ch2.send('::i f 攻略開始')
 
 
         if d_flag2 == True and message.channel == d_ch2 and message.embeds:
