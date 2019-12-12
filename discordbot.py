@@ -1415,10 +1415,12 @@ async def on_message(message):
         help_two_embed.add_field(name='y!clean [数]'
                                  , value='```鯖管理者権限持ちで使用可、指定数のメッセージ消去```'
                                  , inline=False)
+        help_two_embed.add_field(name='y!gban [対象のUSERのID',
+                                 , value='```USERをGlobalBANするよ```'
+                                 , inline=False)
         help_two_embed.add_field(name='y!report [内容]'
                                  , value='```開発者へのレポート＆リクエスト```'
                                  , inline=False)
-
         help_two_embed.add_field(name='y!wt [都道府県名]', value='```今日、明日の天気予報「YUI WEATHER」```開発者のデータ管理が甘いせいで大爆発が起きたので\n現在復旧中です', inline=True)
         help_two_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.3/7")
 
@@ -1499,7 +1501,7 @@ async def on_message(message):
                 '''
                 if reaction.message.id != send_message.id:
                     return 0
-                if reaction.emoji in ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '➡', '⬅', '🗑', '☑️', '❎', '⏭️',
+                if reaction.emoji in ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '⬅️', '➡️', '🗑', '☑️', '❎', '⏭️',
                                       '⏮️']:
                     if user != message.author:
                         return 0
@@ -1516,10 +1518,10 @@ async def on_message(message):
 
                 else:
 
-                    if reaction.emoji in ["➡", "☑️"] and page_count < 8:
+                    if reaction.emoji in ["➡️", "☑️"] and page_count < 8:
                         page_count += 1
 
-                    if reaction.emoji == "⬅" and page_count > 0:
+                    if reaction.emoji == "⬅️" and page_count > 0:
                         page_count -= 1
                     if reaction.emoji in ["1️⃣", "⏮️"] and page_count > 0:
                         page_count = 1
@@ -1545,7 +1547,7 @@ async def on_message(message):
                         await send_message.add_reaction("❎")
                         await send_message.add_reaction("☑️")
                     elif page_count == 1:
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("➡️")
                         await send_message.add_reaction("🗑")
                         await send_message.add_reaction("1️⃣")
                         await send_message.add_reaction("2️⃣")
@@ -1556,39 +1558,39 @@ async def on_message(message):
                         await send_message.add_reaction("7️⃣")
                     elif page_count == 2:
                         await send_message.add_reaction("⏮️")
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
-                        await send_message.add_reaction("➡")
+                        await send_message.add_reaction("➡️")
                         await send_message.add_reaction("⏭️")
                     elif page_count == 3:
                         await send_message.add_reaction("⏮️")
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
-                        await send_message.add_reaction("➡")
+                        await send_message.add_reaction("➡️")
                         await send_message.add_reaction("⏭️")
                     elif page_count == 4:
                         await send_message.add_reaction("⏮️")
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
-                        await send_message.add_reaction("➡")
+                        await send_message.add_reaction("➡️")
                         await send_message.add_reaction("⏭️")
                     elif page_count == 5:
 
                         await send_message.add_reaction("⏮️")
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
-                        await send_message.add_reaction("➡")
+                        await send_message.add_reaction("➡️")
                         await send_message.add_reaction("⏭️")
                     elif page_count == 6:
                         await send_message.add_reaction("⏮️")
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
-                        await send_message.add_reaction("➡")
+                        await send_message.add_reaction("➡️")
                         await send_message.add_reaction("⏭️")
                     elif page_count == 7:
 
                         await send_message.add_reaction("⏮️")
-                        await send_message.add_reaction("⬅")
+                        await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
 
         if message.content.startswith('y!test'):
@@ -1666,13 +1668,21 @@ async def on_message(message):
             gban_id=message.content.split('y!gban ')[1]
             ban_guild=client.get_guild(654599269906645002)
             ban_ch=await ban_guild.create_text_channel(name=f'{gban_id}')
-
+            ban_user=client.get_user(gban_id)
+            embed=discord.Embed(title='Global Banned!!',
+                                description=f'{ban_user}はGlobalBANされたよ\n以降私がいる鯖でこいつが入ってきたら責任もってBANするね!',color=discord.Color.red())
+            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}'                    
+            await message.channel.send(embed=embed)
         if message.content.startswith('y!gunban '):
             unban_id=message.content.split('y!gunban ')[1]
             ban_guild=client.get_guild(654599269906645002)
-            ch = discord.utils.get(ban_guild.text_channels,name=f'{unban_id}')
-            await ch.delete()
-            
+            ch = discord.utils.get(ban_guild.text_channels,name=f'{unban_id}'
+            await ch.delete():
+            ban_user=client.get_user(unban_id)
+            embed=discord.Embed(title='Global UnBanned!!',
+                                description=f'{ban_user}はUnGlobalBANされたよ!',color=discord.Color.green())
+            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}'                    
+            await message.channel.send(embed=embed)
             
         global atk_ch
         global atk_ch2
@@ -2093,7 +2103,7 @@ async def on_message(message):
 #            unsei = ["::atk　てい", "::atk　うりゃ", "::atk　とう", "::atk　はい", "::atk　ほい", "::atk　むん", ]
 #            choice = random.choice(unsei)  # randomモジュールでunseiリストからランダムに一つを選出
             embed = discord.Embed(title='y!atkコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
-            embed.set_footer(icon_url=message.author.avater_url,text=f'実行者┃{message.author.name}')
+            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
                             
             await message.channel.send(embed=embed)
             log_ch=client.get_channel(654463514324369429)
@@ -2107,9 +2117,11 @@ async def on_message(message):
         if message.content == 'y!i i':
             await message.channel.send('::i i \nまあこれもuser指定するのめんどくて作ってないから意味ないけどね')
 
-        if message.content == 'y!i f':
+        if message.content == 'y!i f' and message.author_id!=446610711230152706:
             await message.channel.send('::i f')
-
+            embed = discord.Embed(title='y!i fコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
+            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
+            await message.channel.send(embed=embed)
         if message.content == 'よしよし':
             value = random.choice(('**………？**',
                                    '**そう何回もよしよしされたら私勘違いするよ……？**',
@@ -2119,7 +2131,8 @@ async def on_message(message):
                                    '**……素直にありがとうって言えばいいの？**',
                                    '**？　よくわからないけど、お礼だけ言っておくわ。ありがとう**'))
             await message.channel.send(value)
-
+        else:
+            await message.channel.send('::i f')
         if message.content == 'よしよしヾ(・ω・｀)':
             await message.channel.send('''？　よくわからないけど、お礼だけ言っておくわ。ありがとう''')
 
