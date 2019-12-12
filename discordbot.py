@@ -1659,14 +1659,14 @@ async def on_message(message):
             embed = discord.Embed(title='対象のIDのuserをBan完了')
             await message.channel.send(embed=embed)
 
-        if message.content.startswith('y!gban ')
+        if message.content.startswith('y!gban '):
             gban_id=message.content.split('y!gban ')[1]
-            ban_guild=client.get_guild
             ban_ch=await ban_guild.create_text_channel(name=gban_id)
 
-        if message.content.startswith(y!gunban)
-
-            
+        if message.content.startswith('y!gunban '):
+            unban_id=message.content.split('y!gunban ')[1]
+            ch discord.until.get(ban_guild.text_channels,name=unban_id)
+            await ch.delete()
             
             
         global atk_ch
