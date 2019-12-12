@@ -1943,11 +1943,11 @@ async def on_message(message):
                                         await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
                 if "使用失敗" in message.content:
                     await asyncio.sleep(1)
-                    await atk_ch2.send("::i f　ミスった…ﾅｾﾞ(´・-・)")
+             #       await atk_ch2.send("::i f　ミスった…ﾅｾﾞ(´・-・)")
                     try:
-                        await client.wait_for('message',timeout=300)
+           #             await client.wait_for('message',timeout=300)
                     except asyncio.TimeoutError:
-                        await message.channel.send('::item f TAO息してる…?')
+            #            await message.channel.send('::item f TAO息してる…?')
 
 
                 if message.embeds:
