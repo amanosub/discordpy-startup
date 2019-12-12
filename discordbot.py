@@ -1896,10 +1896,10 @@ async def on_message(message):
                         await message.channel.send('::i f')
                 if "使用失敗" in message.content:
                     await asyncio.sleep(1)
-                    await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
+                 #   await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
                     try:
                         await client.wait_for('message',timeout=300)
-                    except asyncio.TimeoutError:
+                 #   except asyncio.TimeoutError:
                         await message.channel.send('::item f TAO息してる…?')
     
                 if "やられてしまった" in message.content:
