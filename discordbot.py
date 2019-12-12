@@ -1665,7 +1665,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
         if message.content.startswith('y!gban '):
-            gban_id=message.content.split('y!gban ')[1]
+            gban_id=int(message.content.split('y!gban ')[1])
             dateTime = datetime.datetime.now()       
             ban_guild=client.get_guild(654599269906645002)
             ban_user=client.get_user(gban_id)
@@ -1689,7 +1689,7 @@ async def on_message(message):
             ban_guild=client.get_guild(654599269906645002)
             ch = discord.utils.get(ban_guild.text_channels,name=f'{unban_id}')
             await ch.delete()
-            ban_user=client.get_user(unban_id)
+            ban_user=client.get_user(int(unban_id))
             embed=discord.Embed(title='Global UnBanned!!',
                                 description=f'{ban_user}はUnGlobalBANされたよ!',color=discord.Color.green())
             embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}')                    
