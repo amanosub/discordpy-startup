@@ -1783,14 +1783,7 @@ async def on_message(message):
                 await asyncio.sleep(0.1)
                 await d_ch2.send('::i f')
         
- 
-
-
-
-
-
-
-
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
         if message.content=='y!devac':
@@ -1800,16 +1793,18 @@ async def on_message(message):
             await d_ch.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
             await message.author.send(embed=embed)
-        if message.content=='y!dcap':
 
+        if message.content=='y!dcap':
             d_flag=True
             await asyncio.sleep(5)
             d_num=1
             embed=discord.Embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
             await d_ch.send('::attack 攻略開始')
+
         if message.channel == d_ch :
             if f"{client.user.display_name}はやられてしまった" in message.content and message.author == tao:
+                print('yarareta')
                 d_flag = False
                 await asyncio.sleep(5)
                 d_num += 1
@@ -1876,6 +1871,7 @@ async def on_message(message):
                     await message.channel.send('::attack TAO息してる…?')
 
 
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
         if message.content.startswith("y!ifch "):
@@ -1902,17 +1898,8 @@ async def on_message(message):
                 await message.channel.send('::item f TAO息してる…?')
             else:
                 if start_msg.content.startswith("y!start"):
-                    await message.channel.send("::item f スタート！(*'ω'*)")
-
-
-        mio = client.get_user(644153226597498890)
-
-        tao = client.get_user(526620171658330112)
-
-        
+                    await message.channel.send("::item f スタート！(*'ω'*)")        
        
-        
-        
         if tao:
             if message.channel==atk_ch2:
                 print("check TAO")
@@ -2059,6 +2046,11 @@ async def on_message(message):
                                 await client.wait_for('message',timeout=300)
                             except asyncio.TimeoutError:
                                 await message.channel.send('::i f TAO息してる…?')
+
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+     
         if message.content.startswith('y!atkch'):
             embed = discord.Embed(title='現在停止中です!')
             embed.set_footer(icon_url=message.author.avatar_url,text=message.author.name)
