@@ -1782,7 +1782,7 @@ async def on_message(message):
 
                 await asyncio.sleep(0.1)
                 await d_ch2.send('::i f')
-         
+        
  
 
 
