@@ -1742,7 +1742,7 @@ async def on_message(message):
         mio = client.get_user(644153226597498890)
         tao = client.get_user(526620171658330112)
         d_num01=d_ch.name.split('第')[1]
-        d_num02=d_num.split('層')[0]
+        d_num02=d_num01.split('層')[0]
         d_num2=int(d_num02)
 
         if message.content=='y!devac2':
