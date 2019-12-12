@@ -2142,8 +2142,7 @@ async def on_message(message):
                                    '**……素直にありがとうって言えばいいの？**',
                                    '**？　よくわからないけど、お礼だけ言っておくわ。ありがとう**'))
             await message.channel.send(value)
-        else:
-            await message.channel.send('::i f')
+  
         if message.content == 'よしよしヾ(・ω・｀)':
             await message.channel.send('''？　よくわからないけど、お礼だけ言っておくわ。ありがとう''')
 
