@@ -1692,7 +1692,7 @@ async def on_message(message):
             ban_user=client.get_user(unban_id)
             embed=discord.Embed(title='Global UnBanned!!',
                                 description=f'{ban_user}はUnGlobalBANされたよ!',color=discord.Color.green())
-            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}'                    
+            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author}')                    
             await message.channel.send(embed=embed)
             
         global atk_ch
