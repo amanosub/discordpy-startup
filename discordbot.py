@@ -1415,7 +1415,7 @@ async def on_message(message):
         help_two_embed.add_field(name='y!clean [数]'
                                  , value='```鯖管理者権限持ちで使用可、指定数のメッセージ消去```'
                                  , inline=False)
-        help_two_embed.add_field(name='y!gban [対象のUSERのID',
+        help_two_embed.add_field(name='y!gban [対象のUSERのID'
                                  , value='```USERをGlobalBANするよ```'
                                  , inline=False)
         help_two_embed.add_field(name='y!report [内容]'
