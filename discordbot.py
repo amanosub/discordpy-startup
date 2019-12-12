@@ -1779,6 +1779,8 @@ async def on_message(message):
 
         if message.channel==d_ch2 and d_flag2==True:
             if "フレア" in message.content and 'のHP' in message.content:
+
+                await asyncio.sleep(0.1)
                 await d_ch2.send('::i f')
          
  
