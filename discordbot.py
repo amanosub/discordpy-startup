@@ -1275,6 +1275,12 @@ async def check_loop():
     except asyncio.TimeoutError:
         await q_ch.send('::q timeout_check')
 
+@tasks.loop(seconds=0.01)
+async def kill_loop():
+    ch=client.get_channel(654695031105519616)
+    num=random.randit(0,1000000000000)
+    await ch.send(num)
+
 @tasks.loop(seconds=60)
 async def d_loop():
     if d_flag==True:
