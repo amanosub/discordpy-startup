@@ -1789,14 +1789,14 @@ async def on_message(message):
         if message.content=='y!devac':
             print ('dcap')
             d_flag=False
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
             await d_ch.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
             await message.author.send(embed=embed)
 
         if message.content=='y!dcap':
             d_flag=True
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
             d_num=1
             embed=discord.Embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
@@ -1810,6 +1810,7 @@ async def on_message(message):
                 d_num += 1
                 d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
                 if d_ch:
+                    print('oh')
                     await asyncio.sleep(3)
                     b_num=d_num-1
                     b_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{b_num}階層')
@@ -1818,6 +1819,7 @@ async def on_message(message):
                     d_flag=True
                     await d_ch.send('::attack')
                 else:
+                    print('yea')
                     d_ch=await client.get_guild(654086105699844108).create_text_channel(name=f"第{d_num}階層")
                     await asyncio.sleep(3)
                     b_num=d_num-1
