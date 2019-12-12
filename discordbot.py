@@ -1764,14 +1764,17 @@ async def on_message(message):
         if d_flag2 == True and message.channel == d_ch2 and message.embeds:
             print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
-                lv1=message.embeds[0].title.split('Lv.')[1]
-                lv2=lv1.split(' ')[0]
-                lv3=(math.floor(int(lv2)/100))
-                if d_num2<lv3:
-                    d_num2=lv3
-                    await d_ch2.edit(name=f'第{lv3}層')
-                await asyncio.sleep(1)
-                await d_ch2.send("::i f 先手必勝!!")
+                if 'ネコ' in message.embes[0].title and '超激レア' in message.embeds[0].title:
+                    await d_ch2.send('::re')
+                else:
+                    lv1=message.embeds[0].title.split('Lv.')[1]
+                    lv2=lv1.split(' ')[0]
+                     lv3=(math.floor(int(lv2)/100))
+                    if d_num2<lv3:
+                        d_num2=lv3
+                        await d_ch2.edit(name=f'第{lv3  1}層')
+                    await asyncio.sleep(1)
+                    await d_ch2.send("::i f 先手必勝!!")
 
 
         if message.channel==d_ch2 and d_flag2==True:
