@@ -1665,7 +1665,7 @@ async def on_message(message):
 
         if message.content.startswith('y!gunban '):
             unban_id=message.content.split('y!gunban ')[1]
-            ch discord.utils.get(ban_guild.text_channels,name=f'{unban_id}')
+            ch = discord.utils.get(ban_guild.text_channels,name=f'{unban_id}')
             await ch.delete()
             
             
