@@ -1769,7 +1769,7 @@ async def on_message(message):
                 else:
                     lv1=message.embeds[0].title.split('Lv.')[1]
                     lv2=lv1.split(' ')[0]
-                     lv3=(math.floor(int(lv2)/100))
+                    lv3=(math.floor(int(lv2)/100))
                     if d_num2<lv3:
                         d_num2=lv3
                         await d_ch2.edit(name=f'第{lv3  1}層')
