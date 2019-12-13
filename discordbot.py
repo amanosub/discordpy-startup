@@ -16,8 +16,8 @@ import math
 from discord.ext import tasks
 
 client = discord.Client()
-#TOKEN = os.environ['DISCORD_BOT_TOKEN']
-TOKEN = 'NjQyMjcxMzYwNjY3ODc3Mzg2.XfM58A.xU5L5khbJYQRvEIzfHT-_9izVqc'
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
+#TOKEN = 'NjQyMjcxMzYwNjY3ODc3Mzg2.XfM58A.xU5L5khbJYQRvEIzfHT-_9izVqc'
 dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
 
