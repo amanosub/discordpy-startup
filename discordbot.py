@@ -652,6 +652,7 @@ async def on_message(message):
         global atk_ch
         global atk_ch2
         global d_ch
+        global d_num
         global d_ch2
         global d_flag
         global d_flag2
@@ -1116,7 +1117,7 @@ async def on_message(message):
                             
             await message.channel.send(embed=embed)
             log_ch=client.get_channel(654463514324369429)
-            embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
 
