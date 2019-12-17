@@ -880,7 +880,7 @@ async def on_message(message):
       
             elif message.embeds and message.embeds[0].description:
             	if 'このチャンネルの全てのPETが全回復した！' in message.embeds[0].description:
-                    await asyncio.sleep(5)
+                    await asyncio.sleep(0.5)
                     await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
 
 
