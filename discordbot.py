@@ -576,7 +576,7 @@ async def on_message(message):
                         await send_message.add_reaction("⬅️")
                         await send_message.add_reaction("🗑")
 
-        if message.content.startswith('y!test'):
+        if message.content.startswith('y!kill'):
             if message.author.id == 446610711230152706:
                 embed = discord.Embed(title=f"**Received command!!**",
                                       description="**checking user ID** <a:loadinfo:651635984068378663>")
