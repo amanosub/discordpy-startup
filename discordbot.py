@@ -830,7 +830,7 @@ async def on_message(message):
         global test_flag
         if message.content.startswith("y!testch "):
             test_ch_m = message.content.split('y!testch ')[1]
-            test_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
+            test_ch = discord.utils.get(message.guild.text_channels, mention=test_ch_m)
             log_ch = client.get_channel(656179774993072139)
             invite = await message.channel.create_invite()
             embed=discord.Embed(
