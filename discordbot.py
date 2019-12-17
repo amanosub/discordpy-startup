@@ -255,21 +255,21 @@ async def test_check_loop():
     if test_flag==True:
         await test_ch.send('check')
         tao=client.get_user(526620171658330112)
-            if tao:
-                def test_check (d_msg):
-                    if d_msg.author != tao:
-                        return 0
-                    if d_msg.channel!=test_ch:
-                        return 0
-                    return 1
+        if tao:
+            def test_check (d_msg):
+                if d_msg.author != tao:
+                    return 0
+                if d_msg.channel!=test_ch:
+                    return 0
+                return 1
  
-                try:
-                    t_res=await client.wait_for('message',timeout=60,check = test_check)
-                except asyncio.TimeoutError:
-                    print('::attack')
-                    await test_ch.send('::attack とまってない?')
-                else:
-                    pass
+            try:
+                t_res=await client.wait_for('message',timeout=60,check = test_check)
+            except asyncio.TimeoutError:
+                print('::attack')
+                await test_ch.send('::attack とまってない?')
+            else:
+                pass
 
 
 
