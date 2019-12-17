@@ -879,8 +879,8 @@ async def on_message(message):
                     
             elif message.embeds:
             	if 'エリクサーを使' in message.embeds[0].description:
-        	    	await asyncio.sleep(5)
-            		await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
+                    await asyncio.sleep(5)
+                    await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
 
 
 
