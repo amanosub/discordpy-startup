@@ -116,6 +116,7 @@ async def on_ready():
     d_loop.start()
     d_loop2.start()
     check_loop.start()
+    test_check_loop.start()
     kill_loop.start()
     print('Logged in as')
     print(client.user.name)
@@ -136,7 +137,7 @@ async def on_ready():
     user = client.get_user(446610711230152706)
     await user.send(embed=embed)
 
-    
+   
     
     for guild in client.guilds:
         tmp = discord.utils.get(guild.text_channels, name="global_yui")
@@ -845,6 +846,10 @@ async def on_message(message):
 
         if message.channel == test_ch and message.embeds and test_flag==True:
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                if test_ch.id==644101183048253450:
+                    lv1=message.embeds[0].title.split('Lv.')[1]
+                    lv2=lv1.split(' ')[0]
+                    await test_ch.edit(name=f'┃honpen┃lv.{lv2}')
                 await asyncio.sleep(1)
                 await test_ch.send("::attack 先手必勝!!")
 
@@ -853,6 +858,7 @@ async def on_message(message):
                 await asyncio.sleep(2)
                 await test_ch.send('::i e')              
             if "の攻撃" in message.content and "のHP" in message.content:
+                
                 def test_check (d_msg):
                     if d_msg.author != tao:
                         return 0
@@ -861,7 +867,7 @@ async def on_message(message):
                     return 1
  
                 try:
-                    t_res=await client.wait_for('message',timeout=6,check = test_check)
+                    t_res=await client.wait_for('message',timeout=3,check = test_check)
                 except asyncio.TimeoutError:
                     print('::attack')
                     await test_ch.send('::attack pet攻撃して欲しい')
