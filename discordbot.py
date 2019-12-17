@@ -852,7 +852,7 @@ async def on_message(message):
                     await test_ch.edit(name=f'┃honpen┃lv.{lv1}')
                     zokusei=message.embeds[0].title.split('[')[1]
                     zokusei2=zokusei.split(']')[0]
-                    rank=message.embeds[0].title.splut('【')[1]
+                    rank=message.embeds[0].title.split('【')[1]
                     rank1=rank.split('】')[0]
                     name=message.embeds[0].title.split('】')[1]
                     name1=name.split('が待ち構えている')[0]
