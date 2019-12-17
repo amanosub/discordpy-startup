@@ -866,13 +866,11 @@ async def on_message(message):
 
         if message.channel==test_ch and test_flag==True:
             if f"{client.user.display_name}はやられて" in message.content:
-                await asyncio.sleep(2)
-                def mio_check(tao_msg):
-                    if tao_msg.author!=mio:
+                def mio_check(mio_msg):
+                    if mio_msg.author!=mio:
                         return 0
-                    if tao_msg.channel!=test_ch:
+                    if mio_msg.channel!=test_ch:
                         return 0
-     
                     return 1
                 try:
                     re_msg=await client.wait_for('massage',timeout=10,check=mio_check)
