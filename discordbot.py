@@ -78,15 +78,22 @@ CHANNEL_ID = 623154510662991883
 client = discord.Client()
 dateTime = datetime.datetime.now()
 ModeFlag = 0
+#━━━━━━━━━━━━━━━┓
 atk_ch = 2
 atk_ch2=2
+#━━━━━━━━━━━━━━━┫
 d_ch = 2
 d_ch2= 2
 d_num = 1
 d_num2= 1
 d_flag=False
 d_flag2=False
+#━━━━━━━━━━━━━━━┫
+test_ch=1
+test_flag=False
+#━━━━━━━━━━━━━━━┫
 ban_guild=1
+
 
 @client.event
 async def on_ready():
@@ -220,6 +227,12 @@ async def d_loop():
         except asyncio.TimeoutError:
             await d_ch.send('::attack 止まってるんだよなぁ')
 
+
+
+
+
+
+
 @tasks.loop(seconds=60)
 async def d_loop2():
     if d_flag2==True:
@@ -235,6 +248,30 @@ async def d_loop2():
             await client.wait_for('massage',timeout=30,check=re_check)
         except asyncio.TimeoutError:
             await d_ch2.send('::i f 止まってるんだよなぁ')
+
+
+@tasks.loop(seconds=10)
+async def test_check_loop():
+    if test_flag==True:
+        await test_ch.send('check')
+        tao=client.get_user(526620171658330112)
+            if tao:
+                def test_check (d_msg):
+                    if d_msg.author != tao:
+                        return 0
+                    if d_msg.channel!=test_ch:
+                        return 0
+                    return 1
+ 
+                try:
+                    t_res=await client.wait_for('message',timeout=60,check = test_check)
+                except asyncio.TimeoutError:
+                    print('::attack')
+                    await test_ch.send('::attack とまってない?')
+                else:
+                    pass
+
+
 
 @tasks.loop(seconds=60)
 async def looop():
@@ -788,9 +825,68 @@ async def on_message(message):
                     await client.wait_for('message',timeout=20)
                 except asyncio.TimeoutError:
                     await message.channel.send('::attack TAO息してる…?')
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        global test_ch
+        global test_flag
+        if message.content.startswith("y!testch "):
+            test_ch_m = message.content.split('y!ifch ')[1]
+            test_ch = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
+            log_ch = client.get_channel(656179774993072139)
+            invite = await message.channel.create_invite()
+            embed=discord.Embed(
+            title=f"( 'ω'o[**testch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed.set_thumbnail(url=message.author.avatar_url)
+            await log_ch.send(embed=embed)
+            embed=discord.Embed(title='Test Play開始')
+            await message author.send(embed=embed)
+            await asyncio.sleep(1)
+            test_flag=True
+            await test_ch.send("::attack")
+
+        if message.channel == test_ch and message.embeds and test_flag==True:
+            if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
+                await asyncio.sleep(1)
+                await test_ch.send("::attack 先手必勝!!")
+
+        if message.channel==test_ch and test_flag==True:
+            if "の攻撃" in message.content and "のHP" in message.content:
+                def test_check (d_msg):
+                    if d_msg.author != tao:
+                        return 0
+                    if d_msg.channel!=test_ch:
+                        return 0
+                    return 1
+ 
+                try:
+                    t_res=await client.wait_for('message',timeout=6,check = test_check)
+                except asyncio.TimeoutError:
+                    print('::attack')
+                    await test_ch.send('::attack pet攻撃して欲しい')
+                else:
+                    print('pet')
+                    if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
+                        print('::attack 2')
+                        await d_ch.send(f'::attack ナイスアタックペット')
+        else:
+            pass
 
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        if message.channel==test_ch and test_flag==True:
+            if "やられている" in message.content and f"{client.user.mention}" in message.content:
+                await test_ch.send('::i e')
+                def test_check (d_msg):
+                    if d_msg.author != tao:
+                        return 0
+                    if d_msg.channel!=test_ch:
+                        return 0
+                    return 1
+
+
+
+
+
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
         if message.content.startswith("y!ifch "):
@@ -799,7 +895,8 @@ async def on_message(message):
             log_ch = client.get_channel(653016505255985163)
             invite = await message.channel.create_invite()
             author_id=str(message.author.id)
-            embed=discord.Embed(title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed=discord.Embed(
+            title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
             await atk_ch2.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
