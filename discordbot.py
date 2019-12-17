@@ -849,6 +849,9 @@ async def on_message(message):
                 await test_ch.send("::attack 先手必勝!!")
 
         if message.channel==test_ch and test_flag==True:
+            if f"{client.user.display_name}はやられて" in message.content:
+                await asyncio.sleep(2)
+                await test_ch.send('::i e')              
             if "の攻撃" in message.content and "のHP" in message.content:
                 def test_check (d_msg):
                     if d_msg.author != tao:
@@ -867,17 +870,9 @@ async def on_message(message):
                     if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
                         print('::attack 2')
                         await test_ch.send(f'::attack ナイスアタックペット')
-        else:
-            pass
-
-
-        if message.channel==test_ch and test_flag==True:
-            if "やられて" in message.content and f"{client.user.display_name}" in message.content:
-            	await asyncio.sleep(2)
-                await test_ch.send('::i e')
- 
-                    
-            elif message.embeds:
+  
+      
+            elif message.embeds and message.embeds[0].description:
             	if 'エリクサーを使' in message.embeds[0].description:
                     await asyncio.sleep(5)
                     await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
