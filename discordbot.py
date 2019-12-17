@@ -872,15 +872,15 @@ async def on_message(message):
 
 
         if message.channel==test_ch and test_flag==True:
-            if "やられている" in message.content and f"{client.user.mention}" in message.content:
+            if "やられて" in message.content and f"{client.user.display_name}" in message.content:
+            	awai asyncio.sleep(2)
                 await test_ch.send('::i e')
-                def test_check (d_msg):
-                    if d_msg.author != tao:
-                        return 0
-                    if d_msg.channel!=test_ch:
-                        return 0
-                    return 1
-
+ 
+                    
+            elif message.embeds:
+            	if 'エリクサーを使' in message.embeds[0].description:
+        	    	await asyncio.sleep(5)
+            		await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
 
 
 
