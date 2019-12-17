@@ -856,9 +856,10 @@ async def on_message(message):
                     rank1=rank.split('】')[0]
                     name=message.embeds[0].title.split('】')[1]
                     name1=name.split('が待ち構えている')[0]
+                    
                     hp=message.embeds[0].title.split(':')[3]
                     logch=client.get_channel(656551270462521354)
-                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name1}\nRank:{rank1}\nStatus:Lv.{lv1}┃HP.{hp}',color=discord.Color.green())
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name1}\nRank:\n{rank1}\nStatus:\nLv.{lv1}┃HP.{hp}',color=discord.Color.green())
                     await logch.send(embed=embed)
                 await asyncio.sleep(1)
                 await test_ch.send("::attack 先手必勝!!")
