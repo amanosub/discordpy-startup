@@ -866,7 +866,6 @@ async def on_message(message):
         if message.channel==test_ch and test_flag==True:
             if f"{client.user.display_name}はやられて" in message.content:
                 await asyncio.sleep(2)
-                await test_ch.send('::i e')
                 def mio_check(tao_msg):
                     if tao_msg.author!=tao:
                         return 0
