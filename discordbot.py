@@ -838,7 +838,7 @@ async def on_message(message):
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
             embed=discord.Embed(title='Test Play開始')
-            await message author.send(embed=embed)
+            await message.author.send(embed=embed)
             await asyncio.sleep(1)
             test_flag=True
             await test_ch.send("::attack")
