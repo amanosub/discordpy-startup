@@ -873,7 +873,7 @@ async def on_message(message):
 
         if message.channel==test_ch and test_flag==True:
             if "やられて" in message.content and f"{client.user.display_name}" in message.content:
-            	awai asyncio.sleep(2)
+            	await asyncio.sleep(2)
                 await test_ch.send('::i e')
  
                     
