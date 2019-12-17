@@ -834,7 +834,7 @@ async def on_message(message):
             log_ch = client.get_channel(656179774993072139)
             invite = await message.channel.create_invite()
             embed=discord.Embed(
-            title=f"( 'ω'o[**testch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            title=f"( 'ω'o[**testch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
             embed=discord.Embed(title='Test Play開始')
