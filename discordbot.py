@@ -875,7 +875,7 @@ async def on_message(message):
                         return 0
                     return 1
                 try:
-                    re_msg=await cliemtwait_for('massage',timeout=10,check=mio_check)
+                    re_msg=await client.wait_for('massage',timeout=10,check=mio_check)
                 except asyncio.TimeoutError:
                     await test_ch.send('::i e')
                 else:
