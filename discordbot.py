@@ -800,7 +800,6 @@ async def on_message(message):
 
         if message.channel==d_ch and d_flag==True:
             if "の攻撃" in message.content and "のHP" in message.content:
-                print('@')
                 def d_check (d_msg):
                     if d_msg.author != tao:
                         return 0
@@ -867,7 +866,22 @@ async def on_message(message):
         if message.channel==test_ch and test_flag==True:
             if f"{client.user.display_name}はやられて" in message.content:
                 await asyncio.sleep(2)
-                await test_ch.send('::i e')              
+                await test_ch.send('::i e')
+                def mio_check(tao_msg):
+                    if tao_msg.author!=tao:
+                        return 0
+                    if tao_msg.channel!=test_ch:
+                        return 0
+                    if not tao_msg.embeds:
+                        return 0
+                    reutnr 1
+                try:
+                    re_msg=await cliemtwait_for('massage',timeout=10,check=mio_check)
+                except asyncio.TimeoutError:
+                    await test_ch.send('::i e')
+                else:
+                    if f'{mio.mention}は祈りを捧げ、{client.user.mention}は復活した' in re_msg.embeds[0].description  :  
+                        await test_ch.send('::attack')      
             if "の攻撃" in message.content and "のHP" in message.content:
                 
                 def test_check (d_msg):
