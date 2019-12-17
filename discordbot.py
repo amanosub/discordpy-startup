@@ -847,9 +847,19 @@ async def on_message(message):
         if message.channel == test_ch and message.embeds and test_flag==True:
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 if test_ch.id==644101183048253450:
-                    lv1=message.embeds[0].title.split('Lv.')[1]
-                    lv2=lv1.split(' ')[0]
-                    await test_ch.edit(name=f'┃honpen┃lv.{lv2}')
+                    lv=message.embeds[0].title.split('Lv.')[1]
+                    lv1=lv.split(' ')[0]
+                    await test_ch.edit(name=f'┃honpen┃lv.{lv1}')
+                    zokusei=message.embeds[0].title.split('[')[1]
+                    zokusei2=zokusei.split(']')[0]
+                    rank=message.embeds[0].title.splut('【')[1]
+                    rank1=rank.split('】')[0]
+                    name=message.embeds[0].title.split('】')[1]
+                    name1=name.split('が待ち構えている')[0]
+                    hp=message.embeds[0].title.split(':')[3]
+                    logch=client.get.channel(656551270462521354)
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name1}\nRank:{rank1}\nStatus:\nLv.{lv1}┃HP.{hp}',color=discord.Color.green())
+                    await logch.send(embed=embed)
                 await asyncio.sleep(1)
                 await test_ch.send("::attack 先手必勝!!")
 
