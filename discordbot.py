@@ -867,19 +867,19 @@ async def on_message(message):
             if f"{client.user.display_name}はやられて" in message.content:
                 await asyncio.sleep(2)
                 def mio_check(tao_msg):
-                    if tao_msg.author!=tao:
+                    if tao_msg.author!=mio:
                         return 0
                     if tao_msg.channel!=test_ch:
                         return 0
-                    if not tao_msg.embeds:
-                        return 0
+     
                     return 1
                 try:
                     re_msg=await client.wait_for('massage',timeout=10,check=mio_check)
                 except asyncio.TimeoutError:
                     await test_ch.send('::i e　mio反応あった?')
                 else:
-                    if 'は祈りを捧げ、' in re_msg.embeds[0].description :  
+                    if '::i i' in re_msg.content:  
+                        await asyncio.sleep(5)
                         await test_ch.send('::attack　ナイスmio!')      
             if "の攻撃" in message.content and "のHP" in message.content:
                 
