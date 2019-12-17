@@ -877,10 +877,10 @@ async def on_message(message):
                 try:
                     re_msg=await client.wait_for('massage',timeout=10,check=mio_check)
                 except asyncio.TimeoutError:
-                    await test_ch.send('::i e')
+                    await test_ch.send('::i e　mio反応あった?')
                 else:
-                    if f'{mio.mention}は祈りを捧げ、{client.user.mention}は復活した' in re_msg.embeds[0].description  :  
-                        await test_ch.send('::attack')      
+                    if f'は祈りを捧げ、' in re_msg.embeds[0].description :  
+                        await test_ch.send('::attack　ナイスmio!')      
             if "の攻撃" in message.content and "のHP" in message.content:
                 
                 def test_check (d_msg):
