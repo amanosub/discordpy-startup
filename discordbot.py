@@ -874,7 +874,7 @@ async def on_message(message):
                         return 0
                     if not tao_msg.embeds:
                         return 0
-                    reutnr 1
+                    return 1
                 try:
                     re_msg=await cliemtwait_for('massage',timeout=10,check=mio_check)
                 except asyncio.TimeoutError:
