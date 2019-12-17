@@ -880,7 +880,7 @@ async def on_message(message):
                     if f'{client.user.mention}は復活した' in re_msg.embeds[0].description:  
                         await asyncio.sleep(0.5)
                         await test_ch.send('::attack　ナイスmio!')      
-            if "の攻撃" in message.content and "のHP" in message.content:
+            elif "の攻撃" in message.content and "のHP" in message.content:
                 
                 def test_check (d_msg):
                     if d_msg.author != tao:
