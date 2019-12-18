@@ -852,7 +852,10 @@ async def on_message(message):
                     if rank=='超強敵' or rank=='レア':
                         exp=int(lv)*5
                     elif rank=='激レア':
+                    
                         exp=int(lv)*33
+                    elif rank=='強敵':
+                        exp=int(lv)*1.6
                     elif rank=='超激レア':
                         exp=int(lv)*100
                     embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}',color=discord.Color.green())
