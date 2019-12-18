@@ -855,7 +855,7 @@ async def on_message(message):
                         exp=int(lv)*33
                     elif rank=='超激レア':
                         exp=int(lv)*100
-                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nRank:\n{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp\n{exp}',color=discord.Color.green())
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
                     await logch.send(embed=embed)
                 await asyncio.sleep(1)
@@ -1090,13 +1090,13 @@ async def on_message(message):
 
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
      
         if message.content.startswith('y!atkch'):
             embed = discord.Embed(title='現在停止中です!')
             embed.set_footer(icon_url=message.author.avatar_url,text=message.author.name)
             await message.channel.send(embed = embed)
 
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         if message.embeds and message.embeds[0].description and message.author == tao :
             dateTime = datetime.datetime.now()
@@ -1117,7 +1117,30 @@ async def on_message(message):
                                       str(dateTime.second) + "秒")
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
 
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       if message.embeds and message.embeds[0].title:
+           if message.author==tao:
+               if '待ち構えている' in message.embeds[0].title:
+                    lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
+                    type=message.embeds[0].title.split('[')[1].split(']')[0]
+                    rank=message.embeds[0].title.split('【')[1].split('】')[0]
+                    name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
+                    image_url=message.embeds[0].image.url
+                    hp=message.embeds[0].title.split(':')[3]
+                    exp=int(lv)
 
+                    if rank=='超強敵' or rank=='レア':
+                        exp=int(lv)*5
+
+                    elif rank=='激レア':
+                        exp=int(lv)*33
+
+                    elif rank=='超激レア':
+                        exp=int(lv)*100
+
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}\n(チャンネル直通URL)[{await message.channel.create_invite().url}]',color=discord.Color.green())
+                    embed.set_thumbnail(url=image_url)
+                    await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'taoモンスター出現ログ'))
 
 
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
