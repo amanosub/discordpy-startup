@@ -1118,9 +1118,9 @@ async def on_message(message):
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       if message.embeds and message.embeds[0].title:
-           if message.author==tao:
-               if '待ち構えている' in message.embeds[0].title:
+        if message.embeds and message.embeds[0].title:
+            if message.author==tao:
+                if '待ち構えている' in message.embeds[0].title:
                     lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
                     type=message.embeds[0].title.split('[')[1].split(']')[0]
                     rank=message.embeds[0].title.split('【')[1].split('】')[0]
@@ -1134,7 +1134,7 @@ async def on_message(message):
 
                     elif rank=='激レア':
                         exp=int(lv)*33
-
+ 
                     elif rank=='超激レア':
                         exp=int(lv)*100
 
