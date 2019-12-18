@@ -144,7 +144,7 @@ async def on_ready():
    
     if (dateTime.hour) + 9 >= 24:
         jp_time = (dateTime.hour) - 15
-        dateTume.day += 1
+        dateTime.day += 1
         embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
         embed.set_thumbnail(url=random.choice(
             ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
