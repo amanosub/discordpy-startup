@@ -1138,7 +1138,7 @@ async def on_message(message):
                     elif rank=='超激レア':
                         exp=int(lv)*100
 
-                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}\n(チャンネル直通URL)[{(await message.channel.create_invite()).url}]',color=discord.Color.green())
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}',description=f'(チャンネル直通URL)[{(await message.channel.create_invite()).url}]',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
                     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'taoモンスター出現ログ'))
 
