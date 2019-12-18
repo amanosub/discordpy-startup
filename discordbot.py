@@ -794,7 +794,7 @@ async def on_message(message):
                     if d_msg.channel!=d_ch:
                         return 0
                     return 1
-"""
+                """
                 try:
                     t_res=await client.wait_for('message',timeout=,check = d_check)
                 except asyncio.TimeoutError:
@@ -804,7 +804,7 @@ async def on_message(message):
                     print('pet')
                     if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
                         await d_ch.send(f'::attack ')
-"""
+                """
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         global test_ch
         global test_flag
