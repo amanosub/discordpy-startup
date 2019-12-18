@@ -209,18 +209,24 @@ async def check_loop():
 @tasks.loop(seconds=60)
 async def d_loop():
     if d_flag==True:
-        d_ch.send('check point')
-        tao = client.get_user(526620171658330112)    
-        def re_check(t_msg):
-            if t_msg.author!=tao:
-                return 0
-            if t_msg.channel!=d_ch:
-                return 0
-            return 1
-        try:
-            await client.wait_for('massage',timeout=30,check=re_check)
-        except asyncio.TimeoutError:
-            await d_ch.send('::attack 止まってるんだよなぁ')
+        await d_ch.send('━━━━━━━━━━━━━━━━━━━')
+        tao=client.get_user(526620171658330112)
+        if tao:
+            def test_check (d_msg):
+                if d_msg.author != tao:
+                    return 0
+                if d_msg.channel!=test_ch:
+                    return 0
+                return 1
+ 
+            try:
+                t_res=await client.wait_for('message',timeout=60,check = test_check)
+            except asyncio.TimeoutError:
+                print('━━━━━━━━━━━━━━━━━━━━━━━━━━')
+                await test_ch.send('::attack とまってない?')
+            else:
+                pass
+
 
 @tasks.loop(seconds=60)
 async def d_loop2():
