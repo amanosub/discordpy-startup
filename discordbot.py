@@ -118,15 +118,12 @@ async def on_ready():
     d_loop2.start()
     check_loop.start()
     test_check_loop.start()
-    kill_loop.start()
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('------')
-    print(dateTime)
-    print("今入ってる鯖の数" + str(server_number))
-    print('allready')
-    print('We have logged in as {0.user}'.format(client))
+    print('BOT NAME\n'+(client.user.name))
+    print('BOT ID\n'+str(client.user.id))
+    print('起動時刻\n'+str(dateTime))
+    print('┣━━━━━━━━━━━━━━━━━━━┫')
+    
+
 
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
@@ -146,13 +143,14 @@ async def on_ready():
    
     if (dateTime.hour) + 9 >= 24:
         jp_time = (dateTime.hour) - 15
+        dateTume.day += 1
         embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
         embed.set_thumbnail(url=random.choice(
             ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
         embed.add_field(name="起動時刻",
                         value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day) + "\n " + str(
                             jp_time) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=False)
-        embed.add_field(name="YUI news", value="大幅に改良！\n詳しくはヘルプの第七項から公式鯖へ", inline=True)
+        embed.add_field(name="YUI news", value="大きな変更はございません", inline=True)
         await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
         helplog_ch = client.get_channel(653240636354330651)
         await helplog_ch.send(embed=embed)
@@ -207,12 +205,6 @@ async def check_loop():
     except asyncio.TimeoutError:
         await q_ch.send('::q timeout_check')
 
-@tasks.loop(seconds=0.1)
-async def kill_loop():
-    ch=client.get_channel(654695031105519616)
-    num=random.randint(0,100000000000000000000)
-    await ch.send(num)
-
 @tasks.loop(seconds=60)
 async def d_loop():
     if d_flag==True:
@@ -228,12 +220,6 @@ async def d_loop():
             await client.wait_for('massage',timeout=30,check=re_check)
         except asyncio.TimeoutError:
             await d_ch.send('::attack 止まってるんだよなぁ')
-
-
-
-
-
-
 
 @tasks.loop(seconds=60)
 async def d_loop2():
@@ -702,7 +688,6 @@ async def on_message(message):
         d_num2=int(d_num02)
 
         if message.content=='y!devac2':
-            print ('dcap')
             d_flag2=False
             await asyncio.sleep(1)
             await d_ch2.send('::re')
@@ -718,7 +703,6 @@ async def on_message(message):
 
 
         if d_flag2 == True and message.channel == d_ch2 and message.embeds:
-            print("check TAO DAN")
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 if 'ネコ' in message.embeds[0].title and '超激レア' in message.embeds[0].title:
                     await d_ch2.send('::re')
@@ -743,7 +727,6 @@ async def on_message(message):
 
 
         if message.content=='y!devac':
-            print ('dcap')
             d_flag=False
             await asyncio.sleep(1)
             await d_ch.send('::re')
@@ -760,13 +743,12 @@ async def on_message(message):
 
         if message.channel == d_ch :
             if f"{client.user.display_name}はやられてしまった" in message.content and message.author == tao:
-                print('yarareta')
                 d_flag = False
                 await asyncio.sleep(5)
                 d_num += 1
                 d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
                 if d_ch:
-                    print('oh')
+                
                     await asyncio.sleep(3)
                     b_num=d_num-1
                     b_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{b_num}階層')
@@ -775,7 +757,7 @@ async def on_message(message):
                     d_flag=True
                     await d_ch.send('::attack')
                 else:
-                    print('yea')
+              
                     d_ch=await client.get_guild(654086105699844108).create_text_channel(name=f"第{d_num}階層")
                     await asyncio.sleep(3)
                     b_num=d_num-1
@@ -786,7 +768,7 @@ async def on_message(message):
                     await d_ch.send("::attack")
 
         if d_flag == True and message.channel == d_ch and message.embeds:
-            print("check TAO DAN")
+       
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 print("check TAO DAN2")
                 await asyncio.sleep(1)
@@ -811,12 +793,12 @@ async def on_message(message):
                 try:
                     t_res=await client.wait_for('message',timeout=6,check = d_check)
                 except asyncio.TimeoutError:
-                    print('::attack')
+           
                     await d_ch.send('::attack pet攻撃なし')
                 else:
                     print('pet')
                     if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
-                        print('::attack 2')
+                   
                         await d_ch.send(f'::attack ')
 
             if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
@@ -844,22 +826,35 @@ async def on_message(message):
             test_flag=True
             await test_ch.send("::attack")
 
+
+        if message.content=='y!teststop'
+            test_flag=False
+            await asyncio.sleep(5)
+            await test_ch.send('::re')
+            embed=discord.Embed(title='Test Play停止')
+            await message.author.send(embed=embed)
+
         if message.channel == test_ch and message.embeds and test_flag==True:
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 if test_ch.id==644101183048253450:
-                    lv=message.embeds[0].title.split('Lv.')[1]
-                    lv1=lv.split(' ')[0]
-                    await test_ch.edit(name=f'┃honpen┃lv.{lv1}')
-                    zokusei=message.embeds[0].title.split('[')[1]
-                    zokusei2=zokusei.split(']')[0]
-                    rank=message.embeds[0].title.split('【')[1]
-                    rank1=rank.split('】')[0]
-                    name=message.embeds[0].title.split('】')[1]
-                    name1=name.split('が待ち構えている')[0]
-                    
+
+                    lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
+                    type=message.embeds[0].title.split('[')[1].split(']')[0]
+                    rank=message.embeds[0].title.split('【')[1].split('】')[0]
+                    name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
+                    image_url=message.embeds[0].image.url
                     hp=message.embeds[0].title.split(':')[3]
+
                     logch=client.get_channel(656551270462521354)
-                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name1}\nRank:\n{rank1}\nStatus:\nLv.{lv1}┃HP.{hp}',color=discord.Color.green())
+                    await test_ch.edit(name=f'┃honpen┃lv.{lv}')
+                    if rank=='超強敵' or rank=='レア':
+                        exp=int(lv)*5
+                    elif rank=='激レア':
+                        exp=int(lv)*33
+                    elif rank=='超激レア':
+                        exp=int(lv)*100
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nRank:\n{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp\n{exp}',color=discord.Color.green())
+                    embed.set_thumbnail(url=image_url)
                     await logch.send(embed=embed)
                 await asyncio.sleep(1)
                 await test_ch.send("::attack 先手必勝!!")
@@ -870,6 +865,10 @@ async def on_message(message):
                     if mio_msg.author!=tao:
                         return 0
                     if mio_msg.channel!=test_ch:
+                        return 0
+                    if not mio_msg.embeds:
+                        return 0
+                    if not f'{client.user.mention}は復活した' in mio_msg.embeds[0].description:
                         return 0
                     return 1
                 try:
@@ -892,12 +891,12 @@ async def on_message(message):
                 try:
                     t_res=await client.wait_for('message',timeout=2,check = test_check)
                 except asyncio.TimeoutError:
-                    print('::attack')
+                
                     await test_ch.send('::attack pet攻撃して欲しい')
                 else:
-                    print('pet')
+                 
                     if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
-                        print('::attack 2')
+                   
                         await test_ch.send(f'::attack ナイスアタックペット')
   
       
@@ -942,9 +941,9 @@ async def on_message(message):
        
         if tao:
             if message.channel==atk_ch2:
-                print("check TAO")
+            
                 if "フレア" in message.content and 'のHP' in message.content:
-                    print('check')
+                
                     await asyncio.sleep(0.7)
                     msg = ("ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ","ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
 "(っ'-')╮=͟͟͞͞🔥) ﾟдﾟ ）",
@@ -1059,7 +1058,7 @@ async def on_message(message):
 
 
                 if message.embeds:
-                    print("check TAO 1")
+            
                     if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                         await asyncio.sleep(3)
                         await atk_ch2.send("::item f 先手必勝!!")
@@ -1099,7 +1098,7 @@ async def on_message(message):
 
         if message.embeds and message.embeds[0].description and message.author == tao :
             dateTime = datetime.datetime.now()
-            print("a")
+         
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 print("lvup")
                 lv = message.embeds[0].description.split("`")[1]
