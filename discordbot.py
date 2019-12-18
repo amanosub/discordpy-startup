@@ -784,31 +784,27 @@ async def on_message(message):
 
         if message.channel==d_ch and d_flag==True:
             if "の攻撃" in message.content and "のHP" in message.content:
+                await asyncio.sleep(0.5)
+                await message.channel.send('::attack')
+                #⬆PETいないからこれしてるけどいつか消す⬆
+
                 def d_check (d_msg):
                     if d_msg.author != tao:
                         return 0
                     if d_msg.channel!=d_ch:
                         return 0
                     return 1
- 
+"""
                 try:
-                    t_res=await client.wait_for('message',timeout=6,check = d_check)
+                    t_res=await client.wait_for('message',timeout=,check = d_check)
                 except asyncio.TimeoutError:
-           
+                
                     await d_ch.send('::attack pet攻撃なし')
                 else:
                     print('pet')
                     if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
-                   
                         await d_ch.send(f'::attack ')
-
-            if atk_ch.id != 643461030692782081 and "攻撃失敗" in message.content:
-                await asyncio.sleep(1)
-                await atk_ch.send("::attack あ、ミスった( *´•ω•`*)")
-                try:
-                    await client.wait_for('message',timeout=20)
-                except asyncio.TimeoutError:
-                    await message.channel.send('::attack TAO息してる…?')
+"""
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         global test_ch
         global test_flag
