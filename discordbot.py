@@ -92,6 +92,7 @@ d_flag2=False
 #━━━━━━━━━━━━━━━┫
 test_ch=1
 test_flag=False
+exp=0
 #━━━━━━━━━━━━━━━┫
 ban_guild=1
 
@@ -847,6 +848,7 @@ async def on_message(message):
 
                     logch=client.get_channel(656551270462521354)
                     await test_ch.edit(name=f'┃honpen┃lv.{lv}')
+                    exp=int(lv)
                     if rank=='超強敵' or rank=='レア':
                         exp=int(lv)*5
                     elif rank=='激レア':
