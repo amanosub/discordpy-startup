@@ -209,7 +209,7 @@ async def check_loop():
 @tasks.loop(seconds=60)
 async def d_loop():
     if d_flag==True:
-        await d_ch.send('━━━━━━━━━━━━━━━━━━━')
+        await d_ch.send('━━━━━━━━━━━━━━━━━━━━')
         tao=client.get_user(526620171658330112)
         if tao:
             def test_check (d_msg):
@@ -777,16 +777,8 @@ async def on_message(message):
         if d_flag == True and message.channel == d_ch and message.embeds:
        
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
-                print("check TAO DAN2")
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.5)
                 await d_ch.send("::attack 先手必勝!!")
-                try:
-                    await client.wait_for('message',timeout=300)
-                except asyncio.TimeoutError:
-                    await message.channel.send('::attack TAO息してる…?')
-                else:
-                    pass
-
 
         if message.channel==d_ch and d_flag==True:
             if "の攻撃" in message.content and "のHP" in message.content:
