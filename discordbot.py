@@ -827,7 +827,7 @@ async def on_message(message):
             await test_ch.send("::attack")
 
 
-        if message.content=='y!teststop'
+        if message.content=='y!teststop':
             test_flag=False
             await asyncio.sleep(5)
             await test_ch.send('::re')
