@@ -223,7 +223,7 @@ async def d_loop():
                 t_res=await client.wait_for('message',timeout=60,check = test_check)
             except asyncio.TimeoutError:
                 print('━━━━━━━━━━━━━━━━━━━━━━━━━━')
-                await test_ch.send('::attack とまってない?')
+                await d_ch.send('::attack とまってない?')
             else:
                 pass
 
