@@ -101,13 +101,13 @@ ban_guild=1
 async def on_ready():
  
     global d_ch      #◆世界樹の第一階層チャンネル取得
+    guild_num=654086105699844108
     d_ch = discord.utils.get(client.get_guild(guild_num).text_channels, name=f'第{d_num}階層')
 
     global d_ch2     #◆黒鉄城のチャンネル取得
     d_ch2= client.get_channel(654710356622704662)
     
     global ban_guild #◆gban収容所guildの取得
-    guild_num=654086105699844108
     ban_guild=client.get_guild(654599269906645002)
 
  
