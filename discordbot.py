@@ -96,36 +96,38 @@ exp=0
 #━━━━━━━━━━━━━━━┫
 ban_guild=1
 
-
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
-    global atk_ch
-    global atk_ch2
-    global d_ch
-    global d_ch2
-    global ban_guild
+ 
+    global d_ch      #◆世界樹の第一階層チャンネル取得
+    d_ch = discord.utils.get(client.get_guild(guild_num).text_channels, name=f'第{d_num}階層')
+
+    global d_ch2     #◆黒鉄城のチャンネル取得
+    d_ch2= client.get_channel(654710356622704662)
+    
+    global ban_guild #◆gban収容所guildの取得
     guild_num=654086105699844108
     ban_guild=client.get_guild(654599269906645002)
-    d_ch = discord.utils.get(client.get_guild(guild_num).text_channels, name=f'第{d_num}階層')
-    d_ch2= client.get_channel(654710356622704662)
-    atk_ch = client.get_channel(643461030692782081)
-    atk_ch2 = client .get_channel(64341030692882081)
-    t_ch = client.get_channel(650537498262634497)
+
+ 
     client.ch = client.get_channel(644199380764721152)
-    q_check_ch = client.get_channel(650390707013550086)
+
+    for guild in client.guilds:
+        tmp = discord.utils.get(guild.text_channels, name="global_yui")
+
     stloop.start()
     looop.start()
     d_loop.start()
     d_loop2.start()
     check_loop.start()
     test_check_loop.start()
-    print('BOT NAME\n'+(client.user.name))
-    print('BOT ID\n'+str(client.user.id))
-    print('起動時刻\n'+str(dateTime))
-    print('┣━━━━━━━━━━━━━━━━━━━┫')
+
+    print('‣BOT NAME\n '+(client.user.name))
+    print('‣BOT ID\n '+str(client.user.id))
+    print('‣起動時刻\n '+str(dateTime))
+    print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫')
     
-
-
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
@@ -136,11 +138,6 @@ async def on_ready():
     user = client.get_user(446610711230152706)
     await user.send(embed=embed)
 
-   
-    
-    for guild in client.guilds:
-        tmp = discord.utils.get(guild.text_channels, name="global_yui")
-   
    
     if (dateTime.hour) + 9 >= 24:
         jp_time = (dateTime.hour) - 15
@@ -181,12 +178,16 @@ flag = False
 yt_channel_id = CHANNEL_ID
 
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 @tasks.loop(seconds=30)
-async def stloop():
+async def stloop():#~をプレイ中　の、表記変更
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 @tasks.loop(seconds=60)
-async def check_loop():
+async def check_loop():#クイズのチェック
     q_ch = client.get_channel(651816760865194005)
     def quiz_check(tao_msg):
 
@@ -206,6 +207,8 @@ async def check_loop():
     except asyncio.TimeoutError:
         await q_ch.send('::q timeout_check')
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 @tasks.loop(seconds=60)
 async def d_loop():
     if d_flag==True:
@@ -215,18 +218,19 @@ async def d_loop():
             def test_check (d_msg):
                 if d_msg.author != tao:
                     return 0
-                if d_msg.channel!=test_ch:
+                if d_msg.channel!=d_ch:
                     return 0
                 return 1
  
             try:
                 t_res=await client.wait_for('message',timeout=60,check = test_check)
             except asyncio.TimeoutError:
-                print('━━━━━━━━━━━━━━━━━━━━━━━━━━')
+                print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
                 await d_ch.send('::attack とまってない?')
             else:
                 pass
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @tasks.loop(seconds=60)
 async def d_loop2():
@@ -244,11 +248,12 @@ async def d_loop2():
         except asyncio.TimeoutError:
             await d_ch2.send('::i f 止まってるんだよなぁ')
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @tasks.loop(seconds=10)
 async def test_check_loop():
     if test_flag==True:
-        await test_ch.send('check')
+        await test_ch.send('━━━━━━━━━━━━━━━━━━━━')
         tao=client.get_user(526620171658330112)
         if tao:
             def test_check (d_msg):
@@ -266,7 +271,7 @@ async def test_check_loop():
             else:
                 pass
 
-
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @tasks.loop(seconds=60)
 async def looop():
@@ -295,6 +300,7 @@ async def looop():
         login_ch = client.get_channel(643466975745540096)
         await login_ch.send('::login')
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @client.event
 async def on_disconnect():
@@ -307,8 +313,9 @@ async def on_disconnect():
                         dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
 
 
-#    await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
+    await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @client.event
 async def on_message(message):
