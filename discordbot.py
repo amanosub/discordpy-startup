@@ -744,6 +744,8 @@ async def on_message(message):
             d_flag=True
             await asyncio.sleep(1)
             d_num=1
+            d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
+
             embed=discord.Embed(title='ダンジョン攻略開始')
             await message.author.send(embed=embed)
             await d_ch.send('::attack 攻略開始')
