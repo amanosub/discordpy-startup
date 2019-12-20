@@ -100,10 +100,10 @@ async def on_ready():
     check_loop.start()
     test_check_loop.start()
 
-    print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
+    print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
     print('‣BOT ID\n '+str(client.user.id))
     print('‣LOG IN TIME\n '+str(dateTime))
-    print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢')
+    print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢')
 
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
