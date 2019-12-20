@@ -115,16 +115,13 @@ async def on_ready():
     user = client.get_user(446610711230152706)
     await user.send(embed=embed)
 
-
     if (dateTime.hour) + 9 >= 24:
         jp_time = (dateTime.hour) - 15
-        dateday = int(dateTime.day)
-        dateday += 1
         embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
         embed.set_thumbnail(url=random.choice(
             ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
         embed.add_field(name="起動時刻",
-                        value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateday) + "\n " + str(
+                        value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day + 1) + "\n " + str(
                             jp_time) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=False)
         embed.add_field(name="YUI news", value="大きな変更はございません", inline=True)
         await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
