@@ -1511,11 +1511,12 @@ async def on_message(message):
         if message.content.startswith("y!wt "):
             cityc = citycodes[message.content.split("y!wt ")[1]]
             if cityc:
+                None='None'
                 resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%cityc).read()
                 resp = json.loads(resp.decode('utf-8'))
                 embed = discord.Embed(
                 title = "YUI Weather",
-                description = f"{resp['forecasts'][0]['dateLabel']}の天気は{resp['forecasts'][0]['telop']}\n最低気温は摂氏{str(resp['forecasts'][0]['temperature']['min']['celsius'])}℃:華氏{str(resp['forecasts'][0]['temperature']['min']['fahrenheit'])}°F\n最高気温は摂氏{str(resp['forecasts'][0]['temperature']['max']['celsius'])}℃:華氏{str(resp['forecasts'][0]['temperature']['max']['fahrenheit'])}°Fです\n{resp['forecasts'][1]['dateLabel']}の天気は{resp['forecasts'][0]['telop']}\n最低気温は摂氏{str(resp['forecasts'][1]['temperature']['min']['celsius'])}℃:華氏{str(resp['forecasts'][1]['temperature']['min']['fahrenheit'])}°F\n最高気温は摂氏{str(resp['forecasts'][1]['temperature']['max']['celsius'])}℃:華氏{str(resp['forecasts'][1]['temperature']['max']['fahrenheit'])}°Fです\n{resp['forecasts'][2]['dateLabel']}の天気は{resp['forecasts'][2]['telop']}\n最低気温は摂氏{str(resp['forecasts'][2]['temperature']['min']['celsius'])}℃:華氏{str(resp['forecasts'][2]['temperature']['min']['fahrenheit'])}°F\n最高気温は摂氏{str(resp['forecasts'][2]['temperature']['max']['celsius'])}℃:華氏{str(resp['forecasts'][2]['temperature']['max']['fahrenheit'])}°Fです",
+                description = f"{resp['forecasts'][0]['dateLabel']}の天気は{resp['forecasts'][0]['telop']}\n最低気温は摂氏{resp['forecasts'][0]['temperature']['min']['celsius']}℃:華氏{resp['forecasts'][0]['temperature']['min']['fahrenheit']}°F\n最高気温は摂氏{resp['forecasts'][0]['temperature']['max']['celsius']}℃:華氏{resp['forecasts'][0]['temperature']['max']['fahrenheit']}°Fです\n{resp['forecasts'][1]['dateLabel']}の天気は{resp['forecasts'][0]['telop']}\n最低気温は摂氏{resp['forecasts'][1]['temperature']['min']['celsius']}℃:華氏{resp['forecasts'][1]['temperature']['min']['fahrenheit']}°F\n最高気温は摂氏{resp['forecasts'][1]['temperature']['max']['celsius']}℃:華氏{resp['forecasts'][1]['temperature']['max']['fahrenheit']}°Fです\n{resp['forecasts'][2]['dateLabel']}の天気は{resp['forecasts'][2]['telop']}\n最低気温は摂氏{resp['forecasts'][2]['temperature']['min']['celsius']}℃:華氏{resp['forecasts'][2]['temperature']['min']['fahrenheit']}°F\n最高気温は摂氏{resp['forecasts'][2]['temperature']['max']['celsius']}℃:華氏{resp['forecasts'][2]['temperature']['max']['fahrenheit']}°Fです",
                 color = discord.Color.blue()
                 )
                 embed.set_footer(
