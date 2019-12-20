@@ -1425,7 +1425,7 @@ async def on_message(message):
             await tmp.edit(embed = discord.Embed(title = "□　　◐"))
             await asyncio.sleep(1)            
             await tmp.edit(embed = discord.Embed(title = "□　　　◓"))
-            awai asyncio.sleep(1)
+            await asyncio.sleep(1)
             await tmp.edit(embed = discord.Embed(title = "□　　　◖◗ﾊﾟｶｯ"))
             embed = discord.Embed(title="なんか出てきた",
             color=discord.Colour.from_rgb(255, 133, 214))
