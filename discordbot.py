@@ -1511,7 +1511,7 @@ async def on_message(message):
         if message.content.startswith("y!wt "):
             cityc = citycodes[message.content.split("y!wt ")[1]]
             if cityc:
-                None='None'
+               
                 resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%cityc).read()
                 resp = json.loads(resp.decode('utf-8'))
                 embed = discord.Embed(
