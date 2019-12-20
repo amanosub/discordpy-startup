@@ -21,52 +21,29 @@ dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
 
 citycodes = {
-    "北海道": '016010', "青森県": '020010',
-    "岩手県": '030010', "宮城県": '040010',
-    "秋田県": '050010', "山形県": '060010',
-    "福島県": '070010', "東京都": '130010',
-    "神奈川県": '140010', "埼玉県": '110010',
-    "千葉県": '120010', "茨城県": '080010',
-    "栃木県": '090010', "群馬県": '100010',
-    "山梨県": '190010', "新潟県": '150010',
-    "長野県": '200010', "富山県": '160010',
-    "石川県": '170010', "福井県": '180010',
-    "愛知県": '230010', "岐阜県": '200010',
-    "静岡県": '220010', "三重県": '240010',
-    "大阪府": '270000', "兵庫県": '280010',
-    "京都府": '260010', "滋賀県": '250010',
-    "奈良県": '190010', "和歌山県": '300010',
-    "鳥取県": '310010', "島根県": '320010',
-    "岡山県": '330010', "広島県": '340010',
-    "山口県": '350010', "徳島県": '360010',
-    "香川県": '370000', "愛媛県": '380010',
-    "高知県": '390010', "福岡県": '400010',
-    "大分県": '440010', "長崎県": '420010',
-    "佐賀県": '410010', "熊本県": '430010',
-    "宮崎県": '450010', "鹿児島県": '460010',
-    "沖縄県": '471010', "北海": '016010',
-    "青森": '020010', "岩手": '030010',
-    "宮城": '040010', "秋田": '050010',
-    "山形": '060010', "福島": '070010',
-    "東京": '130010', "神奈川": '140010',
-    "埼玉": '110010', "千葉": '120010',
-    "茨城": '080010', "栃木": '090010',
-    "群馬": '100010', "山梨": '190010',
-    "新潟": '150010', "長野": '200010',
-    "富山": '160010', "石川": '170010',
-    "福井": '180010', "愛知": '230010',
-    "岐阜": '200010', "静岡": '220010',
-    "三重": '240010', "大阪": '270000',
-    "兵庫": '280010', "京都": '260010',
-    "滋賀": '250010', "奈良": '190010',
-    "和歌山": '300010', "鳥取": '310010',
-    "島根": '320010', "岡山": '330010',
-    "広島": '340010', "山口": '350010',
-    "徳島": '360010', "香川": '370000',
-    "愛媛": '380010', "高知": '390010',
-    "福岡": '400010', "大分": '440010',
-    "長崎": '420010', "佐賀": '410010',
-    "熊本": '430010', "宮崎": '450010',
+    "北海道": '016010', "青森県": '020010',"岩手県": '030010', "宮城県": '040010',
+    "秋田県": '050010', "山形県": '060010',"福島県": '070010', "東京都": '130010',
+    "神奈川県": '140010', "埼玉県": '110010',"千葉県": '120010', "茨城県": '080010',
+    "栃木県": '090010', "群馬県": '100010',"山梨県": '190010', "新潟県": '150010',
+    "長野県": '200010', "富山県": '160010',"石川県": '170010', "福井県": '180010',
+    "愛知県": '230010', "岐阜県": '200010',"静岡県": '220010', "三重県": '240010',
+    "大阪府": '270000', "兵庫県": '280010',"京都府": '260010', "滋賀県": '250010',
+    "奈良県": '190010', "和歌山県": '300010',"鳥取県": '310010', "島根県": '320010',
+    "岡山県": '330010', "広島県": '340010',"山口県": '350010', "徳島県": '360010',
+    "香川県": '370000', "愛媛県": '380010',"高知県": '390010', "福岡県": '400010',
+    "大分県": '440010', "長崎県": '420010',"佐賀県": '410010', "熊本県": '430010',
+    "宮崎県": '450010', "鹿児島県": '460010',"沖縄県": '471010', "北海": '016010',
+    "青森": '020010', "岩手": '030010',"宮城": '040010', "秋田": '050010',
+    "山形": '060010', "福島": '070010',"東京": '130010', "神奈川": '140010',
+    "埼玉": '110010', "千葉": '120010',"茨城": '080010', "栃木": '090010',
+    "群馬": '100010', "山梨": '190010',"新潟": '150010', "長野": '200010',
+    "富山": '160010', "石川": '170010',"福井": '180010', "愛知": '230010',
+    "岐阜": '200010', "静岡": '220010',"三重": '240010', "大阪": '270000',
+    "兵庫": '280010', "京都": '260010',"滋賀": '250010', "奈良": '190010',
+    "和歌山": '300010', "鳥取": '310010',"島根": '320010', "岡山": '330010',
+    "広島": '340010', "山口": '350010',"徳島": '360010', "香川": '370000',
+    "愛媛": '380010', "高知": '390010',"福岡": '400010', "大分": '440010',
+    "長崎": '420010', "佐賀": '410010',"熊本": '430010', "宮崎": '450010',
     "鹿児島": '460010', "沖縄": '471010',
 }
 
@@ -96,7 +73,7 @@ exp=0
 #━━━━━━━━━━━━━━━┫
 ban_guild=1
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
  
@@ -123,10 +100,10 @@ async def on_ready():
     check_loop.start()
     test_check_loop.start()
 
-    print('‣BOT NAME\n '+(client.user.name))
+    print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
     print('‣BOT ID\n '+str(client.user.id))
     print('‣起動時刻\n '+str(dateTime))
-    print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫')
+    print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢')
     
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
@@ -177,14 +154,13 @@ flag = False
 
 yt_channel_id = CHANNEL_ID
 
-
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @tasks.loop(seconds=30)
 async def stloop():#~をプレイ中　の、表記変更
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @tasks.loop(seconds=60)
 async def check_loop():#クイズのチェック
@@ -207,7 +183,8 @@ async def check_loop():#クイズのチェック
     except asyncio.TimeoutError:
         await q_ch.send('::q timeout_check')
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 
 @tasks.loop(seconds=60)
 async def d_loop():
@@ -230,7 +207,8 @@ async def d_loop():
             else:
                 pass
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 
 @tasks.loop(seconds=60)
 async def d_loop2():
@@ -248,7 +226,8 @@ async def d_loop2():
         except asyncio.TimeoutError:
             await d_ch2.send('::i f 止まってるんだよなぁ')
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 
 @tasks.loop(seconds=10)
 async def test_check_loop():
@@ -271,7 +250,8 @@ async def test_check_loop():
             else:
                 pass
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 
 @tasks.loop(seconds=60)
 async def looop():
@@ -300,7 +280,8 @@ async def looop():
         login_ch = client.get_channel(643466975745540096)
         await login_ch.send('::login')
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 
 @client.event
 async def on_disconnect():
@@ -315,7 +296,8 @@ async def on_disconnect():
 
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+
 
 @client.event
 async def on_message(message):
@@ -1397,6 +1379,9 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
                 await message.channel.send('すみませぇえええん\nこの御籤呪われてまあああああああす!!')
 
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ガチャ系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#                   
+                
+                
         if message.content == 'y!gacha':
             await message.channel.send('gachaばんごうをしていしてね......?')
             embed = discord.Embed(title="ガチャ機能だよ", description="コマンドはy!gacha [ガチャ番号]", color=0x2ECC69)
@@ -1432,14 +1417,21 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
         if message.content == "y!gacha 2":
-            embed = discord.Embed(title="おにゃ……のこ…ガチャ？　取り合えずまわしてみる？", description=f"""　　ﾁｬﾘｰﾝ
-
-     ｶﾞﾁｬｶﾞﾁｬｶﾞﾁｬ
-
-        ﾎﾟﾝ！""",
-                                  color=discord.Colour.from_rgb(255, 133, 214))
+            embed = discord.Embed(title = "□◑")
+            tmp = await message.channel.send(embed = embed)
+            await asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　◒"))
+            await asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　　◐"))
+            await asyncio.sleep(1)            
+            await tmp.edit(embed = discord.Embed(title = "□　　　◓"))
+            awai asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　　　◖◗ﾊﾟｶｯ"))
+            embed = discord.Embed(title="なんか出てきた",
+            color=discord.Colour.from_rgb(255, 133, 214))
             embed.set_thumbnail(url="https://yahoo.jp/box/lc5-cP")
-            embed.set_image(url=random.choice(("https://yahoo.jp/box/C5OhZ6","https://yahoo.jp/box/7wCPzz",
+            embed.set_image(url=random.choice(
+                                              ("https://yahoo.jp/box/C5OhZ6","https://yahoo.jp/box/7wCPzz",
                                                "https://yahoo.jp/box/NTtrKt","https://yahoo.jp/box/1lR9DJ",
                                                "https://yahoo.jp/box/uIdpqC","https://yahoo.jp/box/YQlvC2",
                                                "https://yahoo.jp/box/sxklm2","https://yahoo.jp/box/LpiAUS",
@@ -1458,13 +1450,17 @@ async def on_message(message):
                                                "https://yahoo.jp/box/YPaIEe","https://yahoo.jp/box/MANLfg",
                                                "https://yahoo.jp/box/e09Dte","https://yahoo.jp/box/iFQl2O",
                                                "https://yahoo.jp/box/EjWQbT",'https://yahoo.jp/box/3faN7k',
-                                               'https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd')))
-            embed.add_field(name=random.choice(
-                ('いや可愛いけどコメントに困る', 'あ、かわいい', 'ちょくちょくエッチなのは入ってるよねこれ（）', '可愛いというより萌えのほうが正しいのかなこれ', "普通にかわいいこれ", 'あー悪くないかも')),
-                            value='YUIは出てきたおにゃのこカードをそっとポケットに仕舞った', inline=False)
+                                               'https://yahoo.jp/box/c9L236','https://yahoo.jp/box/Jxj1Jd'
+                                              )
+                                             )
+                           )
+            embed.add_field(
+            name=random.choice( ('いや可愛いけどコメントに困る', 'あ、かわいい', 'ちょくちょくエッチなのは入ってるよねこれ（）', '可愛いというより萌えのほうが正しいのかなこれ', "普通にかわいいこれ", 'あー悪くないかも')),
+            value='YUIは出てきたおにゃのこカードをそっとポケットに仕舞った', inline=False)
+            
             await message.channel.send(embed=embed)
 
-        # 🔷アイコン表示系コード➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━通常コマンド系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#   
 
         if message.content == "y!myicon":
             embed = discord.Embed(title="**アイコン表示**\n", description='`アイコンを表示したよ`',
@@ -1474,7 +1470,7 @@ async def on_message(message):
             await message.delete()
             await message.channel.send(embed=embed)
 
-        # 🔷サイコロ系コード➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
+
 
         if message.content.startswith("y!dice "):  # ここの!diceは好きなのにしていいぞ
             if client.user != message.author:
@@ -1497,41 +1493,40 @@ async def on_message(message):
                                                        'https://yahoo.jp/box/Jxj1Jd')))
                 await message.channel.send(embed=embed)
 
-        if 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
-            if message.author.bot:
-                pass
-
-            else:
-                channel = message.channel
-                oha = random.choice(('(\*´ω｀*)ｵﾂｶﾚｻﾏー', '‪(꜆꜄꜆˙꒳˙)꜆꜄꜆ ｵﾂｵﾂｵﾂ‬', '( 厂˙ω˙ )厂うぇーい', 'おつかれさまぁ～  (\*ˊ˘ˋ*)♪',
-                                     'おつおつ( ´꒳`)', 'おつ(　ˆᴘˆ　)'))
 
                 await channel.send(oha)
+        if message.content == "y!slot":
+            slot_list = ['🍆', '🍒', '🔷', '🔶', '7️⃣', '💎','🔔', '🍆', '🍆', '🍆']
+            A = random.choice(slot_list)
+            B = random.choice(slot_list)
+            C = random.choice(slot_list)
+            A1 = random.choice(slot_list)
+            A2 = random.choice(slot_list)
+            A3 = random.choice(slot_list)
+            B1 = random.choice(slot_list)
+            B2 = random.choice(slot_list)
+            B3 = random.choice(slot_list)
+            C1 = random.choice(slot_list)
+            C2 = random.choice(slot_list)
+            C3 = random.choice(slot_list)
+            if message.author != client.user:
+                embed = discord.Embed(title=f'━━━━━━\n{A}│{B}│{C}\n{A1}│{B1}│{C1}◀\n{A2}│{B2}│{C2}',
+                                      color=0x2ECC69)
+                slot_em = await message.channel.send(embed=embed)
+                await asyncio.sleep(1)
+                await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A1}│{B1}│{C1}\n{A2}│{B2}│{C2}◀\n{A3}│{B3}│{C3}',color=0x2ECC69))
+                await asyncio.sleep(1)
+                await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',color=0x2ECC69))
+                await asyncio.sleep(1)
 
-        if 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
-            if message.author.bot:
 
-                return
+                if A3 == B3 and B3 == C3:
 
-            else:
-                channel = message.channel
-                oha = random.choice(('おはー(((o(\*ﾟ▽ﾟ*)o)))', '(ฅ・ω・ฅ)おはよう♪', '⸜(\* ॑꒳ ॑*  )⸝⋆*オハ', 'おは(　ˆᴘˆ　)'))
+                    await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}のゾロ目だよ',color=discord.Color.blue()))
+                else:
 
-                await channel.send(oha)
+                    await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}{B3}{C3}残念…',color=discord.Color.blue()))
 
-        if 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content:
-            if message.author.bot:
-
-                return
-
-            else:
-                channel = message.channel
-                oha = random.choice(('( ˘ω˘ ) ｽﾔｧ…', '( ˘꒳​˘ )ｵﾔｽﾔｧ…', '_([▓▓] ˘ω˘ )_ｽﾔｧ…',
-                                     '=͟͟͞( ˘ω˘)˘ω˘)˘ω˘)ｼﾞｪｯﾄｽﾄﾘｰﾑｽﾔｧ…', 'ｽﾔｧ…(　ˆᴘˆ　)'))
-
-                await channel.send(oha)
-
-        # 🔷ログ系コード➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
         if message.content.startswith("y!yui"):
             if message.content.split()[1] == "log":
@@ -1561,180 +1556,33 @@ async def on_message(message):
                 reply = f'{new_channel.mention} をつくったよ。LvUpしたら通知が届くよ'
 
                 return await message.channel.send(reply)
-        # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
-        if message.content == "y!timer":
-            await message.delete()
-            tmp = await message.channel.send("10")  # 編集するメッセージを保持
-            await asyncio.sleep(1)
-            await tmp.edit(content="9")
-            await asyncio.sleep(1)
-            await tmp.edit(content="8")
-            await asyncio.sleep(1)
-            await tmp.edit(content="7")
-            await asyncio.sleep(1)
-            await tmp.edit(content="6")
-            await asyncio.sleep(1)
-            await tmp.edit(content="5")
-            await asyncio.sleep(1)
-            await tmp.edit(content="4")
-            await asyncio.sleep(1)
-            await tmp.edit(content="3")
-            await asyncio.sleep(1)
-            await tmp.edit(content="2")
-            await asyncio.sleep(1)
-            await tmp.edit(content="1")
-            await asyncio.sleep(1)
-            await tmp.edit(content="0")
-
-        if message.content == "y!gorogoro":
-            await message.delete()
-            tmp = await message.channel.send("(:3\_ヽ)_......")  # 編集するメッセージを保持
-            await asyncio.sleep(1)
-            await tmp.edit(content="(:3\_ヽ)_......ねむいい......")
-            await asyncio.sleep(1)
-            await tmp.edit(content=".　( ε: )")
-            await asyncio.sleep(1)
-            await tmp.edit(content=".　　　(.ω.)")
-            await asyncio.sleep(1)
-            await tmp.edit(content=".　　　　　( :3 )")
-            await asyncio.sleep(1)
-            await tmp.edit(content=".　　　　  　('ω')")
-            await asyncio.sleep(1)
-            await tmp.edit(content=".　　　　 　　　(:3\_ヽ)_....")
-            await asyncio.sleep(3)
-            await tmp.edit(content=".　　　　　　　　 　(:3\_ヽ)_....なにがしたかったんだろ")
-
-        if message.content == "y!amanohashi":
-            await message.delete()
-            await message.channel.send("私の生みの親だね。まあどうでもいいけどね！")
-
-        if message.content == "y!slot s":
-            kakuritu = random.randint(1, 50)
-            slot_list = [':eggplant:', ':cherries:', ':large_orange_diamond:', ':large_blue_diamond:', ':seven:', ':gem:',
-                         ':bell:', ':eggplant:', ':eggplant:', ':eggplant:']
-            A = random.choice(slot_list)
-            B = random.choice(slot_list)
-            C = random.choice(slot_list)
-            if int(kakuritu) == int(1):  # 確率は1/50に設定（出来てるはず）
-                await message.channel.send("これは何かが起こる予感…Σ(ﾟ□ﾟ；)\n\n\n")
-                A = slot_list[4]
-                B = slot_list[4]
-                C = slot_list[4]
-                await asyncio.sleep(3)  # 3秒間待ってやる
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="スリーセブン！！！", value="ついてるねー")
-                await message.channel.send(embed=embed)
-
-            elif A == B and B == C and A == ':seven:':
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="スリーセブン！！！", value="ついてるねー\nなかなかすごいよ")
-                await message.channel.send(embed=embed)
-
-            elif A == B and B == C and A == ':eggplant:':
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="very KI☆TA☆NA☆I！！", value="汚らわしいねーｗ")
-                await message.channel.send(embed=embed)
-
-            elif A == B and B == C and A == ':bell:':
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="三連ベル！！", value="いいねー")
-                await message.channel.send(embed=embed)
-
-            elif A == ':cherries:' and B != ":cherries:" and C != ":cherries:":
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="単チェリー！！", value="ヨキヨキ")
-                await message.channel.send(embed=embed)
-
-            elif A == ':bell:' and B != ":bell:" and C != ":bell:":
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="単ベル！！", value="(ノ・ω・)ノオオオォォォ-")
-                await message.channel.send(embed=embed)
-
-
-            elif A == B and B == C:
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="BINGO！！！", value="ついてるねー")
-                await message.channel.send(embed=embed)
-
-            else:
-                tmp = await message.channel.send("10")  #
-
-                embed = discord.Embed(title="YUIスロット スマホver\n" + " ┏━┳━┳━┓\n┃" + "%s┃%s┃%s┃\n ┗━┻━┻━┛" % (A, B, C),
-                                      color=0x2ECC69)
-                embed.add_field(name="残念……", value="もっかいやる？")
-                await message.channel.send(embed=embed)
-
-        if message.content == "y!slot c":
-            kakuritu = random.randint(1, 50)
-            slot_list = [':eggplant:', ':cherries:', ':large_orange_diamond:', ':large_blue_diamond:', ':seven:', ':gem:',
-                         ':bell:', ':eggplant:', ':eggplant:', ':eggplant:']
-            A = random.choice(slot_list)
-            B = random.choice(slot_list)
-            C = random.choice(slot_list)
-            if int(kakuritu) == int(1):  # 確率は1/50に設定（出来てるはず）
-                await message.channel.send("これは何かが起こる予感…Σ(ﾟ□ﾟ；)\n\n\n")
-                A = slot_list[4]
-                B = slot_list[4]
-                C = slot_list[4]
-                await asyncio.sleep(3)  # 3秒間待ってやる
+        if message.content.startswith("y!wt "):
+            citycode = citycode[message.content.split("y!wt ")[1]]
+            if citycode:
+                resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%citycode).read()
+                resp = json.loads(resp.decode('utf-8'))
                 embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="スリーセブン！！！", value="ついてるねー")
-                await message.channel.send(embed=embed)
-
-            elif A == B and B == C and A == ':seven:':
-                embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="スリーセブン！！！", value="ついてるねー\nなかなかすごいよ")
-                await message.channel.send(embed=embed)
-
-            elif A == B and B == C and A == ':eggplant:':
-                embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="very KI☆TA☆NA☆I！！", value="汚らわしいねーｗ")
-                await message.channel.send(embed=embed)
-
-            elif A == B and B == C and A == ':bell:':
-                embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="三連ベル！！", value="いいねー")
-                await message.channel.send(embed=embed)
-
-            elif A == ':cherries:' and B != ":cherries:" and C != ":cherries:":
-                embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="単チェリー！！", value="ヨキヨキ")
-                await message.channel.send(embed=embed)
-
-            elif A == ':bell:' and B != ":bell:" and C != ":bell:":
-                embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="単ベル！！", value="(ノ・ω・)ノオオオォォォ-")
-                await message.channel.send(embed=embed)
-
-
-            elif A == B and B == C:
-                embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="BINGO！！！", value="ついてるねー")
-                await message.channel.send(embed=embed)
-
+                title = "YUI Weather",
+                description = resp["description"]["text"],
+                color = discord.Color.blue()
+                )
+                embed.set_footer(
+                icon_url=message.author.avatar_url,
+                text="コマンド使用者｜" + message.author
+                )
+                embed.set_thumbnail(
+                url=message.author.avatar_url
+                )
+                
             else:
                 embed = discord.Embed(
-                    title="YUIスロット PCver\n" + " ┏━━┳━━┳━━┓\n┃" + " %s ┃ %s ┃ %s ┃\n ┗━━┻━━┻━━┛" % (A, B, C), color=0x2ECC69)
-                embed.add_field(name="残念……", value="もっかいやる？")
-                await message.channel.send(embed=embed)
-
+                title = f"{citycode}なんて場所は私には登録されてないなー……"
+                )
+                
+            await message.channel.send(embed=embed)
+     
         if message.content == 'y!sinfo':
-
             guild = message.guild
             role = next(c for c in guild.roles if c.name == '@everyone')
             t_locked = 0
@@ -1796,7 +1644,78 @@ async def on_message(message):
             embed.add_field(name="‣二段階認証", value=f"**{mfamsg}**", inline=False)
             await message.channel.send(embed=embed)
 
-        # 🔷➖➖➖➖➖➖➖➖global chat space➖➖➖➖
+        if message.content.startswith("y!mkch "):
+            await message.delete()
+            reply_one = message.content.split('y!mkch ')[1]
+            category_id = message.channel.category_id
+            category = message.guild.get_channel(category_id)
+            new_channel = await category.create_text_channel(name=reply_one)
+            reply = f'{new_channel.mention} を作成したよ!'
+
+            await message.channel.send(reply)
+    
+    
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━隠しコマンド系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#    
+    
+        if message.content == "y!timer":
+            await message.delete()
+            tmp = await message.channel.send("10")  # 編集するメッセージを保持
+            await asyncio.sleep(1)
+            await tmp.edit(content="9")
+            await asyncio.sleep(1)
+            await tmp.edit(content="8")
+            await asyncio.sleep(1)
+            await tmp.edit(content="7")
+            await asyncio.sleep(1)
+            await tmp.edit(content="6")
+            await asyncio.sleep(1)
+            await tmp.edit(content="5")
+            await asyncio.sleep(1)
+            await tmp.edit(content="4")
+            await asyncio.sleep(1)
+            await tmp.edit(content="3")
+            await asyncio.sleep(1)
+            await tmp.edit(content="2")
+            await asyncio.sleep(1)
+            await tmp.edit(content="1")
+            await asyncio.sleep(1)
+            await tmp.edit(content="0")
+
+        if message.content == "y!gorogoro":
+            await message.delete()
+            tmp = await message.channel.send("(:3\_ヽ)_......")  # 編集するメッセージを保持
+            await asyncio.sleep(1)
+            await tmp.edit(content="(:3\_ヽ)_......ねむいい......")
+            await asyncio.sleep(1)
+            await tmp.edit(content=".　( ε: )")
+            await asyncio.sleep(1)
+            await tmp.edit(content=".　　　(.ω.)")
+            await asyncio.sleep(1)
+            await tmp.edit(content=".　　　　　( :3 )")
+            await asyncio.sleep(1)
+            await tmp.edit(content=".　　　　  　('ω')")
+            await asyncio.sleep(1)
+            await tmp.edit(content=".　　　　 　　　(:3\_ヽ)_....")
+            await asyncio.sleep(3)
+            await tmp.edit(content=".　　　　　　　　 　(:3\_ヽ)_....なにがしたかったんだろ")
+
+        if message.content == "y!amanohashi":
+            await message.delete()
+            await message.channel.send("私の生みの親だね。まあどうでもいいけどね！")
+
+            
+        if message.content.startswith('y!send '):
+            await message.delete()
+            x = message.content.split(" ", 2)
+            riptext2 = int(x[2])
+            channel = client.get_channel(riptext2)
+            riptext = x[1]
+
+            await channel.send(riptext)
+            
+            
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━グローバルチャットシステム━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━# 
 
         if (len(message.embeds) == 0) and (message.channel.name == "global_yui") and (
         not "discord.gg" in message.author.name):
@@ -1812,24 +1731,42 @@ async def on_message(message):
                     if channel.name == "global_yui":
                         await channel.send(embed=embed)
 
-        if message.content.startswith("y!mkch "):
-            await message.delete()
-            reply_one = message.content.split('y!mkch ')[1]
-            category_id = message.channel.category_id
-            category = message.guild.get_channel(category_id)
-            new_channel = await category.create_text_channel(name=reply_one)
-            reply = f'{new_channel.mention} を作成したよ!'
 
-            await message.channel.send(reply)
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━レスポンス系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━# 
 
-        if message.content.startswith('y!send '):
-            await message.delete()
-            x = message.content.split(" ", 2)
-            riptext2 = int(x[2])
-            channel = client.get_channel(riptext2)
-            riptext = x[1]
+        if 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
+            if message.author.bot:
+                pass
 
-            await channel.send(riptext)
+            else:
+                channel = message.channel
+                oha = random.choice(('(\*´ω｀*)ｵﾂｶﾚｻﾏー', '‪(꜆꜄꜆˙꒳˙)꜆꜄꜆ ｵﾂｵﾂｵﾂ‬', '( 厂˙ω˙ )厂うぇーい', 'おつかれさまぁ～  (\*ˊ˘ˋ*)♪',
+                                     'おつおつ( ´꒳`)', 'おつ(　ˆᴘˆ　)'))
+
+                await channel.send(oha)
+
+        if 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
+            if message.author.bot:
+
+                return
+
+            else:
+                channel = message.channel
+                oha = random.choice(('おはー(((o(\*ﾟ▽ﾟ*)o)))', '(ฅ・ω・ฅ)おはよう♪', '⸜(\* ॑꒳ ॑*  )⸝⋆*オハ', 'おは(　ˆᴘˆ　)'))
+
+                await channel.send(oha)
+
+        if 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content:
+            if message.author.bot:
+
+                return
+
+            else:
+                channel = message.channel
+                oha = random.choice(('( ˘ω˘ ) ｽﾔｧ…', '( ˘꒳​˘ )ｵﾔｽﾔｧ…', '_([▓▓] ˘ω˘ )_ｽﾔｧ…',
+                                     '=͟͟͞( ˘ω˘)˘ω˘)˘ω˘)ｼﾞｪｯﾄｽﾄﾘｰﾑｽﾔｧ…', 'ｽﾔｧ…(　ˆᴘˆ　)'))
+
+
 
         if client.user != message.author:
             kakuritu = random.randint(1, 20)
@@ -1871,6 +1808,7 @@ async def on_message(message):
                 y1 = ['ねこですよろしくおねがいします', 'ねこはいましたよろしくおねがいします', 'ねこはいます', 'ねこはいました', 'ねこはどこにでもいます', 'ねこはここにいます']
                 y2 = random.choice(y1)
                 await message.channel.send((y2))
+                
         if client.user != message.author:
             if 'せやな' in message.content:
                 y1 = ['そやな']
@@ -1898,7 +1836,7 @@ async def on_message(message):
                 y2 = random.choice(y1)
                 await message.channel.send((y2))
 
-        if client.user in message.mentions:  # 話しかけられたかの判定
+        if message.content = client.user.mention:  # 話しかけられたかの判定
             embed = discord.Embed(title='YUI Information', description=f'{client.user}\nID 627052576810074112')
             embed.set_author(name=client.user,
                              url="https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot",
@@ -1906,45 +1844,12 @@ async def on_message(message):
             embed.set_footer(icon_url=message.author.avatar_url, text=f"表示者｜{message.author}")
             await message.channel.send(embed=embed)
 
-        if 'やられてしまった' in message.content:
+        if 'やられてしまった' in message.content and not f"{client.user.display_name}" in message.content:
             set = random.randrange(1, 3)
             if set == 2:
                 embed = discord.Embed(title='ゆーあーるーざーw', description='君は死んだんだよ!!\n負けたんだよ!!')
                 await message.channel.send(embed=embed)
 
-
-
-        if message.content == "y!slot":
-            slot_list = ['🍆', '🍒', '🔷', '🔶', '7️⃣', '💎','🔔', '🍆', '🍆', '🍆']
-            A = random.choice(slot_list)
-            B = random.choice(slot_list)
-            C = random.choice(slot_list)
-            A1 = random.choice(slot_list)
-            A2 = random.choice(slot_list)
-            A3 = random.choice(slot_list)
-            B1 = random.choice(slot_list)
-            B2 = random.choice(slot_list)
-            B3 = random.choice(slot_list)
-            C1 = random.choice(slot_list)
-            C2 = random.choice(slot_list)
-            C3 = random.choice(slot_list)
-            if message.author != client.user:
-                embed = discord.Embed(title=f'━━━━━━\n{A}│{B}│{C}\n{A1}│{B1}│{C1}◀\n{A2}│{B2}│{C2}',
-                                      color=0x2ECC69)
-                slot_em = await message.channel.send(embed=embed)
-                await asyncio.sleep(1)
-                await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A1}│{B1}│{C1}\n{A2}│{B2}│{C2}◀\n{A3}│{B3}│{C3}',color=0x2ECC69))
-                await asyncio.sleep(1)
-                await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',color=0x2ECC69))
-                await asyncio.sleep(1)
-
-
-                if A3 == B3 and B3 == C3:
-
-                    await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}のゾロ目だよ',color=discord.Color.blue()))
-                else:
-
-                    await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}{B3}{C3}残念…',color=discord.Color.blue()))
 
 
         if message.content == '考えるな、感じろ！' and message.author.id==644153226597498890:
