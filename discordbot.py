@@ -1115,7 +1115,7 @@ async def on_message(message):
             true_choice = [word[4:] for word in choice]
 
             answer = already_quiz.get(quiz)
-            await asyncio.sleep(4)
+            await asyncio.sleep(2)
 
             react = 1
             if answer:
