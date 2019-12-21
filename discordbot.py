@@ -72,6 +72,7 @@ test_flag=False
 exp=0
 #━━━━━━━━━━━━━━━┫
 ban_guild=1
+already_quiz={}
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
@@ -583,7 +584,7 @@ async def on_message(message):
                 if not banch:
                     ban_ch=await ban_guild.create_text_channel(name=f'{gban_id}')
                     e_embed=discord.Embed(title=f'Global Ban User Data',
-                                description=f'{ban_user}\n{gban_id}',
+                                description=f'{ban_user}\n{gban_id}\nBan実行者{message.author}',
                                 color=discord.Color.red())
                     e_embed.set_footer(text=str(dateTime.year) + "年" +
                                       str(dateTime.month) + "月" +
@@ -1083,7 +1084,7 @@ async def on_message(message):
 
 
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-
+        global already_quiz
         me = client.user
         tao = client.get_user(526620171658330112)
 
@@ -1113,7 +1114,7 @@ async def on_message(message):
             quiz, *choice = quiz_msg.embeds[0].description.split("\n")
             true_choice = [word[4:] for word in choice]
 
-            answer = client.already_quiz.get(quiz)
+            answer = already_quiz.get(quiz)
             await asyncio.sleep(4)
 
             react = 1
@@ -1133,8 +1134,8 @@ async def on_message(message):
                     tmp = re.search("残念！正解は「(.*)」だ。", tmp_embed).group(1)
                 else:
                     tmp = true_choice[0]
-                client.already_quiz[quiz] = tmp
-                await message.channel.send('::q act.3')
+                already_quiz[quiz] = tmp
+            await message.channel.send('::q act.3')
 
         if message.content.startswith('y!qdata'):
             print(client.already_quiz)
