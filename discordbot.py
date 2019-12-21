@@ -1129,13 +1129,13 @@ async def on_message(message):
                 return
 
             tmp_embed = ans_msg.embeds[0].description
-            if answer is None and not tmp_embed.startswith("時間切れ"):
-                if tmp_embed.startswith("残念"):
+            if answer is None :
+                if tmp_embed.startswith("残念") and not tmp_embed.startswith("時間切れ"):
                     tmp = re.search("残念！正解は「(.*)」だ。", tmp_embed).group(1)
                 else:
                     tmp = true_choice[0]
                 already_quiz[quiz] = tmp
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.5)
             await message.channel.send('::q act.3')
 
         if message.content.startswith('y!qdata'):
