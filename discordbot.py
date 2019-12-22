@@ -74,6 +74,7 @@ exp=0
 ban_guild=1
 already_quiz={}
 q_ch=0
+t_ch=0
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
@@ -90,6 +91,9 @@ async def on_ready():
 
     global q_ch
     q_ch=client.get_channel(651816760865194005)
+
+    global t_ch
+    t_ch=client.get_channel(658100797015588874)
 
     client.ch = client.get_channel(644199380764721152)
 
@@ -1829,6 +1833,17 @@ async def on_message(message):
             embed.add_field(name="Error内容┃", value=e.args, inline=False)
             embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
             m = await client.get_channel(ch).send(embed=embed)
+
+
+        if message.embeds and message.embeds[0].description.name and '正解' in message.embeds[0].description' and message.channel==t_ch:
+            asyncio.sleep(1)
+            await t_ch.send('::t')
+        if message.author==mio and message.content.startswith('`') and message.channel==t_ch:
+            ans=message.content.split('`')[1]
+            await message.channel.send(ans)
+
+
+
 
 @client.event
 async def on_member_join(member):
