@@ -1835,7 +1835,7 @@ async def on_message(message):
             m = await client.get_channel(ch).send(embed=embed)
 
 
-        if message.embeds and message.embeds[0].description.name and '正解' in message.embeds[0].description' and message.channel==t_ch:
+        if message.embeds and message.embeds[0].description.name and '正解' in message.embeds[0].description and message.channel==t_ch:
             asyncio.sleep(1)
             await t_ch.send('::t')
         if message.author==mio and message.content.startswith('`') and message.channel==t_ch:
