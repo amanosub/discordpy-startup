@@ -1838,8 +1838,8 @@ async def on_message(message):
         if message.embeds and message.embeds[0].description.name and '正解' in message.embeds[0].description and message.channel==t_ch:
             asyncio.sleep(1)
             await t_ch.send('::t')
-        if message.author==mio and message.content.startswith('`') and message.channel==t_ch:
-            ans=message.content.split('`')[1]
+        if message.author==mio and message.mebeds and message.channel==t_ch and message.embeds[0].description and '`' in message.embeds[0].description:
+            ans=message.embeds[0].description.split('`')[1]
             await message.channel.send(ans)
 
 
