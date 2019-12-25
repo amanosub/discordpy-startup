@@ -112,6 +112,7 @@ async def on_ready():
     d_loop2.start()
     check_loop.start()
     test_check_loop.start()
+    t_loop.start()
 
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
     print('‣BOT ID\n '+str(client.user.id))
@@ -169,7 +170,26 @@ async def stloop():#~をプレイ中　の、表記変更
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
+@tasks.loop(seconds=30)
+async def t_loop():
+    if t_flag==True:
+ 
+        tao=client.get_user(526620171658330112)
+        if tao:
+            def test_check (t_msg):
+                if t_msg.author != tao:
+                    return 0
+                if t_msg.channel!=t_ch:
+                    return 0
+                return 1
 
+            try:
+                t_res=await client.wait_for('message',timeout=60,check = test_check)
+            except asyncio.TimeoutError:
+                print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+                await t_ch.send('::t')
+            else:
+                pass
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
