@@ -1165,7 +1165,7 @@ async def on_message(message):
                             return 0
                         return 1
                     try:
-                        re_msg = await client wait_for("message.timeout = 2 , check = mio_check")
+                        re_msg = await client.wait_for("message.timeout = 2 , check = mio_check")
                     except asyncio.Timeouterror:
                         await t_ch.send("::t")
                     else:
