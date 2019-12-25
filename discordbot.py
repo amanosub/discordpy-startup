@@ -1166,7 +1166,7 @@ async def on_message(message):
                 print ("t_check2")
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
                     print ("t_check3")
-                    await t_ch.send((message.embeds[0].description).split("||")[1])
+                    await t_ch.send((message.embeds[0].description).split("||")[1]).strip("|"))
                     
                     
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
