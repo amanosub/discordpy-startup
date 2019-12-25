@@ -173,7 +173,7 @@ async def stloop():#~をプレイ中　の、表記変更
 @tasks.loop(seconds=30)
 async def t_loop():
     if t_flag==True:
- 
+
         tao=client.get_user(526620171658330112)
         if tao:
             def test_check (t_msg):
@@ -184,9 +184,8 @@ async def t_loop():
                 return 1
 
             try:
-                t_res=await client.wait_for('message',timeout=60,check = test_check)
+                t_res=await client.wait_for('message',timeout=10,check = test_check)
             except asyncio.TimeoutError:
-                print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
                 await t_ch.send('::t')
             else:
                 pass
@@ -335,7 +334,6 @@ async def on_message(message):
     try:
         help_ch = 642578258743001088
 
-        # 🔷test運用➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
         if message.content == "y!help":
             log_ch = client.get_channel(652493782822027275)
@@ -1020,17 +1018,7 @@ async def on_message(message):
                                     if tao_return.embeds and f"{client.user.mention}は復活した" in tao_return.embeds[0].description:
                                         await asyncio.sleep(2)
                                         await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
-                if "使用失敗" in message.content:
-                    await asyncio.sleep(1)
-             #       await atk_ch2.send("::i f　ミスった…ﾅｾﾞ(´・-・)")
-             #       try:
-           #             await client.wait_for('message',timeout=300)
-              #      except asyncio.TimeoutError:
-            #            await message.channel.send('::item f TAO息してる…?')
-
-
                 if message.embeds:
-
                     if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                         await asyncio.sleep(3)
                         await atk_ch2.send("::item f 先手必勝!!")
@@ -1072,7 +1060,6 @@ async def on_message(message):
             dateTime = datetime.datetime.now()
 
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
-                print("lvup")
                 lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
