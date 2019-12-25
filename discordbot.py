@@ -1184,9 +1184,7 @@ async def on_message(message):
                 if "正解だ！" in message.embeds[0].description or "残念" in message.embeds[0].description or "時間切れ" in message.embeds[0].description :
                     await asyncio.sleep(0.3)
                     await t_ch.send("::t")
-            if "コマンド失敗。ゆっくりコマンドを打ってね。" in message.content:
-                await asyncio.sleep(0.3)
-                await t_ch.send("::t")
+
         if message.channel == t_ch and message.author == mio:
             if message.embeds:
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
@@ -1194,9 +1192,16 @@ async def on_message(message):
 
         if message.content=='y!tstart':
             t_flag=True
+            embed = discord.Embed(
+            title=f"トレーニング開始\nt_flag → {t_flag}"
+            )
+            await message.author.send(embed = embed)
         if message.content=='y!tstop' :
             t_flag=False                   
-                    
+            embed = discord.Embed(
+            title=f"トレーニング終了\nt_flag → {t_flag}"
+            )
+            await message.author.send(embed = embed)                
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         if message.content.startswith("y!say1 "):
