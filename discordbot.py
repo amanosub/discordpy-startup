@@ -1158,6 +1158,7 @@ async def on_message(message):
                 print ("t_check0")
                 if "正解だ！" in message.embeds[0].description or "残念" in message.embeds[0].description or "時間切れ" in message.embeds[0].description :
                     print ("t_check")
+                    await asyncio.sleep(0.3)
                     await t_ch.send("::t")
         if message.channel == t_ch and message.author == mio:
             print ("t_check")
@@ -1166,7 +1167,9 @@ async def on_message(message):
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
                     print ("t_check3")
                     await t_ch.send((message.embeds[0].description).split("||")[1])
-        # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
+                    
+                    
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         if message.content.startswith("y!say1 "):
             msg=message.content.split("y!say1 ")[1]
@@ -1398,11 +1401,11 @@ async def on_message(message):
             embed = discord.Embed(title = "□◑")
             tmp = await message.channel.send(embed = embed)
             await asyncio.sleep(1)
-            await tmp.edit(embed = discord.Embed(title = "□　◒ｺﾛ"))
+            await tmp.edit(embed = discord.Embed(title = "□　◒"))
             await asyncio.sleep(1)
-            await tmp.edit(embed = discord.Embed(title = "□ｺﾛ　◐"))
+            await tmp.edit(embed = discord.Embed(title = "□  　◐"))
             await asyncio.sleep(1)
-            await tmp.edit(embed = discord.Embed(title = "□　　　◓ｺﾛ"))
+            await tmp.edit(embed = discord.Embed(title = "□　　　◓"))
             await asyncio.sleep(1)
             await tmp.edit(embed = discord.Embed(title = "□　　　◖◗ﾊﾟｶｯ"))
             embed = discord.Embed(title="なんか出てきた",
