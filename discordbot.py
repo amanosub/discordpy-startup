@@ -102,9 +102,9 @@ async def on_ready():
         tmp = discord.utils.get(guild.text_channels, name="global_yui")
 
     global t_flag
-        t_flag=True
-        t_ch=client.get_channel(658100797015588874)
-        await t_ch.send('::t')
+    t_flag=True
+    t_ch=client.get_channel(658100797015588874)
+    await t_ch.send('::t')
 
     stloop.start()
     looop.start()
