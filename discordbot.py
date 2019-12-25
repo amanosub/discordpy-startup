@@ -1159,6 +1159,9 @@ async def on_message(message):
                     print ("t_check")
                     await asyncio.sleep(0.3)
                     await t_ch.send("::t")
+            if "コマンド失敗。ゆっくりコマンドを打ってね。" in message.content:
+                await asyncio.sleep(0.3)
+                await t_ch.send("::t")
         if message.channel == t_ch and message.author == mio:
             if message.embeds:
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
