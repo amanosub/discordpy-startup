@@ -1764,7 +1764,16 @@ async def on_message(message):
                                '(^ω^≡^ω^).', '( ˙꒳​˙  )ﾌｧｯ', '|ω・)ﾐﾃﾏｽﾖ', '(  ﾟཫ ﾟ)ｺﾞﾌｯ']
                 text_random = random.choice(random_dana)
                 await message.channel.send(text_random)
-
+            if int(kakuritu) == 5 and message.author != client.user:
+                embed = discord.Embed(
+title="不適切な発言をキャッチ",
+description=f"**{message.author}**さんの\n```{message.content}```という発言は\n他のUserに不快感を与える恐れがあるため\n**{message.author}**さんを一時的に強制BAN致します。\n予定解除時刻は７時間後です。",color = discord.Color.red())
+                embed.set_footer(icon_url = client.user.avatar_url,text="チャンネル内治安維持システム")
+                await message.channel.send(embed=embed)
+                await asyncio.sleep(5)
+                await message.channel.send("嘘です★")
+                
+                
         if client.user != message.author and message.author.bot:
             if 'だよ' in message.content:
                 aaa = ["そうなの？", "そうだよ(便乗)"]
