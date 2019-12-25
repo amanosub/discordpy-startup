@@ -1152,7 +1152,7 @@ async def on_message(message):
             print(t_sets1)
 
             
-        t_ch =await client.get_channel(658100797015588874)
+        t_ch =client.get_channel(658100797015588874)
         if message.channel == t_ch and message.author == tao:
             if message.embeds:
                 if message.embeds[0].author.name and message.embeds[0].author.name == "問題":
