@@ -1162,7 +1162,7 @@ async def on_message(message):
         if message.channel == t_ch and message.author == mio:
             if message.embeds:
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
-                    await t_ch.send(((message.embeds[0].description).split("||")[1])).strip(""))
+                    await t_ch.send(((message.embeds[0].description).split("||")[1])).strip("`"))
                     
                     
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
