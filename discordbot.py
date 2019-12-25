@@ -75,6 +75,7 @@ ban_guild=1
 already_quiz={}
 q_ch=0
 t_ch=0
+t_flag=False
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
@@ -99,6 +100,11 @@ async def on_ready():
 
     for guild in client.guilds:
         tmp = discord.utils.get(guild.text_channels, name="global_yui")
+
+    global t_flag
+        t_flag=True
+        t_ch=client.get_channel(658100797015588874)
+        await t_ch.send('::t')
 
     stloop.start()
     looop.start()
@@ -1153,7 +1159,7 @@ async def on_message(message):
 
             
         t_ch =client.get_channel(658100797015588874)
-        if message.channel == t_ch and message.author == tao:
+        if message.channel == t_ch and message.author == tao and t_flag==True:
             if message.embeds:
                 if "正解だ！" in message.embeds[0].description or "残念" in message.embeds[0].description or "時間切れ" in message.embeds[0].description :
                     await asyncio.sleep(0.3)
@@ -1165,7 +1171,11 @@ async def on_message(message):
             if message.embeds:
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
                     await t_ch.send((message.embeds[0].description).split("`")[1])
-                    
+
+        if message.content=='y!tstart':
+            t_flag=True
+        if message.content=='y!tstop' :
+            t_flag=False                   
                     
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
