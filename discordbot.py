@@ -1156,7 +1156,6 @@ async def on_message(message):
         if message.channel == t_ch and message.author == tao:
             if message.embeds:
                 if "正解だ！" in message.embeds[0].description or "残念" in message.embeds[0].description or "時間切れ" in message.embeds[0].description :
-                    print ("t_check")
                     await asyncio.sleep(0.3)
                     await t_ch.send("::t")
             if "コマンド失敗。ゆっくりコマンドを打ってね。" in message.content:
