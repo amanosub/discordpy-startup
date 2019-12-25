@@ -1157,7 +1157,7 @@ async def on_message(message):
             t_sets1 = ((t_data_ch.history( limit = None )).split(" ")).flatten()
             print(t_sets1)
 
-            
+        global t_flag
         t_ch =client.get_channel(658100797015588874)
         if message.channel == t_ch and message.author == tao and t_flag==True:
             if message.embeds:
