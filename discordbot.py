@@ -1750,7 +1750,7 @@ async def on_message(message):
 
 
         if client.user != message.author:
-            kakuritu = random.randint(1, 20)
+            kakuritu = random.randint(1, 100)
             if int(kakuritu) == 1:
                 Z = ['あんぱん', 'メロンパン', 'フランスパン', 'チョコパイ']
                 A = random.choice(Z)
@@ -1765,7 +1765,6 @@ async def on_message(message):
                                '(^ω^≡^ω^).', '( ˙꒳​˙  )ﾌｧｯ', '|ω・)ﾐﾃﾏｽﾖ', '(  ﾟཫ ﾟ)ｺﾞﾌｯ']
                 text_random = random.choice(random_dana)
                 await message.channel.send(text_random)
-                print('selected')
 
         if client.user != message.author and message.author.bot:
             if 'だよ' in message.content:
