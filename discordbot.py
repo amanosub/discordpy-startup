@@ -1155,23 +1155,16 @@ async def on_message(message):
         t_ch =client.get_channel(658100797015588874)
         if message.channel == t_ch and message.author == tao:
             if message.embeds:
-                if message.embeds[0].author.name and message.embeds[0].author.name == "問題":
-                    def mio_check(msg):
-                        if msg.author != mio:
-                            return 0
-                        if msg.channel != t_ch:
-                            return 0
-                        if msg.embeds and msg.embeds[0].description and "この問題の答えは" in msg.embeds[0].description:
-                            return 0
-                        return 1
-                    try:
-                        re_msg = await client.wait_for("message.timeout = 2 , check = mio_check")
-                    except asyncio.Timeouterror:
-                        await t_ch.send("::t")
-                    else:
-                        await t_ch.send((message.embeds[0].description).split("||")[1])
+                print ("t_check0")
                 if "正解だ！" in message.embeds[0].description or "残念" in message.embeds[0].description or "時間切れ" in message.embeds[0].description :
+                    print ("t_check")
                     await t_ch.send("::t")
+        if message.channel == t_ch and message.author == mio:
+            print ("t_check")
+            if message.embeds:
+                print ("t_check2")
+                if message.embeds[0].description and "この問題の答えは" in message.enbeds[0].description:
+                    await t_ch.send((message.embeds[0].description).split("||")[1])
         # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖🔷
 
         if message.content.startswith("y!say1 "):
