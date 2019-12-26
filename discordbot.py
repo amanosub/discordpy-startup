@@ -314,11 +314,11 @@ async def on_message(message):
     try:
         if message.content=='y!ping':
        
-            embed=discord.Embed(title='Ping:測定中')
+            embed=discord.Embed(title='Ping測定中')
             msg=await message.channel.send(embed=embed)
             
             result=(msg.created_at - message.created_at).microseconds // 1000
-            await msg.edit(embed=discord.Embed(title=f'Pong!:{result}ms'))
+            await msg.edit(embed=discord.Embed(title=f'Pong!{result}ms'))
         help_ch = 642578258743001088
 
 
@@ -1088,64 +1088,11 @@ async def on_message(message):
 
 
     # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-        global already_quiz
+
         me = client.user
         tao = client.get_user(526620171658330112)
 
-        if '::q' in message.content and message.author == me:
-            def quiz_check(tao_msg):
-                if tao_msg.author != tao:
-                    return 0
-                elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-                    return 0
-                elif tao_msg.embeds[0].author.name != "Quiz | ReYUI ver1.12.2#4984さんのクイズ":
-                    return 0
-                return 1
-
-            def ans_check(tao_msg):
-                if tao_msg.author != tao:
-                    return 0
-                elif not tao_msg.embeds and not tao_msg.embeds[0].description:
-                    return 0
-                return 1
-
-            try:
-                quiz_msg = await client.wait_for("message", timeout=300, check=quiz_check)
-            except asyncio.TimeoutError:
-                await message.channel.send("::q　act.1")
-                return
-
-            quiz, *choice = quiz_msg.embeds[0].description.split("\n")
-            true_choice = [word[4:] for word in choice]
-
-            answer = already_quiz.get(quiz)
-            await asyncio.sleep(2)
-
-            react = 1
-            if answer:
-                react += true_choice.index(answer)
-            await quiz_msg.add_reaction(str(react).encode().decode('unicode-escape') + "\u20e3")
-
-            try:
-                ans_msg = await client.wait_for("message", check=ans_check)
-            except asyncio.TimeoutError:
-                await q_ch.send('::q act.2')
-                return
-
-            tmp_embed = ans_msg.embeds[0].description
-            if answer is None :
-                if tmp_embed.startswith("残念") and not tmp_embed.startswith("時間切れ"):
-                    tmp = re.search("残念！正解は「(.*)」だ。", tmp_embed).group(1)
-                else:
-                    tmp = true_choice[0]
-                already_quiz[quiz] = tmp
-            await asyncio.sleep(0.5)
-            await message.channel.send('::q act.3')
-
-        if message.content.startswith('y!qdata'):
-            print(already_quiz)
-
-
+　
         if message.content == "y!t":
             await message.channel.send("::t")
             t_sets1 = ((t_data_ch.history( limit = None )).split(" ")).flatten()
@@ -1185,6 +1132,29 @@ async def on_message(message):
                     if message.author.guild_permissions.administrator:
                         await message.delete()
                         await message.channel.send(msg)
+
+                    else:
+
+                        embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
+                                     ,color=0x2ECC69)
+                        embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
+                        await message.channel.send(embed=embed)
+                else:
+                    await message.delete()
+                    await message.channel.send(msg)
+
+
+      if message.content.startswith("y!say2 "):
+            msg1=message.content.split("'")[1]
+            msg2=message.content.split("'")[3]
+            if msg:#y!say2 "A" "B"
+                if message.mentions or message.mention_everyone:
+                    if message.author.guild_permissions.administrator:
+                        await message.delete()
+                        embed=discord.Embed(title=msg1,description=msg2)
+                        embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}'
+
+                        await message.channel.send(embed=embed)
 
                     else:
 
