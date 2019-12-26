@@ -107,10 +107,9 @@ async def on_ready():
     await t_ch.send('::t')
 
     stloop.start()
-    looop.start()
+    time_loop.start()
     d_loop.start()
     d_loop2.start()
-    check_loop.start()
     test_check_loop.start()
     t_loop.start()
 
@@ -260,30 +259,11 @@ async def test_check_loop():
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 
-@tasks.loop(seconds=10)
-async def check_loop():
-    if q_ch:
-        tao=client.get_user(526620171658330112)
-        if tao:
-            def q_check (d_msg):
-                if d_msg.author != tao:
-                    return 0
-                if d_msg.channel!=q_ch:
-                    return 0
-                return 1
-
-            try:
-                t_res=await client.wait_for('message',timeout=60,check = q_check)
-            except asyncio.TimeoutError:
-                await q_ch.send('::q とまってない?')
-            else:
-                pass
-
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 
 @tasks.loop(seconds=60)
-async def looop():
+async def time_loop():
     q_check_ch = client.get_channel(650390707013550086)
     await q_check_ch.send('check point')
     now = datetime.datetime.now().strftime('%H:%M')
@@ -332,6 +312,13 @@ async def on_disconnect():
 async def on_message(message):
 
     try:
+        if message.content=='y!ping':
+       
+            embed=discord.Embed(title='Ping:測定中')
+            msg=await message.channel.send(embed=embed)
+            
+            result=(msg.created_at - message.created_at).microseconds // 1000
+            await msg.edit(embed=discord.Embed(title=f'Pong!:{result}ms'))
         help_ch = 642578258743001088
 
 
