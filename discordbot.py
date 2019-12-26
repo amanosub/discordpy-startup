@@ -17,7 +17,7 @@ from discord.ext import tasks
 
 client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-
+#TOKEN="NjI3MDUyNTc2ODE/////////////wMDc0MTEy.XgTAtg.k6EBPNmQ9XfUJ3nXcBI6-tIlzx8"
 dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
 
@@ -1004,7 +1004,7 @@ async def on_message(message):
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
 #━━━━❮AO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-            if message.author==tao:
+            if message.author==tao and message.embeds and message.embeds[0].title:
                 if '待ち構えている' in message.embeds[0].title:
                     lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
                     type=message.embeds[0].title.split('[')[1].split(']')[0]
@@ -1040,10 +1040,11 @@ async def on_message(message):
             print(t_sets1)
 
         global t_flag
-        t_ch =client.get_channel(658100797015588874)
+        t_ch = client.get_channel(658100797015588874)
         if message.channel == t_ch and message.author == tao and t_flag==True:
+            
             if message.embeds:
-                if "正解だ！" in message.embeds[0].description or "残念" in message.embeds[0].description or "時間切れ" in message.embeds[0].description :
+                if "正解" in message.embeds[0].description:
                     await asyncio.sleep(0.3)
                     await t_ch.send("::t")
 
