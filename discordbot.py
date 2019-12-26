@@ -17,6 +17,7 @@ from discord.ext import tasks
 
 client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
+
 dateTime = datetime.datetime.now()
 server_number = len(client.guilds)
 
@@ -1016,7 +1017,7 @@ async def on_message(message):
                     if rank=='超強敵' or rank=='レア':
                         exp=int(lv)*5
 
-                    elif rank=='強敵'
+                    elif rank=='強敵':
                         exp=int(lv)*1.5
 
                     elif rank=='激レア':
@@ -1027,14 +1028,12 @@ async def on_message(message):
 
                     embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
-                    ch=discord.util(
-
+                    ch=discord.utils.get(messageguild.text_channels, name=f'yuiモンスター出現ログ')
+                    await ch.send(embed=embed)
 #━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         me = client.user
         tao = client.get_user(526620171658330112)
-
-　
         if message.content == "y!t":
             await message.channel.send("::t")
             t_sets1 = ((t_data_ch.history( limit = None )).split(" ")).flatten()
@@ -1086,7 +1085,7 @@ async def on_message(message):
                     await message.delete()
                     await message.channel.send(msg)
 
-      if message.content.startswith("y!say2 "):
+        if message.content.startswith("y!say2 "):
             msg=message.content.split("'")[1]
             msg2=message
             if msg:
@@ -1094,7 +1093,7 @@ async def on_message(message):
                     if message.author.guild_permissions.administrator:
                         await message.delete()
                         embed=discord.Embed(title=msg[1],description=msg[3])
-                        embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}'
+                        embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}')
                         await message.channel.send(embed=embed)
                     else:
                         embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
