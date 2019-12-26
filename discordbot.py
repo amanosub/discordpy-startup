@@ -337,7 +337,7 @@ async def on_message(message):
 
 
             help_embed_one = discord.Embed(title="YUIヘルプ目次",
-                                           description='```‣ヘルプ目次　　│第一項\n‣ＴＡＯコマンド│第二項\n‣メイン機能　　│第三項\n‣特殊チャンネル│第四項\n‣ガチャ　　　　│第五項\n‣スロット　　　│第六項\n‣ユイ関連ＵＲＬ│第七項```',
+                                           description='```‣ヘルプ目次　　│P.1\n‣ＴＡＯコマンド│P.2\n‣メイン機能　　│P.3\n‣特殊チャンネル│P.4\n‣ガチャ　　　　│P.5\n‣その他娯楽　　│P.6\n‣ユイ関連ＵＲＬ│P.7```',
                                            color=discord.Colour.green())
             help_embed_one.set_thumbnail(url=random.choice(
                 ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
@@ -389,13 +389,16 @@ async def on_message(message):
             help_two_embed.add_field(name='y!poll [タイトル] [内容] '
                                      , value='```👍👎リアクションつきembedメッセージ送信```開発者のデータ管理が甘いせいで大爆発が起きたため現在復旧中です', inline=False)
             help_two_embed.add_field(name='y!say',
-                                     value='```y!say1 [内容]│オウム返し\ny!say2 [題名] [内容]│embed形式送信\ny!say3 [題名] [内容]│embed+送信者メンション+時刻```開発者のデータ管理が甘いせいで大爆発起きたため\ny!say1以外のsayコマンドは停止中です',inline=False)
+                                     value='```y!say1 [内容]│オウム返し\ny!say2 "[タイトル]" "[内容]"│embed形式送信\ny!say3 [題名] [内容]│embed+送信者メンション+時刻```開発者のデータ管理が甘いせいで大爆発起きたため\ny!say3コマンドは停止中です',inline=False)
             help_two_embed.add_field(name='y!clean [数]'
                                      , value='```鯖管理者権限持ちで使用可、指定数のメッセージ消去```', inline=False)
             help_two_embed.add_field(name='y!gban [対象のUSERのID'
                                      , value='```USERをGlobalBANするよ```', inline=False)
             help_two_embed.add_field(name='y!report [内容]'
                                      , value='```開発者へのレポート＆リクエスト```', inline=False)
+            help_two_embed.add_field(name='y!ping'
+                                     , value='```Ping値測定```', inline=False)
+
             help_two_embed.add_field(name='y!wt [都道府県名]', value='```今日、明日の天気予報「YUI WEATHER」```開発者のデータ管理が甘いせいで大爆発が起きたので\n現在復旧中です', inline=True)
             help_two_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.3/7")
 
@@ -420,11 +423,14 @@ async def on_message(message):
                             value="‣__**通常ガチャ**　番号：1__\n色々よくわからないものが出てくるよ。\nたまに隠しコマンドが出てくるとかなんとか\ny!gacha 1\n\n‣__**おにゃのこガチャ**　番号：2__\n可愛いおにゃのこの画像がいっぱいだよ\n可愛いの純度１００％！\ny!gacha 2")
             gacha.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.5/7")
 
-            slot_embed = discord.Embed(title="スロット機能だよ🎰", description="コマンドはy!slot", color=discord.Colour.green())
+            slot_embed = discord.Embed(title="その他娯楽だよ",description='随時開発中!', color=discord.Colour.green())
             slot_embed.set_thumbnail(
                 url="https://cdn.discordapp.com/attachments/635993816297504809/642579874816720916/money_slot_machine.png")
-            slot_embed.add_field(name="スロット説明",
-                                 value="絵文字を利用したスロットだよ")
+            slot_embed.add_field(name="**y!slot**",
+                                 value="```絵文字を利用したスロットだよ```")
+            slot_embed.add_field(name="**y!fsg**",
+                                 value="```絵文字を利用した釣りだよ```")
+ 
             slot_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.6/7")
 
             url_embed = discord.Embed(title='YUI関連URL\n')
@@ -1352,6 +1358,67 @@ async def on_message(message):
             name=random.choice( ('いや可愛いけどコメントに困る', 'あ、かわいい', 'ちょくちょくエッチなのは入ってるよねこれ（）', '可愛いというより萌えのほうが正しいのかなこれ', "普通にかわいいこれ", 'あー悪くないかも')),
             value='YUIは出てきたおにゃのこカードをそっとポケットに仕舞った', inline=False)
 
+            await message.channel.send(embed=embed)
+
+#━━━━❮フィッシングコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
+        if message.content=='y!fsg':
+            emono_dect={
+'⚙️':'…錆びてるね',
+'🔰':'初心者マークシール…?\n誰か運転初心者が車ごと突っ込んだのかな…?',
+'🛡':'盾…うん盾……いやなんで釣れた…?',
+'⌨️':'キーボード!?\n誰かがクラッシュしたの…!?',
+'📱':'スマホ…さすがに電源は…\nいや、もしかしたら乾かしたら付くんじゃ…!?',
+'🍑':'桃!?え、桃!?\n中から赤ちゃんが出てくるの!?',
+'🍩':'釣ったものじゃなかったら食べてたよ!',
+'🏹':'…弓…?\nなんで弓…?',
+'🚗':'車!??!?\n私車釣っちゃったの!????!!?',
+'🚲':'自転車の不法投棄は犯罪だよ…',
+'🏆':'ん?\nこれ釣れていい奴…?',
+'👁️‍🗨️':'目がぁあ\nメガァァアアア!\nｱｧｱｧｱ!!',
+'⚔️':'いや危な!?',
+'💻':'パソコン!?\nキーボードでは飽き足らずついに本体が釣れちゃった!?',
+'🐙':'タコ。うん',
+'🦀':'カニかぁ\n好きだけど魚が釣りたいんだよねぇ',
+'🐳':'くじっ、くじらぶふぉ!?',
+'🦈':'さめえええええええええええ!!??',
+'🌿':'草ァ…',
+'☘️':'くさァ…',
+'🌱':'くさァ…',
+'🍀':'草に変わりはないけど\n四つ葉のクローバーとはまたレアなものが…',
+'🍄':'これだけはわかる\nこれ絶対食用じゃない()',
+'🐟':'ま…まともなものが釣れた…!',
+'🐊':'ｱﾘｹﾞｴｴﾀｧｧｱｱｱｱ!?!',
+'📷':'流石にもう動かないね',
+'🎷':'楽器って高いんだけどなぁ',
+'🎮':'ゲーム機…本体はあるのかな…?',
+'🗑':'ゴミ箱かぁw\nゴミはよく釣れるけど\nゴミ箱かぁw',
+'💉':'…警察案件…!?',
+'💊':'これもしかして\n危ないお薬…!?',
+'💊💉':'すごく危険なセット!!??',
+'🛸':'……え?',
+'💎':'いやすごいけれども!?\nなんでここで釣れた!?',
+'🖱':'お、おうふ、マウスw\nキーボードもあるし本体もあるし\nこの池どうなってるの…w',
+'🔋':'電池…\nさすがに動かないねぇ',
+'💵':'金!?',
+'🔧':'工具…',
+'⌚':'絶妙に高そうな腕時計だね…',
+'📺':'テレビwww\n前ゲーム機釣れたw\n一式揃ったwww',
+'☎️':'電話…\n黒電話…\nキムjおっと誰か来たようだ',
+'💣':'ｳﾜｱｱｱｱｱｱｱｱｱ!??!\nって、湿気てた()',
+'🔪':'いや危な!?',
+'⚰️🧟‍♀️':'………つっちゃってごめんなさあああああい!!',
+'🍌':'oh…\nIts so very good banana★',
+'🍆':'…なんか汚い',
+'⚽':'ボールだ\nきっと間違って落としちゃったんだね…',
+'🐱':'ヌコw',
+'🚽':'トイレ!?!?!',
+}
+            result_key=random.choice(list(emono_dect.keys()))
+            result=emono_dect[result_key]
+            embed=discord.Embed(title=f'**-YUIの釣り!-**\nお?　{result_key}が釣れたね!\n{result}',color=discord.Color.blue())
+            embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/635993816297504809/659805550443233290/58_20191227021126.png')
+         
             await message.channel.send(embed=embed)
 
 #━━━━❮アイコン表示コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
