@@ -312,15 +312,19 @@ async def on_disconnect():
 async def on_message(message):
 
     try:
+
+#━━━━❮YUIpingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         if message.content=='y!ping':
        
-            embed=discord.Embed(title='Ping測定中')
+            embed=discord.Embed(title='**Ping測定中**')
             msg=await message.channel.send(embed=embed)
             
             result=(msg.created_at - message.created_at).microseconds // 1000
-            await msg.edit(embed=discord.Embed(title=f'Pong!{result}ms'))
+            await msg.edit(embed=discord.Embed(title=f'**Pong!{result}ms**'))
         help_ch = 642578258743001088
 
+#━━━━❮YUIhelpコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content == "y!help":
             log_ch = client.get_channel(652493782822027275)
@@ -517,6 +521,7 @@ async def on_message(message):
                         for reaction in reactions1:
                             await send_message.add_reaction(reaction)
 
+#━━━━❮YUI強制シャットダウンコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith('y!kill'):
             if message.author.id == 446610711230152706:
@@ -553,6 +558,8 @@ async def on_message(message):
                 embed = discord.Embed(title='権限がありません!!', description='これは開発者専用コマンドです')
                 await message.channel.send(embed=embed)
 
+#━━━━❮Cleanコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         if message.content.startswith ('y!clean '):
             log_ch = client.get_channel(652493918897963029)
             clean_num = message.content.split("y!clean ")[1]
@@ -579,6 +586,7 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
 
 
+#━━━━❮開発者専用強制Banコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith('y!ban ') and message.author.id == (446610711230152706):
             userid = message.content.split('y!ban ')[1]
@@ -588,6 +596,8 @@ async def on_message(message):
             await member.ban()
             embed = discord.Embed(title='対象のIDのuserをBan完了')
             await message.channel.send(embed=embed)
+
+#━━━━❮Gban+Gunbanコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith('y!gban '):
             gban_id=message.content.split(' ')[1]
@@ -637,6 +647,8 @@ async def on_message(message):
                 )
                 await message.channel.send(embed = embed)
 
+#━━━━❮ダンジョン+αで使うグローバル変数と変数❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         global atk_ch
         global atk_ch2
         global d_ch
@@ -649,6 +661,8 @@ async def on_message(message):
         d_num01=d_ch2.name.split('第')[1]
         d_num02=d_num01.split('層')[0]
         d_num2=int(d_num02)
+
+#━━━━❮第二ダンジョンコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content=='y!devac2':
             d_flag2=False
@@ -686,8 +700,7 @@ async def on_message(message):
                 await asyncio.sleep(0.1)
                 await d_ch2.send('::i f')
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+#━━━━❮第一ダンジョンコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content=='y!devac':
             d_flag=False
@@ -733,13 +746,12 @@ async def on_message(message):
                     await d_ch.send("::attack")
 
         if d_flag == True and message.channel == d_ch and message.embeds:
-
             if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
                 await asyncio.sleep(0.5)
                 await d_ch.send("::attack 先手必勝!!")
 
         if message.channel==d_ch and d_flag==True:
-            if "の攻撃" in message.content and "のHP" in message.content:
+            if f"{client.user.display_name}の攻撃" in message.content and "のHP" in message.content:
                 await asyncio.sleep(0.5)
                 await message.channel.send('::attack')
                 #⬆PETいないからこれしてるけどいつか消す⬆
@@ -750,18 +762,19 @@ async def on_message(message):
                     if d_msg.channel!=d_ch:
                         return 0
                     return 1
-                """
+                
                 try:
-                    t_res=await client.wait_for('message',timeout=,check = d_check)
+                    t_res=await client.wait_for('message',timeout=3,check = d_check)
                 except asyncio.TimeoutError:
 
                     await d_ch.send('::attack pet攻撃なし')
                 else:
                     print('pet')
-                    if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
+                    if ']の攻撃' in t_res.content and 'のHP' in t_res.content:
                         await d_ch.send(f'::attack ')
-                """
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                
+#━━━━❮Testchコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         global test_ch
         global test_flag
         if message.content.startswith("y!testch "):
@@ -862,12 +875,7 @@ async def on_message(message):
                     await asyncio.sleep(0.5)
                     await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
 
-
-
-
-
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+#━━━━❮おーとFBコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!ifch "):
             atk_ch_m = message.content.split('y!ifch ')[1]
@@ -900,62 +908,8 @@ async def on_message(message):
             if message.channel==atk_ch2:
 
                 if "フレア" in message.content and 'のHP' in message.content:
-
                     await asyncio.sleep(0.7)
-                    msg = ("ﾄｳｯ!(っ'-')╮ =͟͟͞͞🔥ﾌﾞｫﾝ","ﾌﾞｫﾝ( っ'ω' )╮ =͟͟͞͞🍵",'(*ﾉ･ω･)ﾉ⌒。🔥',
-"(っ'-')╮=͟͟͞͞🔥) ﾟдﾟ ）",
-'(    ॑꒳ ॑)っ=͟͟͞͞ =͟͟͞͞🔥',
-'(*ﾉФωФ)ﾉ三＝一🔥',
-'\n--------------------------------------三ｃ⌒っ.ω.)っ ｼｭｰ',
-'(｀・ω-)『』▄︻┻┳═一',
-'(*･ω･)▄︻┻┳═一　＝＝＝・',
-'( ˘ω˘ )ｽﾔｧ…',
-'乁( ˙ ω˙乁)',
-'ﾌﾝｽ(   ´ ꒳ ` )=3',
-'( ˘ω˘ ) ｽﾔｧ…',
-'=^･ω･^=',
-'･*･:≡(　ε:)',
-'ｶﾓﾝщ(ﾟдﾟщ)ｶﾓｰﾝ♪',
-'( ‘д‘⊂彡☆))Д´) ﾊﾟｰﾝ',
-'_(´ω`_)⌒)_　））ｽﾞﾘｽﾞﾘ',
-'ŧ‹”ŧ‹”ŧ‹”ŧ‹”(๑´ㅂ`๑)ŧ‹”ŧ‹”ŧ‹”ŧ‹”',
-'c(`･ω´･ c)っ≡つ ﾊﾞﾊﾞﾊﾞﾊﾞ',
-'_(°ω°｣ ∠)_三_(°ω°｣ ∠)_三 ｻﾞｯｻﾞｯ',
-'三└(┐卍^o^)卍'
-'(^ω^≡^ω^)',
-'(:3[▓▓]',
-'(*ﾟ∀ﾟ)つ＝lニニフ',
-'(((((((((((っ･ω･)っ ﾌﾞｰﾝ',
-"\n三('ω')三( ε: )三(.ω.)三( :3 )三('ω')三( ε: )三(.ω.)三( :3 )ｺﾞﾛｺﾞﾛｺﾞﾛ",
-'ε-(/･ω･)/ ﾄｫｰｯ!!',
-'(:3 」∠)',
-'( 　˙-˙　 )',
-'(꜆꜄꜆˙꒳˙)꜆꜄꜆',
-'|ω･)وﾞ ㌧㌧㌧',
-'(˘ω˘ ≡ ˘ω˘)',
-':.ﾟ٩(๑˘ω˘๑)۶:.｡',
-'( ˘ω˘ )つ[ｵﾌﾄｩﾝ]',
-'(☞三☞ ˘ω˘ )☞三☞'
-'(๑-﹏-๑)',
-'(╬ ˘̀^˘́ )',
-'(³ ┐³)ｱｰｸｿﾈﾐｰ',
-'((( ˘ω˘ )))ﾋﾞｸｯ',
-':.ﾟ٩(๑˘ω˘๑)۶:.｡',
-'(˘ω˘)クソネミ',
-'(#˘ω˘#)ﾃﾚｽﾔｧ…',
-'( ˘ω˘ 三˘ω˘ ) 残像だ…',
-'三└(┐卍 ˘ω˘)卍ｽﾔｧｱｱｱｱ',
-'((((⊂（ ˘ω˘ )⊃))))ﾈﾐｨｿﾞｫ！',
-'三┏ ( 睡魔 )┛三┏ ( ˘ω˘ )┛',
-'ｸｿﾈﾐﾌｧｲﾔｰ!!( ˘ω˘)＝＝＝＝＝＝',
-'ｺﾉﾐﾅﾝﾉﾐ…( ˘ω˘ )ﾉ◎  クソネ実！',
-'(｣˘ω˘ )」クソ…( ／˘ω˘ )／ネミー！',
-'( ☞ ˘ω˘ )☞>くそねみ<☜( ˘ω˘ ☜ )',
-'ｽﾔｧ━━━━━━( ˘ω˘ )━━━━━━…',
-'(˘ω˘ )三  一═┳┻︻▄( ˘ω˘ )▄︻┻┳═一',
-'ヽ(˘ω˘ヽ) ｸｯｿ!! (ﾉ˘ω˘)ﾉ ﾈｯﾐ!! ヽ(˘ω˘ )ﾉｽﾔｧ!!')
-                    f_msg=random.choice(msg)
-                    await message.channel.send(f"::item ファイアボールの書\n{f_msg}")
+                    await message.channel.send(f"::item ファイアボールの書")
                     def msg_check(tao_msg):
                         if tao_msg.channel!=message.channel:
                             return 0
@@ -966,18 +920,9 @@ async def on_message(message):
                         await client.wait_for('message',timeout=60,check=msg_check)
                     except asyncio.TimeoutError:
                         await message.channel.send('::i f')
-                if "使用失敗" in message.content:
-                    await asyncio.sleep(1)
-                 #   await atk_ch2.send("::item f あ、ミスった( *´•ω•`*)")
-                    try:
-                        await client.wait_for('message',timeout=300)
-                    except asyncio.TimeoutError:
-                        #await message.channel.send('::item f TAO息してる…?')
-                        pass
+
                 if "やられてしまった" in message.content:
-
                     if not mio:
-
                         await asyncio.sleep(1)
                         await atk_ch2.send("::i e　あわわヾ(・ω・`；))やられちゃった")
                         try:
@@ -1034,14 +979,10 @@ async def on_message(message):
                                 await message.channel.send('::i f TAO息してる…?')
 
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━❮元atkchコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-        if message.content.startswith('y!atkch'):
-            embed = discord.Embed(title='現在停止中です!')
-            embed.set_footer(icon_url=message.author.avatar_url,text=message.author.name)
-            await message.channel.send(embed = embed)
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━❮YuiLvUPログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.embeds and message.embeds[0].description and message.author == tao :
             dateTime = datetime.datetime.now()
@@ -1060,9 +1001,8 @@ async def on_message(message):
                                       str(dateTime.minute) + "分" +
                                       str(dateTime.second) + "秒")
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
+#━━━━❮AO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        if message.embeds and message.embeds[0].title:
             if message.author==tao:
                 if '待ち構えている' in message.embeds[0].title:
                     lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
@@ -1076,18 +1016,20 @@ async def on_message(message):
                     if rank=='超強敵' or rank=='レア':
                         exp=int(lv)*5
 
+                    elif rank=='強敵'
+                        exp=int(lv)*1.5
+
                     elif rank=='激レア':
                         exp=int(lv)*33
 
                     elif rank=='超激レア':
                         exp=int(lv)*100
 
-                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
+                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
-                    await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'taoモンスター出現ログ'))
+                    ch=discord.util(
 
-
-    # 🔷➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+#━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         me = client.user
         tao = client.get_user(526620171658330112)
@@ -1114,16 +1056,17 @@ async def on_message(message):
         if message.content=='y!tstart':
             t_flag=True
             embed = discord.Embed(
-            title=f"トレーニング開始\nt_flag → {t_flag}"
+            title=f"トレーニング開始\nt_flag = {t_flag}"
             )
             await message.author.send(embed = embed)
         if message.content=='y!tstop' :
             t_flag=False                   
             embed = discord.Embed(
-            title=f"トレーニング終了\nt_flag → {t_flag}"
+            title=f"トレーニング終了\nt_flag = {t_flag}"
             )
-            await message.author.send(embed = embed)                
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            await message.author.send(embed = embed)
+                
+#━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!say1 "):
             msg=message.content.split("y!say1 ")[1]
@@ -1143,21 +1086,17 @@ async def on_message(message):
                     await message.delete()
                     await message.channel.send(msg)
 
-
       if message.content.startswith("y!say2 "):
-            msg1=message.content.split("'")[1]
-            msg2=message.content.split("'")[3]
-            if msg:#y!say2 "A" "B"
+            msg=message.content.split("'")[1]
+            msg2=message
+            if msg:
                 if message.mentions or message.mention_everyone:
                     if message.author.guild_permissions.administrator:
                         await message.delete()
-                        embed=discord.Embed(title=msg1,description=msg2)
+                        embed=discord.Embed(title=msg[1],description=msg[3])
                         embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}'
-
                         await message.channel.send(embed=embed)
-
                     else:
-
                         embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
                                      ,color=0x2ECC69)
                         embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
@@ -1165,8 +1104,6 @@ async def on_message(message):
                 else:
                     await message.delete()
                     await message.channel.send(msg)
-
-
 
         if message.content.startswith("y!report "):
 
@@ -1185,6 +1122,8 @@ async def on_message(message):
             value=str(dateTime.year) + "年" + str(dateTime.month) + "月" + str(dateTime.day) + "日" + str(
             dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
             await message.channel.send(embed=embed)
+
+#━━━━❮TAO系コマンド基本コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         # 「すて」と発言したら「::st」が返る処理
         if message.content == 'y!st':
@@ -1223,24 +1162,11 @@ async def on_message(message):
             embed = discord.Embed(title='y!i fコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
             embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
             await message.channel.send(embed=embed)
-        if message.content == 'よしよし':
-            value = random.choice(('**………？**',
-                                   '**そう何回もよしよしされたら私勘違いするよ……？**',
-                                   '**セクハラ？**', '**……君以外がやってたら殺してるよ**',
-                                   '**なに急に……びっくりするじゃん。いやじゃないけどさ……**',
-                                   '**ちょっと、やめてよ恥ずかしい**',
-                                   '**……素直にありがとうって言えばいいの？**',
-                                   '**？　よくわからないけど、お礼だけ言っておくわ。ありがとう**'))
-            await message.channel.send(value)
-
-        if message.content == 'よしよしヾ(・ω・｀)':
-            await message.channel.send('''？　よくわからないけど、お礼だけ言っておくわ。ありがとう''')
-
-        # 「まっぷ」と発言したら「::rmap」が返る処理
+  
         if message.content == 'y!rmap':
             await message.channel.send('::rmap')
 
-        # 「ろーる」と発言したら「::role」が返る処理
+      
         if message.content.startswith('y!role '):
             role_num = message.content.split('y!role ')[1]
             if not role_num in ["0","1","2","3"]:
@@ -1283,6 +1209,8 @@ async def on_message(message):
         if message.content == 'y!login':
             await message.channel.send('::login')
 
+#━━━━❮TAO出現ログ役職コード(になる予定)❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         if message.content == 'y!join':
             role = discord.utils.get(message.guild.roles, name='裏寄生隊')  # YUI通知
             await message.author.add_roles(role)
@@ -1294,6 +1222,8 @@ async def on_message(message):
             await message.author.add_roles(role)
             reply = f'{message.author.mention} 何か更新あったら呼ぶね'
             await message.channel.send(reply)
+
+#━━━━❮くじコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content == "y!kuji":
             # Embedを使ったメッセージ送信 と ランダムで要素を選択
@@ -1337,8 +1267,7 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
                 await message.channel.send('すみませぇえええん\nこの御籤呪われてまあああああああす!!')
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ガチャ系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
-
+#━━━━❮ガチャコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content == 'y!gacha':
             await message.channel.send('gachaばんごうをしていしてね......?')
@@ -1425,7 +1354,7 @@ async def on_message(message):
 
             await message.channel.send(embed=embed)
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━通常コマンド系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#━━━━❮アイコン表示コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content == "y!myicon":
             embed = discord.Embed(title="**アイコン表示**\n", description='`アイコンを表示したよ`',
@@ -1435,7 +1364,7 @@ async def on_message(message):
             await message.delete()
             await message.channel.send(embed=embed)
 
-
+#━━━━❮サイコロコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!dice "):  # ここの!diceは好きなのにしていいぞ
             if client.user != message.author:
@@ -1457,9 +1386,9 @@ async def on_message(message):
                                                        'https://yahoo.jp/box/c9L236',
                                                        'https://yahoo.jp/box/Jxj1Jd')))
                 await message.channel.send(embed=embed)
+     
+#━━━━❮スロットコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-
-                await channel.send(oha)
         if message.content == "y!slot":
             slot_list = ['🍆', '🍒', '🔷', '🔶', '7️⃣', '💎','🔔', '🍆', '🍆', '🍆']
             A = random.choice(slot_list)
@@ -1484,7 +1413,6 @@ async def on_message(message):
                 await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',color=0x2ECC69))
                 await asyncio.sleep(1)
 
-
                 if A3 == B3 and B3 == C3:
 
                     await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}のゾロ目だよ',color=discord.Color.blue()))
@@ -1492,6 +1420,7 @@ async def on_message(message):
 
                     await slot_em.edit(embed=discord.Embed(title=f'━━━━━━\n{A2}│{B2}│{C2}\n{A3}│{B3}│{C3}◀\n{A}│{B}│{C}',description=f'結果\n{A3}{B3}{C3}残念…',color=discord.Color.blue()))
 
+#━━━━❮特殊チャンネル作成コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!yui"):
             if message.content.split()[1] == "log":
@@ -1522,6 +1451,8 @@ async def on_message(message):
 
                 return await message.channel.send(reply)
 
+#━━━━❮YUIWEATHERコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         if message.content.startswith("y!wt "):
             cityc = citycodes[message.content.split("y!wt ")[1]]
             if cityc:
@@ -1547,6 +1478,8 @@ async def on_message(message):
                 )
 
             await message.channel.send(embed=embed)
+
+#━━━━❮サーバー情報コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content == 'y!sinfo':
             guild = message.guild
@@ -1610,6 +1543,8 @@ async def on_message(message):
             embed.add_field(name="‣二段階認証", value=f"**{mfamsg}**", inline=False)
             await message.channel.send(embed=embed)
 
+#━━━━❮チャンネル作成コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
         if message.content.startswith("y!mkch "):
             await message.delete()
             reply_one = message.content.split('y!mkch ')[1]
@@ -1620,8 +1555,7 @@ async def on_message(message):
 
             await message.channel.send(reply)
 
-
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━隠しコマンド系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#━━━━❮無駄隠しコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content == "y!timer":
             await message.delete()
@@ -1680,8 +1614,7 @@ async def on_message(message):
             await channel.send(riptext)
 
 
-
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━グローバルチャットシステム━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#━━━━❮グローブチャットコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if (len(message.embeds) == 0) and (message.channel.name == "global_yui") and (
         not "discord.gg" in message.author.name) and (not message.channel == DMChannel):
@@ -1697,8 +1630,7 @@ async def on_message(message):
                     if channel.name == "global_yui":
                         await channel.send(embed=embed)
 
-
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━レスポンス系━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#━━━━❮オートレスポンスコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
             if message.author.bot:
@@ -1818,14 +1750,6 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             embed.set_footer(icon_url=message.author.avatar_url, text=f"表示者｜{message.author}")
             await message.channel.send(embed=embed)
 
-        if 'やられてしまった' in message.content and not f"{client.user.display_name}" in message.content:
-            set = random.randrange(1, 3)
-            if set == 2:
-                embed = discord.Embed(title='ゆーあーるーざーw', description='君は死んだんだよ!!\n負けたんだよ!!')
-                await message.channel.send(embed=embed)
-
-
-
         if message.content == '考えるな、感じろ！' and message.author.id==644153226597498890:
             await message.channel.send('(`･ω･)ゞｲｪｯｻｰ将軍!')
 
@@ -1849,17 +1773,6 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             embed.add_field(name="Error内容┃", value=e.args, inline=False)
             embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
             m = await client.get_channel(ch).send(embed=embed)
-
-
-        if message.embeds and message.embeds[0].description.name and '正解' in message.embeds[0].description and message.channel==t_ch:
-            asyncio.sleep(1)
-            await t_ch.send('::t')
-        if message.author==mio and message.mebeds and message.channel==t_ch and message.embeds[0].description and '`' in message.embeds[0].description:
-            ans=message.embeds[0].description.split('`')[1]
-            await message.channel.send(ans)
-
-
-
 
 @client.event
 async def on_member_join(member):
@@ -1887,14 +1800,6 @@ async def on_member_join(member):
 ・後志地方の23日15時の天気は、晴れまたは曇りとなって\nいます。\n\n 23日夜は、晴れでしょう。\n\n 24日は、曇りのち雨で、夕方から所により雷を伴い激しく降る見込みで\nす。\n\n 海の波の高さは、23日夜は1メートルでしょう。24日は1メート
 ルの\nち4メートルで、うねりを伴いしける見込みです。', 'publicTime': '2018-08-23T16:39:00+0900'}}
 """
-
-
-
-
-
-
-
-
 
 
 
