@@ -355,7 +355,7 @@ async def on_message(message):
             help_logch = client.get_channel(id=help_ch)
 
             help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",
-                                         description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**技術的不具合**```Yuiのhelpが開けないと言う不具合をちらほら聞きます\n原因は開発者の予期しないbotの権限エラーです。\n同様のエラーが起きた場合お手数ですが\n下記URLを保存していただき、再度YUIを招待し治してください。\n```https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。\nまた、helpが開けないエラーが出た場合は```y!report [レポート内容]```のコマンドでお教えいただけると幸いです',
+                                         description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**技術的不具合**```Yuiのhelpが開けないと言う不具合をちらほら聞きます\n原因は開発者の予期しないbotの権限エラーです。\n同様のエラーが起きた場合お手数ですが\n下記URLを保存していただき、再度YUIを招待し治してください。\n```[招待URL](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。\nまた、helpが開けないエラーが出た場合は```y!report [レポート内容]```のコマンドでお教えいただけると幸いです',
                                          color=discord.Colour.green())
 
             help_embed = discord.Embed(title="TAOコマンド系ヘルプ", description="TAOで使うコマンドを使うヘルプだよ", color=discord.Colour.green())
@@ -463,7 +463,7 @@ async def on_message(message):
 
                 if reaction.message.id != send_message.id:
                     return 0
-                if reaction.emoji in ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '⬅️', '➡️', '🗑', '☑️', '❎', '⏭️', '⏮️']:
+                if reaction.emoji in ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '⬅️', '➡️', '🚮', '☑️', '❎', '⏭️', '⏮️']:
                     if user != message.author:
                         return 0
                     else:
@@ -496,7 +496,7 @@ async def on_message(message):
                         page_count = 6
                     if reaction.emoji in ['7️⃣', '⏭️'] and page_count > 0:
                         page_count = 7
-                    if reaction.emoji in ['🗑', '❎']:
+                    if reaction.emoji in ['🚮', '❎']:
                         await send_message.delete()
 
                     await send_message.clear_reactions()
@@ -504,7 +504,7 @@ async def on_message(message):
                     reactions0 = ["⏮️","⬅️","🗑","➡️","⏭️"]
                     reactions1 = ["⏮️","⬅️","🗑"]
                     reactions2 = [":ballot_box_with_check:","❎"]
-                    reactions3 = ["➡️","🗑","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣"]
+                    reactions3 = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","⬅️","🚮"]
                     if page_count == 0:
                         for reaction in reactions2:
                             await send_message.add_reaction(reaction)
@@ -1392,10 +1392,17 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
         if message.content == "y!gacha 1":
-            embed = discord.Embed(title="あ、ガチャガチャじゃんまわしてみる？", description=f"""　　ﾁｬﾘｰﾝ
-    ｶﾞﾁｬｶﾞﾁｬｶﾞﾁｬ
-       ﾎﾟﾝ！""",
-                                  color=0x2ECC69)
+            embed = discord.Embed(title = "□◑")
+            tmp = await message.channel.send(embed = embed)
+            await asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　◒"))
+            await asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　　◐"))
+            await asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　　　◓"))
+            await asyncio.sleep(1)
+            await tmp.edit(embed = discord.Embed(title = "□　　　◖◗ﾊﾟｶｯ"))
+            embed = discord.Embed(title="何かが出てきたよ!\nこれは…", color=0x2ECC69)
             embed.set_thumbnail(url="https://yahoo.jp/box/HYqbOS")
             embed.set_image(url=random.choice(("https://yahoo.jp/box/tpeHgW",
                                                "https://yahoo.jp/box/roWwt8", "https://yahoo.jp/box/M8DDfm",
@@ -1404,7 +1411,7 @@ async def on_message(message):
                                                "https://yahoo.jp/box/seZwkN", "https://yahoo.jp/box/UHhqck",
                                                "https://yahoo.jp/box/ZdKwTS", "https://yahoo.jp/box/coBg_L",
                                                "https://yahoo.jp/box/D8lFL8", "https://yahoo.jp/box/LU1JLi",
-                                               "https://yahoo.jp/box/xfDFnC", "https://yahoo.jp/box/2tGQPm",
+                                               "https://yahoo.jp/box/2tGQPm",
                                                "https://yahoo.jp/box/2tGQPm", "https://yahoo.jp/box/W6sq6m",
                                                "https://yahoo.jp/box/o8_WCa", "https://yahoo.jp/box/bnadWl",
                                                "https://yahoo.jp/box/wvFtaX", "https://yahoo.jp/box/t6DACy",
@@ -1413,7 +1420,7 @@ async def on_message(message):
                                                "https://media.discordapp.net/attachments/635993816297504809/636080181991178250/20_20191022145513.png",
                                                "https://media.discordapp.net/attachments/635993816297504809/636080191499927552/20_20191022145257.png")))
             embed.add_field(name=random.choice(('最高に需要無いんだけど……', 'うわ何これ……いる？', '……こんなのガチャガチャから出てこないよね普通',
-                                                'ごめんちょっと意味わからないんだけどナニコレ', "これもらって喜ぶ人いるのかな", '………ノーコメント')),
+                                                'ごめんちょっと意味わからないんだけどナニコレ', "これもらって喜ぶ人いるのかな", '………ノーコメント','なんて言えばいいんだろう,'なんでこれをガチャガチャに入れたし…'')),
                             value='YUIは出てきたものをそっとポッケに入れた', inline=False)
             await message.channel.send(embed=embed)
 
@@ -1423,7 +1430,7 @@ async def on_message(message):
             await asyncio.sleep(1)
             await tmp.edit(embed = discord.Embed(title = "□　◒"))
             await asyncio.sleep(1)
-            await tmp.edit(embed = discord.Embed(title = "□  　◐"))
+            await tmp.edit(embed = discord.Embed(title = "□　　◐"))
             await asyncio.sleep(1)
             await tmp.edit(embed = discord.Embed(title = "□　　　◓"))
             await asyncio.sleep(1)
