@@ -355,7 +355,7 @@ async def on_message(message):
             help_logch = client.get_channel(id=help_ch)
 
             help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",
-                                         description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**ニックネーム変更非推奨**```第２項TAO系コマンドは、YUIのニックネームが変わるとオートアタックのみ正常に動作しません。\nTAOに関連性を持たせないつもりであれば、ニックネームの変更は構いません```\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。',
+                                         description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**技術的不具合**```Yuiのhelpが開けないと言う不具合をちらほら聞きます\n原因は開発者の予期しないbotの権限エラーです。\n同様のエラーが起きた場合お手数ですが\n下記URLを保存していただき、再度YUIを招待し治してください。\nhttps://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot```\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。\nまた、helpが開けないエラーが出た場合は```y!report [レポート内容]`のコマンドでお教えいただけると幸いです',
                                          color=discord.Colour.green())
 
             help_embed = discord.Embed(title="TAOコマンド系ヘルプ", description="TAOで使うコマンドを使うヘルプだよ", color=discord.Colour.green())
@@ -438,7 +438,7 @@ async def on_message(message):
 
             url_embed = discord.Embed(title='YUI関連URL\n')
             url_embed.add_field(name='‣**Re:YUI ver1.12.2 招待URL**',
-                                value='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=0&scope=bot)')
+                                value='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)')
             url_embed.add_field(name='‣**YUI Official Server 招待URL**', value='[URLはこちら](https://discord.gg/tJaJBDD)')
             url_embed.add_field(name='‣**YUIサポートBot Mio 招待URL**',
                                 value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
