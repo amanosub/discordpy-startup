@@ -1172,7 +1172,24 @@ async def on_message(message):
         if message.content == 'y!rmap':
             await message.channel.send('::rmap')
 
-      
+        if message.content.startswith('y!sinka '):
+            await message.channel.send('::sinka')
+            reaction=message.content.split('y!sinka ')[1]
+            def role_check(tao_msg):
+                if not tao_msg.embeds:
+                    return 0
+                if tao_msg.channel != message.channel:
+                    return 0
+                return 1
+
+            try:
+                ans_msg = await client.wait_for('message', timeout=40, check=role_check)
+            except:
+                embed = discord.Embed(title='Error!!', description='もう一度試して見てね（￣▽￣;）\nもしかして以下の点が該当してないかな？\n‣TAOからの反応が40秒以内に来なかった\n‣TAOがオフライン\n‣TAOが修理中', color=discord.Color.green())
+                await message.channel.send(embed=embed)
+            else:
+                await asyncio.sleep(2)
+                await ans_msg.add_reaction(reaction)
         if message.content.startswith('y!role '):
             role_num = message.content.split('y!role ')[1]
             if not role_num in ["0","1","2","3"]:
