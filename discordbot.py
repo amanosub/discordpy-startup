@@ -107,7 +107,7 @@ async def on_ready():
     t_ch=client.get_channel(658100797015588874)
     await t_ch.send('::t')
 
-    stloop.start()
+ 
     time_loop.start()
     d_loop.start()
     d_loop2.start()
@@ -164,10 +164,6 @@ flag = False
 yt_channel_id = CHANNEL_ID
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
-
-@tasks.loop(seconds=30)
-async def stloop():#~をプレイ中　の、表記変更
-    await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @tasks.loop(seconds=30)
@@ -239,7 +235,7 @@ async def d_loop2():
 @tasks.loop(seconds=10)
 async def test_check_loop():
     if test_flag==True:
-        await test_ch.send('━━━━━━━━━━━━━━━━━━━━')
+       
         tao=client.get_user(526620171658330112)
         if tao:
             def test_check (d_msg):
@@ -322,7 +318,7 @@ async def on_message(message):
             msg=await message.channel.send(embed=embed)
             
             result=(msg.created_at - message.created_at).microseconds // 1000
-            await msg.edit(embed=discord.Embed(title=f'**Pong!{result}ms**'))
+            await msg.edit(embed=discord.Embed(title=f'**Pong!\n{result}ms**'))
         help_ch = 642578258743001088
 
 #━━━━❮YUIhelpコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
@@ -1091,7 +1087,7 @@ async def on_message(message):
             msg=message.content.split("'")[1]
             msg2=message.content.split("'")[3]
             if msg and msg2:
-                embed=discord.Embed(title=msg[1],description=msg[3])
+                embed=discord.Embed(title=msg,description=msg2)
                 embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}')
                 if message.mentions or message.mention_everyone:
                     if message.author.guild_permissions.administrator:
