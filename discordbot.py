@@ -1087,14 +1087,15 @@ async def on_message(message):
                     await message.channel.send(msg)
 
         if message.content.startswith("y!say2 "):
+            await message.delete()
             msg=message.content.split("'")[1]
-            msg2=message
-            if msg:
+            msg2=message.content.split("'")[3]
+            if msg and msg2:
+                embed=discord.Embed(title=msg[1],description=msg[3])
+                embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}')
                 if message.mentions or message.mention_everyone:
                     if message.author.guild_permissions.administrator:
-                        await message.delete()
-                        embed=discord.Embed(title=msg[1],description=msg[3])
-                        embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}')
+       
                         await message.channel.send(embed=embed)
                     else:
                         embed = discord.Embed(title="権限エラー！！",description=f"{message.author.mention}\n君…管理者権限ないよね?\nメンション出来ると思ってるの?"
@@ -1102,8 +1103,8 @@ async def on_message(message):
                         embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                         await message.channel.send(embed=embed)
                 else:
-                    await message.delete()
-                    await message.channel.send(msg)
+                   
+                    await message.channel.send(embed=embed)
 
         if message.content.startswith("y!report "):
 
