@@ -23,7 +23,7 @@ JST = timezone(timedelta(hours=+9), 'JST')
 client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 #TOKEN="NjI3MDUyNTc2ODEwMDc0MTEy////.XgTAtg.k6EBPNmQ9XfUJ3nXcBI6-tIlzx8"
-dateTime = datetime.datetime.now(JST)
+dateTime = datetime.now(JST)
 server_number = len(client.guilds)
 
 citycodes = {
@@ -60,7 +60,6 @@ client.already_quiz = {}
 
 CHANNEL_ID = 623154510662991883
 client = discord.Client()
-dateTime = datetime.datetime.now()
 ModeFlag = 0
 #━━━━━━━━━━━━━━━┓
 atk_ch = 2
@@ -119,7 +118,7 @@ async def on_ready():
 
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
     print('‣BOT ID\n '+str(client.user.id))
-    print('‣LOG IN TIME\n '+str(dateTime))
+    print('‣LOG IN TIME\n '+str(datetime.now(JST)))
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢')
 
 
@@ -239,7 +238,7 @@ async def test_check_loop():
 
 @tasks.loop(seconds=60)
 async def time_loop():
-    now = datetime.datetime.now(JST).strftime('%H:%M')
+    now = datetime.now(JST).strftime('%H:%M')
     if now == '00:00':
         em = discord.Embed(title="24:00の時報をお伝えします\nなんちゃって", description=random.choice((
             '日付変わったから寝ようね！？',
@@ -267,7 +266,7 @@ async def on_disconnect():
     embed = discord.Embed(title="YUIが切断されあぁ！", description="原因は知らんけど切断されちゃった(灬ºωº灬)てへっ♡", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-    embed.add_field(name="切断時刻",value=datetime.datetime.now(JST), inline=True)
+    embed.add_field(name="切断時刻",value=datetime.now(JST), inline=True)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
