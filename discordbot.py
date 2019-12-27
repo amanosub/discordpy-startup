@@ -14,11 +14,16 @@ import traceback
 import math
 from discord.ext import tasks
 
+from datetime import datetime, timedelta, timezone
+
+# タイムゾーンの生成
+JST = timezone(timedelta(hours=+9), 'JST')
+
 
 client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 #TOKEN="NjI3MDUyNTc2ODEwMDc0MTEy////.XgTAtg.k6EBPNmQ9XfUJ3nXcBI6-tIlzx8"
-dateTime = datetime.datetime.now()
+dateTime = datetime.datetime.now(JST)
 server_number = len(client.guilds)
 
 citycodes = {
@@ -117,49 +122,23 @@ async def on_ready():
     print('‣LOG IN TIME\n '+str(dateTime))
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢')
 
+
+
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-    embed.add_field(name="起動時刻",
-                    value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day) + "\n " + str(
-                        dateTime.hour + 9) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒",
-                    inline=False)
+    embed.add_field(name="起動時刻", value=f"{dateTime}", inline=False)
+    embed.add_field(name="YUI news", value="公式鯖が荒らされた影響でコードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
+    await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
+    
     user = client.get_user(446610711230152706)
     await user.send(embed=embed)
-
-    if (dateTime.hour) + 9 >= 24:
-        jp_time = (dateTime.hour) - 15
-        embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
-        embed.set_thumbnail(url=random.choice(
-            ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-        embed.add_field(name="起動時刻",
-                        value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day + 1) + "\n " + str(
-                            jp_time) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=False)
-        embed.add_field(name="YUI news", value="大きな変更はございません", inline=True)
-        await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
-        helplog_ch = client.get_channel(659922476641288211)
-        await helplog_ch.send(embed=embed)
-
-        await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
-    else:
-        embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
-        embed.set_thumbnail(url=random.choice(
-            ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-        embed.add_field(name="起動時刻",
-                        value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day+1) + "\n " + str(
-                            (dateTime.hour) + 9) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒",
-                        inline=False)
-        embed.add_field(name="YUI news", value="公式鯖が荒らされた影響でコードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
-        await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
-
-        ready_log_ch = client.get_channel(659922404281417729)
-        await ready_log_ch.send(embed=embed)
+    
+    ready_log_ch = client.get_channel(659922404281417729)
+    await ready_log_ch.send(embed=embed)
 
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
-flag = False
-
-yt_channel_id = CHANNEL_ID
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @tasks.loop(seconds=60)
@@ -193,7 +172,6 @@ async def t_loop():
 @tasks.loop(seconds=60)
 async def d_loop():
     if d_flag==True:
-        await d_ch.send('━━━━━━━━━━━━━━━━━━━━')
         tao=client.get_user(526620171658330112)
         if tao:
             def test_check (d_msg):
@@ -206,7 +184,6 @@ async def d_loop():
             try:
                 t_res=await client.wait_for('message',timeout=60,check = test_check)
             except asyncio.TimeoutError:
-                print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
                 await d_ch.send('::attack とまってない?')
             else:
                 pass
@@ -262,11 +239,8 @@ async def test_check_loop():
 
 @tasks.loop(seconds=60)
 async def time_loop():
-    now = datetime.datetime.now().strftime('%H:%M')
-    if now == '15:01':
-
-        print("時刻判定おｋ")
-
+    now = datetime.datetime.now(JST).strftime('%H:%M')
+    if now == '00:00':
         em = discord.Embed(title="24:00の時報をお伝えします\nなんちゃって", description=random.choice((
             '日付変わったから寝ようね！？',
             'まだ起きてるとかみんな狂乱なの？',
@@ -281,7 +255,6 @@ async def time_loop():
             if c.name == 'yui時報ログ':
                 client.loop.create_task(c.send(embed=em))
         print("チャンネル判定終了")
-
         login_ch = client.get_channel(659964329264676886)
         await login_ch.send('::login')
 
@@ -294,11 +267,7 @@ async def on_disconnect():
     embed = discord.Embed(title="YUIが切断されあぁ！", description="原因は知らんけど切断されちゃった(灬ºωº灬)てへっ♡", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-    embed.add_field(name="切断時刻",
-                    value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day) + "\n " + str(
-                        dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
-
-
+    embed.add_field(name="切断時刻",value=datetime.datetime.now(JST), inline=True)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
@@ -326,8 +295,11 @@ async def on_message(message):
             log_ch = client.get_channel(659922476641288211)
             author_id=str(message.author.id)
             invite = await message.channel.create_invite()
-            embed=discord.Embed(title=f"( 'ω'o[**help**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed=discord.Embed(
+                title=f"( 'ω'o[**help**]oログ♡",
+                description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await log_ch.send(embed=embed)
 
 
@@ -571,8 +543,11 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
                 author_id=str(message.author.id)
                 invite = await message.channel.create_invite()
-                embed=discord.Embed(title=f"( 'ω'o[**clean**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{clean_num}』```[鯖のチャンネル直通招待URL]({invite.url})')
+                embed=discord.Embed(
+                    title=f"( 'ω'o[**clean**]oログ♡",
+                    description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{clean_num}』```[鯖のチャンネル直通招待URL]({invite.url})')
                 embed.set_thumbnail(url=message.author.avatar_url)
+                embed.set_footer(text = datetime.datetime.now(JST))
                 await log_ch.send(embed=embed)
             else:
                 embed = discord.Embed(title = "権限エラー！",
@@ -608,12 +583,7 @@ async def on_message(message):
                     e_embed=discord.Embed(title=f'Global Ban User Data',
                                 description=f'{ban_user}\n{gban_id}\nBan実行者{message.author}',
                                 color=discord.Color.red())
-                    e_embed.set_footer(text=str(dateTime.year) + "年" +
-                                      str(dateTime.month) + "月" +
-                                      str(dateTime.day) + "日 " +
-                                      str(dateTime.hour + 9) + "時" +
-                                      str(dateTime.minute) + "分" +
-                                      str(dateTime.second) + "秒")
+                    e_embed.set_footer(text = datetime.datetime.now(JST))
                     await ban_ch.send(embed=e_embed)
                     embed=discord.Embed(title='Global Banned!!',
                                 description=f'{ban_user}はGlobalBANされたよ\n以降私がいる鯖でこいつが入ってきたら責任もってBANするね!',color=discord.Color.red())
@@ -822,6 +792,7 @@ async def on_message(message):
                         exp=int(lv)*100
                     embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp}',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
+                    embed.set_footer(text = datetime.datetime.now(JST))
                     await logch.send(embed=embed)
                 await asyncio.sleep(1)
                 await test_ch.send("::attack 先手必勝!!")
@@ -883,6 +854,7 @@ async def on_message(message):
             embed=discord.Embed(
             title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await log_ch.send(embed=embed)
             await atk_ch2.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
             def start_check(msg):
@@ -903,7 +875,6 @@ async def on_message(message):
 
         if tao:
             if message.channel==atk_ch2:
-
                 if "フレア" in message.content and 'のHP' in message.content:
                     await asyncio.sleep(0.7)
                     await message.channel.send(f"::item ファイアボールの書")
@@ -990,13 +961,7 @@ async def on_message(message):
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
                     color = discord.Color.blue())
-
-                embed.set_footer(text=str(dateTime.year) + "年" +
-                                      str(dateTime.month) + "月" +
-                                      str(dateTime.day) + "日 " +
-                                      str(dateTime.hour + 9) + "時" +
-                                      str(dateTime.minute) + "分" +
-                                      str(dateTime.second) + "秒")
+                embed.set_footer(text = datetime.datetime.now(JST))
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
 #━━━━❮AO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
@@ -1024,6 +989,7 @@ async def on_message(message):
 
                     embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
+                    embed.set_footer(text = datetime.datetime.now(JST))
                     ch=discord.utils.get(messageguild.text_channels, name=f'yuiモンスター出現ログ')
                     await ch.send(embed=embed)
 #━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
@@ -1114,13 +1080,11 @@ async def on_message(message):
             description=f"{message.author.mention}さん\nレポート提出有り難う！\n君のレポートは無事研究所に届けられたよ！\n```{reply}```",
             color=0x2ECC69)
             embed.add_field(name="レポート提出時刻",
-            value=str(dateTime.year) + "年" + str(dateTime.month) + "月" + str(dateTime.day) + "日" + str(
-            dateTime.hour) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒", inline=True)
+            value=f"{datetime.datetime.now(JST)}", inline=True)
             await message.channel.send(embed=embed)
 
 #━━━━❮TAO系コマンド基本コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-        # 「すて」と発言したら「::st」が返る処理
         if message.content == 'y!st':
             await message.channel.send('::status window　私のステータスが見たいなんて、君もエッチだな')
             log_ch=client.get_channel(659924491115298816)
@@ -1129,6 +1093,7 @@ async def on_message(message):
             title=f"( 'ω'o[**status window**]oログ♡",
             description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await log_ch.send(embed=embed)
 
 
@@ -1145,6 +1110,7 @@ async def on_message(message):
             log_ch=client.get_channel(659922557188702229)
             embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await log_ch.send(embed=embed)
 
         if message.content == 'y!i e':
@@ -1160,8 +1126,11 @@ async def on_message(message):
             await message.channel.send(embed=embed)
             invite = await message.channel.create_invite()
             log_ch=client.get_channel(659922630861783060)
-            embed=discord.Embed(title=f"( 'ω'o[**i f**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed=discord.Embed(
+                title=f"( 'ω'o[**i f**]oログ♡",
+                description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
             embed.set_thumbnail(url=message.author.avatar_url)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await log_ch.send(embed=embed)
 
             
@@ -1328,6 +1297,7 @@ async def on_message(message):
             embed.add_field(name=random.choice(('最高に需要無いんだけど……', 'うわ何これ……いる？', '……こんなのガチャガチャから出てこないよね普通',
                                                 'ごめんちょっと意味わからないんだけどナニコレ', "これもらって喜ぶ人いるのかな", '………ノーコメント','なんて言えばいいんだろう','なんでこれをガチャガチャに入れたし…')),
                             value='YUIは出てきたものをそっとポッケに入れた', inline=False)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await message.channel.send(embed=embed)
 
         if message.content == "y!gacha 2":
@@ -1371,7 +1341,7 @@ async def on_message(message):
             embed.add_field(
             name=random.choice( ('いや可愛いけどコメントに困る', 'あ、かわいい', 'ちょくちょくエッチなのは入ってるよねこれ（）', '可愛いというより萌えのほうが正しいのかなこれ', "普通にかわいいこれ", 'あー悪くないかも')),
             value='YUIは出てきたおにゃのこカードをそっとポケットに仕舞った', inline=False)
-
+            embed.set_footer(text = datetime.datetime.now(JST))
             await message.channel.send(embed=embed)
 
 #━━━━❮フィッシングコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
@@ -1622,6 +1592,7 @@ async def on_message(message):
             embed.add_field(name="‣サーバーのブースト状態",
                             value=f"サーバーブーストレベル　:**Lv.{guild.premium_tier}**\nサーバーブーストユーザー:**{pmmc}人**", inline=False)
             embed.add_field(name="‣二段階認証", value=f"**{mfamsg}**", inline=False)
+            embed.set_footer(text = datetime.datetime.now(JST))
             await message.channel.send(embed=embed)
 
 #━━━━❮チャンネル作成コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
@@ -1703,7 +1674,7 @@ async def on_message(message):
                                   color=discord.Color(random.randint(0, 0xFFFFFF)))
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_author(icon_url=message.guild.icon_url, name=f"{message.guild.name}")
-            embed.set_footer(icon_url=client.user.avatar_url, text=f"YUI global chat system")
+            embed.set_footer(icon_url=message.author.avatar_url,text = datetime.datetime.now(JST))
             await message.delete()
             for guild in client.guilds:
                 for channel in guild.channels:
@@ -1724,15 +1695,20 @@ async def on_message(message):
                 await channel.send(oha)
 
         if 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
+            
             if message.author.bot:
 
                 return
 
             else:
-                channel = message.channel
-                oha = random.choice(('おはー(((o(\*ﾟ▽ﾟ*)o)))', '(ฅ・ω・ฅ)おはよう♪', '⸜(\* ॑꒳ ॑*  )⸝⋆*オハ', 'おは(　ˆᴘˆ　)'))
+                now = datetime.datetime.now(JST)
+                if now.hour > 12:
+                    await message.channel.send("……もう朝は終わったよ……？")
+                else:
+                    channel = message.channel
+                    oha = random.choice(('おはー(((o(\*ﾟ▽ﾟ*)o)))', '(ฅ・ω・ฅ)おはよう♪', '⸜(\* ॑꒳ ॑*  )⸝⋆*オハ', 'おは(　ˆᴘˆ　)'))
 
-                await channel.send(oha)
+                    await channel.send(oha)
 
         if 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content:
             if message.author.bot:
@@ -1740,9 +1716,13 @@ async def on_message(message):
                 return
 
             else:
-                channel = message.channel
-                oha = random.choice(('( ˘ω˘ ) ｽﾔｧ…', '( ˘꒳​˘ )ｵﾔｽﾔｧ…', '_([▓▓] ˘ω˘ )_ｽﾔｧ…',
-                                     '=͟͟͞( ˘ω˘)˘ω˘)˘ω˘)ｼﾞｪｯﾄｽﾄﾘｰﾑｽﾔｧ…', 'ｽﾔｧ…(　ˆᴘˆ　)'))
+                now = datetime.datetime.now(JST)
+                if now.hour > 6 and now.hour < 17:
+                    await message.channel.send("今から寝るの！？")
+                else:
+                    channel = message.channel
+                    oha = random.choice(('( ˘ω˘ ) ｽﾔｧ…', '( ˘꒳​˘ )ｵﾔｽﾔｧ…', '_([▓▓] ˘ω˘ )_ｽﾔｧ…',
+                                         '=͟͟͞( ˘ω˘)˘ω˘)˘ω˘)ｼﾞｪｯﾄｽﾄﾘｰﾑｽﾔｧ…', 'ｽﾔｧ…(　ˆᴘˆ　)'))
 
 
 
@@ -1860,7 +1840,12 @@ async def on_member_join(member):
     ban_ch=discord.utils.get(ban_guild.text_channels,name=f'{member.id}')
     if ban_ch:
         await member.ban()
-
+    if member == client.user:
+        log_ch=client.get_channel(659925765974130700)
+        embed = discord.Embed(
+        title = "( 'ω'o[サーバー参加]oログ♡",
+        description = f"参加鯖名\n『{member.guild.name}』\n参加鯖ID\n『{member.guild.id}』\n参加時刻\n{datetime.datetime.now(JST)}")
+        await log_ch.send(embed=embed)
 
 
 
