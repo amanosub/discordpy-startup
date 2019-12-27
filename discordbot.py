@@ -797,7 +797,7 @@ async def on_message(message):
                 await test_ch.send("::attack 先手必勝!!")
 
         if message.channel==test_ch and test_flag==True:
-            if f"{client.user.display_name}はやられて" in message.content:
+            if f"{client.user.display_name}はやられてしまった" in message.content:
                 def mio_check(mio_msg):
                     if mio_msg.author!=tao:
                         return 0
@@ -841,6 +841,9 @@ async def on_message(message):
             	if 'このチャンネルの全てのPETが全回復した！' in message.embeds[0].description:
                     await asyncio.sleep(0.5)
                     await test_ch.send('::attack 復活乁( ˙ ω˙乁)')
+                elif f"{client.user.mention}はもうやられている！" in message.embeds[0].description:
+                    await asyncio.sleep(0.5)
+                    await test_ch.send("::i e 復活！")
 
 #━━━━❮おーとFBコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
