@@ -149,7 +149,7 @@ async def on_ready():
                         value=str(dateTime.year) + "/" + str(dateTime.month) + "/" + str(dateTime.day+1) + "\n " + str(
                             (dateTime.hour) + 9) + "時" + str(dateTime.minute) + "分" + str(dateTime.second) + "秒",
                         inline=False)
-        embed.add_field(name="YUI news", value="アップグレード！役職が変更できるように!!\n詳しくはヘルプの第七項から公式鯖へ", inline=True)
+        embed.add_field(name="YUI news", value="公式鯖が荒らされた影響でコードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
         await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
 
         ready_log_ch = client.get_channel(659922404281417729)
