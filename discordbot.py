@@ -965,7 +965,7 @@ async def on_message(message):
                     color = discord.Color.blue())
                 embed.set_footer(text = datetime.now(JST))
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yuiレベルアップログ'))
-#━━━━❮AO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
             if message.author==tao and message.embeds and message.embeds[0].title:
                 if '待ち構えている' in message.embeds[0].title:
@@ -992,7 +992,7 @@ async def on_message(message):
                     embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
                     embed.set_thumbnail(url=image_url)
                     embed.set_footer(text = datetime.now(JST))
-                    ch=discord.utils.get(messageguild.text_channels, name=f'yuiモンスター出現ログ')
+                    ch=discord.utils.get(message.guild.text_channels, name=f'yuiモンスター出現ログ')
                     await ch.send(embed=embed)
 #━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
