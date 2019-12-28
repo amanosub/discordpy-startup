@@ -958,19 +958,7 @@ async def on_message(message):
 
 
 #━━━━❮YuiLvUPログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
-        '''
-        if message.embeds and message.embeds[0].description and message.author == tao :
-            dateTime = datetime.now()
 
-            if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
-                lv = message.embeds[0].description.split("`")[1]
-                embed = discord.Embed(
-                    title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
-                    description = f"**__{lv}__**",
-                    color = discord.Color.blue())
-                embed.set_footer(text = datetime.now(JST))
-                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
-        '''
 
 #━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
