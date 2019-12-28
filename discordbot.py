@@ -1016,7 +1016,7 @@ async def on_message(message):
                 if "正解" in message.embeds[0].description and not 'レベルアップ' in message.embeds[0].description:
                     await asyncio.sleep(0.2)
                     await t_ch.send("::t")
-                if 'レベルアップ' in message.embeds[0].descriptuon:
+                if 'レベルアップ' in message.embeds[0].description:
                     await asyncio.sleep(0.2)
                     await t_ch.send("::t LvUP")
  
