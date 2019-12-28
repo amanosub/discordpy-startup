@@ -111,9 +111,7 @@ async def on_ready():
 
     st_loop.start()
     time_loop.start()
-    d_loop.start()
-    d_loop2.start()
-    test_check_loop.start()
+
     t_loop.start()
 
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
@@ -632,12 +630,14 @@ async def on_message(message):
 
         if message.content=='y!devac2':
             d_flag2=False
+            d_loop2.stop()
             await asyncio.sleep(1)
             await d_ch2.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
             await message.author.send(embed=embed)
         if message.content=='y!dcap2':
-
+              
+            d_loop2.start()
             d_flag2=True
             await asyncio.sleep(1)
             embed=discord.Embed(title='ダンジョン攻略開始')
@@ -670,6 +670,7 @@ async def on_message(message):
 
         if message.content=='y!devac':
             d_flag=False
+            d_loop.stop()
             await asyncio.sleep(1)
             await d_ch.send('::re')
             embed=discord.Embed(title='ダンジョンから離脱')
@@ -677,6 +678,7 @@ async def on_message(message):
 
         if message.content=='y!dcap':
             d_flag=True
+            d_loop.start()
             await asyncio.sleep(1)
             d_num=1
             d_ch = discord.utils.get(client.get_guild(654086105699844108).text_channels, name=f'第{d_num}階層')
@@ -744,6 +746,7 @@ async def on_message(message):
         global test_ch
         global test_flag
         if message.content.startswith("y!testch "):
+            test_check_loop.start()
             test_ch_m = message.content.split('y!testch ')[1]
             test_ch = discord.utils.get(message.guild.text_channels, mention=test_ch_m)
             log_ch = client.get_channel(659923606595174441)
@@ -761,6 +764,7 @@ async def on_message(message):
 
         if message.content=='y!teststop':
             test_flag=False
+            test_check_loop.stop()
             await asyncio.sleep(5)
             await test_ch.send('::re')
             embed=discord.Embed(title='Test Play停止')
