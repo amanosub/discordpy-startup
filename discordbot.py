@@ -1037,7 +1037,7 @@ async def on_message(message):
                 embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
-                    color = discord.Color.blue())
+                    color = discord.Color.green())
                 embed.set_footer(text = datetime.now(JST))
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
         
