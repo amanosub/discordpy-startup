@@ -1017,10 +1017,10 @@ async def on_message(message):
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
                     color = discord.Color.green())
-                log_embed.add_field(name = "**LvUP鯖Name**" ,value = f"『{message.guild.name}』",inline = False)
-                log_embed.add_field(name = "**LvUP鯖ID**" ,value = f"『{message.guild.id}』",inline = False)
-                log_embed.add_field(name = "**LvUPチャンネルName**" ,value = f"『{message.channel.name}』",inline = False)
-                log_embed.add_field(name = "**LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
+                log_embed.add_field(name = "**‣LvUP鯖Name**" ,value = f"『{message.guild.name}』",inline = False)
+                log_embed.add_field(name = "**‣LvUP鯖ID**" ,value = f"『{message.guild.id}』",inline = False)
+                log_embed.add_field(name = "**‣LvUPチャンネルName**" ,value = f"『{message.channel.name}』",inline = False)
+                log_embed.add_field(name = "**‣LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
                 log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
                 lvlog_ch = client.get_channel(660817503597101099)
                 await lvlog_ch.send(embed = log_embed)
