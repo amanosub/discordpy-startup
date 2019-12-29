@@ -124,7 +124,7 @@ async def on_ready():
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-    embed.add_field(name="起動時刻", value=f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}", inline=False)
+    embed.add_field(name="起動時刻", value=f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minuet}分{dateTime.second}秒", inline=False)
     embed.add_field(name="YUI news", value="公式鯖が荒らされた影響でコードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
     
@@ -1021,7 +1021,7 @@ async def on_message(message):
                 log_embed.add_field(name = "**‣LvUP鯖ID**" ,value = f"『{message.guild.id}』",inline = False)
                 log_embed.add_field(name = "**‣LvUPチャンネルName**" ,value = f"『{message.channel.name}』",inline = False)
                 log_embed.add_field(name = "**‣LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
-                log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
+                log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 lvlog_ch = client.get_channel(660817503597101099)
                 await lvlog_ch.send(embed = log_embed)
 
@@ -1051,7 +1051,7 @@ async def on_message(message):
 
                 embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
                 embed.set_thumbnail(url=image_url)
-                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}")
+                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minuet}分{dateTime.second}秒")
                 ch=discord.utils.get(message.guild.text_channels, name=f'モンスター出現ログ')
                 if ch:
                     await ch.send(embed=embed)               
