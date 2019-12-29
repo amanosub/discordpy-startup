@@ -1011,7 +1011,7 @@ async def on_message(message):
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
                     color = discord.Color.green())
-                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.date}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
+                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.da}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
                 log_embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
