@@ -1021,7 +1021,7 @@ async def on_message(message):
                 log_embed.add_field(name = "**LvUP鯖ID**" ,value = f"『{message.guild.id}』",inline = False)
                 log_embed.add_field(name = "**LvUPチャンネルName**" ,value = f"『{message.channel.name}』",inline = False)
                 log_embed.add_field(name = "**LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
-                log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.date}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
+                log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
                 lvlog_ch = client.get_channel(660817503597101099)
                 await lvlog_ch.send(embed = log_embed)
 
@@ -1051,7 +1051,7 @@ async def on_message(message):
 
                 embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
                 embed.set_thumbnail(url=image_url)
-                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.date}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}")
+                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}")
                 ch=discord.utils.get(message.guild.text_channels, name=f'モンスター出現ログ')
                 if ch:
                     await ch.send(embed=embed)               
