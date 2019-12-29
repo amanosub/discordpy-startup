@@ -274,7 +274,62 @@ async def on_disconnect():
 async def on_message(message):
 
     try:
+#━━━━❮ダンジョン+αで使うグローバル変数と変数❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
+        global atk_ch
+        global atk_ch2
+        global d_ch
+        global d_num
+        global d_ch2
+        global d_flag
+        global d_flag2
+        mio = client.get_user(644153226597498890)
+        tao = client.get_user(526620171658330112)
+        d_num01=d_ch2.name.split('第')[1]
+        d_num02=d_num01.split('層')[0]
+        d_num2=int(d_num02)
+#━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
+        me = client.user
+        tao = client.get_user(526620171658330112)
+        if message.content == "y!t":
+            await message.channel.send("::t")
+            t_sets1 = ((t_data_ch.history( limit = None )).split(" ")).flatten()
+            print(t_sets1)
+
+        global t_flag
+        t_ch = client.get_channel(659923091027132416)
+        if message.channel == t_ch and message.author == tao and t_flag==True:
+            
+            if message.embeds:
+                if "正解" in message.embeds[0].description and not 'レベルアップ' in message.embeds[0].description:
+                    await asyncio.sleep(0.15)
+                    await t_ch.send("::t")
+                if 'レベルアップ' in message.embeds[0].description:
+                    await asyncio.sleep(0.15)
+                    await t_ch.send("::t LvUP")
+ 
+        if message.channel == t_ch and message.author == mio:
+            if message.embeds:
+                if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
+                    await t_ch.send((message.embeds[0].description).split("`")[1])
+
+        if message.content=='y!tstart':
+            t_flag=True
+            embed = discord.Embed(
+            title=f"トレーニング開始\nt_flag = {t_flag}"
+            )
+            await message.author.send(embed = embed)
+        if message.content=='y!tstop' :
+            t_flag=False                   
+            embed = discord.Embed(
+            title=f"トレーニング終了\nt_flag = {t_flag}"
+            )
+            await message.author.send(embed = embed)
+ 
+
+        
+        
 #━━━━❮YUIpingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content=='y!ping':
@@ -611,20 +666,7 @@ async def on_message(message):
                 )
                 await message.channel.send(embed = embed)
 
-#━━━━❮ダンジョン+αで使うグローバル変数と変数❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-        global atk_ch
-        global atk_ch2
-        global d_ch
-        global d_num
-        global d_ch2
-        global d_flag
-        global d_flag2
-        mio = client.get_user(644153226597498890)
-        tao = client.get_user(526620171658330112)
-        d_num01=d_ch2.name.split('第')[1]
-        d_num02=d_num01.split('層')[0]
-        d_num2=int(d_num02)
 
 #━━━━❮第二ダンジョンコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
@@ -957,52 +999,13 @@ async def on_message(message):
 
 
 
-#━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
-
-        me = client.user
-        tao = client.get_user(526620171658330112)
-        if message.content == "y!t":
-            await message.channel.send("::t")
-            t_sets1 = ((t_data_ch.history( limit = None )).split(" ")).flatten()
-            print(t_sets1)
-
-        global t_flag
-        t_ch = client.get_channel(659923091027132416)
-        if message.channel == t_ch and message.author == tao and t_flag==True:
-            
-            if message.embeds:
-                if "正解" in message.embeds[0].description and not 'レベルアップ' in message.embeds[0].description:
-                    await asyncio.sleep(0.15)
-                    await t_ch.send("::t")
-                if 'レベルアップ' in message.embeds[0].description:
-                    await asyncio.sleep(0.15)
-                    await t_ch.send("::t LvUP")
- 
-        if message.channel == t_ch and message.author == mio:
-            if message.embeds:
-                if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
-                    await t_ch.send((message.embeds[0].description).split("`")[1])
-
-        if message.content=='y!tstart':
-            t_flag=True
-            embed = discord.Embed(
-            title=f"トレーニング開始\nt_flag = {t_flag}"
-            )
-            await message.author.send(embed = embed)
-        if message.content=='y!tstop' :
-            t_flag=False                   
-            embed = discord.Embed(
-            title=f"トレーニング終了\nt_flag = {t_flag}"
-            )
-            await message.author.send(embed = embed)
- 
 
 #━━━━❮YuiLvUPログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
         
         if message.embeds and message.embeds[0].description and message.author == tao :
-            dateTime = datetime.now(JST)
-
+            pass
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
+                dateTime = datetime.now(JST)
                 lv = message.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
