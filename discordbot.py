@@ -1023,7 +1023,7 @@ async def on_message(message):
                 log_embed.add_field(name = "**LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
                 log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.date}日　{dateTime.hour}:{dateTime.minute}:{dateTime.second}")
                 lvlog_ch = client.get_channel(660817503597101099)
-                await lvlog_ch.send(log_embed)
+                await lvlog_ch.send(embed = log_embed)
 
 #━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
