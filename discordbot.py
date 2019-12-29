@@ -815,12 +815,13 @@ async def on_message(message):
                 try:
                     re_msg=await client.wait_for('message',timeout=5,check=mio_check)
                 except asyncio.TimeoutError:
-                    await test_ch.send('::i e　mio反応あった?')
+                    await test_ch.send('::i e　復活')
                 else:
                     if f'{client.user.mention}は復活した' in re_msg.embeds[0].description:
                         await asyncio.sleep(0.5)
-                        await test_ch.send('::attack　ナイスmio!')
-            elif "の攻撃" in message.content and "のHP" in message.content:
+                        await test_ch.send('::attack　復活！')
+                        
+            elif f"{client.user.display_name}の攻撃" in message.content and "のHP" in message.content and not "やられてしまった" in message.content:
 
                 def test_check (d_msg):
                     if d_msg.author != tao:
@@ -830,16 +831,14 @@ async def on_message(message):
                     return 1
 
                 try:
-                    t_res=await client.wait_for('message',timeout=2,check = test_check)
+                    t_res=await client.wait_for('message',timeout=3,check = test_check)
+                    
                 except asyncio.TimeoutError:
+                    await test_ch.send('::attack 零')
 
-                    await test_ch.send('::attack pet攻撃して欲しい')
                 else:
-
-                    if 'の攻撃' in t_res.content and 'のHP' in t_res.content:
-
-                        await test_ch.send(f'::attack ナイスアタックペット')
-
+                    if ']の攻撃' in t_res.content and 'のHP' in t_res.content:
+                        await test_ch.send(f'::attack 壱')
 
             elif message.embeds and message.embeds[0].description:
                 if 'このチャンネルの全てのPETが全回復した！' in message.embeds[0].description:
@@ -958,35 +957,6 @@ async def on_message(message):
 
 
 
-#━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
-
-            if message.author==tao and message.embeds and message.embeds[0].title:
-                if '待ち構えている' in message.embeds[0].title:
-                    lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
-                    type=message.embeds[0].title.split('[')[1].split(']')[0]
-                    rank=message.embeds[0].title.split('【')[1].split('】')[0]
-                    name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
-                    image_url=message.embeds[0].image.url
-                    hp=message.embeds[0].title.split(':')[3]
-                    exp=int(lv)
-
-                    if rank=='超強敵' or rank=='レア':
-                        exp=int(lv)*5
-
-                    elif rank=='強敵':
-                        exp=int(lv)*1.5
-
-                    elif rank=='激レア':
-                        exp=int(lv)*33
-
-                    elif rank=='超激レア':
-                        exp=int(lv)*100
-
-                    embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
-                    embed.set_thumbnail(url=image_url)
-                    embed.set_footer(text = datetime.now(JST))
-                    ch=discord.utils.get(message.guild.text_channels, name=f'モンスター出現ログ')
-                    await ch.send(embed=embed)
 #━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         me = client.user
@@ -1030,7 +1000,7 @@ async def on_message(message):
 #━━━━❮YuiLvUPログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
         
         if message.embeds and message.embeds[0].description and message.author == tao :
-            dateTime = datetime.now()
+            dateTime = datetime.now(JST)
 
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 lv = message.embeds[0].description.split("`")[1]
@@ -1038,10 +1008,40 @@ async def on_message(message):
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
                     color = discord.Color.green())
-                embed.set_footer(text = datetime.now(JST))
+                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.date}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}")
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
-        
-               
+          
+
+#━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+
+        if message.author==tao and message.embeds and message.embeds[0].title:
+            if '待ち構えている' in message.embeds[0].title:
+                lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
+                type=message.embeds[0].title.split('[')[1].split(']')[0]
+                rank=message.embeds[0].title.split('【')[1].split('】')[0]
+                name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
+                image_url=message.embeds[0].image.url
+                hp=message.embeds[0].title.split(':')[3]
+                exp=int(lv)
+
+                if rank=='超強敵' or rank=='レア':
+                    exp=int(lv)*5
+
+                elif rank=='強敵':
+                    exp=int(lv)*1.5
+
+                elif rank=='激レア':
+                    exp=int(lv)*33
+
+                elif rank=='超激レア':
+                    exp=int(lv)*100
+
+                embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
+                embed.set_thumbnail(url=image_url)
+                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.date}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}")
+                ch=discord.utils.get(message.guild.text_channels, name=f'モンスター出現ログ')
+                if ch:
+                    await ch.send(embed=embed)               
 #━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!say1 "):
