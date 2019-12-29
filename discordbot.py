@@ -120,11 +120,11 @@ async def on_ready():
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢')
 
 
-
+    dateTime = datetime.now(JST)
     embed = discord.Embed(title="YUI起動ログ", description="起動したよ", color=0x2ECC69)
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
-    embed.add_field(name="起動時刻", value=f"{dateTime}", inline=False)
+    embed.add_field(name="起動時刻", value=f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}:{dateTime.minuet}:{dateTime.second}", inline=False)
     embed.add_field(name="YUI news", value="公式鯖が荒らされた影響でコードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
     
