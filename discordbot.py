@@ -1752,8 +1752,8 @@ async def on_message(message):
 
 
         if client.user != message.author:
-            kakuritu = random.randint(1, 100)
-            if int(kakuritu) == 1:
+            kakuritu = random.randint(1, 1000)
+            if int(kakuritu) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
                 Z = ['あんぱん', 'メロンパン', 'フランスパン', 'チョコパイ']
                 A = random.choice(Z)
                 AZ = ['チョコ', '粒あん', 'バター', 'しゃけ', 'ケチャップ']
@@ -1764,7 +1764,7 @@ async def on_message(message):
                                '**プリン**に**醤油**をかけると**うにの味**って言うけど\nこれ式で表すと\n__**プリン味＋醤油味=うに味**__\nだよね\nじゃあさ、この式から\n__**うに味－醤油味=プリン味**__\nってことになるよね。\nつまりうにから醤油系の味成分を抽出しまくればいつかプリン味になるのかな!....?',
                                'フランスにはtaoという名前のペットボトル飲料がある', '( 厂˙ω˙ )厂うぇーい',
                                '''＿人人人人人人人人＿\n＞ 突　然　の　死 ＜\n￣^Y^Y^Y^Y^Y^Y^Y￣''', '(((((((((((っ･ω･)っ ｳｪｰｲ♪', '| ε:)   にゅ',
-                               '(^ω^≡^ω^).', '( ˙꒳​˙  )ﾌｧｯ', '|ω・)ﾐﾃﾏｽﾖ', '(  ﾟཫ ﾟ)ｺﾞﾌｯ']
+                               '(^ω^≡^ω^).', '( ˙꒳​˙  )ﾌｧｯ', '|ω・)ﾐﾃﾏｽﾖ', '(  ﾟཫ ﾟ)ｺﾞﾌｯ',"タンスの角ってなんであんなに小指を殺しに来てるんだろうね","アマノがこの前「お花を摘みに行ってくる」を男性verで言おうとして「畑を耕してきます」って言ってた（）"]
                 text_random = random.choice(random_dana)
                 await message.channel.send(text_random)
             if int(kakuritu) == 5 and message.author != client.user:
