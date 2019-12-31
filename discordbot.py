@@ -1542,12 +1542,10 @@ async def on_message(message):
                 desc += "\n"
                 desc += "\n"
                 desc += f"""{(resp[f'forecasts'][1]['date']).split('-')[1]}月{(resp['forecasts'][1]['date']).split('-')[2]}日
-{resp['forecasts'][1]['dateLabel']}の天気は**{resp['forecasts'][1]['telop']}**"
+{resp['forecasts'][1]['dateLabel']}の天気は**{resp['forecasts'][1]['telop']}**"""
                 desc += "\n"
-    
                 desc += f"最高気温**{resp['forecasts'][1]['temperature']['max']['celsius']}℃/{resp['forecasts'][1]['temperature']['max']['fahrenheit']}℉**"
                 desc += "\n"
-          
                 desc += f"最低気温**{resp['forecasts'][1]['temperature']['min']['celsius']}℃/{resp['forecasts'][1]['temperature']['min']['fahrenheit']}℉**"
                 desc += "\n"
                 desc += "\n"
