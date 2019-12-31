@@ -1531,8 +1531,8 @@ async def on_message(message):
 #━━━━❮YUIWEATHERコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!wt "):
-            cityc = citycodes[message.content.split("y!wt ")[1]]
-            if cityc:
+            city = message.content.split("y!wt ")[1]
+            if cityc in citycodes :
                
                 resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%cityc).read()
                 resp = json.loads(resp.decode('utf-8'))
@@ -1860,7 +1860,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             await message.channel.send('🤔')
 
     except Exception as e:
-        '''
+        
         if e.args:
             ch = 659922732024070154
             embed = discord.Embed(title="エラー情報", description="", color=0xf00)
@@ -1872,7 +1872,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             embed.add_field(name="Error内容┃", value=e.args, inline=False)
             embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
             m = await client.get_channel(ch).send(embed=embed)
-        '''
+        
        
     else:
         pass
