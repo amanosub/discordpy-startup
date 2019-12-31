@@ -1564,7 +1564,7 @@ async def on_message(message):
 
             else:
                 embed = discord.Embed(
-                title = f"{cityc}なんて場所は私には登録されてないなー……"
+                title = f"{city}なんて場所は私には登録されてないなー……"
                 )
 
             await message.channel.send(embed=embed)
