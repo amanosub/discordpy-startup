@@ -1538,16 +1538,16 @@ async def on_message(message):
                 resp = json.loads(resp.decode('utf-8'))
                
                 desc = f"{(resp['forecasts'][0]['date']).split('-')[1]}月{(resp['forecasts'][0]['date']).split('-')[2]}日{resp['forecasts'][0]['dateLabel']}の天気は**{resp['forecasts'][0]['telop']}**"
-                desc += f"最高気温**{resp['forecasts'][0]['temperture']['max']}℃/{resp['forecasts'][0]['fahrenheit']['max']}℉**"
-                desc += f"最低気温**{resp['forecasts'][0]['temperture']['min']}℃/{resp['forecasts'][0]['fahrenheit']['min']}℉**"
+                desc += f"最高気温**{resp['forecasts'][0]['temperature']['max']['celsius']}℃/{resp['forecasts'][0]['temperature']['max']['fahrenheit']}℉**"
+                desc += f"最低気温**{resp['forecasts'][0]['temperature']['min']['celsius']}℃/{resp['forecasts'][0]['temperature']['min']['fahrenheit']}℉**"
 
                 desc += f"{(resp[f'orecasts'][1]['date']).split('-')[1]}月{(resp['forecasts'][1]['date']).split('-')[2]}日{resp['forecasts'][1]['dateLabel']}の天気は**{resp['forecasts'][1]['telop']}**"
-                desc += f"最高気温**{resp['forecasts'][1]['temperture']['max']}℃/{resp['forecasts'][1]['fahrenheit']['max']}℉**"
-                desc += f"最低気温**{resp['forecasts'][1]['temperture']['min']}℃/{resp['forecasts'][1]['fahrenheit']['min']}℉**"
+                desc += f"最高気温**{resp['forecasts'][1]['temperature']['max']['celsius']}℃/{resp['forecasts'][1]['temperature']['max']['fahrenheit]'}℉**"
+                desc += f"最低気温**{resp['forecasts'][1]['temperature']['min']['celsius']}℃/{resp['forecasts'][1]['temperature']['min']['fahrenheit]'}℉**"
 
                 desc += f"{(resp[f'orecasts'][2]['date']).split('-')[1]}月{(resp['forecasts'][2]['date']).split('-')[2]}日{resp['forecasts'][2]['dateLabel']}の天気は**{resp['forecasts'][2]['telop']}**"
-                desc += f"最高気温**{resp['forecasts'][2]['temperture']['max']}℃/{resp['forecasts'][2]['fahrenheit']['max']}℉**"
-                desc += f"最低気温**{resp['forecasts'][2]['temperture']['min']}℃/{resp['forecasts'][2]['fahrenheit']['min']}℉**"
+                desc += f"最高気温**{resp['forecasts'][2]['temperature']['max']['celsius']}℃/{resp['forecasts'][2]['temperature']['max']['fahrenheit']}℉**"
+                desc += f"最低気温**{resp['forecasts'][2]['temperature']['min']['celsius']}℃/{resp['forecasts'][2]['temperature']['min']['fahrenheit']}℉**"
                 
                 embed = discord.Embed(
                 title = "YUI Weather",
