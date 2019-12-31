@@ -1535,7 +1535,7 @@ async def on_message(message):
                 resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%cityc).read()
                 r7esp = json.loads(resp.decode('utf-8'))
                 7
-                desc = f"{(resp['forecasts'][0][date]).split('-')[1]}月{(resp['forecasts'][0][date]).split('-')[2]}日{resp['forecasts'][0][dateLabel]}の天気は**{resp['forecast    s'][0][telop]}**"
+                desc = f"{(resp['forecasts'][0][date]).split('-')[1]}月{(resp['forecasts'][0][date]).split('-')[2]}日{resp['forecasts'][0][dateLabel]}の天気は**{resp['forecasts'][0][telop]}**"
                 desc += f"最高気温**{resp['forecasts'][0][temperture][max]}℃/{resp['forecasts'][0][fahrenheit][max]}℉**"
                 desc += f"最低気温**{resp['forecasts'][0][temperture][min]}℃/{resp['forecasts'][0][fahrenheit][min]}℉**"
 
