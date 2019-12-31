@@ -294,8 +294,6 @@ async def on_message(message):
         tao = client.get_user(526620171658330112)
         if message.content == "y!t":
             await message.channel.send("::t")
-            t_sets1 = ((t_data_ch.history( limit = None )).split(" ")).flatten()
-            print(t_sets1)
 
         global t_flag
         t_ch = client.get_channel(659923091027132416)
