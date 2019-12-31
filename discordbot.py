@@ -1534,7 +1534,7 @@ async def on_message(message):
             city = message.content.split("y!wt ")[1]
             if city in citycodes :
                
-                resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%cityc).read()
+                resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%city).read()
                 resp = json.loads(resp.decode('utf-8'))
                 
                 desc = f"{(resp['forecasts'][0]['date']).split('-')[1]}月{(resp['forecasts'][0]['date']).split('-')[2]}日{resp['forecasts'][0]['dateLabel']}の天気は**{resp['forecasts'][0]['telop']}**"
