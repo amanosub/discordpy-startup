@@ -1536,7 +1536,7 @@ async def on_message(message):
                
                 resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%cityc).read()
                 resp = json.loads(resp.decode('utf-8'))
-                print (resp)
+                
                 desc = f"{(resp['forecasts'][0]['date']).split('-')[1]}月{(resp['forecasts'][0]['date']).split('-')[2]}日{resp['forecasts'][0]['dateLabel']}の天気は**{resp['forecasts'][0]['telop']}**"
                 desc += f"最高気温**{resp['forecasts'][0]['temperture']['max']}℃/{resp['forecasts'][0]['fahrenheit']['max']}℉**"
                 desc += f"最低気温**{resp['forecasts'][0]['temperture']['min']}℃/{resp['forecasts'][0]['fahrenheit']['min']}℉**"
@@ -1860,6 +1860,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             await message.channel.send('🤔')
 
     except Exception as e:
+        """
         if e.args:
             ch = 659922732024070154
             embed = discord.Embed(title="エラー情報", description="", color=0xf00)
@@ -1871,7 +1872,8 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             embed.add_field(name="Error内容┃", value=e.args, inline=False)
             embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
             m = await client.get_channel(ch).send(embed=embed)
-
+        """"
+        print ("a")
 @client.event
 async def on_member_join(member):
     ban_guild=client.get_guild(654599269906645002)
@@ -1887,22 +1889,6 @@ async def on_member_join(member):
 
 
 
-"""
-{'pinpointLocations': [{'link': 'http://weather.livedoor.com/area/forecast/0110000', 'name': '札幌市'},
-{'link': 'http://weather.livedoor.com/area/forecast/0121700', 'name': '江別市'},
-{'link': 'http://weather.livedoor.com/area/forecast/0122400', 'name': '千歳市'},
-{'link': 'http://weather.livedoor.com/area/forecast/0123100', 'name': '恵庭
-市'}, {'link': 'http://weather.livedoor.com/area/forecast/0123400', 'name': '北広島市'},
-{'link': 'http://weather.livedoor.com/area/forecast/0123500', 'name': '石狩市'},
-{'link': 'http://weather.livedoor.com/area/forecast/0130300', 'name': '当別町'},
-{'link': 'http://weather.livedoor.com/area/forecast/0130400', 'name': '新篠津村'}],
-'link': 'http://weather.livedoor.com/area/forecast/016010', 'forecasts': [{'dateLabel': '今日', 'telop': '晴れ', 'date':
-'2018-08-23', 'temperature': {'min': None, 'max': None}, 'image': {'width': 50, 'url': 'http://weather.livedoor.com/img/icon/1.gif', 'title': '晴れ', 'height': 31}}, {'dateLabel': '明日', 'telop': '曇のち雨', 'date': '2018-08-24', 'temperature': {'min': {'celsius': '20', 'fahrenheit': '68.0'}, 'max': {'celsius': '27', 'fahrenheit': '80.6'}}, 'image': {'width': 50, 'url': 'http://weather.livedoor.com/img/icon/13.gif', 'title': '曇のち雨', 'height': 31}}, {'dateLabel': '明後日', 'telop': '雨時々曇', 'date': '2018-08-25', 'temperature': {'min': None, 'max': None}, 'image': {'width': 50, 'url': 'http://weather.livedoor.com/img/icon/17.gif', 'title': '雨時々曇', 'height': 31}}], 'location': {'city': '札幌', 'area': '北海道', 'prefecture': '道央'}, 'publicTime': '2018-08-23T17:00:00+0900', 'copyright': {'provider': [{'link': 'http://tenki.jp/', 'name': '日本気象協会'}], 'link': 'http://weather.livedoor.com/', 'title': '(C) LINE Corporation', 'image': {'width': 118, 'link': 'http://weather.livedoor.com/', 'url': 'http://weather.livedoor.com/img/cmn/livedoor.gif', 'title': 'livedoor 天気情報', 'height': 26}}, 'title': '道央 札幌
-の天気', 'description': {'text': ' 北海道付近は、23日夜は、高気圧の張り出しの中となるでしょう。24\n日は台風第20号
-から変わる低気圧が日本海から近づき、大気の状態が不安\n定となり、気圧の傾きも大きくなる見込みです。\n\n 石狩・空知
-・後志地方の23日15時の天気は、晴れまたは曇りとなって\nいます。\n\n 23日夜は、晴れでしょう。\n\n 24日は、曇りのち雨で、夕方から所により雷を伴い激しく降る見込みで\nす。\n\n 海の波の高さは、23日夜は1メートルでしょう。24日は1メート
-ルの\nち4メートルで、うねりを伴いしける見込みです。', 'publicTime': '2018-08-23T16:39:00+0900'}}
-"""
 
 
 
