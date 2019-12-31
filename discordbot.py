@@ -1874,6 +1874,8 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             m = await client.get_channel(ch).send(embed=embed)
         """"
         print ("a")
+    else:
+        pass
 @client.event
 async def on_member_join(member):
     ban_guild=client.get_guild(654599269906645002)
