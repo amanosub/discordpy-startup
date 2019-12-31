@@ -1853,7 +1853,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
                     title = "コマンドエラー",
                     description = f"```{{message.content}```というコマンドが**存在しない**か、**該当するシステムが破損している**、または**使い方が間違っている**可能性があります。\nhelpに乗っているにも関わらず動作しないコマンドを見つけた場合、お手数ですが```y!report [内容]```で、開発者までお知らせください。",
                     color = discord.Color.red())
-                embed.set_footer(icon_url = message.author.avatar_url,text=コマンド使用者｜{message.author.name})
+                embed.set_footer(icon_url = message.author.avatar_url,text="コマンド使用者｜{message.author.name}")
                 await message.channel.send(embed = embed)
 
 
