@@ -1537,10 +1537,12 @@ async def on_message(message):
                 resp = urllib.request.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%city_num).read()
                 resp = json.loads(resp.decode('utf-8'))
 
-                desc = f"{(resp['forecasts'][0]['date']).split('-')[1]}月{(resp['forecasts'][0]['date']).split('-')[2]}日{resp['forecasts'][0]['dateLabel']}の天気は**{resp['forecasts'][0]['telop']}**"
+                desc = f"""{(resp['forecasts'][0]['date']).split('-')[1]}月{(resp['forecasts'][0]['date']).split('-')[2]}日
+{resp['forecasts'][0]['dateLabel']}の天気は**{resp['forecasts'][0]['telop']}**"""
                 desc += "\n"
                 desc += "\n"
-                desc += f"{(resp[f'forecasts'][1]['date']).split('-')[1]}月{(resp['forecasts'][1]['date']).split('-')[2]}日{resp['forecasts'][1]['dateLabel']}の天気は**{resp['forecasts'][1]['telop']}**"
+                desc += f"""{(resp[f'forecasts'][1]['date']).split('-')[1]}月{(resp['forecasts'][1]['date']).split('-')[2]}日
+{resp['forecasts'][1]['dateLabel']}の天気は**{resp['forecasts'][1]['telop']}**"
                 desc += "\n"
     
                 desc += f"最高気温**{resp['forecasts'][1]['temperature']['max']['celsius']}℃/{resp['forecasts'][1]['temperature']['max']['fahrenheit']}℉**"
@@ -1549,7 +1551,8 @@ async def on_message(message):
                 desc += f"最低気温**{resp['forecasts'][1]['temperature']['min']['celsius']}℃/{resp['forecasts'][1]['temperature']['min']['fahrenheit']}℉**"
                 desc += "\n"
                 desc += "\n"
-                desc += f"{(resp[f'forecasts'][2]['date']).split('-')[1]}月{(resp['forecasts'][2]['date']).split('-')[2]}日{resp['forecasts'][2]['dateLabel']}の天気は**{resp['forecasts'][2]['telop']}**"
+                desc += f"""{(resp[f'forecasts'][2]['date']).split('-')[1]}月{(resp['forecasts'][2]['date']).split('-')[2]}日
+{resp['forecasts'][2]['dateLabel']}の天気は**{resp['forecasts'][2]['telop']}**"""
               
                 embed = discord.Embed(
                 title = "YUI Weather",
