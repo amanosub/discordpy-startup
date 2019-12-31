@@ -1540,9 +1540,9 @@ async def on_message(message):
                 print((resp['forecasts'][0]['date']).split('-')[1])
                 print((resp['forecasts'][0]['date']).split('-')[2])
                 print(resp['forecasts'][0]['dateLabel'])
-                print({resp['forecasts'][0]['telop'])
-                print({resp['forecasts'][0]['temperature']['max']['celsius'])
-                print({resp['forecasts'][0]['temperature']['min']['celsius'])
+                print(resp['forecasts'][0]['telop'])
+                print(resp['forecasts'][0]['temperature']['max']['celsius'])
+                print(resp['forecasts'][0]['temperature']['min']['celsius'])
                 print(resp['forecasts'][0]['temperature']['max']['fahrenheit'])
                 print(resp['forecasts'][0]['temperature']['min']['fahrenheit'])
                 desc = f"{(resp['forecasts'][0]['date']).split('-')[1]}月{(resp['forecasts'][0]['date']).split('-')[2]}日{resp['forecasts'][0]['dateLabel']}の天気は**{resp['forecasts'][0]['telop']}**"
