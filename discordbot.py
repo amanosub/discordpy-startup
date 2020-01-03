@@ -1930,7 +1930,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message_edit(*messages):
-    if "正解" in messages[1].embeds[0].description and messages[1].channel == t_ch and t_flag == True:
+    if "正解" in *messages[1].embeds[0].description and *messages[1].channel == t_ch and t_flag == True:
         await asyncio.sleep(0.2)
         await t_ch.send("::t Training")
 
