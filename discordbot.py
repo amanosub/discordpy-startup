@@ -1935,7 +1935,7 @@ async def on_message_edit(before,after):
         
             await asyncio.sleep(0.2)
             await t_ch.send("::t Training")
-
+            print("Training")
 
 
 
