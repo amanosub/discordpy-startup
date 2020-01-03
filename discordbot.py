@@ -160,7 +160,7 @@ async def t_loop():
             try:
                 t_res=await client.wait_for('message',timeout=10,check = test_check)
             except asyncio.TimeoutError:
-                await t_ch.send('::t')
+                await t_ch.send('::t loop')
             else:
                 pass
 
@@ -303,7 +303,7 @@ async def on_message(message):
             if message.embeds:
                 if "正解" in message.embeds[0].description and not 'レベルアップ' in message.embeds[0].description:
                     await asyncio.sleep(0.15)
-                    await t_ch.send("::t")
+                    await t_ch.send("::t None")
                 if 'レベルアップ' in message.embeds[0].description:
                     await asyncio.sleep(0.15)
                     await t_ch.send("::t LvUP")
