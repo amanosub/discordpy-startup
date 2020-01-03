@@ -81,7 +81,7 @@ already_quiz={}
 q_ch=0
 t_ch=0
 t_flag=False
-t_asked_msg = None
+yui_ans_msg = None
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
@@ -293,6 +293,8 @@ async def on_message(message):
 
         me = client.user
         tao = client.get_user(526620171658330112)
+        global yui_ans_msg
+
         if message.content == "y!t":
             await message.channel.send("::t")
 
@@ -311,7 +313,9 @@ async def on_message(message):
         if message.channel == t_ch and message.author == mio:
             if message.embeds:
                 if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
-                    await t_ch.send((message.embeds[0].description).split("`")[1])
+                    if not yui_ans_msg== (message.embeds[0].description).split("`")[1]:
+                        yui_ans_msg= (message.embeds[0].description).split("`")[1]
+                        await t_ch.send(yui_ans_msg)
 
         if message.content=='y!tstart':
             t_flag=True
