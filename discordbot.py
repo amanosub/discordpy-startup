@@ -325,7 +325,7 @@ async def on_message(message):
             title=f"トレーニング終了\nt_flag = {t_flag}"
             )
             await message.author.send(embed = embed)
-         if message.embeds and message.embeds[0].author.name:
+        if message.embeds and message.embeds[0].author.name:
             if f"Training | {client.user}さんの問題" in message.embeds
 
         
