@@ -81,6 +81,7 @@ already_quiz={}
 q_ch=0
 t_ch=0
 t_flag=False
+t_asked_msg = None
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
@@ -324,7 +325,8 @@ async def on_message(message):
             title=f"トレーニング終了\nt_flag = {t_flag}"
             )
             await message.author.send(embed = embed)
- 
+         if message.embeds and message.embeds[0].author.name:
+            if f"Training | {client.user}さんの問題" in message.embeds
 
         
         
@@ -344,15 +346,6 @@ async def on_message(message):
         if message.content == "y!help":
             log_ch = client.get_channel(659922476641288211)
             author_id=str(message.author.id)
-            invite = await message.channel.create_invite()
-            embed=discord.Embed(
-                title=f"( 'ω'o[**help**]oログ♡",
-                description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
-            embed.set_thumbnail(url=message.author.avatar_url)
-            embed.set_footer(text = datetime.now(JST))
-            await log_ch.send(embed=embed)
-
-
 
             help_embed_one = discord.Embed(title="YUIヘルプ目次",
                                            description='```‣ヘルプ目次　　│P.1\n‣ＴＡＯコマンド│P.2\n‣メイン機能　　│P.3\n‣特殊チャンネル│P.4\n‣ガチャ　　　　│P.5\n‣その他娯楽　　│P.6\n‣ユイ関連ＵＲＬ│P.7```',
@@ -412,7 +405,7 @@ async def on_message(message):
             help_two_embed.add_field(name='y!ping'
                                      , value='```Ping値測定```', inline=False)
 
-            help_two_embed.add_field(name='y!wt [都道府県名]', value='```今日、明日の天気予報「YUI WEATHER」```開発者のデータ管理が甘いせいで大爆発が起きたので\n現在復旧中です', inline=True)
+            help_two_embed.add_field(name='y!wt [都道府県名]', value='```今日、明日の天気予報「YUI WEATHER」```', inline=True)
             help_two_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.3/7")
 
             embed_special = discord.Embed(
@@ -420,6 +413,15 @@ async def on_message(message):
                 description='```‣チャンネル内容│チャンネル名\nチャンネル作成コマンド```', color=discord.Colour.green())
             embed_special.add_field(name='‣グローバルチャット│global_yui'
                                     , value='```y!yui global```', inline=False)
+            embed_special.add_field(name='‣YUIの起動ログ│yui起動ログ'
+                                    , value='```y!yui log```', inline=False)
+            embed_special.add_field(name='‣日付変更ログ│yui時報ログ'
+                                    , value='```y!yui timelog```')
+            embed_special.add_field(name='‣YUIレベルアップログ│yuiレベルアップログ'
+                                    , value='```y!lv```',inline=False)
+                                    
+            embed_special.add_field(name='‣TAOモンスター出現ログ│tao出現ログ:'
+                                    , value='```y!tao 1│通常モンスター用のチャンネル\ny!tao 1.5│強敵モンスター用のチャンネル\ny!tao 5│経験値倍率５倍モンスター用のチャンネル\ny!tao 33│経験値倍率33倍モンスター用のチャンネル\ny!tao 100│経験値倍率100倍モンスター用のチャンネル\n```', inline=False)
             embed_special.add_field(name='‣YUIの起動ログ│yui起動ログ'
                                     , value='```y!yui log```', inline=False)
             embed_special.add_field(name='‣日付変更ログ│yui時報ログ'
@@ -539,6 +541,13 @@ async def on_message(message):
                     elif page_count == 7:
                         for reaction in reactions1:
                             await send_message.add_reaction(reaction)
+                        
+            embed=discord.Embed(
+                title=f"( 'ω'o[**help**]oログ♡",
+                description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』```')
+            embed.set_thumbnail(url=message.author.avatar_url)
+            embed.set_footer(text = datetime.now(JST))
+            await log_ch.send(embed=embed)
 
 #━━━━❮YUI強制シャットダウンコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
@@ -592,10 +601,9 @@ async def on_message(message):
                 embed.set_footer(icon_url=message.author.avatar_url, text=f"コマンド使用者│{message.author}")
                 await message.channel.send(embed=embed)
                 author_id=str(message.author.id)
-                invite = await message.channel.create_invite()
                 embed=discord.Embed(
                     title=f"( 'ω'o[**clean**]oログ♡",
-                    description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{clean_num}』```[鯖のチャンネル直通招待URL]({invite.url})')
+                    description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\nメッセージ消去数│『{clean_num}』```')
                 embed.set_thumbnail(url=message.author.avatar_url)
                 embed.set_footer(text = datetime.now(JST))
                 await log_ch.send(embed=embed)
@@ -647,7 +655,7 @@ async def on_message(message):
 
         if message.content.startswith('y!gunban '):
             bancheck=discord.utils.get(ban_guild.text_channels,name=f'{message.author.id}')
-            if not bancheck:
+            if bancheck == None:
                 unban_id=message.content.split('y!gunban ')[1]
                 ban_guild=client.get_guild(654599269906645002)
                 ch = discord.utils.get(ban_guild.text_channels,name=f'{unban_id}')
@@ -789,23 +797,24 @@ async def on_message(message):
             test_check_loop.start()
             test_ch_m = message.content.split('y!testch ')[1]
             test_ch = discord.utils.get(message.guild.text_channels, mention=test_ch_m)
+            await asyncio.sleep(1)
+            test_flag=True
+            await test_ch.send("::attack")
+
             log_ch = client.get_channel(659923606595174441)
-            invite = await message.channel.create_invite()
             embed=discord.Embed(
-            title=f"( 'ω'o[**testch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{test_ch.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            title=f"( 'ω'o[**testch**]oログ♡",
+            description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{test_ch.name}』```')
             embed.set_thumbnail(url=message.author.avatar_url)
             await log_ch.send(embed=embed)
             embed=discord.Embed(title='Test Play開始')
             await message.author.send(embed=embed)
-            await asyncio.sleep(1)
-            test_flag=True
-            await test_ch.send("::attack")
 
 
         if message.content=='y!teststop':
             test_flag=False
             test_check_loop.stop()
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
             await test_ch.send('::re')
             embed=discord.Embed(title='Test Play停止')
             await message.author.send(embed=embed)
@@ -841,7 +850,7 @@ async def on_message(message):
                 await test_ch.send("::attack 先手必勝!!")
 
         if message.channel==test_ch and test_flag==True:
-            if f"{client.user.display_name}はやられてしまった" in message.content:
+            if f"{client.user.name}はやられてしまった" in message.content:
                 def mio_check(mio_msg):
                     if mio_msg.author!=tao:
                         return 0
@@ -861,24 +870,10 @@ async def on_message(message):
                         await asyncio.sleep(0.5)
                         await test_ch.send('::attack　復活！')
                         
-            elif f"{client.user.display_name}の攻撃" in message.content and "のHP" in message.content and not "やられてしまった" in message.content:
+            elif f"{client.user.name}の攻撃" in message.content and f"{client.user.name}のHP" in message.content and not f"{client.user.name}はやられてしまった" in message.content:
 
-                def test_check (d_msg):
-                    if d_msg.author != tao:
-                        return 0
-                    if d_msg.channel!=test_ch:
-                        return 0
-                    return 1
-
-                try:
-                    t_res=await client.wait_for('message',timeout=3,check = test_check)
-                    
-                except asyncio.TimeoutError:
-                    await test_ch.send('::attack 零')
-
-                else:
-                    if ']の攻撃' in t_res.content and 'のHP' in t_res.content:
-                        await test_ch.send(f'::attack 壱')
+                await asyncio.sleep(0.2)
+                await message.channel.send("::attack")
 
             elif message.embeds and message.embeds[0].description:
                 if 'このチャンネルの全てのPETが全回復した！' in message.embeds[0].description:
@@ -895,10 +890,9 @@ async def on_message(message):
             atk_ch_m = message.content.split('y!ifch ')[1]
             atk_ch2 = discord.utils.get(message.guild.text_channels, mention=atk_ch_m)
             log_ch = client.get_channel(659923593693495337)
-            invite = await message.channel.create_invite()
             author_id=str(message.author.id)
             embed=discord.Embed(
-            title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```')
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_footer(text = datetime.now(JST))
             await log_ch.send(embed=embed)
@@ -1049,12 +1043,26 @@ async def on_message(message):
                 elif rank=='超激レア':
                     exp=int(lv)*100
 
-                embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'[チャンネル直通URL]({(await message.channel.create_invite()).url})',color=discord.Color.green())
+                embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'Channel:\n{message.channel.mention}',color=discord.Color.green())
                 embed.set_thumbnail(url=image_url)
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
-                ch=discord.utils.get(message.guild.text_channels, name=f'モンスター出現ログ')
-                if ch:
-                    await ch.send(embed=embed)               
+                ch1=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×1')
+                ch2=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×1.5')
+                ch3=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×5')
+                ch4=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×33')
+                ch5=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×100')
+                
+                if rank == "通常" and ch1:
+                    await ch2.send(embed=embed)
+                if rank == "強敵" and ch2:
+                    await ch2.send(embed=embed)
+                if rank in ["超強敵","レア"] and ch3:
+                    await ch3.send(embed=embed)
+                if rank == "激レア" and ch4:
+                    await ch4.send(embed=embed)
+                if rank == "超激レア" and ch5:
+                    await ch5.send(embed=embed)
+
 #━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith("y!say1 "):
@@ -1077,8 +1085,8 @@ async def on_message(message):
 
         if message.content.startswith("y!say2 "):
             await message.delete()
-            msg=message.content.split("'")[1]
-            msg2=message.content.split("'")[3]
+            msg=message.content.split('"')[1]
+            msg2=message.content.split('"')[3]
             if msg and msg2:
                 embed=discord.Embed(title=msg,description=msg2)
                 embed.set_footer(icon_url=message.author.avatar_url,text=f'発言者│{message.author}')
@@ -1114,10 +1122,9 @@ async def on_message(message):
         if message.content == 'y!st':
             await message.channel.send('::status window　私のステータスが見たいなんて、君もエッチだな')
             log_ch=client.get_channel(659924491115298816)
-            invite = await message.channel.create_invite()
             embed=discord.Embed(
             title=f"( 'ω'o[**status window**]oログ♡",
-            description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```')
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_footer(text = datetime.now(JST))
             await log_ch.send(embed=embed)
@@ -1128,13 +1135,10 @@ async def on_message(message):
             await message.channel.send('::reset')
 
         if message.content == 'y!atk':
-            invite = await message.channel.create_invite()
-            embed = discord.Embed(title='y!atkコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
-            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
-
+            await message.channel.send("::attack")
             await message.channel.send(embed=embed)
             log_ch=client.get_channel(659922557188702229)
-            embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+            embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```')
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_footer(text = datetime.now(JST))
             await log_ch.send(embed=embed)
@@ -1150,11 +1154,10 @@ async def on_message(message):
             embed = discord.Embed(title='y!i fコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
             embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
             await message.channel.send(embed=embed)
-            invite = await message.channel.create_invite()
             log_ch=client.get_channel(659922630861783060)
             embed=discord.Embed(
                 title=f"( 'ω'o[**i f**]oログ♡",
-                description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```[鯖のチャンネル直通招待URL]({invite.url})')
+                description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```')
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_footer(text = datetime.now(JST))
             await log_ch.send(embed=embed)
@@ -1524,8 +1527,41 @@ async def on_message(message):
                 category_id = message.channel.category_id
                 category = message.guild.get_channel(category_id)
                 new_channel = await category.create_text_channel(name='global_yui')
-                reply = f'{new_channel.mention} をつくったよ。LvUpしたら通知が届くよ'
+                reply = f'{new_channel.mention} をつくったよ。YUIがLvUpしたら通知が届くよ'
 
+                return await message.channel.send(reply)
+
+        if message.content.startswith("y!tao "):
+            if message.content.split()[1] == "1":
+                category_id = message.channel.category_id
+                category = message.guild.get_channel(category_id)
+                new_channel = await category.create_text_channel(name='tao出現ログ:×1')
+                reply = f'{new_channel.mention} をつくったよ。TAOの通常モンスターの出現ログだよ'
+
+            elif message.content.split()[1] == "1.5":
+                category_id = message.channel.category_id
+                category = message.guild.get_channel(category_id)
+                new_channel = await category.create_text_channel(name='tao出現ログ:×1.5')
+                reply = f'{new_channel.mention} をつくったよ。TAOの強敵モンスターの出現ログだよ'
+
+            elif message.content.split()[1] == "5":
+                category_id = message.channel.category_id
+                category = message.guild.get_channel(category_id)
+                new_channel = await category.create_text_channel(name='tao出現ログ:×5')
+                reply = f'{new_channel.mention} をつくったよ。TAOの経験値５倍モンスターの出現ログだよ'
+
+            elif message.content.split()[1] == "33":
+                category_id = message.channel.category_id
+                category = message.guild.get_channel(category_id)
+                new_channel = await category.create_text_channel(name='tao出現ログ:×33')
+                reply = f'{new_channel.mention} をつくったよ。TAOの経験値倍率３３倍モンスターの出現ログだよ'
+
+            elif message.content.split()[1] == "100":
+                category_id = message.channel.category_id
+                category = message.guild.get_channel(category_id)
+                new_channel = await category.create_text_channel(name='tao出現ログ:×100')
+                reply = f'{new_channel.mention} をつくったよ。TAOの経験値倍率100倍モンスターの出現ログだよ'
+                
                 return await message.channel.send(reply)
 
 #━━━━❮YUIWEATHERコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
@@ -1891,6 +1927,13 @@ async def on_member_join(member):
         title = "( 'ω'o[サーバー参加]oログ♡",
         description = f"参加鯖名\n『{member.guild.name}』\n参加鯖ID\n『{member.guild.id}』\n参加時刻\n{datetime.now(JST)}")
         await log_ch.send(embed=embed)
+
+
+@client.event
+async def on_message_edit(*messages)
+    if "正解" in messages[1].embeds[0].description and messages[1].channel == t_ch:
+        await asyncio.sleep(0.2)
+        await t_ch.send("::t")
 
 
 
