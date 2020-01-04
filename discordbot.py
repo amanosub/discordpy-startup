@@ -143,11 +143,14 @@ async def on_ready():
 
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
+#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 @client.event
 async def on_message_edit(before,after):
+    
     if not before.embeds:
         print("edit !!")
+        
     global edit_flag
     if edit_flag == True:
     
@@ -343,15 +346,6 @@ async def on_message(message):
 
         global t_flag
         t_ch = client.get_channel(659923091027132416)
-        if message.channel == t_ch and message.author == tao and t_flag==True:
-            
-            if message.embeds:
-                if "正解" in message.embeds[0].description and not 'レベルアップ' in message.embeds[0].description:
-                    await asyncio.sleep(0.15)
-                    await t_ch.send("::t None")
-                if 'レベルアップ' in message.embeds[0].description:
-                    await asyncio.sleep(0.15)
-                    await t_ch.send("::t LvUP")
  
         if message.channel == t_ch and message.author == mio:
             if message.embeds:
