@@ -1935,8 +1935,9 @@ async def on_member_join(member):
 async def on_message_edit(before,after):
     global edit_flag
     if edit_flag == True:
-        edit_flag=False
+
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and before.embeds != after.embeds:
+            edit_flag=False
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
 
