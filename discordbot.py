@@ -1049,10 +1049,10 @@ async def on_message(message):
                 embed=discord.Embed(title=f'モンスター出現ログ\nName:{name}\nType Rank:\n{type}┃{rank}\nStatus:\nLv.{lv}┃HP.{hp}\nExp:\n{exp+1}',description=f'Channel:\n{message.channel.mention}',color=discord.Color.green())
                 embed.set_thumbnail(url=image_url)
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
-                ch1=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×1')
-                ch2=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×1.5')
-                ch3=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×5')
-                ch4=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×33')
+                ch1=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×1')
+                ch2=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×1．5')
+                ch3=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×5')
+                ch4=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×33')
                 ch5=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×100')
                 
                 if rank == "通常" and ch1:
@@ -1538,31 +1538,31 @@ async def on_message(message):
             if message.content.split()[1] == "1":
                 category_id = message.channel.category_id
                 category = message.guild.get_channel(category_id)
-                new_channel = await category.create_text_channel(name='tao出現ログ:×1')
+                new_channel = await category.create_text_channel(name='tao出現ログ：×1')
                 reply = f'{new_channel.mention} をつくったよ。TAOの通常モンスターの出現ログだよ'
 
             elif message.content.split()[1] == "1.5":
                 category_id = message.channel.category_id
                 category = message.guild.get_channel(category_id)
-                new_channel = await category.create_text_channel(name='tao出現ログ:×1.5')
+                new_channel = await category.create_text_channel(name='tao出現ログ：×1．5')
                 reply = f'{new_channel.mention} をつくったよ。TAOの強敵モンスターの出現ログだよ'
 
             elif message.content.split()[1] == "5":
                 category_id = message.channel.category_id
                 category = message.guild.get_channel(category_id)
-                new_channel = await category.create_text_channel(name='tao出現ログ:×5')
+                new_channel = await category.create_text_channel(name='tao出現ログ：×5')
                 reply = f'{new_channel.mention} をつくったよ。TAOの経験値５倍モンスターの出現ログだよ'
 
             elif message.content.split()[1] == "33":
                 category_id = message.channel.category_id
                 category = message.guild.get_channel(category_id)
-                new_channel = await category.create_text_channel(name='tao出現ログ:×33')
+                new_channel = await category.create_text_channel(name='tao出現ログ：×33')
                 reply = f'{new_channel.mention} をつくったよ。TAOの経験値倍率３３倍モンスターの出現ログだよ'
 
             elif message.content.split()[1] == "100":
                 category_id = message.channel.category_id
                 category = message.guild.get_channel(category_id)
-                new_channel = await category.create_text_channel(name='tao出現ログ:×100')
+                new_channel = await category.create_text_channel(name='tao出現ログ：×100')
                 reply = f'{new_channel.mention} をつくったよ。TAOの経験値倍率100倍モンスターの出現ログだよ'
                 
                 return await message.channel.send(reply)
@@ -1940,9 +1940,6 @@ async def on_message_edit(before,after):
             await asyncio.sleep(0.2)
             await t_ch.send("::t Training")
             print("Training")
-            await asyncio.sleep(1)
-
-
 
 
 
