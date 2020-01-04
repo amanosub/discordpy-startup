@@ -147,11 +147,12 @@ async def on_ready():
 
 @client.event
 async def on_message_edit(before,after):
+    
     try:
-        
         before, after = await client.wait_for('message_edit', check=lambda b, a: b.id == message.id)
+        
     except:
-        return
+        await before.send("edit!")
     
     else:
 
