@@ -16,6 +16,11 @@ from discord.ext import tasks
 
 from datetime import datetime, timedelta, timezone
 
+
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 # タイムゾーンの生成
 JST = timezone(timedelta(hours=+9), 'JST')
 
