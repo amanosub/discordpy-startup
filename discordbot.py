@@ -1936,6 +1936,8 @@ async def on_member_join(member):
 
 @client.event
 async def on_message_edit(before,after):
+    if not before.embeds:
+        print("edit !!")
     global edit_flag
     if edit_flag == True:
     
