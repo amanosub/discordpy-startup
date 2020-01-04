@@ -1935,6 +1935,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message_edit(before,after):
+    print ("message edited")
     if after.channel == t_ch and t_flag == True and after.embeds[0].description:
         if "正解" in after.embeds[0].description:
         
