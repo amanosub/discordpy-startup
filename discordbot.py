@@ -1942,7 +1942,7 @@ async def on_message_edit(before,after):
             await t_ch.send("::t Training")
             print("Training")
 
-    if after.embeds and after.embeds[0].description and after.author == tao :
+    if after.embeds and after.embeds[0].description:
         if f"{client.user.mention}はレベルアップした！" in after.embeds[0].description:
             dateTime = datetime.now(JST)
             lv = after.embeds[0].description.split("`")[1]
