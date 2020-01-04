@@ -149,13 +149,12 @@ async def on_ready():
 async def on_message_edit(before,after):
     
     try:
-        before, after = await client.wait_for('message_edit', check=lambda b, a: b.id == message.id)
+        before, after = await client.wait_for('message_edit', check=lambda b, a: b.id == after.id)
         
     except:
         await before.channel.send("edit!")
     
     else:
-
         if not before.embeds:
             print("edit !!")
 
