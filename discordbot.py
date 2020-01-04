@@ -1068,6 +1068,7 @@ async def on_message(message):
 
 #━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
+
         if message.content.startswith("y!say1 "):
             msg=message.content.split("y!say1 ")[1]
             if msg:
