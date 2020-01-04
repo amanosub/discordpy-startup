@@ -1056,7 +1056,7 @@ async def on_message(message):
                 ch5=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×100')
                 
                 if rank == "通常" and ch1:
-                    await ch2.send(embed=embed)
+                    await ch.send(embed=embed)
                 if rank == "強敵" and ch2:
                     await ch2.send(embed=embed)
                 if rank in ["超強敵","レア"] and ch3:
