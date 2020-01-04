@@ -1565,7 +1565,7 @@ async def on_message(message):
                 new_channel = await category.create_text_channel(name='tao出現ログ：×100')
                 reply = f'{new_channel.mention} をつくったよ。TAOの経験値倍率100倍モンスターの出現ログだよ'
                 
-                return await message.channel.send(reply)
+            return await message.channel.send(reply)
 
 #━━━━❮YUIWEATHERコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
