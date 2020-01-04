@@ -139,7 +139,7 @@ async def on_ready():
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 
-    @client.event
+@client.event
 async def on_message_edit(before,after):
     if not before.embeds:
         print("edit !!")
