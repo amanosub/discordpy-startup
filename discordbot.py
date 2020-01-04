@@ -148,7 +148,8 @@ async def on_ready():
 @client.event
 async def on_message_edit(before,after):
     global edit_flag
-    if edit_flag == True:
+    if edit_flag == True:]
+        edit_flag=False
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and after.author.id == 446610711230152706 and before.embeds != after.embeds:
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
@@ -174,6 +175,7 @@ async def on_message_edit(before,after):
                 log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 lvlog_ch = client.get_channel(660817503597101099)
                 await lvlog_ch.send(embed = log_embed)
+        edit_flag = True
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @tasks.loop(seconds=60)
