@@ -148,7 +148,7 @@ async def on_ready():
 @client.event
 async def on_message_edit(before,after):
     global edit_flag
-    if after.channel == t_ch and t_flag == True and after.embeds[0].description and after.author.id == 446610711230152706 and before.embeds != after.embeds:
+    if after.channel == t_ch and after.embeds[0].description and before.embeds != after.embeds:
         if "正解" in after.embeds[0].description:
             await t_ch.send("::t Training")
 
