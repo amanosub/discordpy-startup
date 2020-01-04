@@ -152,7 +152,7 @@ async def on_message_edit(before,after):
         before, after = await client.wait_for('message_edit', check=lambda b, a: b.id == message.id)
         
     except:
-        await before.send("edit!")
+        await before.channel.send("edit!")
     
     else:
 
