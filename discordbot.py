@@ -1935,6 +1935,7 @@ async def on_member_join(member):
 async def on_message_edit(before,after):
     global edit_flag
     if edit_flag == True:
+        edit_flag=False
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and before.embeds != after.embeds:
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
@@ -1960,7 +1961,7 @@ async def on_message_edit(before,after):
                 log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 lvlog_ch = client.get_channel(660817503597101099)
                 await lvlog_ch.send(embed = log_embed)
-        edit_flag=False
+
         await t_ch.send(edit_flag)
         await asyncio.sleep(0.5)
         edit_flag = True
