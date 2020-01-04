@@ -1046,7 +1046,7 @@ async def on_message(message):
                 elif rank=='超激レア':
                     exp=int(lv)*100
 
-                embed=discord.Embed(title=f'モンスター出現ログ\nName:`{name}`\nType Rank:\n`{type}┃{rank}`\nStatus:\n`Lv.{lv}┃HP.{hp}`\nExp:\n`{exp+1}`\nChannel:',description=f'{message.channel.mention}',color=discord.Color.green())
+                embed=discord.Embed(title=f'モンスター出現ログ',description=f'\n‣Name:\n`{name}`\n‣Type Rank:\n`{type}┃{rank}`\n‣Status:\n`Lv.{lv}┃HP.{hp}`\n‣Exp:\n`{exp+1}`\n‣Channel:\n{message.channel.mention}',color=discord.Color.green())
                 embed.set_thumbnail(url=image_url)
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 ch1=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×1')
@@ -1056,7 +1056,7 @@ async def on_message(message):
                 ch5=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×100')
                 
                 if rank == "通常" and ch1:
-                    await ch.send(embed=embed)
+                    await ch1.send(embed=embed)
                 if rank == "強敵" and ch2:
                     await ch2.send(embed=embed)
                 if rank in ["超強敵","レア"] and ch3:
