@@ -1972,7 +1972,7 @@ async def on_message_edit(before,after):
                     lvlog_ch = client.get_channel(660817503597101099)
                     await lvlog_ch.send(embed = log_embed)
 
-        await asyncio.sleep(0.2)
-        edit_flag = True
+            await asyncio.sleep(0.2)
+            edit_flag = True
 
 client.run(TOKEN)
