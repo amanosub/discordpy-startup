@@ -88,6 +88,8 @@ t_ch=0
 t_flag=False
 yui_ans_msg = None
 edit_flag = True
+
+global_list = []
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
@@ -122,12 +124,12 @@ async def on_ready():
 
     t_loop.start()
     
-    global_list = []
+    global global_list
     
-    global_tmp = [w for w in await message.channel.webhooks() if w in client.global_list]
+    global_tmp = [w for w in await message.channel.webhooks() if w in global_list]
     global new_w
-    new_w = (await discord.utils.get(message.guild.text_channels, name = "global_yui(test)")).create_webhook(name="global")
-    client.global_list.append(new_w)
+    new_w = (await discord.utils.get(message.guild.text_channels, name = "global_yui：test")).create_webhook(name="global")
+    global_list.append(new_w)
 
     
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
