@@ -1919,7 +1919,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
     except Exception as e:
         
         if e.args:
-            embed = discord.Embed(title="エラー情報", color=0xf00)
+            embed = discord.Embed(title="エラー情報", color=discord.Color.white())
             embed.add_field(name="発生鯖名┃", value=message.guild.name, inline=False)
             embed.add_field(name="発生鯖ID┃", value=message.guild.id, inline=False)
             embed.add_field(name="誘発者名┃", value=message.author.name, inline=False)
