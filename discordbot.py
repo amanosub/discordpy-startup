@@ -300,7 +300,7 @@ async def on_message(message):
         global d_flag2
         mio = client.get_user(644153226597498890)
         tao = client.get_user(526620171658330112)
-        if not ch2 == int:
+        if not type(ch2) == int:
             d_num01=d_ch2.name.split('第')[1]
             d_num02=d_num01.split('層')[0]
             d_num2=int(d_num02)
