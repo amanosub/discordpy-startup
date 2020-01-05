@@ -92,6 +92,7 @@ edit_flag = True
 @client.event
 async def on_ready():
 
+    client = discord.Client()
     global d_ch      #◆世界樹の第一階層チャンネル取得
     guild_num=654086105699844108
     d_ch = discord.utils.get(client.get_guild(guild_num).text_channels, name=f'第{d_num}階層')
@@ -120,7 +121,14 @@ async def on_ready():
     time_loop.start()
 
     t_loop.start()
+    
+    client.global_list = []
+    global_tmp = [w for w in await message.channel.webhooks() if w in client.global_list]
+    global new_w
+    new_w = (await discord.utils.get(message.guild.text_channels, name = "global_yui(test)")).create_webhook(name="global")
+    client.global_list.append(new_w)
 
+    
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
     print('‣BOT ID\n '+str(client.user.id))
     print('‣LOG IN TIME\n '+str(datetime.now(JST)))
@@ -132,7 +140,7 @@ async def on_ready():
     embed.set_thumbnail(url=random.choice(
         ('https://yahoo.jp/box/3faN7k', 'https://yahoo.jp/box/c9L236', 'https://yahoo.jp/box/Jxj1Jd')))
     embed.add_field(name="起動時刻", value=f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒", inline=False)
-    embed.add_field(name="YUI news", value="公式鯖が荒らされた影響でコードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
+    embed.add_field(name="YUI news", value="多くのシステム系コードを書き直しました。\n不具合等ございましたら```y!report [内容]```で御申し付け下さい", inline=True)
     await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'yui起動ログ'))
     
     user = client.get_user(446610711230152706)
@@ -357,7 +365,7 @@ async def on_message(message):
             help_logch = client.get_channel(id=help_ch)
 
             help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",
-                                         description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIのコマンドにはYUIに管理者を持たせないと正常に作動しないものが多々御座います。ご注意ください```\n🔷**技術的不具合**```Yuiのhelpが開けないと言う不具合をちらほら聞きます\n原因は開発者の予期しないbotの権限エラーです。\n同様のエラーが起きた場合お手数ですが\n再度YUIを招待し治してください。\n```[招待URL](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。\nまた、helpが開けないエラーが出た場合は```y!report [レポート内容]```のコマンドでお教えいただけると幸いです',
+                                         description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIに管理者権限が無いと無能BOTと化します。```\n🔷**技術的不具合**```。Helpがこのページから進まない場合はYUIを招待し直してください。\n```[ここから招待可能です](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。\n不具合等は`y!report 内容`でお知らせください',
                                          color=discord.Colour.green())
 
             help_embed = discord.Embed(title="TAOコマンド系ヘルプ", description="TAOで使うコマンドを使うヘルプだよ", color=discord.Colour.green())
@@ -1895,9 +1903,17 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
         if 'think' in message.content or '考' in message.content and message.author !=me:
             await message.channel.send('考えるな、感じろ!!')
 
-        kakuritu=random.randrange(1,100)
+        kakuritu=random.randrange(1,1000)
         if kakuritu == 5:
             await message.channel.send('🤔')
+
+
+
+        if message.webhook_id:
+            return
+        for webhook in client.global_list:
+            if message.channel != webhook.channel:
+                await webhook.send(content=message.content,username=message.author.name,avatar_url=message.author.avatar_url)
 
     except Exception as e:
         
@@ -1914,8 +1930,10 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             m = await client.get_channel(ch).send(embed=embed)
         
        
+       
     else:
         pass
+
 @client.event
 async def on_member_join(member):
     ban_guild=client.get_guild(654599269906645002)
