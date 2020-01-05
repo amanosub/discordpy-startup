@@ -1909,7 +1909,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
         global global_list
         global_tmp = [w for w in await message.channel.webhooks() if w in global_list]
         global new_w
-        new_w = (await discord.utils.get(client.get_all_guild.text_channels, name = "global_yui：test")).create_webhook(name="global")
+        new_w = await (await discord.utils.get(client.get_all_guild.text_channels, name = "global_yui：test")).create_webhook(name="global")
         global_list.append(new_w)
         if message.webhook_id:
             return
