@@ -1837,7 +1837,8 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
                 await message.channel.send("嘘です★")
                 
                 
-        if client.user != message.author and message.author.bot:
+        if client.user != message.author and not message.author.bot :
+        
             if 'だよ' in message.content:
                 aaa = ["そうなの？", "そうだよ(便乗)"]
                 AAA = random.choice(aaa)
@@ -1847,53 +1848,50 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             if 'なの' in message.content and '？' in message.content:
                 await message.channel.send('そうだよ(便乗)')
 
-        if client.user != message.author:
             if 'くえー' in message.content:
                 y1 = ['……結構恥ずかしいからねこれ', '…ごめん自分で反応しといてあれだけど、結構恥ずい', '……はずいわ!', '\nいやぁぁこれ言うの恥ずかしいからいやぁぁぁ',
                       '……それ言われたら反応しないといけないからやめて', '\nなんでこんな恥ずいのに私が反応しなきゃ行けないの…']
                 y2 = random.choice(y1)
                 await message.channel.send('く、くえー…' + (y2))
 
-        if client.user != message.author:
             if 'ねこ' in message.content:
                 y1 = ['ねこですよろしくおねがいします', 'ねこはいましたよろしくおねがいします', 'ねこはいます', 'ねこはいました', 'ねこはどこにでもいます', 'ねこはここにいます']
                 y2 = random.choice(y1)
                 await message.channel.send((y2))
 
-        if client.user != message.author:
-            if 'せやな' in message.content:
-                y1 = ['そやな']
-                y2 = random.choice(y1)
-                await message.channel.send((y2))
+            if client.user != message.author:
+                if 'せやな' in message.content:
+                    y1 = ['そやな']
+                    y2 = random.choice(y1)
+                    await message.channel.send((y2))
 
-        if client.user != message.author:
-            if 'うぃ' in message.content or 'うぇ' in message.content:
-                y1 = ['( 厂˙ω˙ )厂うえーい']
-                y2 = random.choice(y1)
-                await message.channel.send((y2))
-        if client.user != message.author:
-            if 'くさ' in message.content or '草' in message.content:
-                y1 = ['w', 'www', '草', '𐤔𐤔𐤔', 'ʬ﻿ʬʬ﻿', '෴෴']
-                y2 = random.choice(y1)  # (　＾ω＾)おっおっおっ
-                await message.channel.send((y2))
-            if 'おっ' in message.content:
-                y1 = ['(　＾ω＾)おっおっおっ', '( ˙꒳​˙    ≡   ˙꒳​˙  )おっおっおっ', '(　＾ω＾)ｵｯw']
-                y2 = random.choice(y1)
-                await message.channel.send((y2))
+            if client.user != message.author:
+                if 'うぃ' in message.content or 'うぇ' in message.content:
+                    y1 = ['( 厂˙ω˙ )厂うえーい']
+                    y2 = random.choice(y1)
+                    await message.channel.send((y2))
+            if client.user != message.author:
+                if 'くさ' in message.content or '草' in message.content:
+                    y1 = ['w', 'www', '草', '𐤔𐤔𐤔', 'ʬ﻿ʬʬ﻿', '෴෴']
+                    y2 = random.choice(y1)  # (　＾ω＾)おっおっおっ
+                    await message.channel.send((y2))
+                if 'おっ' in message.content:
+                    y1 = ['(　＾ω＾)おっおっおっ', '( ˙꒳​˙    ≡   ˙꒳​˙  )おっおっおっ', '(　＾ω＾)ｵｯw']
+                    y2 = random.choice(y1)
+                    await message.channel.send((y2))
 
-        if client.user != message.author:
-            if 'ぽ' in message.content or 'ポ' in message.content:
-                y1 = ['㌼㌨㌥㌑㌝㌈㌏㌐　㌞㌞㌞㌞㌑㌆']
-                y2 = random.choice(y1)
-                await message.channel.send((y2))
+                if 'ぽ' in message.content or 'ポ' in message.content:
+                    y1 = ['㌼㌨㌥㌑㌝㌈㌏㌐　㌞㌞㌞㌞㌑㌆']
+                    y2 = random.choice(y1)
+                    await message.channel.send((y2))
 
-        if message.content == client.user.mention:  # 話しかけられたかの判定
-            embed = discord.Embed(title='YUI Information', description=f'{client.user}\nID 627052576810074112')
-            embed.set_author(name=client.user,
-                             url="https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot",
-                             icon_url=client.user.avatar_url)
-            embed.set_footer(icon_url=message.author.avatar_url, text=f"表示者｜{message.author}")
-            await message.channel.send(embed=embed)
+                if message.content == client.user.mention:  # 話しかけられたかの判定
+                    embed = discord.Embed(title='YUI Information', description=f'{client.user}\nID 627052576810074112')
+                    embed.set_author(name=client.user,
+                                     url="https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot",
+                                     icon_url=client.user.avatar_url)
+                    embed.set_footer(icon_url=message.author.avatar_url, text=f"表示者｜{message.author}")
+                    await message.channel.send(embed=embed)
 
         if message.content == '考えるな、感じろ！' and message.author.id==644153226597498890:
             await message.channel.send('(`･ω･)ゞｲｪｯｻｰ将軍!')
@@ -1906,16 +1904,6 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             await message.channel.send('🤔')
 
 
-        global global_list
-        global_tmp = [w for w in await message.channel.webhooks() if w in global_list]
-        global new_w
-        new_w = await (await discord.utils.get(client.get_all_guild.text_channels, name = "global_yui：test")).create_webhook(name="global")
-        global_list.append(new_w)
-        if message.webhook_id:
-            return
-        for webhook in global_list:
-            if message.channel != webhook.channel:
-                await webhook.send(content=message.content,username=message.author.name,avatar_url=message.author.avatar_url)
 
     except Exception as e:
 
