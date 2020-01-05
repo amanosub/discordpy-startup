@@ -1918,7 +1918,6 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
     except Exception as e:
         
         if e.args:
-            ch = 659922732024070154
             embed = discord.Embed(title="エラー情報", description="", color=0xf00)
             embed.add_field(name="発生鯖名┃", value=message.guild.name, inline=False)
             embed.add_field(name="発生鯖ID┃", value=message.guild.id, inline=False)
@@ -1927,7 +1926,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             embed.add_field(name="誘発部分┃", value=message.content, inline=False)
             embed.add_field(name="Error内容┃", value=e.args, inline=False)
             embed.set_thumbnail(url = "https://media.discordapp.net/attachments/635993816297504809/650725910915317773/4c2218f5cc96ba76c0e590cd1dadb1bc.gif")
-            m = await client.get_channel(ch).send(embed=embed)
+            m = await (client.get_channel(659922732024070154)).send(embed=embed)
         
        
        
