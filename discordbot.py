@@ -1747,7 +1747,7 @@ async def on_message(message):
 
 #━━━━❮グローバルチャットコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-        if (len(message.embeds) == 0) and (message.channel.name == "global_yui") and (not "discord.gg" in message.author.name) and (not message.channel == DMChannel):
+        if (len(message.embeds) == 0) and (message.channel.name == "global_yui") and (not "discord.gg" in message.author.name):
             content = re.sub(r"(https://discord.gg/)([\w]*)", r"||\1\2||", message.content)
             embed = discord.Embed(title=f'送信者│{message.author}', description=f"{content}",
                                   color=discord.Color(random.randint(0, 0xFFFFFF)))
