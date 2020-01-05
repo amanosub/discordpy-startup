@@ -124,12 +124,7 @@ async def on_ready():
 
     t_loop.start()
     
-    global global_list
-    
-    global_tmp = [w for w in await message.channel.webhooks() if w in global_list]
-    global new_w
-    new_w = (await discord.utils.get(message.guild.text_channels, name = "global_yui：test")).create_webhook(name="global")
-    global_list.append(new_w)
+
 
     
     print('◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢\n‣BOT NAME\n '+(client.user.name))
@@ -1912,7 +1907,11 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             await message.channel.send('🤔')
 
 
-
+        global global_list
+        global_tmp = [w for w in await message.channel.webhooks() if w in global_list]
+        global new_w
+        new_w = (await discord.utils.get(message.guild.text_channels, name = "global_yui：test")).create_webhook(name="global")
+        global_list.append(new_w)
         if message.webhook_id:
             return
         for webhook in global_list:
