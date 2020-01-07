@@ -88,7 +88,7 @@ t_ch=0
 t_flag=False
 yui_ans_msg = None
 edit_flag = True
-
+edit_flag2 = True
 global_list = []
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
@@ -155,7 +155,7 @@ async def st_loop():
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
-@tasks.loop(seconds=30)
+@tasks.loop(seconds=60)
 async def t_loop():
     if t_flag==True:
 
@@ -219,7 +219,7 @@ async def d_loop2():
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=60)
 async def test_check_loop():
     if test_flag==True:
        
@@ -1936,7 +1936,11 @@ async def on_message_edit(before,after):
             edit_flag=False
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
+            await asyncio.sleep(0.1)
+            edit_flag = True
 
+    if edit_flag2 = True
+            edit_flag2 = False
             if after.embeds and after.embeds[0].description:
                 if f"{client.user.mention}はレベルアップした！" in after.embeds[0].description:
                     dateTime = datetime.now(JST)
@@ -1958,8 +1962,6 @@ async def on_message_edit(before,after):
                     log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                     lvlog_ch = client.get_channel(660817503597101099)
                     await lvlog_ch.send(embed = log_embed)
-
-            await asyncio.sleep(0.2)
-            edit_flag = True
-
+            edit_flag2=True
+            
 client.run(TOKEN)
