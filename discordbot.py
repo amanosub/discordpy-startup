@@ -1939,7 +1939,7 @@ async def on_message_edit(before,after):
             await asyncio.sleep(0.1)
             edit_flag = True
 
-    if edit_flag2 = True:
+    if edit_flag2 == True:
             edit_flag2 = False
             if after.embeds and after.embeds[0].description:
                 if f"{client.user.mention}はレベルアップした！" in after.embeds[0].description:
