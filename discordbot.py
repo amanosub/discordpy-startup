@@ -902,38 +902,14 @@ async def on_message(message):
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_footer(text = datetime.now(JST))
             await log_ch.send(embed=embed)
-            await atk_ch2.send(f"{message.author.mention}\nチャンネル指定完了\n`y!i f` てうってね")
-            def start_check(msg):
-                if msg.author!=message.author:
-                    return 0
-                if msg.channel != message.channel:
-                    return 0
-                if msg.content!="y!start":
-                    return 0
-                return 1
-            try:
-                start_msg = await client.wait_for('message',timeout=20,check = start_check)
-            except asyncio.TimeoutError:
-                await message.channel.send('::item f TAO息してる…?')
-            else:
-                if start_msg.content.startswith("y!start"):
-                    await message.channel.send("::item f スタート！(*'ω'*)")
+            await atk_ch2.send(f"{message.author.mention}\nチャンネル指定完了")
+            await atl_ch2.send('::item f')
 
         if tao:
             if message.channel==atk_ch2:
-                if "フレア" in message.content and 'のHP' in message.content:
-                    await asyncio.sleep(0.7)
+                if f"{client.user.name}は" in message.content and 'のHP' in message.content:
+                    await asyncio.sleep(0.2)
                     await message.channel.send(f"::item ファイアボールの書")
-                    def msg_check(tao_msg):
-                        if tao_msg.channel!=message.channel:
-                            return 0
-                        if message.author!=tao_msg:
-                            return 0
-                        return 1
-                    try:
-                        await client.wait_for('message',timeout=60,check=msg_check)
-                    except asyncio.TimeoutError:
-                        await message.channel.send('::i f')
 
                 if "やられてしまった" in message.content:
                     if not mio:
@@ -966,12 +942,8 @@ async def on_message(message):
                                         await message.channel.send("::attack 私復活！　ありがと、みおちゃん")
                 if message.embeds:
                     if message.embeds[0].title and 'が待ち構えている' in message.embeds[0].title:
-                        await asyncio.sleep(3)
+                        await asyncio.sleep(0.2)
                         await atk_ch2.send("::item f 先手必勝!!")
-                        try:
-                            await client.wait_for('message',timeout=300)
-                        except asyncio.TimeoutError:
-                            await message.channel.send('::item f TAO息してる…?')
 
                     elif message.embeds[0].description:
                         if f"{client.user.mention}はもうやられている！（戦いをやり直すには「::reset」だ）" in message.embeds[0].description:
@@ -985,12 +957,8 @@ async def on_message(message):
                                     await message.channel.send('::item e TAO息してる…?')
 
                         elif "エリクサーを" in message.embeds[0].description :
-                            await asyncio.sleep(3)
+                            await asyncio.sleep(0.2)
                             await message.channel.send("::i f 私復活!!")
-                            try:
-                                await client.wait_for('message',timeout=300)
-                            except asyncio.TimeoutError:
-                                await message.channel.send('::i f TAO息してる…?')
 
 
 #━━━━❮元atkchコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
