@@ -996,7 +996,7 @@ async def on_message(message):
                 lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
                 type=message.embeds[0].title.split('[')[1].split(']')[0]
                 rank=message.embeds[0].title.split('【')[1].split('】')[0]
-                name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
+                name=message.embeds[0].title.split('】\n')[1].split('が待ち構えている')[0]
                 image_url=message.embeds[0].image.url
                 hp=message.embeds[0].title.split(':')[3]
                 exp=int(lv)
@@ -1013,7 +1013,7 @@ async def on_message(message):
                 elif rank=='超激レア':
                     exp=int(lv)*100
 
-                embed=discord.Embed(title=f'モンスター出現ログ',description=f'\n**‣Name:**`{name}`\n**‣Type Rank:**\n`{type}┃{rank}`\n**‣Status:**\n`Lv.{lv}┃HP.{hp}`\n**‣Exp:**\n`{exp+1}`\n**‣Channel:**\n{message.channel.mention}',color=discord.Color.green())
+                embed=discord.Embed(title=f'モンスター出現ログ',description=f'\n**‣Name:**\n`{name}`\n**‣Type Rank:**\n`{type}┃{rank}`\n**‣Status:**\n`Lv.{lv}┃HP.{hp}`\n**‣Exp:**\n`{exp+1}`\n**‣Channel:**\n{message.channel.mention}',color=discord.Color.green())
                 embed.set_thumbnail(url=image_url)
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 ch1=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×1')
