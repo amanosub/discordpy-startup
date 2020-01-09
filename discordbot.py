@@ -1761,7 +1761,7 @@ async def on_message(message):
 
 #━━━━❮オートレスポンスコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-        if 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
+        if not str(message.channel.id) in data_list 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
             if message.author.bot:
                 pass
 
@@ -1772,7 +1772,7 @@ async def on_message(message):
 
                 await channel.send(oha)
 
-        if 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
+        if not str(message.channel.id) in data_list 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
             
             if message.author.bot:
 
@@ -1788,7 +1788,7 @@ async def on_message(message):
 
                     await channel.send(oha)
 
-        if 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content:
+        if not str(message.channel.id) in data_list 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content :
             if message.author.bot:
 
                 return
@@ -1804,7 +1804,7 @@ async def on_message(message):
 
 
 
-        if client.user != message.author:
+        if client.user != message.author and not str(message.channel.id) in data_list:
             kakuritu = random.randint(1, 1000)
             if int(kakuritu) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
                 Z = ['あんぱん', 'メロンパン', 'フランスパン', 'チョコパイ']
@@ -1829,7 +1829,8 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
                 await asyncio.sleep(5)
                 await message.channel.send("嘘です★")
                 
-                
+        global data_list
+
         if client.user != message.author and not message.author.bot :
         
             if 'だよ' in message.content:
@@ -1898,68 +1899,68 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
 
 
 
-    global data_list
-    if message.content == "y!ohanashi":
-        m_ch = message.channel
-        if str(m_ch.id) in data_list:
-            await m_ch.send("もう登録済みだよ？")
-        else:
-            ohanashi_datach = client.get_channel(663952496741580801)
-            await ohanashi_datach.send(m_ch.id)
-            data_list = await ohanashi_datach.history( limit = None ).flatten()
-            await message.channel.send( "\n".join( [ i.content for i in data_list] ) )
-            touroku_msg = await m_ch.send("登録中<a:loadinfo:651635984068378663>")
-
+        
+        if message.content == "y!ohanashi":
+            m_ch = message.channel
             if str(m_ch.id) in data_list:
-                await message.channel("登録完了♪✅")
+                await m_ch.send("もう登録済みだよ？")
             else:
-                await message.channel("登録する段階で何かしらのエラーが出ました(´;ω;｀)`y!report [内容]`で、フィードバックを送信してください")
+                ohanashi_datach = client.get_channel(663952496741580801)
+                await ohanashi_datach.send(m_ch.id)
+                data_list = await ohanashi_datach.history( limit = None ).flatten()
+                await message.channel.send( "\n".join( [ i.content for i in data_list] ) )
+                touroku_msg = await m_ch.send("登録中<a:loadinfo:651635984068378663>")
 
-    global talk_flag
-    global last_resp
-    if str(message.channel.id) in data_list and message.author!=client.user and talk_flag == True:
-        talk_flag = False
-        await asyncio.sleep(1)
-        bot_resp = talk.get(message.content)
-        bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
-        bot_resp = bot_resp.replace('なんでもないですよ',"なんでもないよ")
+                if str(m_ch.id) in data_list:
+                    await message.channel("登録完了♪✅")
+                else:
+                    await message.channel("登録する段階で何かしらのエラーが出ました(´;ω;｀)`y!report [内容]`で、フィードバックを送信してください")
 
-
-        bot_resp = bot_resp.replace('あなた',"きみ")
-        bot_resp = bot_resp.replace("りましょう","ろう")
-        bot_resp = bot_resp.replace("ですよね","だよね")
-        bot_resp = bot_resp.replace("ですよ","よ")
-        bot_resp = bot_resp.replace("ですね","だね")
-        bot_resp = bot_resp.replace("んですか","の?")
-        bot_resp = bot_resp.replace("です","だよ")
-        bot_resp = bot_resp.replace("りましたか","ったん")
-        bot_resp = bot_resp.replace("でしょうか","なの")
-        bot_resp = bot_resp.replace("はい","うん")
-        bot_resp = bot_resp.replace("ございます","")
-        bot_resp = bot_resp.replace("していただけた","してくれた")
-        bot_resp = bot_resp.replace("ようですね","みたいだね")
-        bot_resp = bot_resp.replace("ありました？","あった……？")
-        bot_resp = bot_resp.replace("りました","った")
-        bot_resp = bot_resp.replace("きました","いた")
-        bot_resp = bot_resp.replace("ました","た")
-        bot_resp = bot_resp.replace("ましょう","よう")
-        bot_resp = bot_resp.replace("りましす","る")
-        bot_resp = bot_resp.replace("います","う")
-        bot_resp = bot_resp.replace("くださいね","ね")
-        bot_resp = bot_resp.replace("しれません","ね")
-        bot_resp = bot_resp.replace("します","するね")
-        bot_resp = bot_resp.replace("お困り事","トラブル")
-        bot_resp = bot_resp.replace('ます',"る")
+        global talk_flag
+        global last_resp
+        if str(message.channel.id) in data_list and message.author!=client.user and talk_flag == True:
+            talk_flag = False
+            await asyncio.sleep(1)
+            bot_resp = talk.get(message.content)
+            bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
+            bot_resp = bot_resp.replace('なんでもないですよ',"なんでもないよ")
 
 
-        if last_resp != bot_resp:
+            bot_resp = bot_resp.replace('あなた',"きみ")
+            bot_resp = bot_resp.replace("りましょう","ろう")
+            bot_resp = bot_resp.replace("ですよね","だよね")
+            bot_resp = bot_resp.replace("ですよ","よ")
+            bot_resp = bot_resp.replace("ですね","だね")
+            bot_resp = bot_resp.replace("んですか","の?")
+            bot_resp = bot_resp.replace("です","だよ")
+            bot_resp = bot_resp.replace("りましたか","ったん")
+            bot_resp = bot_resp.replace("でしょうか","なの")
+            bot_resp = bot_resp.replace("はい","うん")
+            bot_resp = bot_resp.replace("ございます","")
+            bot_resp = bot_resp.replace("していただけた","してくれた")
+            bot_resp = bot_resp.replace("ようですね","みたいだね")
+            bot_resp = bot_resp.replace("ありました？","あった……？")
+            bot_resp = bot_resp.replace("りました","った")
+            bot_resp = bot_resp.replace("きました","いた")
+            bot_resp = bot_resp.replace("ました","た")
+            bot_resp = bot_resp.replace("ましょう","よう")
+            bot_resp = bot_resp.replace("りましす","る")
+            bot_resp = bot_resp.replace("います","う")
+            bot_resp = bot_resp.replace("くださいね","ね")
+            bot_resp = bot_resp.replace("しれません","ね")
+            bot_resp = bot_resp.replace("します","するね")
+            bot_resp = bot_resp.replace("お困り事","トラブル")
+            bot_resp = bot_resp.replace('ます',"る")
 
-            print(f'{message.author.name}[{message.content}]')
-            print(f'{client.user.name}[{bot_resp}]')
 
-            await message.channel.send(bot_resp)
-            last_resp = bot_resp
-        talk_flag = True
+            if last_resp != bot_resp:
+
+                print(f'{message.author.name}[{message.content}]')
+                print(f'{client.user.name}[{bot_resp}]')
+
+                await message.channel.send(bot_resp)
+                last_resp = bot_resp
+            talk_flag = True
 
 
 
