@@ -32,7 +32,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 dateTime = datetime.now(JST)
 server_number = len(client.guilds)
 
-
+import requests
 class Talk:
     def __init__(self):
         self.key = 'DZZEsELpflnkZATnwJG6iKcQzxbxZLDz'
