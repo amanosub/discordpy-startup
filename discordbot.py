@@ -1918,8 +1918,11 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
 
         global talk_flag
         global last_resp
-        if str(message.channel.id) in data_list and message.author!=client.user and talk_flag == True:
-            talk_flag = False
+        ohanashi_datach = client.get_channel(663952496741580801)
+        datas = await ohanashi_datach.history( limit = 10000 ).flatten()
+        for data in datas.content:
+            data_list.append(data)
+        if str(message.channel.id) in data_list and message.author!=client.user:
             await asyncio.sleep(1)
             bot_resp = talk.get(message.content)
             bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
@@ -1953,14 +1956,13 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             bot_resp = bot_resp.replace('ます',"る")
 
 
-            if last_resp != bot_resp:
+        
 
-                print(f'{message.author.name}[{message.content}]')
-                print(f'{client.user.name}[{bot_resp}]')
+            print(f'{message.author.name}[{message.content}]')
+            print(f'{client.user.name}[{bot_resp}]')
 
-                await message.channel.send(bot_resp)
-                last_resp = bot_resp
-            talk_flag = True
+            await message.channel.send(bot_resp)
+           
 
 
 
