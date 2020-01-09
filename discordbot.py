@@ -9,6 +9,7 @@ import datetime
 import urllib.request
 import json
 import re
+import requests
 import os
 import traceback
 import math
@@ -40,7 +41,7 @@ class Talk:
 
     def get(self,talking):
         url = self.api
-        r = re.post(url,{'apikey':self.key,'query':talking})
+        r = requests.post(url,{'apikey':self.key,'query':talking})
         data = json.loads(r.text)
         if data['status'] == 0:
             t = data['results']
