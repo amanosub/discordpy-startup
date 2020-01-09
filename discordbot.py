@@ -1760,7 +1760,7 @@ async def on_message(message):
                         await channel.send(embed=embed)
 
 #━━━━❮オートレスポンスコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
-
+        global data_list
         if not str(message.channel.id) in data_list and 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
             if message.author.bot:
                 pass
@@ -1829,7 +1829,7 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
                 await asyncio.sleep(5)
                 await message.channel.send("嘘です★")
                 
-        global data_list
+        
 
         if client.user != message.author and not message.author.bot :
         
