@@ -1761,7 +1761,7 @@ async def on_message(message):
 
 #━━━━❮オートレスポンスコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-        if not str(message.channel.id) in data_list 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
+        if not str(message.channel.id) in data_list and 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
             if message.author.bot:
                 pass
 
@@ -1772,7 +1772,7 @@ async def on_message(message):
 
                 await channel.send(oha)
 
-        if not str(message.channel.id) in data_list 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
+        if not str(message.channel.id) in data_list and 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
             
             if message.author.bot:
 
@@ -1788,7 +1788,7 @@ async def on_message(message):
 
                     await channel.send(oha)
 
-        if not str(message.channel.id) in data_list 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content :
+        if not str(message.channel.id) in data_list and 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content :
             if message.author.bot:
 
                 return
