@@ -12,6 +12,7 @@ import re
 import os
 import traceback
 import math
+import requests
 from discord.ext import tasks
 
 from datetime import datetime, timedelta, timezone
