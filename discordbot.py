@@ -12,7 +12,7 @@ import re
 import os
 import traceback
 import math
-import requests
+
 from discord.ext import tasks
 
 from datetime import datetime, timedelta, timezone
@@ -40,7 +40,7 @@ class Talk:
 
     def get(self,talking):
         url = self.api
-        r = requests.post(url,{'apikey':self.key,'query':talking})
+        r = re.post(url,{'apikey':self.key,'query':talking})
         data = json.loads(r.text)
         if data['status'] == 0:
             t = data['results']
