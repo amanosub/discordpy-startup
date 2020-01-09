@@ -974,7 +974,7 @@ async def on_message(message):
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 dateTime = datetime.now(JST)
                 lv = message.embeds[0].description.split("`")[1]
-                                log_embed = discord.Embed(
+                log_embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
                     color = discord.Color.green())
