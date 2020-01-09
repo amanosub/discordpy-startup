@@ -563,7 +563,7 @@ async def on_message(message):
             embed.set_footer(icon_url=message.author.avatar_url, text=f"認証中│{message.author.name}\n━━━━━━━━━━━")
             test_send = await message.channel.send(embed=embed)
             if message.author.id == 446610711230152706:
-                                await asyncio.sleep(5)
+                await asyncio.sleep(5)
                 await test_send.edit(embed=discord.Embed(title=f"**Received command!!**",
                                                          description=f'**checking user ID** ☑️\n━━━━━━━━━━━\nWould you realy need reboot {client.user.mention}?'))
                 reactions = ["❎","☑️"]
