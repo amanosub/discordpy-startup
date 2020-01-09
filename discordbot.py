@@ -1895,7 +1895,7 @@ async def on_message_edit(before,after):
             edit_flag=False
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
-            await asyncio.sleep(0.1)
+            await asyncio.sleep(0.2)
             edit_flag = True
 
     if edit_flag2 == True:
