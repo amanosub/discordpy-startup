@@ -558,14 +558,14 @@ async def on_message(message):
 #━━━━❮YUI強制シャットダウンコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
         if message.content.startswith('y!kill'):
-            if message.author.id == 446610711230152706:
-                embed = discord.Embed(title=f"**Received command!!**",
+            embed = discord.Embed(title=f"**Received command!!**",
                                       description="**checking user ID** <a:loadinfo:651635984068378663>")
-                embed.set_footer(icon_url=message.author.avatar_url, text=f"認証中│{message.author.name}")
-                test_send = await message.channel.send(embed=embed)
-                await asyncio.sleep(5)
+            embed.set_footer(icon_url=message.author.avatar_url, text=f"認証中│{message.author.name}\n━━━━━━━━━━━")
+            test_send = await message.channel.send(embed=embed)
+            if message.author.id == 446610711230152706:
+                                await asyncio.sleep(5)
                 await test_send.edit(embed=discord.Embed(title=f"**Received command!!**",
-                                                         description=f'**checking user ID** ☑️\nWould you realy need reboot {client.user.mention}?\nIf you reboot,[alrady_quiz]data will losed'))
+                                                         description=f'**checking user ID** ☑️\n━━━━━━━━━━━\nWould you realy need reboot {client.user.mention}?'))
                 reactions = ["❎","☑️"]
                 for reaction in reactions:
                     await test_send.add_reaction(reaction)
@@ -898,7 +898,8 @@ async def on_message(message):
             log_ch = client.get_channel(659923593693495337)
             author_id=str(message.author.id)
             embed=discord.Embed(
-            title=f"( 'ω'o[**ifch**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```')
+            title=f"( 'ω'o[**ifch**]oログ♡",
+            description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{author_id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{atk_ch2.name}』```')
             embed.set_thumbnail(url=message.author.avatar_url)
             embed.set_footer(text = datetime.now(JST))
             await log_ch.send(embed=embed)
@@ -973,13 +974,7 @@ async def on_message(message):
             if f"{client.user.mention}はレベルアップした！" in message.embeds[0].description:
                 dateTime = datetime.now(JST)
                 lv = message.embeds[0].description.split("`")[1]
-                embed = discord.Embed(
-                    title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
-                    description = f"**__{lv}__**",
-                    color = discord.Color.green())
-                embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
-                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
-                log_embed = discord.Embed(
+                                log_embed = discord.Embed(
                     title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
                     description = f"**__{lv}__**",
                     color = discord.Color.green())
@@ -989,6 +984,7 @@ async def on_message(message):
                 log_embed.add_field(name = "**‣LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
                 log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 lvlog_ch = client.get_channel(660817503597101099)
+                await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
                 await lvlog_ch.send(embed = log_embed)
 
 #━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
@@ -1024,7 +1020,7 @@ async def on_message(message):
                 ch2=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×1．5')
                 ch3=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×5')
                 ch4=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×33')
-                ch5=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ:×100')
+                ch5=discord.utils.get(message.guild.text_channels, name=f'tao出現ログ：×100')
                 
                 if rank == "通常" and ch1:
                     await ch1.send(embed=embed)
@@ -1125,10 +1121,7 @@ async def on_message(message):
             await message.channel.send('::i i \nまあこれもuser指定するのめんどくて作ってないから意味ないけどね')
 
         if message.content == 'y!i f' and message.author_id!=446610711230152706:
-#            await message.channel.send('::i f')
-            embed = discord.Embed(title='y!i fコマンドは新機能の開発及び実行に互換性がある為\n現在停止中です')
-            embed.set_footer(icon_url=message.author.avatar_url,text=f'実行者┃{message.author.name}')
-            await message.channel.send(embed=embed)
+            await message.channel.send('::i f')
             log_ch=client.get_channel(659922630861783060)
             embed=discord.Embed(
                 title=f"( 'ω'o[**i f**]oログ♡",
@@ -1162,7 +1155,7 @@ async def on_message(message):
                 await ans_msg.add_reaction(reaction)
         if message.content.startswith('y!role '):
             role_num = message.content.split('y!role ')[1]
-            if not role_num in ["0","1","2","3"]:
+            if not role_num in ["0","1","2","3"] or message.content=('y!role'):
                 embed = discord.Embed(title='番号エラー!',
                                   description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',
                                   color=discord.Color.red())
@@ -1194,11 +1187,9 @@ async def on_message(message):
                     elif role_num == '3':
                         await ans_msg.add_reaction(f'\u0033\u20e3')
 
-        # 「あいてむ」と発言したら「::i」が返る処理
         if message.content == 'y!i':
             await message.channel.send('::i')
 
-        # 「ろぐいん」と発言したら「::login」が返る処理
         if message.content == 'y!login':
             await message.channel.send('::login')
 
@@ -1898,8 +1889,8 @@ async def on_member_join(member):
 @client.event
 async def on_message_edit(before,after):
     global edit_flag
+    global edit_flag2
     if edit_flag == True:
-
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and before.embeds != after.embeds:
             edit_flag=False
             if "正解" in after.embeds[0].description:
