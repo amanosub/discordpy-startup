@@ -1155,7 +1155,7 @@ async def on_message(message):
                 await ans_msg.add_reaction(reaction)
         if message.content.startswith('y!role '):
             role_num = message.content.split('y!role ')[1]
-            if not role_num in ["0","1","2","3"] or message.content=('y!role'):
+            if not role_num in ["0","1","2","3"] or message.content==('y!role'):
                 embed = discord.Embed(title='番号エラー!',
                                   description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',
                                   color=discord.Color.red())
