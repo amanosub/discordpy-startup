@@ -1811,6 +1811,7 @@ async def on_message(message):
 
     if str(message.channel.id) in data_list and message.author != client.user and not message.content.startswith("y!"):
         bot_resp = talk.get(message.content)
+        true_resp = bot_resp
 
         bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
         bot_resp = bot_resp.replace('なんでもないです',"なんでもないよ")
@@ -1862,7 +1863,7 @@ async def on_message(message):
 
         embed.add_field(
             name = f"{message.author.name}の発言",
-            value = f"『{bot_resp}』",
+            value = f"『{bot_resp}』\n『{true_resp}』",
             inline = False
         )
 
