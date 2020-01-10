@@ -1798,11 +1798,17 @@ async def on_message(message):
 
 
             
-        if str(message.channel.id) in data_list and message.author != client.user:
+        if str(message.channel.id) in data_list and message.author != client.user and not message.content == "y!ohanashi":
             bot_resp = talk.get(message.content)
             
+            
             bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
-            bot_resp = bot_resp.replace('なんでもないですよ',"なんでもないよ")
+            bot_resp = bot_resp.replace('なんでもないです',"なんでもないよ")
+            bot_resp = bot_resp.replace('わかりません',"よくわからないなー")
+            bot_resp = bot_resp.replace('ですか',"？")
+            bot_resp = bot_resp.replace('ごめんなさい。私にはよくわかりません。',"ごめん、私にはよくわからないなー")
+            bot_resp = bot_resp.replace('わかりません',"よくわからないなー")
+            
 
 
             bot_resp = bot_resp.replace('あなた',"きみ")
