@@ -1856,26 +1856,30 @@ async def on_message(message):
 
         embed.add_field(
             name = f"{message.author.name}の発言",
-            value = f"『{message.content}』"
+            value = f"『{message.content}』",
+            inline = False
         )
 
         embed.add_field(
             name = f"{message.author.name}の発言",
-            value = f"『{bot_resp}』"
+            value = f"『{bot_resp}』",
+            inline = False
         )
 
         embed.add_field(
             name = f"会話鯖情報",
-            value = f"Name┃{message.guild.name}\nGuID┃{message.guild.id}"
+            value = f"Name┃{message.guild.name}\nGuID┃{message.guild.id}",
+            inline = False
         )
 
         embed.add_field(
             name = f"会話チャンネル情報",
-            value = f"Name┃{message.channel.name}\nChID┃{message.channel.id}"
+            value = f"Name┃{message.channel.name}\nChID┃{message.channel.id}",
+            inline = False
         )
 
         embed.set_footer(
-        text = dateTime,
+        text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒,
         icon_url = message.author.avatar_url
         )
         log_ch = client.get_channel(665126896534552597)
