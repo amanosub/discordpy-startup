@@ -1863,7 +1863,7 @@ async def on_message(message):
 
         embed.add_field(
             name = f"{client.user.name}の発言",
-            value = f"『{bot_resp}』",
+            value = f"『{bot_resp}』\n『{true_resp}』",
             inline = False
         )
 
