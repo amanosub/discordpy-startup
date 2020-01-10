@@ -1763,170 +1763,39 @@ async def on_message(message):
 
 #━━━━❮オートレスポンスコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
         global data_list
-        if not str(message.channel.id) in data_list and 'おつ' in message.content or '乙' in message.content or 'ｵﾂ' in message.content or 'オツ' in message.content:
-            if message.author.bot:
-                pass
-
-            else:
-                channel = message.channel
-                oha = random.choice(('(\*´ω｀*)ｵﾂｶﾚｻﾏー', '‪(꜆꜄꜆˙꒳˙)꜆꜄꜆ ｵﾂｵﾂｵﾂ‬', '( 厂˙ω˙ )厂うぇーい', 'おつかれさまぁ～  (\*ˊ˘ˋ*)♪',
-                                     'おつおつ( ´꒳`)', 'おつ(　ˆᴘˆ　)'))
-
-                await channel.send(oha)
-
-        if not str(message.channel.id) in data_list and 'オハ' in message.content or 'ｵﾊ' in message.content or 'oha' in message.content or 'おは' in message.content:
-            
-            if message.author.bot:
-
-                return
-
-            else:
-                now = datetime.now(JST)
-                if now.hour > 12:
-                    await message.channel.send("……もう朝は終わったよ……？")
-                else:
-                    channel = message.channel
-                    oha = random.choice(('おはー(((o(\*ﾟ▽ﾟ*)o)))', '(ฅ・ω・ฅ)おはよう♪', '⸜(\* ॑꒳ ॑*  )⸝⋆*オハ', 'おは(　ˆᴘˆ　)'))
-
-                    await channel.send(oha)
-
-        if not str(message.channel.id) in data_list and 'おやす' in message.content or 'スヤァ' in message.content or 'oyas' in message.content or 'ｽﾔｧ' in message.content or 'ねる' in message.content or '寝る' in message.content :
-            if message.author.bot:
-
-                return
-
-            else:
-                now = datetime.now(JST)
-                if now.hour > 6 and now.hour < 17:
-                    await message.channel.send("今から寝るの！？")
-                else:
-                    channel = message.channel
-                    oha = random.choice(('( ˘ω˘ ) ｽﾔｧ…', '( ˘꒳​˘ )ｵﾔｽﾔｧ…', '_([▓▓] ˘ω˘ )_ｽﾔｧ…',
-                                         '=͟͟͞( ˘ω˘)˘ω˘)˘ω˘)ｼﾞｪｯﾄｽﾄﾘｰﾑｽﾔｧ…', 'ｽﾔｧ…(　ˆᴘˆ　)'))
-
-
-
-        if client.user != message.author and not str(message.channel.id) in data_list:
-            kakuritu = random.randint(1, 1000)
-            if int(kakuritu) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
-                Z = ['あんぱん', 'メロンパン', 'フランスパン', 'チョコパイ']
-                A = random.choice(Z)
-                AZ = ['チョコ', '粒あん', 'バター', 'しゃけ', 'ケチャップ']
-                B = random.choice(AZ)
-                C = ["知り合い", "友達", "マックで見かけた人", "モスで見かけた人", "たまたま電車で乗り合わせた人"]
-                CC = random.choice(C)
-                random_dana = ['お腹すいたなぁ…', 'ねえ\nだいぶ前に' + (CC) + 'がやってたんだけど…' + (A) + 'って' + (B) + 'とあうの?',
-                               '**プリン**に**醤油**をかけると**うにの味**って言うけど\nこれ式で表すと\n__**プリン味＋醤油味=うに味**__\nだよね\nじゃあさ、この式から\n__**うに味－醤油味=プリン味**__\nってことになるよね。\nつまりうにから醤油系の味成分を抽出しまくればいつかプリン味になるのかな!....?',
-                               'フランスにはtaoという名前のペットボトル飲料がある', '( 厂˙ω˙ )厂うぇーい',
-                               '''＿人人人人人人人人＿\n＞ 突　然　の　死 ＜\n￣^Y^Y^Y^Y^Y^Y^Y￣''', '(((((((((((っ･ω･)っ ｳｪｰｲ♪', '| ε:)   にゅ',
-                               '(^ω^≡^ω^).', '( ˙꒳​˙  )ﾌｧｯ', '|ω・)ﾐﾃﾏｽﾖ', '(  ﾟཫ ﾟ)ｺﾞﾌｯ',"タンスの角ってなんであんなに小指を殺しに来てるんだろうね","アマノがこの前「お花を摘みに行ってくる」を男性verで言おうとして「畑を耕してきます」って言ってた（）"]
-                text_random = random.choice(random_dana)
-                await message.channel.send(text_random)
-            if int(kakuritu) == 5 and message.author != client.user:
-                embed = discord.Embed(
-title="不適切な発言をキャッチ",
-description=f"**{message.author}**さんの\n```{message.content}```という発言は\n他のUserに不快感を与える恐れがあるため\n**{message.author}**さんを一時的に強制BAN致します。\n予定解除時刻は７時間後です。",color = discord.Color.red())
-                embed.set_footer(icon_url = client.user.avatar_url,text="チャンネル内治安維持システム")
-                await message.channel.send(embed=embed)
-                await asyncio.sleep(5)
-                await message.channel.send("嘘です★")
-                
+        global talk_flag
+        global last_resp
         
 
-        if client.user != message.author and not message.author.bot :
-        
-            if 'だよ' in message.content:
-                aaa = ["そうなの？", "そうだよ(便乗)"]
-                AAA = random.choice(aaa)
-                await message.channel.send(AAA)
-            if 'した' in message.content:
-                await message.channel.send('そうなんだ...(困惑)')
-            if 'なの' in message.content and '？' in message.content:
-                await message.channel.send('そうだよ(便乗)')
-
-            if 'くえー' in message.content:
-                y1 = ['……結構恥ずかしいからねこれ', '…ごめん自分で反応しといてあれだけど、結構恥ずい', '……はずいわ!', '\nいやぁぁこれ言うの恥ずかしいからいやぁぁぁ',
-                      '……それ言われたら反応しないといけないからやめて', '\nなんでこんな恥ずいのに私が反応しなきゃ行けないの…']
-                y2 = random.choice(y1)
-                await message.channel.send('く、くえー…' + (y2))
-
-            if 'ねこ' in message.content:
-                y1 = ['ねこですよろしくおねがいします', 'ねこはいましたよろしくおねがいします', 'ねこはいます', 'ねこはいました', 'ねこはどこにでもいます', 'ねこはここにいます']
-                y2 = random.choice(y1)
-                await message.channel.send((y2))
-
-            if client.user != message.author:
-                if 'せやな' in message.content:
-                    y1 = ['そやな']
-                    y2 = random.choice(y1)
-                    await message.channel.send((y2))
-
-            if client.user != message.author:
-                if 'うぃ' in message.content or 'うぇ' in message.content:
-                    y1 = ['( 厂˙ω˙ )厂うえーい']
-                    y2 = random.choice(y1)
-                    await message.channel.send((y2))
-            if client.user != message.author:
-                if 'くさ' in message.content or '草' in message.content:
-                    y1 = ['w', 'www', '草', '𐤔𐤔𐤔', 'ʬ﻿ʬʬ﻿', '෴෴']
-                    y2 = random.choice(y1)  # (　＾ω＾)おっおっおっ
-                    await message.channel.send((y2))
-                if 'おっ' in message.content:
-                    y1 = ['(　＾ω＾)おっおっおっ', '( ˙꒳​˙    ≡   ˙꒳​˙  )おっおっおっ', '(　＾ω＾)ｵｯw']
-                    y2 = random.choice(y1)
-                    await message.channel.send((y2))
-
-                if 'ぽ' in message.content or 'ポ' in message.content:
-                    y1 = ['㌼㌨㌥㌑㌝㌈㌏㌐　㌞㌞㌞㌞㌑㌆']
-                    y2 = random.choice(y1)
-                    await message.channel.send((y2))
-
-                if message.content == client.user.mention:  # 話しかけられたかの判定
-                    embed = discord.Embed(title='YUI Information', description=f'{client.user}\nID 627052576810074112')
-                    embed.set_author(name=client.user,
-                                     url="https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot",
-                                     icon_url=client.user.avatar_url)
-                    embed.set_footer(icon_url=message.author.avatar_url, text=f"表示者｜{message.author}")
-                    await message.channel.send(embed=embed)
-
-        if message.content == '考えるな、感じろ！' and message.author.id==644153226597498890:
-            await message.channel.send('(`･ω･)ゞｲｪｯｻｰ将軍!')
-
-        if 'think' in message.content or '考' in message.content and message.author !=me:
-            await message.channel.send('考えるな、感じろ!!')
-
-        kakuritu=random.randrange(1,1000)
-        if kakuritu == 5:
-            await message.channel.send('🤔')
-
-
-
-        
         if message.content == "y!ohanashi":
+            ohanashi_datach = client.get_channel(663952496741580801)
+            datas = await ohanashi_datach.history( limit = None ).flatten()
             m_ch = message.channel
+            data_list.clear()
+            for data in datas:
+                data_list.append(data.content)
+                
             if str(m_ch.id) in data_list:
                 await m_ch.send("もう登録済みだよ？")
+                
             else:
-                ohanashi_datach = client.get_channel(663952496741580801)
                 await ohanashi_datach.send(m_ch.id)
                 data_list = await ohanashi_datach.history( limit = None ).flatten()
                 await message.channel.send( "\n".join( [ i.content for i in data_list] ) )
                 touroku_msg = await m_ch.send("登録中<a:loadinfo:651635984068378663>")
 
                 if str(m_ch.id) in data_list:
+                    await touroku_msg.delete()
                     await message.channel("登録完了♪✅")
                 else:
+                    await touroku_msg.delete()
                     await message.channel("登録する段階で何かしらのエラーが出ました(´;ω;｀)`y!report [内容]`で、フィードバックを送信してください")
 
-        global talk_flag
-        global last_resp
-        ohanashi_datach = client.get_channel(663952496741580801)
-        datas = await ohanashi_datach.history( limit = 10000 ).flatten()
-        for data in datas.content:
-            data_list.append(data)
-        if str(message.channel.id) in data_list and message.author!=client.user:
-            await asyncio.sleep(1)
+
+            
+        if str(message.channel.id) in data_list and message.author != client.user:
             bot_resp = talk.get(message.content)
+            
             bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
             bot_resp = bot_resp.replace('なんでもないですよ',"なんでもないよ")
 
@@ -1956,9 +1825,6 @@ description=f"**{message.author}**さんの\n```{message.content}```という発
             bot_resp = bot_resp.replace("します","するね")
             bot_resp = bot_resp.replace("お困り事","トラブル")
             bot_resp = bot_resp.replace('ます',"る")
-
-
-        
 
             print(f'{message.author.name}[{message.content}]')
             print(f'{client.user.name}[{bot_resp}]')
