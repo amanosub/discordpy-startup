@@ -1878,7 +1878,7 @@ async def on_message(message):
             )
             
             embed.set_footer(
-            text = dateTime
+            text = dateTime,
             icon_url = message.author.avatar_url
             )
             log_ch = client.get_channel(665126896534552597)
