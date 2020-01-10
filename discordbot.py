@@ -1775,6 +1775,7 @@ async def on_message(message):
                 data_list.append(data.content)
                 
             if str(m_ch.id) in data_list:
+                print(f"追加\nチャンネル名前\n{m_ch.name}\nチャンネルID\n{m_ch.id}\n")
                 await m_ch.send("もう登録済みだよ？")
                 
             else:
@@ -1785,7 +1786,6 @@ async def on_message(message):
                 data_list.clear()
                 for data in datas:
                     data_list.append(data.content)
-
 
                 if str(m_ch.id) in data_list:
                     await touroku_msg.delete()
