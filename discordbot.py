@@ -1863,7 +1863,7 @@ async def on_message(message):
 
         embed.add_field(
             name = f"{client.user.name}の発言",
-            value = f"```変換前メッセージ\n『{bot_resp}』\n変換後メッセージ\n『{true_resp}』```",
+            value = f"```変換後メッセージ\n『{bot_resp}』\n変換前メッセージ\n『{true_resp}』```",
             inline = False
         )
 
