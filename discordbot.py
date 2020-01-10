@@ -1765,10 +1765,9 @@ async def on_message(message):
         global data_list
         global talk_flag
         global last_resp
-        
+        ohanashi_datach = client.get_channel(663952496741580801)
 
         if message.content == "y!ohanashi":
-            ohanashi_datach = client.get_channel(663952496741580801)
             datas = await ohanashi_datach.history( limit = None ).flatten()
             m_ch = message.channel
             data_list.clear()
@@ -1780,7 +1779,6 @@ async def on_message(message):
                 
             else:
                 await ohanashi_datach.send(m_ch.id)
-                data_list = await ohanashi_datach.history( limit = None ).flatten()
                 await message.channel.send( "\n".join( [ i.content for i in data_list] ) )
                 touroku_msg = await m_ch.send("登録中<a:loadinfo:651635984068378663>")
                 datas = await ohanashi_datach.history( limit = None ).flatten()
@@ -1796,9 +1794,25 @@ async def on_message(message):
                     await touroku_msg.delete()
                     await message.channel("登録する段階で何かしらのエラーが出ました(´;ω;｀)`y!report [内容]`で、フィードバックを送信してください")
 
+        if message.content == "y!baibai":
+            m_ch = message.channel
+            datas = await ohanashi_datach.history( limit = None ).flatten()
+            for data in datas.content:
+                data_sublist.append(data)
+                
+            if str(m_ch.id) in data_sublist:
+                await datas.delete()
+                data_list.clear()
+                datas = await ohanashi_datach.history( limit = None ).flatten()
+                for data in datas:
+                    data_list.append(data.content)
 
+                await message.channel.send("バイバイ(´;ω;｀)")
+
+            else:
+                await m_ch.send("このチャンネルは登録されてないよ……？")
             
-        if str(message.channel.id) in data_list and message.author != client.user and not message.content == "y!ohanashi":
+        if str(message.channel.id) in data_list and message.author != client.user and not message.content startswith("y!"):
             bot_resp = talk.get(message.content)
             
             
