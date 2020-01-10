@@ -1812,7 +1812,7 @@ async def on_message(message):
             else:
                 await m_ch.send("このチャンネルは登録されてないよ……？")
             
-        if str(message.channel.id) in data_list and message.author != client.user and not message.content startswith("y!"):
+        if str(message.channel.id) in data_list and message.author != client.user and not message.content.startswith("y!"):
             bot_resp = talk.get(message.content)
             
             
