@@ -1783,6 +1783,11 @@ async def on_message(message):
                 data_list = await ohanashi_datach.history( limit = None ).flatten()
                 await message.channel.send( "\n".join( [ i.content for i in data_list] ) )
                 touroku_msg = await m_ch.send("登録中<a:loadinfo:651635984068378663>")
+                datas = await ohanashi_datach.history( limit = None ).flatten()
+                data_list.clear()
+                for data in datas:
+                    data_list.append(data.content)
+
 
                 if str(m_ch.id) in data_list:
                     await touroku_msg.delete()
