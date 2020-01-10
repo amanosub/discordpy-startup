@@ -1815,15 +1815,12 @@ async def on_message(message):
         if str(message.channel.id) in data_list and message.author != client.user and not message.content.startswith("y!"):
             bot_resp = talk.get(message.content)
             
-            
             bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
             bot_resp = bot_resp.replace('なんでもないです',"なんでもないよ")
             bot_resp = bot_resp.replace('わかりません',"よくわからないなー")
             bot_resp = bot_resp.replace('ですか',"？")
             bot_resp = bot_resp.replace('ごめんなさい。私にはよくわかりません。',"ごめん、私にはよくわからないなー")
             bot_resp = bot_resp.replace('わかりません',"よくわからないなー")
-            
-
 
             bot_resp = bot_resp.replace('あなた',"きみ")
             bot_resp = bot_resp.replace("りましょう","ろう")
@@ -1851,13 +1848,43 @@ async def on_message(message):
             bot_resp = bot_resp.replace("お困り事","トラブル")
             bot_resp = bot_resp.replace('ます',"る")
 
-            print(f'{message.author.name}[{message.content}]')
-            print(f'{client.user.name}[{bot_resp}]')
-
             await message.channel.send(bot_resp)
-           
-
-
+            
+            dateTime = datetime.now(JST)
+            
+            embed = discord.embed(
+                title = "YUI会話ログ",
+                color = discord.Color.green()
+            )
+            
+            embed.add_field(
+                name = f"{message.author.name}の発言",
+                value = f"『{message.content}』"
+            )
+            
+            embed.add_field(
+                name = f"{message.author.name}の発言",
+                value = f"『{bot_resp}』"
+            )
+            
+            embed.add_field(
+                name = f"会話鯖情報",
+                value = f"Name┃{message.guild.name}\nGuID┃{message.guild.id}"
+            )
+            
+            embed.add_field(
+                name = f"会話チャンネル情報",
+                value = f"Name┃{message.channel.name}\nChID┃{message.channel.id}"
+            )
+            
+            embed.set_footer(
+            text = dateTime
+            icon_url = message.author.avatar_url
+            )
+            log_ch = client.get_channel(665126896534552597)
+            await log_ch.send(embed=embed)
+            
+          
 
 
     except Exception as e:
