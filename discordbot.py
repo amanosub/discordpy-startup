@@ -1880,7 +1880,7 @@ async def on_message(message):
         )
 
         embed.set_footer(
-        text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒,
+        text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒",
         icon_url = message.author.avatar_url
         )
         log_ch = client.get_channel(665126896534552597)
