@@ -1863,19 +1863,19 @@ async def on_message(message):
 
         embed.add_field(
             name = f"{client.user.name}の発言",
-            value = f"```『{bot_resp}』\n『{true_resp}』```",
+            value = f"```変換前メッセージ\n『{bot_resp}』\n変換後メッセージ\n『{true_resp}』```",
             inline = False
         )
 
         embed.add_field(
             name = f"会話鯖情報",
-            value = f"```名前┃{message.guild.name}\nGuID┃{message.guild.id}```",
+            value = f"```鯖名\n『{message.guild.name}』\nさばID\n『{message.guild.id}』```",
             inline = False
         )
 
         embed.add_field(
             name = f"会話チャンネル情報",
-            value = f"```名前┃{message.channel.name}\nChID┃{message.channel.id}```",
+            value = f"```チャンネル名\n『{message.channel.name}』\nチャンネルID\n『{message.channel.id}』```",
             inline = False
         )
 
