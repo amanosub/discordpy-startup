@@ -1139,23 +1139,28 @@ async def on_message(message):
     if message.content == 'y!re':
         await message.channel.send('::reset')
 
-    if message.content == 'y!atk':
-        await message.channel.send("::attack")
-        await message.channel.send(embed=embed)
-        log_ch=client.get_channel(659922557188702229)
-        embed=discord.Embed(title=f"( 'ω'o[**attack**]oログ♡",description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```')
-        embed.set_thumbnail(url=message.author.avatar_url)
-        embed.set_footer(text = datetime.now(JST))
-        await log_ch.send(embed=embed)
 
     if message.content == 'y!i e':
         await message.channel.send('::i e')
 
-    if message.content == 'y!i i':
+    if message.content == 'y!i i ':
         await message.channel.send('::i i \nまあこれもuser指定するのめんどくて作ってないから意味ないけどね')
 
-    if message.content == 'y!i f' and message.author_id!=446610711230152706:
+        
+    if message.content == 'y!atk':
+        await message.channel.send("::attack")
+        
+        log_ch=client.get_channel(659922557188702229)
+        embed=discord.Embed(
+            title=f"( 'ω'o[**attack**]oログ♡",
+            description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』```')
+        embed.set_thumbnail(url=message.author.avatar_url)
+        embed.set_footer(text = datetime.now(JST))
+        await log_ch.send(embed=embed)
+
+    if message.content == 'y!i f':
         await message.channel.send('::i f')
+        
         log_ch=client.get_channel(659922630861783060)
         embed=discord.Embed(
             title=f"( 'ω'o[**i f**]oログ♡",
@@ -1190,10 +1195,11 @@ async def on_message(message):
     if message.content.startswith('y!role '):
         role_num = message.content.split('y!role ')[1]
         if not role_num in ["0","1","2","3"] or message.content==('y!role'):
-            embed = discord.Embed(title='番号エラー!',
+            embed = discord.Embed(
+                              title='番号エラー!',
                               description=f'{role_num}に該当する役職はないよ!\n**役職番号**\n0│Adventure系\n1│Warrior系\n2│Mage系\n3│Thief系\nコマンドは`y!role [役職番号]`だよ。',
                               color=discord.Color.red())
-            embed.set_footer(icon_url={message.author.avater_url},text=f"{message.author.name}")
+            embed.set_footer(icon_url={message.author.avatar_url},text=f"{message.author.name}")
             await message.channel.send(embed=embed)
         else:
             await message.channel.send('::role')
@@ -1857,25 +1863,25 @@ async def on_message(message):
 
         embed.add_field(
             name = f"{message.author.name}の発言",
-            value = f"```『{message.content}』```",
+            value = f"『{message.content}』",
             inline = False
         )
 
         embed.add_field(
-            name = f"{client.user.name}の発言",
-            value = f"```変換後メッセージ\n『{bot_resp}』\n変換前メッセージ\n『{true_resp}』```",
+            name = f"{message.author.name}の発言",
+            value = f"『{bot_resp}』\n『{true_resp}』",
             inline = False
         )
 
         embed.add_field(
             name = f"会話鯖情報",
-            value = f"```鯖名\n『{message.guild.name}』\nさばID\n『{message.guild.id}』```",
+            value = f"Name┃{message.guild.name}\nGuID┃{message.guild.id}",
             inline = False
         )
 
         embed.add_field(
             name = f"会話チャンネル情報",
-            value = f"```チャンネル名\n『{message.channel.name}』\nチャンネルID\n『{message.channel.id}』```",
+            value = f"Name┃{message.channel.name}\nChID┃{message.channel.id}",
             inline = False
         )
 
