@@ -896,7 +896,7 @@ async def on_message(message):
                 hp=message.embeds[0].title.split(':')[3]
                 await test_ch.edit(name=f'裏本編-lv{lv}')
 
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.5)
             await test_ch.send("::attack 先手必勝!!")
 
     if message.channel==test_ch and test_flag==True:
