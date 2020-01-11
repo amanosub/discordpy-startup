@@ -1944,6 +1944,7 @@ async def on_message_edit(before,after):
                     log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                     lvlog_ch = client.get_channel(660817503597101099)
                     await lvlog_ch.send(embed = log_embed)
-            edit_flag2=True
+               await asyncio.sleep(0.2)
+               edit_flag2=True
             
 client.run(TOKEN)
