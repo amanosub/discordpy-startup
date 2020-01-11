@@ -1914,12 +1914,13 @@ async def on_message_edit(before,after):
     global edit_flag
     global edit_flag2
     if edit_flag == True:
+        edit_flag=False
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and before.embeds != after.embeds:
-            edit_flag=False
+            
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
-            await asyncio.sleep(0.2)
-            edit_flag = True
+        await asyncio.sleep(0.2)
+        edit_flag = True
 
     if edit_flag2 == True:
             edit_flag2 = False
@@ -1944,7 +1945,7 @@ async def on_message_edit(before,after):
                     log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                     lvlog_ch = client.get_channel(660817503597101099)
                     await lvlog_ch.send(embed = log_embed)
-               await asyncio.sleep(0.2)
-               edit_flag2=True
+           await asyncio.sleep(0.2)
+           edit_flag2=True
             
 client.run(TOKEN)
