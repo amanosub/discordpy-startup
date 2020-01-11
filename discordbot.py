@@ -1192,6 +1192,7 @@ async def on_message(message):
         else:
             await asyncio.sleep(2)
             await ans_msg.add_reaction(reaction)
+            
     if message.content.startswith('y!role '):
         role_num = message.content.split('y!role ')[1]
         if not role_num in ["0","1","2","3"] or message.content==('y!role'):
@@ -1217,7 +1218,7 @@ async def on_message(message):
                 embed = discord.Embed(title='Error!!', description='もう一度試して見てね（￣▽￣;）\nもしかして以下の点が該当してないかな？\n‣TAOからの反応が40秒以内に来なかった\n‣TAOがオフライン\n‣TAOが修理中', color=discord.Color.green())
                 await message.channel.send(embed=embed)
             else:
-                await asyncio.sleep(2)
+                await asyncio.sleep(5)
                 if role_num == '0':
                     await ans_msg.add_reaction(f'\u0030\u20e3')
                 elif role_num == '1':
