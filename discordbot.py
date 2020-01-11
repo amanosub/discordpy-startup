@@ -886,6 +886,16 @@ async def on_message(message):
                 embed.set_thumbnail(url=image_url)
                 embed.set_footer(text = datetime.now(JST))
                 await logch.send(embed=embed)
+                
+            elif test_ch.id == 659336616359231509:
+                lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
+                type=message.embeds[0].title.split('[')[1].split(']')[0]
+                rank=message.embeds[0].title.split('【')[1].split('】')[0]
+                name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
+                image_url=message.embeds[0].image.url
+                hp=message.embeds[0].title.split(':')[3]
+                await test_ch.edit(name=f'裏本編-lv{lv}')
+
             await asyncio.sleep(1)
             await test_ch.send("::attack 先手必勝!!")
 
