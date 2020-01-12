@@ -891,13 +891,31 @@ async def on_message(message):
                 lv=message.embeds[0].title.split('Lv.')[1].split(' ')[0]
                 type=message.embeds[0].title.split('[')[1].split(']')[0]
                 rank=message.embeds[0].title.split('【')[1].split('】')[0]
-                name=message.embeds[0].title.split('】')[1].split('が待ち構えている')[0]
+                name=message.embeds[0].title.split('\n')[1].split('が待ち構えている')[0]
                 image_url=message.embeds[0].image.url
                 hp=message.embeds[0].title.split(':')[3]
-                await test_ch.edit(name=f'裏本編-lv{lv}')
+                await test_ch.edit(name=f'本編-lv{lv}')
 
-            await asyncio.sleep(0.5)
-            await test_ch.send("::attack 先手必勝!!")
+            if rank == '超激レア':
+                role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
+                if role:
+                    embed=discord.Embed(
+                        title='超激レア通知'
+                        description=f'【{rank}】{name}が出現したよ!!レベルは{lv}だよ!!\n{role.mention}')
+                    await message.channel.send(embed=embed)
+                    await asyncio.sleep(60)
+                    await test_ch.send('::attack　時間切れだあああふははははは(　´∀｀)ﾊﾊﾊﾊ')
+            elif rank == '激レア':
+                role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
+                if role:
+                    embed=discord.Embed(
+                        title='激レア通知'
+                        description=f'【{rank}】{name}が出現したよ!!レベルは{lv}だよ!!\n{role.mention}')
+                    await message.channel.send(embed=embed)
+                    await asyncio.sleep(60)
+                    await test_ch.send('::attack　時間切れだあああふははははは(　´∀｀)ﾊﾊﾊﾊ')
+            else:
+                await test_ch.send("::attack 先手必勝!!")
 
     if message.channel==test_ch and test_flag==True:
         if f"{client.user.name}はやられてしまった" in message.content:
@@ -1249,17 +1267,25 @@ async def on_message(message):
 
 #━━━━❮TAO出現ログ役職コード(になる予定)❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-    if message.content == 'y!join':
-        role = discord.utils.get(message.guild.roles, name='裏寄生隊')  # YUI通知
-        await message.author.add_roles(role)
-        reply = f'{message.author.mention} これで隊員の一人ね'
-        await message.channel.send(reply)
+    if message.content == 'y!tgrare':
+        role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
+        if role:
 
-    if message.content == 'y!announce':
-        role = discord.utils.get(message.guild.roles, name='YUI通知')  # YUI通知
-        await message.author.add_roles(role)
-        reply = f'{message.author.mention} 何か更新あったら呼ぶね'
-        await message.channel.send(reply)
+            await message.author.add_roles(role)
+            reply = f'{message.author.mention} に{role.mention}をつけたよ'
+            await message.channel.send(reply)
+        else:
+            await create_role(name='超激レア通知',mentionable=True)
+
+    if message.content == 'y!grare':
+        role = discord.utils.get(message.guild.roles, name='激レア通知')  # YUI通知
+        if role:
+
+            await message.author.add_roles(role)
+            reply = f'{message.author.mention} に{role.mention}をつけたよ'
+            await message.channel.send(reply)
+        else:
+            await create_role(name='激レア通知',mentionable=True)
 
 #━━━━❮くじコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
