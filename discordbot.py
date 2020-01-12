@@ -190,7 +190,7 @@ async def st_loop():
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
-@tasks.loop(seconds=5)
+@tasks.loop(seconds=60)
 async def t_loop():
     if t_flag==True:
 
@@ -1275,7 +1275,7 @@ async def on_message(message):
             reply = discord.Embed(title='役職を付与完了!!',description=f'{message.author.mention} に{role.mention}をつけたよ')
             await message.channel.send(embed=reply)
         else:
-            await message.guild.create_role(name='激レア通知',mentionable=True)
+            role = await message.guild.create_role(name='激レア通知',mentionable=True)
             await message.author.add_roles(role)
             reply = discord.Embed(title='役職を付与完了!!',description=f'役職がなかったから新たに作って{message.author.mention} に{role.mention}をつけたよ')
 
@@ -1287,7 +1287,7 @@ async def on_message(message):
             reply = discord.Embed(title='役職を付与完了!!',description=f'{message.author.mention} に{role.mention}をつけたよ')
             await message.channel.send(embed=reply)
         else:
-            await message.guild.create_role(name='激レア通知',mentionable=True)
+            role=await message.guild.create_role(name='激レア通知',mentionable=True)
             await message.author.add_roles(role)
             reply = discord.Embed(title='役職を付与完了!!',description=f'役職がなかったから新たに作って{message.author.mention} に{role.mention}をつけたよ')
 
