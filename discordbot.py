@@ -1265,27 +1265,32 @@ async def on_message(message):
     if message.content == 'y!login':
         await message.channel.send('::login')
 
-#━━━━❮TAO出現ログ役職コード(になる予定)❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#━━━━❮TAO出現ログ役職コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
     if message.content == 'y!tgrare':
         role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
         if role:
 
             await message.author.add_roles(role)
-            reply = f'{message.author.mention} に{role.mention}をつけたよ'
-            await message.channel.send(reply)
+            reply = discord.Embed(title='役職を付与完了!!',description=f'{message.author.mention} に{role.mention}をつけたよ')
+            await message.channel.send(embed=reply)
         else:
-            await create_role(name='超激レア通知',mentionable=True)
+            await message.guild.create_role(name='激レア通知',mentionable=True)
+            await message.author.add_roles(role)
+            reply = discord.Embed(title='役職を付与完了!!',description=f'役職がなかったから新たに作って{message.author.mention} に{role.mention}をつけたよ')
 
     if message.content == 'y!grare':
         role = discord.utils.get(message.guild.roles, name='激レア通知')  # YUI通知
         if role:
 
             await message.author.add_roles(role)
-            reply = f'{message.author.mention} に{role.mention}をつけたよ'
-            await message.channel.send(reply)
+            reply = discord.Embed(title='役職を付与完了!!',description=f'{message.author.mention} に{role.mention}をつけたよ')
+            await message.channel.send(embed=reply)
         else:
-            await create_role(name='激レア通知',mentionable=True)
+            await message.guild.create_role(name='激レア通知',mentionable=True)
+            await message.author.add_roles(role)
+            reply = discord.Embed(title='役職を付与完了!!',description=f'役職がなかったから新たに作って{message.author.mention} に{role.mention}をつけたよ')
+
 
 #━━━━❮くじコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
