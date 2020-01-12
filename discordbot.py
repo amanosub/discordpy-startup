@@ -1046,7 +1046,7 @@ async def on_message(message):
             log_embed.add_field(name = "**‣LvUPチャンネルID**" ,value = f"『{message.channel.id}』",inline = False)
             log_embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
             lvlog_ch = client.get_channel(660817503597101099)
-            await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
+            await asyncio.gather(*(c.send(embed=log_embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"))
             await lvlog_ch.send(embed = log_embed)
 
 #━━━━❮TAO敵出現ログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
