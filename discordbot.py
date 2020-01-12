@@ -900,7 +900,7 @@ async def on_message(message):
                 role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
                 if role:
                     embed=discord.Embed(
-                        title='超激レア通知'
+                        title='超激レア通知',
                         description=f'【{rank}】{name}が出現したよ!!レベルは{lv}だよ!!\n{role.mention}')
                     await message.channel.send(embed=embed)
                     await asyncio.sleep(60)
@@ -909,7 +909,7 @@ async def on_message(message):
                 role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
                 if role:
                     embed=discord.Embed(
-                        title='激レア通知'
+                        title='激レア通知',
                         description=f'【{rank}】{name}が出現したよ!!レベルは{lv}だよ!!\n{role.mention}')
                     await message.channel.send(embed=embed)
                     await asyncio.sleep(60)
