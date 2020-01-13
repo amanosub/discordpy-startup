@@ -328,7 +328,10 @@ async def on_message(message):
                         return 0
                     if msg.embeds[0].footer.text and 'TAOのトレーニング' in msg.embeds[0].footer.text:
                         return 0
+                    if msg.channel!=t_ch:
+                        return 0
                     return 1
+
                 try:
                     mio_resp=await client.wait_for('message',timeout=2,check=mio_check)
                 except:
@@ -345,13 +348,13 @@ async def on_message(message):
                     if not t_q in t_data_dic:
                         embed = discord.Embed(
                             title = t_q,
-                            description = yui_ans_msg,
+                            description = t_ans,
                             )
                         await t_datach.send(embed = embed)
 
-        
-    
-            
+    if message.channel==t_ch and message.embeds[0].footer.text and 'TAOのトレーニング' in message.embeds[0].footer.text:
+        t_ans=(message.embeds[0].description).split("`")[1]
+        await t_ch.send(t_ans)
     if message.content=='y!tstart':
         t_flag=True
         embed = discord.Embed(
