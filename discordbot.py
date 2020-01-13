@@ -92,6 +92,7 @@ edit_flag = True
 edit_flag2 = True
 global_list = []
 t_data_dic = {}
+t_q = None
 #━━━━━━━━━━━━━━━┫
 lvup_time=0
 lvup_timediff=dateTime-dateTime
@@ -307,6 +308,7 @@ async def on_message(message):
     global t_data_dic
     global t_flag
     global yui_ans_msg
+    global t_q
     
 
     if message.content == "y!t":
@@ -316,7 +318,6 @@ async def on_message(message):
     if message.channel == t_ch and message.author == mio or message.author == tao:
         msg = message 
         if message.embeds:
-
             if msg.embeds[0].author.name == f"Training | {client.user}さんの問題":
                 t_q = msg.embeds[0].description
 
