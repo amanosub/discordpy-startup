@@ -56,7 +56,7 @@ data_list = []
 
 
 import citycode_data
-citycodes = cc()
+citycodes = citycode_datacc()
 
 
 training_data = {}
