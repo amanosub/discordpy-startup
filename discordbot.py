@@ -1991,7 +1991,7 @@ async def on_message_edit(before,after):
                 if lvup_time==0:
                     lvup_time=dateTime
                 else:
-                    lvup_timediff=(dateTime)-(lv_uptime)
+                    lvup_timediff=(dateTime)-(lvup_time)
                     total_timediff+=lvup_timediff
                     lvup_timeavg=(total_timediff)/lvup_renum
 
