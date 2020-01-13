@@ -334,7 +334,7 @@ async def on_message(message):
     t_ch = client.get_channel(659923091027132416)
 
     if message.channel == t_ch and message.author == mio:
-        message = msg
+        msg = message 
         if message.embeds:
             if msg.embeds[0].footer.text and "TAOのトレーニング" in msg.embeds[0].footer.text:
                 if not yui_ans_msg== (msg.embeds[0].description).split("`")[1]:
