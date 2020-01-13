@@ -2000,7 +2000,7 @@ async def on_message_edit(before,after):
                 after_lv=lv.split(' -> ')[1]
                 embed = discord.Embed(
                     title = "( 'ω'o[ LvUP!! ]o",
-                    description = f"TrainingでLvが**{before_lv}**から**{after_lv}**に上がったよ!!",
+                    description = f"Trainingで**{before_lv}**から**{after_lv}**に上がったよ!!",
                     color = discord.Color.green())
                 embed.add_field(
                     name=f'現在の平均LvUP速度',
