@@ -1992,7 +1992,7 @@ async def on_message_edit(before,after):
                     lvup_time=dateTime
                 else:
                     lvup_timediff=(dateTime)-(lvup_time)
-                    total_timediff+lvup_timediff
+                    total_timediff+int(lvup_timediff)
                     lvup_timeavg=(total_timediff)/lvup_renum
 
                 lv = after.embeds[0].description.split("`")[1]
