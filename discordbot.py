@@ -343,7 +343,11 @@ async def on_message(message):
             if msg.embeds[0].author.name == f"Training | {client.user}さんの問題":
                 t_q = msg.embeds[0].description
                 t_datach= client.get_channel(666173722163412995)
-                await t_datach.send(f"{t_q}:{yui_ans_msg}")
+                embed = discord.Embed(
+                    title = t_q,
+                    description = yui_ans_msg,
+                    )
+                await t_datach.send(embed = embed)
 
     if message.content=='y!tstart':
         t_flag=True
