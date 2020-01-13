@@ -320,24 +320,38 @@ async def on_message(message):
         if message.embeds:
             if msg.embeds[0].author.name == f"Training | {client.user}さんの問題":
                 t_q = msg.embeds[0].description
+                
+                def mio_check(msg):
+                    if msg.author!=mio:
+                        return 0
+                    if not msg.embeds:
+                        return 0
+                    if msg.embeds[0].footer.text and 'TAOのトレーニング' in msg.embeds[0].footer.text:
+                        return 0
+                    return 1
+                try:
+                    mio_resp=await client.wait_for('message',timeout=2,check=mio_check)
+                except:
+                    pass
+                else:
+                    t_ans=mio_resp.embeds[0].description).split("`")[1]
+                    await t_ch.senf(t_ans)
+                    t_datach= client.get_channel(666173722163412995)
+                    t_datas = await t_datach.history( limit = None ).flatten()
+                    for data in t_datas:
+                        if data.embeds:
+                            t_data_dic[data.embeds[0].title] = data.embeds[0].description
+                      
+                    if not t_q in t_data_dic:
+                        embed = discord.Embed(
+                            title = t_q,
+                            description = yui_ans_msg,
+                            )
+                        await t_datach.send(embed = embed)
 
-            if msg.embeds[0].footer.text and "TAOのトレーニング" in msg.embeds[0].footer.text:
-                if not yui_ans_msg== (msg.embeds[0].description).split("`")[1]:
-                    yui_ans_msg= (msg.embeds[0].description).split("`")[1]
-                    await t_ch.send(yui_ans_msg)
-                    
-            t_datach= client.get_channel(666173722163412995)
-            t_datas = await t_datach.history( limit = None ).flatten()
-            for data in t_datas:
-                if data.embeds:
-                    t_data_dic[data.embeds[0].title] = data.embeds[0].description
-            if not t_q in t_data_dic:
-                embed = discord.Embed(
-                    title = t_q,
-                    description = yui_ans_msg,
-                    )
-                await t_datach.send(embed = embed)
-
+        
+    
+            
     if message.content=='y!tstart':
         t_flag=True
         embed = discord.Embed(
