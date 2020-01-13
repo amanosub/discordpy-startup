@@ -326,7 +326,7 @@ async def on_message(message):
                     
             t_datach= client.get_channel(666173722163412995)
             t_datas = await t_datach.history( limit = None ).flatten()
-            for data in t_datas.content:
+            for data in t_datas.embeds:
                 t_data_dic[data.embeds[0].title] = data.embeds[0].description
             if not t_q in t_data_dic:
                 embed = discord.Embed(
