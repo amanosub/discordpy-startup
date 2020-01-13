@@ -334,7 +334,7 @@ async def on_message(message):
                 except:
                     pass
                 else:
-                    t_ans=mio_resp.embeds[0].description).split("`")[1]
+                    t_ans=(mio_resp.embeds[0].description).split("`")[1]
                     await t_ch.senf(t_ans)
                     t_datach= client.get_channel(666173722163412995)
                     t_datas = await t_datach.history( limit = None ).flatten()
