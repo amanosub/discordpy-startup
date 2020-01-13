@@ -116,7 +116,7 @@ edit_flag2 = True
 global_list = []
 #━━━━━━━━━━━━━━━┫
 lvup_time=0
-lvup_timediff=0
+lvup_timediff=dateTime-dateTime
 total_timediff=0
 lvup_renum=0
 lvup_timeavg=0
@@ -1991,8 +1991,8 @@ async def on_message_edit(before,after):
                 if lvup_time==0:
                     lvup_time=dateTime
                 else:
-                    lvup_timediff=int((dateTime)-(lvup_time))
-                    total_timediff+int(lvup_timediff)
+                    lvup_timediff=(dateTime)-(lvup_time)
+                    total_timediffint(lvup_timediff)
                     lvup_timeavg=(total_timediff)/lvup_renum
 
                 lv = after.embeds[0].description.split("`")[1]
