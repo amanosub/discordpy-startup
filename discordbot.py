@@ -55,32 +55,9 @@ last_resp = None
 data_list = []
 
 
-citycodes = {
-    "北海道": '016010', "青森県": '020010',"岩手県": '030010', "宮城県": '040010',
-    "秋田県": '050010', "山形県": '060010',"福島県": '070010', "東京都": '130010',
-    "神奈川県": '140010', "埼玉県": '110010',"千葉県": '120010', "茨城県": '080010',
-    "栃木県": '090010', "群馬県": '100010',"山梨県": '190010', "新潟県": '150010',
-    "長野県": '200010', "富山県": '160010',"石川県": '170010', "福井県": '180010',
-    "愛知県": '230010', "岐阜県": '200010',"静岡県": '220010', "三重県": '240010',
-    "大阪府": '270000', "兵庫県": '280010',"京都府": '260010', "滋賀県": '250010',
-    "奈良県": '190010', "和歌山県": '300010',"鳥取県": '310010', "島根県": '320010',
-    "岡山県": '330010', "広島県": '340010',"山口県": '350010', "徳島県": '360010',
-    "香川県": '370000', "愛媛県": '380010',"高知県": '390010', "福岡県": '400010',
-    "大分県": '440010', "長崎県": '420010',"佐賀県": '410010', "熊本県": '430010',
-    "宮崎県": '450010', "鹿児島県": '460010',"沖縄県": '471010', "北海": '016010',
-    "青森": '020010', "岩手": '030010',"宮城": '040010', "秋田": '050010',
-    "山形": '060010', "福島": '070010',"東京": '130010', "神奈川": '140010',
-    "埼玉": '110010', "千葉": '120010',"茨城": '080010', "栃木": '090010',
-    "群馬": '100010', "山梨": '190010',"新潟": '150010', "長野": '200010',
-    "富山": '160010', "石川": '170010',"福井": '180010', "愛知": '230010',
-    "岐阜": '200010', "静岡": '220010',"三重": '240010', "大阪": '270000',
-    "兵庫": '280010', "京都": '260010',"滋賀": '250010', "奈良": '190010',
-    "和歌山": '300010', "鳥取": '310010',"島根": '320010', "岡山": '330010',
-    "広島": '340010', "山口": '350010',"徳島": '360010', "香川": '370000',
-    "愛媛": '380010', "高知": '390010',"福岡": '400010', "大分": '440010',
-    "長崎": '420010', "佐賀": '410010',"熊本": '430010', "宮崎": '450010',
-    "鹿児島": '460010', "沖縄": '471010',
-}
+import citycode_data
+citycodes = cc()
+
 
 training_data = {}
 
@@ -114,6 +91,7 @@ yui_ans_msg = None
 edit_flag = True
 edit_flag2 = True
 global_list = []
+t_data_dic = {}
 #━━━━━━━━━━━━━━━┫
 lvup_time=0
 lvup_timediff=dateTime-dateTime
@@ -325,24 +303,32 @@ async def on_message(message):
 
     me = client.user
     tao = client.get_user(526620171658330112)
-    global yui_ans_msg
+    t_ch = client.get_channel(659923091027132416)
+    global t_data_dic
+    global t_flag
+    
 
     if message.content == "y!t":
         await message.channel.send("::t")
 
-    global t_flag
-    t_ch = client.get_channel(659923091027132416)
 
     if message.channel == t_ch and message.author == mio or message.author == tao:
         msg = message 
         if message.embeds:
+
+            if msg.embeds[0].author.name == f"Training | {client.user}さんの問題":
+                t_q = msg.embeds[0].description
+
             if msg.embeds[0].footer.text and "TAOのトレーニング" in msg.embeds[0].footer.text:
                 if not yui_ans_msg== (msg.embeds[0].description).split("`")[1]:
                     yui_ans_msg= (msg.embeds[0].description).split("`")[1]
                     await t_ch.send(yui_ans_msg)
-            if msg.embeds[0].author.name == f"Training | {client.user}さんの問題":
-                t_q = msg.embeds[0].description
-                t_datach= client.get_channel(666173722163412995)
+                    
+            t_datach= client.get_channel(666173722163412995)
+            t_datas = await t_datach.history( limit = None ).flatten()
+            for data in datas.content:
+                t_data_dic[data.embeds[0].title] = data.embeds[0].description
+            if not t_q in t_data_dic:
                 embed = discord.Embed(
                     title = t_q,
                     description = yui_ans_msg,
