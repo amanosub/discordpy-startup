@@ -352,9 +352,11 @@ async def on_message(message):
                             )
                         await t_datach.send(embed = embed)
 
+
     if message.channel==t_ch and message.embeds[0].footer.text and 'TAOのトレーニング' in message.embeds[0].footer.text:
         t_ans=(message.embeds[0].description).split("`")[1]
         await t_ch.send(t_ans)
+
     if message.content=='y!tstart':
         t_flag=True
         embed = discord.Embed(
