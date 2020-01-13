@@ -355,9 +355,9 @@ async def on_message(message):
 
     if message.channel==t_ch and message.embeds[0].footer.text and 'TAOのトレーニング' in message.embeds[0].footer.text:
         t_ans=(message.embeds[0].description).split("`")[1]
-        if t_ans!=yui_ans_msg
-        yui_ans_msg=t_ans
-        await t_ch.send(t_ans)
+        if t_ans!=yui_ans_msg:
+            yui_ans_msg=t_ans
+            await t_ch.send(t_ans)
 
     if message.content=='y!tstart':
         t_flag=True
