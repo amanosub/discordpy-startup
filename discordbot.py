@@ -151,13 +151,8 @@ async def on_ready():
     global t_flag
     t_flag=True
 
-    st_loop.start()
-    time_loop.start()
-
-    t_loop.start()
+    loop.start()
     
-
-
     global data_list
     ohanashi_datach = client.get_channel(663952496741580801)
     datas = await ohanashi_datach.history( limit = 10000 ).flatten()
@@ -192,12 +187,11 @@ async def on_ready():
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @tasks.loop(seconds=60)
-async def st_loop():
+async def loop():
     await client.change_presence(activity=discord.Game(name="y!help│" + str(len(client.guilds)) + 'の鯖に所属中'))
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
-@tasks.loop(seconds=60)
-async def t_loop():
+
     if t_flag==True:
 
         tao=client.get_user(526620171658330112)
@@ -219,8 +213,6 @@ async def t_loop():
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
 
-@tasks.loop(seconds=60)
-async def d_loop():
     if d_flag==True:
         tao=client.get_user(526620171658330112)
         if tao:
@@ -240,9 +232,6 @@ async def d_loop():
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
-
-@tasks.loop(seconds=60)
-async def d_loop2():
     if d_flag2==True:
         d_ch2.send('check point')
         tao = client.get_user(526620171658330112)
@@ -259,9 +248,6 @@ async def d_loop2():
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
-
-@tasks.loop(seconds=60)
-async def test_check_loop():
     if test_flag==True:
        
         tao=client.get_user(526620171658330112)
@@ -283,12 +269,6 @@ async def test_check_loop():
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 
-
-#◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
-
-
-@tasks.loop(seconds=60)
-async def time_loop():
     now = datetime.now(JST).strftime('%H:%M')
     if now == '00:00':
         em = discord.Embed(title="24:00の時報をお伝えします\nなんちゃって", description=random.choice((
@@ -354,11 +334,16 @@ async def on_message(message):
     t_ch = client.get_channel(659923091027132416)
 
     if message.channel == t_ch and message.author == mio:
+        message = msg
         if message.embeds:
-            if message.embeds[0].footer.text and "TAOのトレーニング" in message.embeds[0].footer.text:
-                if not yui_ans_msg== (message.embeds[0].description).split("`")[1]:
-                    yui_ans_msg= (message.embeds[0].description).split("`")[1]
+            if msg.embeds[0].footer.text and "TAOのトレーニング" in msg.embeds[0].footer.text:
+                if not yui_ans_msg== (msg.embeds[0].description).split("`")[1]:
+                    yui_ans_msg= (msg.embeds[0].description).split("`")[1]
                     await t_ch.send(yui_ans_msg)
+            if msg.embeds[0].author.name == f"Training | {client.user}さんの問題":
+                t_q = msg.embeds[0].description
+                t_datach= client.get_channel(666173722163412995)
+                await t_datach.send(f"{t_q}:{yui_ans_msg}")
 
     if message.content=='y!tstart':
         t_flag=True
@@ -1991,9 +1976,9 @@ async def on_message_edit(before,after):
                 if lvup_time==0:
                     lvup_time=dateTime
                 else:
-                    lvup_timediff=(dateTime)-(lvup_time)
-                    total_timediffint(lvup_timediff)
-                    lvup_timeavg=(total_timediff)/lvup_renum
+                    lvup_timediff = (dateTime)-(lvup_time)
+                    total_timediff = (lvup_timediff)
+                    lvup_timeavg = int(total_timediff)/(lvup_renum)
 
                 lv = after.embeds[0].description.split("`")[1]
                 before_lv=lv.split(' -> ')[0]
