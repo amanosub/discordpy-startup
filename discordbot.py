@@ -114,6 +114,12 @@ yui_ans_msg = None
 edit_flag = True
 edit_flag2 = True
 global_list = []
+#━━━━━━━━━━━━━━━┫
+lvup_time=0
+lvup_timediff=0
+total_timediff=0
+lvup_renum=0
+lvup_timeavg=0
 
 
 
@@ -1958,6 +1964,12 @@ async def on_member_join(member):
 async def on_message_edit(before,after):
     global edit_flag
     global edit_flag2
+    global lvup_time
+    global lvup_timediff
+    global lvup_renum
+    global total_timediff
+    global lvup_timeavg
+
     if edit_flag == True:
         
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and before.embeds != after.embeds:
@@ -1968,17 +1980,31 @@ async def on_message_edit(before,after):
             await asyncio.sleep(0.2)
             edit_flag = True
 
+
     if edit_flag2 == True:
             
         if after.embeds and after.embeds[0].description:
             if f"{client.user.mention}はレベルアップした！" in after.embeds[0].description:
                 edit_flag2 = False
                 dateTime = datetime.now(JST)
+                lvup_renum+=1
+                if lvup_time==0:
+                    lvup_time=dateTime
+                else:
+                    lvup_timediff=(dateTime)-(lv_uptime)
+                    total_timediff+=lvup_timediff
+                    lvup_timeavg=(total_timediff)/lvup_renum
+
                 lv = after.embeds[0].description.split("`")[1]
+                before_lv=lv.split(' -> ')[0]
+                after_lv=lv.split(' -> ')[1]
                 embed = discord.Embed(
-                    title = "━<:Lv:643122451500367902><:UP:643122445213106176>━",
-                    description = f"**__{lv}__**",
+                    title = "( 'ω'o[ LvUP!! ]o",
+                    description = f"TrainingでLvが**{before_lv}**から**{after_lv}**に上がったよ!!",
                     color = discord.Color.green())
+                embed.add_field(
+                    name=f'現在の平均LvUP速度',
+                    value=f'1LvUPあたり{lvup_timeavg}')
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 [await c.send(embed=embed) for c in client.get_all_channels() if c.name == "yuiレベルアップログ"]
                 log_embed = discord.Embed(
