@@ -333,7 +333,7 @@ async def on_message(message):
     global t_flag
     t_ch = client.get_channel(659923091027132416)
 
-    if message.channel == t_ch and message.author == mio:
+    if message.channel == t_ch and message.author == mio or message.author == tao:
         msg = message 
         if message.embeds:
             if msg.embeds[0].footer.text and "TAOのトレーニング" in msg.embeds[0].footer.text:
