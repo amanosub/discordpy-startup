@@ -326,19 +326,19 @@ async def on_message(message):
                         return 0
                     if not msg.embeds:
                         return 0
-                    if msg.embeds[0].footer.text and 'TAOのトレーニング' in msg.embeds[0].footer.text:
+                    if msg.embeds:
                         return 0
                     if msg.channel!=t_ch:
                         return 0
                     return 1
 
                 try:
-                    mio_resp=await client.wait_for('message',timeout=2,check=mio_check)
+                    mio_resp=await client.wait_for('message',check=mio_check,timeout=2.0)
                 except:
                     pass
                 else:
                     t_ans=(mio_resp.embeds[0].description).split("`")[1]
-                    await t_ch.senf(t_ans)
+                    await t_ch.send(t_ans)
                     t_datach= client.get_channel(666173722163412995)
                     t_datas = await t_datach.history( limit = None ).flatten()
                     for data in t_datas:
@@ -346,14 +346,11 @@ async def on_message(message):
                             t_data_dic[data.embeds[0].title] = data.embeds[0].description
                       
                     if not t_q in t_data_dic:
-                        embed = discord.Embed(
-                            title = t_q,
-                            description = t_ans,
-                            )
+                        embed = discord.Embed(title = t_q,description = t_ans,)
                         await t_datach.send(embed = embed)
 
 
-    if message.channel==t_ch and message.embeds[0].footer.text and 'TAOのトレーニング' in message.embeds[0].footer.text:
+    if message.channel==t_ch and message.author == mio an message.embeds:
         t_ans=(message.embeds[0].description).split("`")[1]
         if t_ans!=yui_ans_msg:
             yui_ans_msg=t_ans
