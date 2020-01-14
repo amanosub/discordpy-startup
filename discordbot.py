@@ -350,7 +350,7 @@ async def on_message(message):
                         await t_datach.send(embed = embed)
 
 
-    if message.channel==t_ch and message.author == mio an message.embeds:
+    if message.channel==t_ch and message.author == mio and message.embeds:
         t_ans=(message.embeds[0].description).split("`")[1]
         if t_ans!=yui_ans_msg:
             yui_ans_msg=t_ans
