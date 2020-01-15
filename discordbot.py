@@ -1148,8 +1148,14 @@ async def on_message(message):
             description = q_num[1],
             color = discord.Color.green()
         )
-        
-        if q_num[13]:
+        A = q_num[13]
+        B = q_num[11]
+        C = q_num[9]
+        D = q_num[7]
+        E = q_num[5]
+        F = q_num[3]
+
+        if A:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1176,7 +1182,7 @@ async def on_message(message):
             )
             reaction=[":one:",":two:",":three:",":four:",":five:",":six:"]    
             
-        elif q_num[11]:
+        elif B:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1199,7 +1205,7 @@ async def on_message(message):
             )
             reaction=[":one:",":two:",":three:",":four:",":five:",]
             
-        elif q_num[9]:
+        elif C:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1219,7 +1225,7 @@ async def on_message(message):
 
             reaction=[":one:",":two:",":three:",":four:"]
             
-        elif q_num[7]:
+        elif D:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1235,7 +1241,7 @@ async def on_message(message):
 
             reaction=[":one:",":two:",":three:"]
             
-        elif q_num[5]:
+        elif E:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1247,7 +1253,7 @@ async def on_message(message):
 
             reaction=[":one:",":two:"]    
             
-        elif q_num[3]:
+        elif F:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
