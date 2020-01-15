@@ -1141,6 +1141,125 @@ async def on_message(message):
 
                 await message.channel.send(embed=embed)
 
+    if message.content.startswith('y!poll '):
+        q_num=message.content.split('"')
+        dateTime = datetime.now(JST)
+        embed = discord.Embed(
+            description = q_num[1],
+            color = discord.Color.green()
+        )
+        
+        if q_num[13]:
+            embed.add_field(
+                name = "選択肢①",
+                value = q_num[3]
+            )
+            embed.add_field(
+                name = "選択肢②",
+                value = q_num[5]
+            )
+            embed.add_field(
+                name = "選択肢③",
+                value = q_num[7]
+            )
+            embed.add_field(
+                name = "選択肢④",
+                value = q_num[9]
+            )
+            embed.add_field(
+                name = "選択肢⑤",
+                value = q_num[11]
+            )
+            embed.add_field(
+                name = "選択肢⑥",
+                value = q_num[13]
+            )
+            reaction=[":one:",":two:",":three:",":four:",":five:",":six:"]    
+            
+        elif q_num[11]:
+            embed.add_field(
+                name = "選択肢①",
+                value = q_num[3]
+            )
+            embed.add_field(
+                name = "選択肢②",
+                value = q_num[5]
+            )
+            embed.add_field(
+                name = "選択肢③",
+                value = q_num[7]
+            )
+            embed.add_field(
+                name = "選択肢④",
+                value = q_num[9]
+            )
+            embed.add_field(
+                name = "選択肢⑤",
+                value = q_num[11]
+            )
+            reaction=[":one:",":two:",":three:",":four:",":five:",]
+            
+        elif q_num[9]:
+            embed.add_field(
+                name = "選択肢①",
+                value = q_num[3]
+            )
+            embed.add_field(
+                name = "選択肢②",
+                value = q_num[5]
+            )
+            embed.add_field(
+                name = "選択肢③",
+                value = q_num[7]
+            )
+            embed.add_field(
+                name = "選択肢④",
+                value = q_num[9]
+            )
+
+            reaction=[":one:",":two:",":three:",":four:"]
+            
+        elif q_num[7]:
+            embed.add_field(
+                name = "選択肢①",
+                value = q_num[3]
+            )
+            embed.add_field(
+                name = "選択肢②",
+                value = q_num[5]
+            )
+            embed.add_field(
+                name = "選択肢③",
+                value = q_num[7]
+            )
+
+            reaction=[":one:",":two:",":three:"]
+            
+        elif q_num[5]:
+            embed.add_field(
+                name = "選択肢①",
+                value = q_num[3]
+            )
+            embed.add_field(
+                name = "選択肢②",
+                value = q_num[5]
+            )
+
+            reaction=[":one:",":two:"]    
+            
+        elif q_num[3]:
+            embed.add_field(
+                name = "選択肢①",
+                value = q_num[3]
+            )
+            reaction=[":one:"]
+            
+        embed.set_footer(
+            text = f"使用者 ｜{message.author}/n使用時刻｜{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
+        re_msg = await message.channel.send(embed = embed)
+        for react in reaction:
+            await re_msg.add_reaction(react)  
+        
     if message.content.startswith("y!report "):
         report_ch = client.get_channel(659966462273912833)
         reply = message.content.split('y!report ')[1]
@@ -1272,7 +1391,6 @@ async def on_message(message):
     if message.content == 'y!tgrare':
         role = discord.utils.get(message.guild.roles, name='超激レア通知')  # YUI通知
         if role:
-
             await message.author.add_roles(role)
             reply = discord.Embed(title='役職を付与完了!!',description=f'{message.author.mention} に{role.mention}をつけたよ')
             await message.channel.send(embed=reply)
@@ -1284,7 +1402,6 @@ async def on_message(message):
     if message.content == 'y!grare':
         role = discord.utils.get(message.guild.roles, name='激レア通知')  # YUI通知
         if role:
-
             await message.author.add_roles(role)
             reply = discord.Embed(title='役職を付与完了!!',description=f'{message.author.mention} に{role.mention}をつけたよ')
             await message.channel.send(embed=reply)
@@ -1730,9 +1847,8 @@ async def on_message(message):
     if message.content.startswith("y!mkch "):
         await message.delete()
         reply_one = message.content.split('y!mkch ')[1]
-        category_id = message.channel.category_id
-        category = message.guild.get_channel(category_id)
-        new_channel = await category.create_text_channel(name=reply_one)
+        guild = message.guild
+        new_channel = await guild.create_text_channel(name=reply_one)
         reply = f'{new_channel.mention} を作成したよ!'
 
         await message.channel.send(reply)
