@@ -1140,7 +1140,7 @@ async def on_message(message):
             else:
 
                 await message.channel.send(embed=embed)
-
+                
     if message.content.startswith('y!poll '):
         q_num=message.content.split('"')
         dateTime = datetime.now(JST)
@@ -1150,7 +1150,7 @@ async def on_message(message):
         )
         A = len(q_num)
 
-        if A = 14:
+        if A == 14:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1177,7 +1177,7 @@ async def on_message(message):
             )
             reaction=[":one:",":two:",":three:",":four:",":five:",":six:"]    
             
-        elif A = 12:
+        elif A == 12:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1200,7 +1200,7 @@ async def on_message(message):
             )
             reaction=[":one:",":two:",":three:",":four:",":five:",]
             
-        elif A = 10:
+        elif A == 10:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1220,7 +1220,7 @@ async def on_message(message):
 
             reaction=[":one:",":two:",":three:",":four:"]
             
-        elif A = 8:
+        elif A == 8:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1236,7 +1236,7 @@ async def on_message(message):
 
             reaction=[":one:",":two:",":three:"]
             
-        elif A = 6:
+        elif A == 6:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1248,7 +1248,7 @@ async def on_message(message):
 
             reaction=[":one:",":two:"]    
             
-        elif A >= 4:
+        elif A == 4:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
