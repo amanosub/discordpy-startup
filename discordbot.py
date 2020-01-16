@@ -1138,7 +1138,6 @@ async def on_message(message):
                     embed.set_thumbnail(url="https://yahoo.jp/box/JAzR8X")
                     await message.channel.send(embed=embed)
             else:
-
                 await message.channel.send(embed=embed)
                 
     if message.content.startswith('y!poll '):
@@ -1175,7 +1174,7 @@ async def on_message(message):
                 name = "選択肢⑥",
                 value = q_num[13]
             )
-            reaction=[":one:",":two:",":three:",":four:",":five:",":six:"]    
+            react=[":one:",":two:",":three:",":four:",":five:",":six:"]    
             
         elif A == 12:
             embed.add_field(
@@ -1198,7 +1197,7 @@ async def on_message(message):
                 name = "選択肢⑤",
                 value = q_num[11]
             )
-            reaction=[":one:",":two:",":three:",":four:",":five:",]
+            react=[":one:",":two:",":three:",":four:",":five:",]
             
         elif A == 10:
             embed.add_field(
@@ -1218,7 +1217,7 @@ async def on_message(message):
                 value = q_num[9]
             )
 
-            reaction=[":one:",":two:",":three:",":four:"]
+            react=[":one:",":two:",":three:",":four:"]
             
         elif A == 8:
             embed.add_field(
@@ -1234,7 +1233,7 @@ async def on_message(message):
                 value = q_num[7]
             )
 
-            reaction=[":one:",":two:",":three:"]
+            react=[":one:",":two:",":three:"]
             
         elif A == 6:
             embed.add_field(
@@ -1246,20 +1245,20 @@ async def on_message(message):
                 value = q_num[5]
             )
 
-            reaction=[":one:",":two:"]    
+            react=[":one:",":two:"]    
             
         elif A == 4:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
             )
-            reaction=[":one:"]
+            react=[":one:"]
             
         embed.set_footer(
             text = f"使用者 ｜{message.author}/n使用時刻｜{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
         re_msg = await message.channel.send(embed = embed)
-        for react in reaction:
-            await re_msg.add_reaction(react)  
+        for reacts in react:
+            await re_msg.add_reaction(reacts)  
         
     if message.content.startswith("y!report "):
         report_ch = client.get_channel(659966462273912833)
