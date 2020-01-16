@@ -1150,7 +1150,7 @@ async def on_message(message):
         )
         A = len(q_num)
 
-        if A == 13:
+        if A >= 13:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1177,7 +1177,7 @@ async def on_message(message):
             )
             react=[":one:",":two:",":three:",":four:",":five:",":six:"]    
             
-        elif A == 11:
+        elif A >= 11:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1200,7 +1200,7 @@ async def on_message(message):
             )
             react=[":one:",":two:",":three:",":four:",":five:",]
             
-        elif A == 9:
+        elif A >= 9:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1220,7 +1220,7 @@ async def on_message(message):
 
             react=[":one:",":two:",":three:",":four:"]
             
-        elif A == 7:
+        elif A >= 7:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1236,7 +1236,7 @@ async def on_message(message):
 
             react=[":one:",":two:",":three:"]
             
-        elif A == 5:
+        elif A >= 5:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1248,7 +1248,7 @@ async def on_message(message):
 
             react=[":one:",":two:"]    
             
-        elif A == 3:
+        elif A >= 3:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
