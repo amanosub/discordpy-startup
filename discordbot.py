@@ -1143,6 +1143,7 @@ async def on_message(message):
     if message.content.startswith('y!poll '):
         q_num=message.content.split('"')
         dateTime = datetime.now(JST)
+        react = []
         embed = discord.Embed(
             description = q_num[1],
             color = discord.Color.green()
