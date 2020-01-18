@@ -333,7 +333,7 @@ async def on_message(message):
                     return 1
 
                 try:
-                    mio_resp=await client.wait_for('message',check=mio_check,timeout=2.0)
+                    mio_resp=await client.wait_for('message',timeout=2.0,check=mio_check)
                 except:
                     pass
                 else:
@@ -493,7 +493,7 @@ async def on_message(message):
         url_embed = discord.Embed(title='YUI関連URL\n')
         url_embed.add_field(name='‣**Re:YUI ver1.12.2 招待URL**',
                             value='[URLはこちら](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)')
-        url_embed.add_field(name='‣**YUI Official Server 招待URL**', value='[URLはこちら](https://discord.gg/tJaJBDD)')
+        url_embed.add_field(name='‣**YUI Official Server 招待URL**', value='[URLはこちら](https://discord.gg/Qn5QDfJ)')
         url_embed.add_field(name='‣**YUIサポートBot Mio 招待URL**',
                             value='[URLはこちら](https://discordapp.com/oauth2/authorize?client_id=644153226597498890&permissions=8&scope=bot)')
         url_embed.set_footer(icon_url=message.author.avatar_url, text=f"ヘルプ使用者│{message.author}\nP.7/7")
