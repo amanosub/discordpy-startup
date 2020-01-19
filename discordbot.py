@@ -300,6 +300,7 @@ async def on_message(message):
         d_num01=d_ch2.name.split('第')[1]
         d_num02=d_num01.split('層')[0]
         d_num2=int(d_num02)
+
 #━━━━❮Trainingコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
     me = client.user
@@ -314,6 +315,20 @@ async def on_message(message):
     if message.content == "y!t":
         await message.channel.send("::t")
 
+
+    if '::t' in message.content and message.author==me:
+        def msg_check (msg):
+            if message.author != tao:
+                return 0
+            if msg.channel!=t_ch:
+                return 0
+            return 1
+        try:
+            tao_msg=await client.wait_for('message',timeout=5,check=msg_check)
+        except asyncio.TimeoutError:
+            await t_ch.send('::t')
+        else:
+            pass
 
     if message.channel == t_ch and message.author == mio or message.author == tao:
         msg = message 
@@ -333,8 +348,8 @@ async def on_message(message):
                     return 1
 
                 try:
-                    mio_resp=await client.wait_for('message',timeout=2.0,check=mio_check)
-                except:
+                    mio_resp=await client.wait_for('message',timeout=2,check=mio_check)
+                except asyncio.TimeoutError:
                     pass
                 else:
                     t_ans=(mio_resp.embeds[0].description).split("`")[1]
@@ -836,21 +851,25 @@ async def on_message(message):
     global test_ch
     global test_flag
     if message.content.startswith("y!testch "):
-        test_check_loop.start()
-        test_ch_m = message.content.split('y!testch ')[1]
-        test_ch = discord.utils.get(message.guild.text_channels, mention=test_ch_m)
-        await asyncio.sleep(1)
-        test_flag=True
-        await test_ch.send("::attack")
+        if tesy_flag==True:
+            await message.channel.send('他の人が使用中です')
+            return
+        else:
+            test_check_loop.start()
+            test_ch_m = message.content.split('y!testch ')[1]
+            test_ch = discord.utils.get(message.guild.text_channels, mention=test_ch_m)
+            await asyncio.sleep(1)
+            test_flag=True
+            await test_ch.send("::attack")
 
-        log_ch = client.get_channel(659923606595174441)
-        embed=discord.Embed(
-        title=f"( 'ω'o[**testch**]oログ♡",
-        description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{test_ch.name}』```')
-        embed.set_thumbnail(url=message.author.avatar_url)
-        await log_ch.send(embed=embed)
-        embed=discord.Embed(title='Test Play開始')
-        await message.author.send(embed=embed)
+            log_ch = client.get_channel(659923606595174441)
+            embed=discord.Embed(
+             title=f"( 'ω'o[**testch**]oログ♡",
+            description=f'```使用鯖　│『{message.guild.name}』\n使用者　│『{message.author}』\n使用者ID│『{message.author.id}』\n使用ch名│『{message.channel.name}』\n指定ch名│『{test_ch.name}』```')
+            embed.set_thumbnail(url=message.author.avatar_url)
+            await log_ch.send(embed=embed)
+            embed=discord.Embed(title='Test Play開始')
+            await message.author.send(embed=embed)
 
 
     if message.content=='y!teststop':
@@ -1098,7 +1117,7 @@ async def on_message(message):
                 await ch5.send(embed=embed)
                 
             if message.channel.id == 659336616359231509:
-                await test_ch.edit(name=f'裏本編-lv{lv}')
+                await test_ch.edit(name=f'本編-lv{lv}')
 
 #━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
@@ -1929,134 +1948,8 @@ async def on_message(message):
                     await channel.send(embed=embed)
 
 #━━━━❮オートレスポンスコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
-    global data_list
-    global talk_flag
-    global last_resp
-    ohanashi_datach = client.get_channel(663952496741580801)
 
-    if message.content == "y!ohanashi":
-        datas = await ohanashi_datach.history( limit = None ).flatten()
-        m_ch = message.channel
-        data_list.clear()
-        for data in datas:
-            data_list.append(data.content)
-
-        if str(m_ch.id) in data_list:
-            print(f"追加\nチャンネル名前\n{m_ch.name}\nチャンネルID\n{m_ch.id}\n")
-            await m_ch.send("もう登録済みだよ？")
-
-        else:
-            await ohanashi_datach.send(m_ch.id)
-            await message.channel.send( "\n".join( [ i.content for i in data_list] ) )
-            touroku_msg = await m_ch.send("登録中<a:loadinfo:651635984068378663>")
-            datas = await ohanashi_datach.history( limit = None ).flatten()
-            data_list.clear()
-            for data in datas:
-                data_list.append(data.content)
-
-            if str(m_ch.id) in data_list:
-                await touroku_msg.delete()
-                await message.channel("登録完了♪✅")
-            else:
-                await touroku_msg.delete()
-                await message.channel("登録する段階で何かしらのエラーが出ました(´;ω;｀)`y!report [内容]`で、フィードバックを送信してください")
-
-    if message.content == "y!baibai":
-        m_ch = message.channel
-        datas = await ohanashi_datach.history( limit = None ).flatten()
-        for data in datas.content:
-            data_sublist.append(data)
-
-        if str(m_ch.id) in data_sublist:
-            await datas.delete()
-            data_list.clear()
-            datas = await ohanashi_datach.history( limit = None ).flatten()
-            for data in datas:
-                data_list.append(data.content)
-
-            await message.channel.send("バイバイ(´;ω;｀)")
-
-        else:
-            await m_ch.send("このチャンネルは登録されてないよ……？")
-
-    if str(message.channel.id) in data_list and message.author != client.user and not message.content.startswith("y!"):
-        bot_resp = talk.get(message.content)
-        true_resp = bot_resp
-
-        bot_resp = bot_resp.replace('私をですか?嬉しいです',"私の事を?嬉しいなー((o(｡>ω<｡)o))")
-        bot_resp = bot_resp.replace('なんでもないです',"なんでもないよ")
-        bot_resp = bot_resp.replace('わかりません',"よくわからないなー")
-        bot_resp = bot_resp.replace('ですか',"？")
-        bot_resp = bot_resp.replace('ごめんなさい。私にはよくわかりません。',"ごめん、私にはよくわからないなー")
-        bot_resp = bot_resp.replace('わかりません',"よくわからないなー")
-
-        bot_resp = bot_resp.replace('あなた',"きみ")
-        bot_resp = bot_resp.replace("りましょう","ろう")
-        bot_resp = bot_resp.replace("ですよね","だよね")
-        bot_resp = bot_resp.replace("ですよ","よ")
-        bot_resp = bot_resp.replace("ですね","だね")
-        bot_resp = bot_resp.replace("んですか","の?")
-        bot_resp = bot_resp.replace("です","だよ")
-        bot_resp = bot_resp.replace("りましたか","ったん")
-        bot_resp = bot_resp.replace("でしょうか","なの")
-        bot_resp = bot_resp.replace("はい","うん")
-        bot_resp = bot_resp.replace("ございます","")
-        bot_resp = bot_resp.replace("していただけた","してくれた")
-        bot_resp = bot_resp.replace("ようですね","みたいだね")
-        bot_resp = bot_resp.replace("ありました？","あった……？")
-        bot_resp = bot_resp.replace("りました","った")
-        bot_resp = bot_resp.replace("きました","いた")
-        bot_resp = bot_resp.replace("ました","た")
-        bot_resp = bot_resp.replace("ましょう","よう")
-        bot_resp = bot_resp.replace("りましす","る")
-        bot_resp = bot_resp.replace("います","う")
-        bot_resp = bot_resp.replace("くださいね","ね")
-        bot_resp = bot_resp.replace("しれません","ね")
-        bot_resp = bot_resp.replace("します","するね")
-        bot_resp = bot_resp.replace("お困り事","トラブル")
-        bot_resp = bot_resp.replace('ます',"る")
-
-        await message.channel.send(bot_resp)
-
-        dateTime = datetime.now(JST)
-
-        embed = discord.Embed(
-            title = "YUI会話ログ",
-            color = discord.Color.green()
-        )
-
-        embed.add_field(
-            name = f"{message.author.name}の発言",
-            value = f"『{message.content}』",
-            inline = False
-        )
-
-        embed.add_field(
-            name = f"{message.author.name}の発言",
-            value = f"『{bot_resp}』\n『{true_resp}』",
-            inline = False
-        )
-
-        embed.add_field(
-            name = f"会話鯖情報",
-            value = f"Name┃{message.guild.name}\nGuID┃{message.guild.id}",
-            inline = False
-        )
-
-        embed.add_field(
-            name = f"会話チャンネル情報",
-            value = f"Name┃{message.channel.name}\nChID┃{message.channel.id}",
-            inline = False
-        )
-
-        embed.set_footer(
-        text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒",
-        icon_url = message.author.avatar_url
-        )
-        log_ch = client.get_channel(665126896534552597)
-        await log_ch.send(embed=embed)
-
-
+#現在停止中
 
 @client.event
 async def on_member_join(member):
