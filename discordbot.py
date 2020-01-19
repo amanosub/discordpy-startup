@@ -316,19 +316,7 @@ async def on_message(message):
         await message.channel.send("::t")
 
 
-    if '::t' in message.content and message.author==me:
-        def msg_check (msg):
-            if message.author != tao:
-                return 0
-            if msg.channel!=t_ch:
-                return 0
-            return 1
-        try:
-            tao_msg=await client.wait_for('message',timeout=10,check=msg_check)
-        except asyncio.TimeoutError:
-            await t_ch.send('::t')
-        else:
-            pass
+
 
     if message.channel == t_ch and message.author == mio or message.author == tao:
         msg = message 
