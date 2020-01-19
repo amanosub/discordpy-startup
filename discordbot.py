@@ -324,7 +324,7 @@ async def on_message(message):
                 return 0
             return 1
         try:
-            tao_msg=await client.wait_for('message',timeout=5,check=msg_check)
+            tao_msg=await client.wait_for('message',timeout=10,check=msg_check)
         except asyncio.TimeoutError:
             await t_ch.send('::t')
         else:
