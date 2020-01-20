@@ -1106,7 +1106,7 @@ async def on_message(message):
                 
             if (type('string') is int) != True:
                 
-                if message.channel.id == 659336616359231509 and 
+                if message.channel.id == 659336616359231509 :
                     await test_ch.edit(name=f'本編-lv{lv}')
 
 #━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
