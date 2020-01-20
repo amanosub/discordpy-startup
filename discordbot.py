@@ -1104,9 +1104,9 @@ async def on_message(message):
             if rank == "超激レア" and ch5:
                 await ch5.send(embed=embed)
                 
-            if test_ch!=1:
-                if message.channel.id == 659336616359231509 :
-                    await test_ch.edit(name=f'本編-lv{lv}')
+
+            if message.channel.id == 659336616359231509 :
+                await test_ch.edit(name=f'本編-lv{lv}')
 
 #━━━━❮Say系コード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
