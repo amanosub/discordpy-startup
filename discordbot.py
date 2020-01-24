@@ -100,7 +100,8 @@ total_timediff=0
 lvup_renum=0
 lvup_timeavg=0
 
-
+deleuser=None
+delech=None
 
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
@@ -284,6 +285,23 @@ async def on_disconnect():
 
 @client.event
 async def on_message(message):
+
+    global deleuser
+    global delech
+
+    if deleuser and delech and message.channel==delech and message.author==deleuser:
+        await message.delete()
+
+
+    if message.content.startswith('y!dele '):
+        deleuser_id=message.content.split('"')[1]
+        deleiser=client.get_user(deleuser_id)
+        delech_id=message.content.split('"')[1]
+        delech=client.get_channel(delech_id)
+
+    if message.content=='y!deleNone':
+        delech=None
+        deleuser=None
 
 #━━━━❮ダンジョン+αで使うグローバル変数と変数❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
