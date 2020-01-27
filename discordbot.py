@@ -103,9 +103,13 @@ lvup_timeavg=0
 deleuser=None
 delech=None
 
+developer=0
+
 #◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢
 @client.event
 async def on_ready():
+    global developer
+    developer=client.get_user(446610711230152706)
 
     global d_ch      #◆世界樹の第一階層チャンネル取得
     d_guild = client.get_guild(654086105699844108)
@@ -420,7 +424,7 @@ async def on_message(message):
         help_logch = client.get_channel(id=help_ch)
 
         help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",
-                                     description='🔷**[]は不要です**\n```y![example]→y!example```\n🔷**スペースの有無を確認して下さい**\n```y!example []→有り\ny!example[]→無し```\n🔷**管理者権限必須です**```YUIに管理者権限が無いと無能BOTと化します。```\n🔷**技術的不具合**```。Helpがこのページから進まない場合はYUIを招待し直してください。\n```[ここから招待可能です](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n上記全てに同意の場合は☑️を\n同意しないという場合は❎を押してください。\n不具合等は`y!report 内容`でお知らせください',
+                                     description='```🔷[]は不要です\ny![example]→y!example\n🔷スペースの有無を確認して下さい\ny!example []→有り\ny!example[]→無し\n🔷管理者権限必須ですYUIに管理者権限が無いと無能BOTと化します。\n🔷役職不具合\nHelpがこのページから進まない場合はYUIを招待し直してください。\n[ここから招待可能です(https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n不具合等は\ny!report 内容\nでお知らせください```',
                                      color=discord.Colour.green())
 
         help_embed = discord.Embed(title="TAOコマンド系ヘルプ", description="TAOで使うコマンドを使うヘルプだよ", color=discord.Colour.green())
@@ -1176,7 +1180,7 @@ async def on_message(message):
         )
         A = len(q_num)
 
-        if A >= 13:
+        if A >= 14:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1203,7 +1207,7 @@ async def on_message(message):
             )
             react=[":one:",":two:",":three:",":four:",":five:",":six:"]    
             
-        elif A >= 11:
+        elif A >= 12:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1226,7 +1230,7 @@ async def on_message(message):
             )
             react=[":one:",":two:",":three:",":four:",":five:",]
             
-        elif A >= 9:
+        elif A >= 10:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1246,7 +1250,7 @@ async def on_message(message):
 
             react=[":one:",":two:",":three:",":four:"]
             
-        elif A >= 7:
+        elif A >= 8:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1262,7 +1266,7 @@ async def on_message(message):
 
             react=[":one:",":two:",":three:"]
             
-        elif A >= 5:
+        elif A >= 6:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1274,7 +1278,7 @@ async def on_message(message):
 
             react=[":one:",":two:"]    
             
-        elif A >= 3:
+        elif A >= 4:
             embed.add_field(
                 name = "選択肢①",
                 value = q_num[3]
@@ -1290,7 +1294,7 @@ async def on_message(message):
     if message.content.startswith("y!report "):
         report_ch = client.get_channel(659966462273912833)
         reply = message.content.split('y!report ')[1]
-        embed = discord.Embed(title='レポート内容\n' + (reply), description=f"発言者{message.author.mention}", color=0x2ECC69)
+        embed = discord.Embed(title=f'{developer.mention}レポート内容\n```{reply}```', description=f"発言者{message.author.mention}", color=0x2ECC69)
         embed.add_field(name="レポート提出時刻",
         value=f"{datetime.now(JST)}", inline=True)
         await report_ch.send(embed=embed)
