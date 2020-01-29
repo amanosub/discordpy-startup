@@ -427,6 +427,7 @@ async def on_message(message):
                                      description='```🔷[]は不要です\ny![example]→y!example\n🔷スペースの有無を確認して下さい\ny!example []→有り\ny!example[]→無し\n🔷管理者権限必須ですYUIに管理者権限が無いと無能BOTと化します。\n🔷役職不具合\nHelpがこのページから進まない場合はYUIを招待し直してください。\n[ここから招待可能です(https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n不具合等は\ny!report 内容\nでお知らせください```',
                                      color=discord.Colour.green())
 
+        
         help_embed = discord.Embed(title="TAOコマンド系ヘルプ", description="TAOで使うコマンドを使うヘルプだよ", color=discord.Colour.green())
         help_embed.add_field(
             name='y!login', value='```ログインする```', inline=True)
