@@ -2011,7 +2011,7 @@ async def on_message_edit(before,after):
                 else:
                     lvup_timediff = (dateTime)-(lvup_time)
                     total_timediff = (lvup_timediff)
-                    lvup_timeavg = int(total_timediff)/(lvup_renum)
+                    lvup_timeavg = datetime.timedelta(total_timediff)/(lvup_renum)
 
                 lv = after.embeds[0].description.split("`")[1]
                 before_lv=lv.split(' -> ')[0]
