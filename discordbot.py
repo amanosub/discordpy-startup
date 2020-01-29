@@ -1980,6 +1980,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message_edit(before,after):
+    import datetime
     global edit_flag
     global edit_flag2
     global lvup_time
@@ -2004,7 +2005,7 @@ async def on_message_edit(before,after):
         if after.embeds and after.embeds[0].description:
             if f"{client.user.mention}はレベルアップした！" in after.embeds[0].description:
                 edit_flag2 = False
-                dateTime = datetime.now(JST)
+                dateTime = datetime.datetime.now(JST)
                 lvup_renum+=1
                 if lvup_time==0:
                     lvup_time=dateTime
