@@ -1062,7 +1062,7 @@ async def on_message(message):
     if message.content.startswith("y?"):
         if not " " in message.content:
             wald = message.content.split("y?")
-        elif "/" in message.content
+        elif "/" in message.content:
             wards = message.content.split(" ")
             wald = "="
             for ward in wards:
