@@ -1060,13 +1060,13 @@ async def on_message(message):
 
 
     if message.content.startswith("y?"):
-        wards = message.content.split(",")
+        wards = message.content.split("/")
         wald = "="
         for ward in wards:
             wald += "+"
             wald += ward
-        wald.replace('y?,', '')
-        wald.replace(',', ' ')
+        wald.replace('y?/', '')
+        wald.replace('/', ' ')
         kensaku = f'https://www.google.com/search?q{wald}&rlz=1C1WPZA_jaJP768JP768&oq{wald}&aqs=chrome..69i57j0l7.2359j0j7&sourceid=chrome&ie=UTF-8'
         embed = discord.Embed(title = f"**{message.content.split('y?')[1]}**の検索結果だよ！",description = f"[ここからどうぞ]({kensaku})")
         embed.timestamp = datetime.now(JST)
