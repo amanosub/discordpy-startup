@@ -1633,6 +1633,7 @@ async def on_message(message):
         result=emono_dect[result_key]
         embed=discord.Embed(title=f'**-YUIの釣り!-**\nお?　{result_key}が釣れたね!\n{result}',color=discord.Color.blue())
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/635993816297504809/659805550443233290/58_20191227021126.png')
+        embed.timestamp = datetime.now(JST)
 
         await message.channel.send(embed=embed)
 
