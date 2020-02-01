@@ -424,8 +424,8 @@ async def on_message(message):
         help_logch = client.get_channel(id=help_ch)
 
         help_embed_0 = discord.Embed(title="⚠️YUI注意事項一覧⚠️",
-                                     description='```🔷[]は不要です\n　y![example]→y!example\n🔷スペースの有無を確認して下さい\n　y!example []→有り\n　y!example[]→無し\n🔷管理者権限必須です\n　YUIに管理者権限が無いと無能BOTと化します。\n🔷役職不具合\n　Helpがこのページから進まない場合はYUIを招待し直してください。\n[ここから招待可能です](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)\n　不具合等は\n　y!report 内容\n　でお知らせください```',
-                                     color=discord.Colour.green())
+         description='```🔷[]は不要です\n　y![example]→y!example\n🔷スペースの有無を確認して下さい\n　y!example []→有り\n　y!example[]→無し\n🔷管理者権限必須です\n　YUIに管理者権限が無いと無能BOTと化します。\n🔷役職不具合\n　Helpがこのページから進まない場合はYUIを招待し直してください。\n　不具合等は\n　y!report 内容\n　でお知らせください```[YUIはここから招待可能です](https://discordapp.com/api/oauth2/authorize?client_id=627052576810074112&permissions=8&scope=bot)',
+         color=discord.Colour.green())
 
         
         help_embed = discord.Embed(title="TAOコマンド系ヘルプ", description="TAOで使うコマンドを使うヘルプだよ", color=discord.Colour.green())
