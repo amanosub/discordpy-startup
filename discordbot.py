@@ -194,8 +194,7 @@ async def on_message(message):
 
     if message.channel==test_ch and test_flag==True:
         if not message.author in [tao,me]:
-            log_ch = client.get_channel(674753156109828109)
-            await log_ch.send(embed = discord.Embed(title = 'test_ch発言ログ', description = f'**発言者**\n{message.author}\n**時刻**\n{datetime.now(JST).strftime("%Y/%m/%d %H:%M:%S")}\n内容\n{message.content}'))
+            await amano.send(embed = discord.Embed(title = 'test_ch発言ログ', description = f'**発言者**\n{message.author}\n**時刻**\n{datetime.now(JST).strftime("%Y/%m/%d %H:%M:%S")}\n内容\n{message.content}'))
       
 
 @client.event
