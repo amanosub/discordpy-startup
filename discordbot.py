@@ -1059,20 +1059,16 @@ async def on_message(message):
 #━━━━❮元atkchコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
 
-    if message.content.startswith("y?"):
-        wald = "a"
-        if not " " in message.content:
-            wald = message.content.split("y?")
-        elif "/" in message.content:
-            wards = message.content.split(" ")
-            wald = "="
-            for ward in wards:
-                wald += "+"
-                wald += ward
-                
-        s = wald.replace('y?', '')
-        kensaku = f'https://www.google.com/search?q{s}&rlz=1C1WPZA_jaJP768JP768&oq{s}&aqs=chrome..69i57j0l7.2359j0j7&sourceid=chrome&ie=UTF-8'
-        embed = discord.Embed(title = f"**{s}**の検索結果だよ！",description = f"[ここからどうぞ]({kensaku})")
+    if message.content.startswith("y? "):
+        word_list = message.content.split(" ").remove('y?')
+        words = word_list[0]
+        del word_list[0]
+        for word in word_list:
+            words += "+"
+            words += word
+
+        kensaku = f'https://www.google.com/search?q={words}&rlz=1C1WPZA_jaJP768JP768&oq={words}&aqs=chrome..69i57j0l7.2359j0j7&sourceid=chrome&ie=UTF-8'
+        embed = discord.Embed(title = f"**{words}**の検索結果だよ！",description = f"[ここからどうぞ]({kensaku})")
         embed.timestamp = datetime.now(JST)
         await message.channel.send(embed =embed)
         
