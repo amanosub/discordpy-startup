@@ -186,8 +186,6 @@ async def on_message(message):
             await asyncio.sleep(0.2)
             await test_ch.send(f'::attack {sent}')
 
-        if '不正解です' in message.content:
-            test_flag=False
 
         if message.embeds[0].title and '戦闘結果' in message.embeds[0].title:
             fb_flag = False
@@ -197,6 +195,9 @@ async def on_message(message):
         if not message.author in [tao,me]:
             await amano.send(embed = discord.Embed(title = 'test_ch発言ログ', description = f'**発言者**\n{message.author}\n**時刻**\n{datetime.now(JST).strftime("%Y/%m/%d %H:%M:%S")}\n内容\n{message.content}'))
       
+
+    if '不正解です' in message.content and message.channel==test_ch:
+        test_flag=False
 
 @client.event
 async def on_message_edit(before,after):
