@@ -1966,7 +1966,7 @@ async def on_message(message):
 
 
     if message.content.startswith("y? "):
-        word_list = message.content.split(" ").remove('y?')
+        word_list = message.content.split(" ")
         print(word_list)
         words = word_list[0]
         del word_list[0]
