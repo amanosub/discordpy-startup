@@ -1058,19 +1058,6 @@ async def on_message(message):
 
 #━━━━❮元atkchコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
-
-    if message.content.startswith("y? "):
-        word_list = message.content.split(" ").remove('y?')
-        words = word_list[0]
-        del word_list[0]
-        for word in word_list:
-            words += "+"
-            words += word
-
-        kensaku = f'https://www.google.com/search?q={words}&rlz=1C1WPZA_jaJP768JP768&oq={words}&aqs=chrome..69i57j0l7.2359j0j7&sourceid=chrome&ie=UTF-8'
-        embed = discord.Embed(title = f"**{words}**の検索結果だよ！",description = f"[ここからどうぞ]({kensaku})")
-        embed.timestamp = datetime.now(JST)
-        await message.channel.send(embed =embed)
         
 #━━━━❮YuiLvUPログコード❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
 
@@ -1975,6 +1962,23 @@ async def on_message(message):
 
 #現在停止中
 
+
+
+
+    if message.content.startswith("y? "):
+        word_list = message.content.split(" ").remove('y?')
+        print(word_list)
+        words = word_list[0]
+        del word_list[0]
+        for word in word_list:
+            words += "+"
+            words += word
+
+        kensaku = f'https://www.google.com/search?q={words}&rlz=1C1WPZA_jaJP768JP768&oq={words}&aqs=chrome..69i57j0l7.2359j0j7&sourceid=chrome&ie=UTF-8'
+        embed = discord.Embed(title = f"**{words}**の検索結果だよ！",description = f"[ここからどうぞ]({kensaku})")
+        embed.timestamp = datetime.now(JST)
+        await message.channel.send(embed =embed)
+        
 @client.event
 async def on_member_join(member):
     ban_guild=client.get_guild(654599269906645002)
