@@ -56,8 +56,8 @@ async def loop():
 @client.event
 async def on_ready():
     global test_ch
-    start_ch = client.get_channel(615550825732767775)
-    await start_ch.send(datetime.now(JST).strftime("%Y/%m/%d %H:%M:%S"))
+    amano = client.get_user(446610711230152706)
+    await amano.send(datetime.now(JST).strftime("%Y/%m/%d %H:%M:%S"))
     print(datetime.now(JST).strftime("%Y/%m/%d %H:%M:%S"))
     loop.start()
 
